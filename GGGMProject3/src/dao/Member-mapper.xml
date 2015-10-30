@@ -39,11 +39,13 @@
 	</select>
 	
 	<!-- procedure 호출하는 부분 -->
+	<!-- 주소 갯수 -->
 	<select id="PostFindCount" resultType="int" parameterType="String">
 		SELECT postCount(#{dong}) FROM DUAL
 	</select>
 	
 	<!-- cursor 호출하는 부분 -->
+	<!-- 주소 찾기 -->
 	<resultMap id="postData" type="dao.ZipcodeDTO"></resultMap>
 	<select id="postFindData" statementType="CALLABLE" parameterType="java.util.Map">
 		{
@@ -53,6 +55,14 @@
 			)
 		}
 	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="memberJoin" parameterType="Member">
+		INSERT INTO memberData VALUES(
+			#{name}, #{id}, #{pwd}, #{birth}, #{tel}, #{sex}, 
+			#{post}, #{addr1}, #{addr2}, 0, #{email}, 
+			#{emailreceive})
+	</insert>
 	
 	
 </mapper>

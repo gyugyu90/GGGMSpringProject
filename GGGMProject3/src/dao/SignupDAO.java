@@ -41,9 +41,15 @@ public class SignupDAO {
 	   Map<String, Object> map=new HashMap<String, Object>();
 	   map.put("dong", dong);
 	   session.selectList("postFindData", map);
-	   
 	   List<ZipcodeDTO> list=(List<ZipcodeDTO>)map.get("result");
+	   session.close();
 	   return list;
+   }
+   
+   public static void memberJoin(memberDTO d){
+	   SqlSession session=ssf.openSession(true);
+	   session.insert("memberJoin", d);
+	   session.close();
    }
    
 }

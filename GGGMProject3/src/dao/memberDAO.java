@@ -65,6 +65,7 @@ public class memberDAO {
 	}
 
 	public static int memberTotalPage() {
+		System.out.println("dao¾ÈÂÊ");
 		SqlSession session = ssf.openSession();
 		int count = session.selectOne("memberRowCount");
 		int total = (int) (Math.ceil(count / 10.0));
