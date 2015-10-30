@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- PreparedStatement,ResultSet -->
 <mapper namespace="dao.Member-mapper">
-	
+
 	<select id="memberIdCount" resultType="int" parameterType="String">
 		SELECT COUNT(*) FROM memberData
 		WHERE id=#{id}
@@ -13,16 +13,29 @@
 		WHERE id=#{id}
 	</select>
 	<select id="getNormalMemberAllData" resultType="Member">
-		SELECT * FROM memberData WHERE grade=1
+		SELECT * FROM
+		memberData WHERE grade=1
 	</select>
 	<select id="getMemberAllData" resultType="Member">
-		SELECT * FROM memberData
+		SELECT * FROM
+		memberData
 	</select>
 	<select id="getADMemberAllData" resultType="Member">
-		SELECT * FROM memberData WHERE grade=2
+		SELECT * FROM
+		memberData WHERE grade=2
 	</select>
 	<select id="getAdminMemberAllData" resultType="Member">
-		SELECT * FROM memberData WHERE grade=3
+		SELECT * FROM
+		memberData WHERE grade=3
+	</select>
+	<select id="memberListData" resultType="Member" parameterType="java.util.Map">
+		SELECT * FROM 
+		(SELECT ROWNUM num, m.* FROM memberData m ORDER BY id DESC)		
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 총페이지 -->
+	<select id="memberRowCount" resultType="int">
+		SELECT COUNT(*) FROM memberData
 	</select>
 	
 	<!-- procedure 호출하는 부분 -->
