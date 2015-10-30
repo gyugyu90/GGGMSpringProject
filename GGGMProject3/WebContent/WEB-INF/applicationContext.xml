@@ -17,5 +17,8 @@
 	
 	<bean id="slidebanner" class="model.AdListModel"/>
 	<bean id="fullpageMain" class="model.fullpageModel"/>
+	
+	<bean id="postfind" class="model.PostFindModel"/>
+	
 	<!-- startElement(), endElement() -->	
 </beans><!-- endElement(), endDocument() -->

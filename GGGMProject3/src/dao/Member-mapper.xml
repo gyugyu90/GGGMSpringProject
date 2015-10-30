@@ -24,4 +24,22 @@
 	<select id="getAdminMemberAllData" resultType="Member">
 		SELECT * FROM memberData WHERE grade=3
 	</select>
+	
+	<!-- procedure 호출하는 부분 -->
+	<select id="PostFindCount" resultType="int" parameterType="String">
+		SELECT postCount(#{dong}) FROM DUAL
+	</select>
+	
+	<!-- cursor 호출하는 부분 -->
+	<resultMap id="postData" type="dao.ZipcodeDTO"></resultMap>
+	<select id="postFindData" statementType="CALLABLE" parameterType="java.util.Map">
+		{
+			CALL postfind(
+				#{dong, mode=IN},
+				#{result, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=postData}
+			)
+		}
+	</select>
+	
+	
 </mapper>
