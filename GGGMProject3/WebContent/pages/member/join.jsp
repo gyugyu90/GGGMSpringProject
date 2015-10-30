@@ -7,8 +7,8 @@
 <title>회원가입</title>
 
 <link rel="stylesheet" type="text/css" href="join.css"/>
-<link rel="stylesheet" type="text/css" href="../css/shadowbox.css"/>
-<script type="text/javascript" src="../js/shadowbox.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
+<script type="text/javascript" src="../../js/shadowbox.js"></script>
 <script type="text/javascript">
 Shadowbox.init({
    players:["iframe"]		
@@ -41,7 +41,7 @@ function postfind()
     <form id="joinForm" name="join_form">
     <p>
     <label for="userid">아이디</label>
-    <input type=text name="id" id="userid">
+    <input type=text name="id" id="userid" onclick="idcheck()">
     <input type=button value=중복체크 id="useridBtn" onclick="idcheck()">
  
     

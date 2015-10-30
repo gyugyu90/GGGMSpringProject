@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>회원가입</title>
 <link rel="stylesheet" type="text/css" href="join.css"/>
-<link rel="stylesheet" type="text/css" href="../css/shadowbox.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
 
 <style type="text/css">
 	#wrapper {margin:0; padding:0; width:700px; border:1px solid black;
@@ -25,12 +25,12 @@
 	<center>
 		<div id="member" align=center>
 			<a href="join.jsp">
-			<img src="../img/member.png"></a>
+			<img src="../../img/member.png"></a>
 			<span></span>
 		</div>
 		<div id="enterprise" align=center>
 			<a href="enterpriseUserJoin.jsp">
-			<img src="../img/enterprise.png"></a>
+			<img src="../../img/enterprise.png"></a>
 		</div>
 	</center>
 </body>

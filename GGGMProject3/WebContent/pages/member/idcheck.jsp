@@ -24,6 +24,7 @@ span{
     <div id="idDiv">
     ID입력: <input type=text name="id" size=12 id="idinput">
     <input type="button" value="아이디체크" id="idcheck">
+  </form>
     <br><br>
     <span id="result" style="color:yellow"></span>
 	<c:if test="${idcheck==null}">
@@ -34,11 +35,15 @@ span{
     </c:if>
     <c:if test="${idcheck==2}">
     	<span>사용 가능한 아이디입니다</span><br>
-    	<%-- <a href="<%=request.getContextPath()%>/idokay.do?id=${usableId}" style="color:yellow">${usableId} 사용하기</a> --%>
-    	<a href="javascript:ok()" style="color:yellow" id="usableId">${usableId}</a>&nbsp;사용하기
+    	<br>
+    	<form method="post" action="<%=request.getContextPath()%>/pages/member/idcheck_ok.jsp"
+               id="form_idcheck">
+               <a href="#" style="color: yellow" id="usableId">${usableId}</a>&nbsp;사용하기
+               <input type="hidden" name="usableId" value="${usableId }">
+        </form>
     </c:if>
     </div> 
-  </form>
+  
   </center>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -51,11 +56,9 @@ $('#idcheck').click(function(){
 	}
 	$('#frm_id').submit();
 });
-function ok(){
-	var id=$('#usableId').val();
-	$(opener.document).find('#userid').val(id);
-	
-}
+$('#usableId').click(function() {
+    $('#form_idcheck').submit();
+});
 </script>
 </body>
 </html>

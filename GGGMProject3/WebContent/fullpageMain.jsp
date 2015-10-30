@@ -253,7 +253,7 @@ Shadowbox.init({
 function twojoin()
 {
 	Shadowbox.open({
-		content:'member/twojoin.jsp',
+		content:'pages/member/twojoin.jsp',
 		player:'iframe',
 		title:'회원가입',
 		width:650,

@@ -13,6 +13,7 @@
 	<bean id="normalmember" class="model.NormalMemberModel"/>
 	<bean id="AdminMember" class="model.AdminMemberModel"/>
 	<bean id="faq" class="model.FaqModel"/>
+	<bean id="idcheck" class="model.IdCheckModel"/>
 	
 	<!-- startElement(), endElement() -->	
 </beans><!-- endElement(), endDocument() -->
