@@ -1,4 +1,4 @@
-package com.dao;
+package dao;
 
 import java.util.*;
 
@@ -11,7 +11,7 @@ public class SignupDAO {
    private static SqlSessionFactory ssf;
    static{//들어가자마자 초기화가 되는 블록.. 생성자를 호출하지 않아도 자동으로 메모리 할당이 됨
       try{
-         Reader reader=Resources.getResourceAsReader("com/common/Config.xml");
+         Reader reader=Resources.getResourceAsReader("common/Config.xml");
          //XML 파일 읽기
          //Parsing 요청 ==> id, data를 맵에 저장하고 불러들임
          ssf=new SqlSessionFactoryBuilder().build(reader);//build 안에 SAXParsing이 됨

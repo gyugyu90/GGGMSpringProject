@@ -15,7 +15,7 @@ public class ADMemberModel implements Model {
 		List<memberDTO> list=memberDAO.getADMemberAllData();		
 		req.setAttribute("list", list);
 		req.setAttribute("jsp", "pages/Admin/member/admember.jsp");
-		return "main.jsp";
+		return "pages/main/main.jsp";
 	}
 
 }

@@ -13,8 +13,8 @@ public class MemberModel implements Model {
 		
 		List<memberDTO> list=memberDAO.getMemberAllData();		
 		req.setAttribute("list", list);
-		req.setAttribute("jsp", "pages/Admin/member/member.jsp");
-		return "main.jsp";
+		req.setAttribute("jsp", "../Admin/member/member.jsp");
+		return "pages/main/main.jsp";
 	}
 
 }

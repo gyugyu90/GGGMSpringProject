@@ -15,7 +15,7 @@ public class AdminMemberModel implements Model {
 		List<memberDTO> list=memberDAO.getAdminMemberAllData();		
 		req.setAttribute("list", list);
 		req.setAttribute("jsp", "pages/Admin/member/AdminMember.jsp");
-		return "main.jsp";
+		return "pages/main/main.jsp";
 	}
 
 }

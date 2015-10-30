@@ -1,4 +1,4 @@
-package com.member;
+package dao;
 
 public class ZipcodeDTO {
 	private String zipcode;

@@ -12,8 +12,8 @@ public class MainModel implements Model {
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {				
 		
-		req.setAttribute("jsp", "pages/main/home.jsp");
-		return "main.jsp";
+		req.setAttribute("jsp", "home.jsp");
+		return "pages/main/main.jsp";
 	}
 
 }

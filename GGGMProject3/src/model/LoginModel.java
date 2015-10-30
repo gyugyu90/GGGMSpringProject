@@ -33,7 +33,7 @@ public class LoginModel implements Model {
 		}
 		System.out.println(result);
 		req.setAttribute("result", result);
-		return "login.jsp";
+		return "pages/member/login.jsp";
 	}
 
 }

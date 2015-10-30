@@ -1,4 +1,4 @@
-package com.dao;
+package dao;
 /*
  * 	JDBC ==> DBCP ==> ORM ==> JPA
  * 					=======

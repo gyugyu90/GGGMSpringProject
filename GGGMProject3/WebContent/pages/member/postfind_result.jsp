@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*,com.member.*"%>
-<jsp:useBean id="dao" class="com.member.ZipcodeDAO"/>
+    pageEncoding="EUC-KR" import="java.util.*,dao.*"%>
+<jsp:useBean id="dao" class="dao.ZipcodeDAO"/>
 <%
     request.setCharacterEncoding("EUC-KR");
     String dong=request.getParameter("dong");

@@ -1,4 +1,4 @@
-package com.member;
+package dao;
 import java.util.*;
 import java.sql.*;
 import javax.sql.*;
