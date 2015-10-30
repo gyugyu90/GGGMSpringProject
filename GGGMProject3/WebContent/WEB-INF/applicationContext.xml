@@ -13,6 +13,7 @@
 	<bean id="normalmember" class="model.NormalMemberModel"/>
 	<bean id="AdminMember" class="model.AdminMemberModel"/>
 	<bean id="faq" class="model.FaqModel"/>
-	
+	<bean id="slidebanner" class="model.AdListModel"/>
+	<bean id="fullpageMain" class="model.fullpageModel"/>
 	<!-- startElement(), endElement() -->	
 </beans><!-- endElement(), endDocument() -->
