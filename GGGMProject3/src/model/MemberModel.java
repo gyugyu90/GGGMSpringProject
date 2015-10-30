@@ -25,6 +25,7 @@ public class MemberModel implements Model {
 		int totalpage=memberDAO.memberTotalPage();
 		
 		req.setAttribute("totalpage", totalpage);
+		req.setAttribute("curpage", curpage);
 		req.setAttribute("list", list);
 		req.setAttribute("jsp", "../Admin/member/member.jsp");
 		return "pages/main/main.jsp";
