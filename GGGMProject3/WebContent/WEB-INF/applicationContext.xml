@@ -15,5 +15,7 @@
 	<bean id="faq" class="model.FaqModel"/>
 	<bean id="idcheck" class="model.IdCheckModel"/>
 	
+	<bean id="slidebanner" class="model.AdListModel"/>
+	<bean id="fullpageMain" class="model.fullpageModel"/>
 	<!-- startElement(), endElement() -->	
 </beans><!-- endElement(), endDocument() -->
