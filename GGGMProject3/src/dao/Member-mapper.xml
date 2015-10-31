@@ -63,6 +63,9 @@
 			#{post}, #{addr1}, #{addr2}, 0, #{email}, 
 			#{emailreceive})
 	</insert>
+	<select id="memberTotalPoint" parameterType="Member" resultType="int">
+	SELECT sumpoint FROM memberData WHERE id=#{id}
+	</select>
 	
 	
 </mapper>

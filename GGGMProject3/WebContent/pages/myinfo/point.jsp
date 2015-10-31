@@ -82,7 +82,7 @@ li{ list-style-type : none;
 			
 				<ul >
 				<li>
-				보유 포인트 : 
+				보유 포인트 : ${point}
 				<input type="text" size=20 readonly="readonly">
 				</li>
 				<li>
@@ -130,10 +130,10 @@ li{ list-style-type : none;
 						일자
 					</th>
 					<th class="point_table">
-					획득포인트
+					입금포인트
 					</th>
 					<th class="point_table">
-					사용
+					출금포인트
 					</th>
 					<th class="point_table">
 					입/출금내용

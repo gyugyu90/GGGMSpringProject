@@ -72,4 +72,11 @@ public class memberDAO {
 		session.close();
 		return total;
 	}
+	public static int memberTotalPoint() {
+		System.out.println("dao¾ÈÂÊ");
+		SqlSession session = ssf.openSession();
+		int point = session.selectOne("memberTotalPoint");		
+		session.close();
+		return point;
+	}
 }

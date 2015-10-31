@@ -20,5 +20,6 @@
 	
 	<bean id="postfind" class="model.PostFindModel"/>
 	<bean id="join" class="model.JoinModel"/>
+	<bean id="point" class="model.PointModel"/>
 	<!-- startElement(), endElement() -->	
 </beans><!-- endElement(), endDocument() -->

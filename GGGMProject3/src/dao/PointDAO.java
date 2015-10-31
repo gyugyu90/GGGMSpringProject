@@ -1,7 +1,6 @@
 package dao;
 
 import java.io.Reader;
-import java.sql.*;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -9,9 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import dao.*;
-
-public class AdvertiseDAO {
+public class PointDAO {
 	private static SqlSessionFactory ssf;
     static
     {
@@ -24,17 +21,31 @@ public class AdvertiseDAO {
     	}catch(Exception ex)
     	{
     		System.out.println(ex.getMessage());
+    
     	}
     }
-    public static List<AdvertiseDTO> adListData(){
+    public static void ViewListInsert(PointDTO d){
     	SqlSession session=ssf.openSession();
-    	List<AdvertiseDTO> count=session.selectList("adListData");
+    	session.update("ViewListUpdate",d);
     	session.close();
-    	return count;
     	
     }
-
-	
-	
-	
+    
+    public static void PointUpdate(PointDTO d){
+    	SqlSession session=ssf.openSession();
+    	session.update("PointUpdate", d);
+    	session.close(); 	
+    	
+    }
+    
+    // 아직 안씀(수정필요)
+    public static void AllCountViewTime(PointDTO d){
+    	SqlSession session=ssf.openSession();
+    	session.update("ViewListUpdate",d);
+    	session.close(); 	
+    	
+    }
+    
+    
+    
 }
