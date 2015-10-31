@@ -21,5 +21,8 @@
 	<bean id="postfind" class="model.PostFindModel"/>
 	<bean id="join" class="model.JoinModel"/>
 	<bean id="point" class="model.PointModel"/>
+
+	<bean id="myadviewlist" class="model.MyAdViewListModel"/>
+
 	<!-- startElement(), endElement() -->	
 </beans><!-- endElement(), endDocument() -->

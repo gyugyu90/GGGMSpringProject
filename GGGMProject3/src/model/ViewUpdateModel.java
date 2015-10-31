@@ -27,9 +27,8 @@ public class ViewUpdateModel implements Model {
 		
 			
 		
-		req.setAttribute("d", d);
-		req.setAttribute("no", strNo);
-		req.setAttribute("page", strPage);
+
+
 		req.setAttribute("title", "수정하기");
 		req.setAttribute("jsp", "history.back()");
 		return "main/main.jsp";

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- PreparedStatement,ResultSet -->
+<mapper namespace="dao.Member-mapper">
+
+	<select id="myadviewlist" resultType="myad" parameterType="String">
+		SELECT when, point, description, balance FROM myadviewlist
+		WHERE memberid=#{memberid} ORDER BY when DESC
+	</select>
+	
+</mapper>
