@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>광고구마</title>
-		<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="./css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="./css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 	
@@ -142,40 +143,26 @@ li{ list-style-type : none;
 					잔고
 					</th>
 				</tr>
+				<c:forEach var="ad" items="${myadviewlist}">
 				<tr>
 					<td class="point_table">
-						2010-10-16
+						${ad.when }
 					</td>
 					<td class="point_table">
-					100
+					    ${ad.point }
 					</td>
 					<td class="point_table">
-					사용
+					    사용
 					</td>
 					<td class="point_table">
-					현대자동차
+					    ${ad.description}
 					</td >
 					<td class="point_table" >
-					29,990
+					    ${ad.balance}	
 					</td>
 				</tr>
-				<tr>
-					<td class="point_table">
-						2010-10-17
-					</td>
-					<td class="point_table">
-					10
-					</td>
-					<td class="point_table">
-					사용
-					</td>
-					<td class="point_table">
-					현대자동차
-					</td >
-					<td class="point_table" >
-					30,000
-					</td>
-				</tr>
+				</c:forEach>
+				
 			</table>
 		</div>
 		</div>
@@ -183,23 +170,21 @@ li{ list-style-type : none;
 	<!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- Bootstrap -->
-        <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         
 
         <!-- FLOT CHARTS -->
-        <script src="./js/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
         <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-        <script src="./js/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
         <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-        <script src="./js/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
         <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-        <script src="./js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 
             $(function() {
-
-
                 /*
                  * LINE CHART
                  * ----------
@@ -207,10 +192,32 @@ li{ list-style-type : none;
                 //LINE randomly generated data
 
                 var sin = [], cos = [];
-                for (var i = 0; i < 14; i += 0.5) {
+                /* for (var i = 0; i < 12; i += 0.5) {
                     sin.push([i, Math.sin(i)]);
                     cos.push([i, Math.cos(i)]);
-                }
+                } */
+                sin.push([1, Math.sin(10)]);
+                cos.push([1, Math.cos(5)]);
+                sin.push([2, Math.sin(2)]);
+                cos.push([2, Math.cos(9)]);
+                sin.push([3, Math.sin(11)]);
+                cos.push([3, Math.cos(53)]);
+                sin.push([4, Math.sin(12)]);
+                cos.push([4, Math.cos(52)]);
+                sin.push([5, Math.sin(4)]);
+                cos.push([5, Math.cos(5)]);
+                sin.push([6, Math.sin(20)]);
+                cos.push([6, Math.cos(20)]);
+                sin.push([7, Math.sin(3)]);
+                cos.push([7, Math.cos(5)]);
+                sin.push([8, Math.sin(13)]);
+                cos.push([8, Math.cos(24)]);
+                sin.push([9, Math.sin(1)]);
+                cos.push([9, Math.cos(55)]);
+                sin.push([10, Math.sin(14)]);
+                cos.push([10, Math.cos(52)]);
+                sin.push([11, Math.sin(13)]);
+                cos.push([11, Math.cos(45)]);
                 var line_data1 = {
                     data: sin,
                     color: "#3c8dbc"
