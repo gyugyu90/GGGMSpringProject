@@ -20,8 +20,8 @@
 	
 	<bean id="postfind" class="model.PostFindModel"/>
 	<bean id="join" class="model.JoinModel"/>
-	<bean id="point" class="model.PointModel"/>
-
+	<bean id="adgraph" class="model.AdGraphModel"/>
+	
 	<bean id="myadviewlist" class="model.MyAdViewListModel"/>
 
 	<!-- startElement(), endElement() -->	

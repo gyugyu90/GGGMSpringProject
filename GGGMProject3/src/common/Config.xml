@@ -9,9 +9,7 @@
      <typeAlias type="dao.SignupDTO" alias="Signup"/>
      <typeAlias type="dao.FaqDTO" alias="Faq"/>
      <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
-
-     <typeAlias type="dao.PointDTO" alias="PointDTO"/>
-
+     <typeAlias type="dao.AdGraphDTO" alias="PointDTO"/>
      <typeAlias type="dao.MyAdViewListDTO" alias="myad"/>
 
   </typeAliases>
@@ -31,7 +29,7 @@
     <mapper resource="dao/faq-mapper.xml"/>
     <mapper resource="dao/ad-mapper.xml"/>
 
-    <mapper resource="dao/point-mapper.xml"/>
+    <mapper resource="dao/adgraph-mapper.xml"/>
 
     <mapper resource="dao/adview-mapper.xml"/>
 

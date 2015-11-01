@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class PointDAO {
+public class AdGraphDAO {
 	private static SqlSessionFactory ssf;
     static
     {
@@ -24,27 +24,34 @@ public class PointDAO {
     
     	}
     }
-    public static void ViewListInsert(PointDTO d){
+    public static void ViewListInsert(AdGraphDTO d){
     	SqlSession session=ssf.openSession();
     	session.update("ViewListUpdate",d);
     	session.close();
     	
     }
-    
-    public static void PointUpdate(PointDTO d){
+    // 현재날 -30일 가져오는 메소드
+    public static List<AdGraphDTO> AdViewChart(String adid){
     	SqlSession session=ssf.openSession();
-    	session.update("PointUpdate", d);
-    	session.close(); 	
+    	List<AdGraphDTO> list = session.selectList("AdViewChart", adid);
+    	session.close();
+    	return list;
+    }
+    // 중복카운트값
+    public static int AdOverlapCount(int adno){
+    	SqlSession session=ssf.openSession();
+    	int OverlapCount = session.selectOne("AdOverlapCount", adno);
+    	session.close();
+    	return OverlapCount;
     	
     }
-    
-    // 아직 안씀(수정필요)
-    public static void AllCountViewTime(PointDTO d){
+    public static int AdNoOverlapCount(int adno){
     	SqlSession session=ssf.openSession();
-    	session.update("ViewListUpdate",d);
-    	session.close(); 	
-    	
+    	int NoOverlapCount = session.selectOne("AdNoOverlapCount", adno);
+    	session.close();
+    	return NoOverlapCount;
     }
+    //단일 카운트값
     
     
     
