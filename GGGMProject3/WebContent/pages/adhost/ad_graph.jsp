@@ -7,16 +7,16 @@
         <title>AdminLTE | Morris.js Charts</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
-        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Morris charts -->
-        <link href="/css/morris/morris.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/morris/morris.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-
+        <link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+	
 <style type="text/css">
 
 #body{
@@ -86,7 +86,7 @@
 			</div>
 			<div id="content">
 				<div id="period">
-				기간설정 ~~
+				 
 				</div>
 				<div id="summery">
 					
@@ -197,14 +197,14 @@
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- Bootstrap -->
-        <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
 
         <!-- Morris.js charts -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="/js/plugins/morris/morris.min.js" type="text/javascript"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="<%=request.getContextPath() %>/js/plugins/morris/morris.min.js" type="text/javascript"></script>
 
         <!-- AdminLTE App -->
-        <script src="/js/AdminLTE/app.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath() %>/js/AdminLTE/app.js" type="text/javascript"></script>
 
         <!-- page script -->
         <script type="text/javascript">
@@ -234,10 +234,6 @@
                     hideHover: 'auto'
                 });
 
-               
-
-              
-              
             });
         </script>
 </body>

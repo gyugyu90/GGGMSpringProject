@@ -11,7 +11,7 @@ public class ViewUpdateModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		PointDTO a=new PointDTO();
+		AdGraphDTO a=new AdGraphDTO();
 		String adid =req.getParameter("adid");
 		String adno=req.getParameter("adno");
 		String userid=req.getParameter("Userid");
@@ -23,7 +23,7 @@ public class ViewUpdateModel implements Model {
 		a.setSumpoint(Integer.parseInt(adpoint));
 		
 		
-		PointDAO.ViewListInsert(a);
+		AdGraphDAO.ViewListInsert(a);
 		
 			
 		

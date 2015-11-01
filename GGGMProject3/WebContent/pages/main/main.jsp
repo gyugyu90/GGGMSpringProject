@@ -345,7 +345,7 @@
 									<span>광고주분석</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 								<ul class="treeview-menu">
-									<li><a href="#"><i
+									<li><a href="adgraph.do"><i
 											class="fa fa-angle-double-right"></i>그래프</a></li>
 									<li><a href="#"><i
 											class="fa fa-angle-double-right"></i>광고비용 산출</a></li>

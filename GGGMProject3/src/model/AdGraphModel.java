@@ -6,17 +6,17 @@ import javax.servlet.http.HttpSession;
 
 import dao.memberDAO;
 
-public class PointModel implements Model {
+public class AdGraphModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session=req.getSession();
 		String id=(String)session.getAttribute("id");
-		int point=memberDAO.memberTotalPoint();
 		
 		
-		req.setAttribute("jsp", "/pages/myinfo/point.jsp");
+		
+		req.setAttribute("jsp", "/pages/adhost/ad_graph.jsp");
 		return "pages/main/main.jsp";
 		
 	}

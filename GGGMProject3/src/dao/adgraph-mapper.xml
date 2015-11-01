@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="dao.point-mapper">
+<mapper namespace="dao.adgraph-mapper">
 	<update id="PointUpdate" parameterType="PointDTO">
 		UPDATE member SET sumpoint=sumpoint+${adpoint} WHERE userid=${userid} AND (SELECT adno FROM ad)=${adno}
 	</update>
@@ -17,7 +17,7 @@
 	</select>
 	<select id="AdViewChart" parameterType="PointDTO" resultType="java.util.Map">
 	SELECT sum(count) FROM adviewlist WHERE adno=${adno} AND SELECT(viewtime FROM adviewlist WHERE adid=${adid})
- 	BETWEEN (SELECT to_char(sysdate -21 ,'yyyymmdd hh24:mi:ss') FROM DUAL) AND (select to_char(sysdate,'yyyymmdd hh24:mi:ss') FROM DUAL);
+ 	BETWEEN (SELECT to_char(sysdate -30 ,'yyyymmdd hh24:mi:ss') FROM DUAL) AND (select to_char(sysdate,'yyyymmdd hh24:mi:ss') FROM DUAL);
 	</select>
 	
 	

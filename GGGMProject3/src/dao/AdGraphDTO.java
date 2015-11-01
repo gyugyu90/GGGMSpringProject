@@ -2,13 +2,14 @@ package dao;
 
 import java.util.Date;
 
-public class PointDTO {
+public class AdGraphDTO {
 	private String adid;
 	private String adno;
 	private String id;
 	private int sumpoint;
 	private Date viewtime;
 	private int count;
+	private int sumcount;
 	public String getAdid() {
 		return adid;
 	}
