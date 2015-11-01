@@ -81,13 +81,13 @@ li{ list-style-type : none;
 		<div id="top">
 			<div id="top_left">
 			
-				<ul >
+				<ul style="padding-left:10px;">
 				<li>
 				보유 포인트 : ${point}
 				<input type="text" size=20 readonly="readonly">
 				</li>
 				<li>
-					<img id="arrow"src="#">
+					<i class="fa fa-chevron-down"></i>
 				</li>
 				<li>
 				받을 포인트 : 
@@ -102,23 +102,9 @@ li{ list-style-type : none;
 			</div>
 			<div id="top_right">
 				
-
-           
                             <!-- Line chart -->
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                    <h3 class="box-title">Line Chart</h3>
-                                </div>
-                                <div class="box-body">
-                                    <div id="line-chart" style="height: 300px;"></div>
-                                </div><!-- /.box-body-->
-                            </div><!-- /.box -->
-                       
+                            <div id="linechart_material"></div>
                   
-             
-
-           
 			</div></div>
 		</div>
 		<div class=row>
@@ -168,126 +154,58 @@ li{ list-style-type : none;
 		</div>
 	</div>
 	<!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    //from googlechart.blogspot.kr
+    var queryObject="";
+    var queryObjectLen="";
+    $.ajax({
+    	type:'POST',
+    	url:'pages/myinfo/getdata.jsp',
+    	dataType:'json',
+    	success:function(data){
+    		queryObject=eval('('+JSON.stringify(data)+')');
+    		queryObjectLen=queryObject.myadviewlist.length;
+    	},
+    	error:function(xhr,type){
+    		alert('server error occured!')
+    	}
+    });
+    
+    //google chart api
+    google.load('visualization', '1.1', {packages: ['line']});
+    google.setOnLoadCallback(drawChart);
 
-        <!-- FLOT CHARTS -->
-        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
-        <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
-        <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
-        <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-        <script src="<%=request.getContextPath() %>/js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
-	<script type="text/javascript">
+    function drawChart() {
 
-            $(function() {
-                /*
-                 * LINE CHART
-                 * ----------
-                 */
-                //LINE randomly generated data
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Day');
+      data.addColumn('number', 'point');
+      
+	  for(var i=0;i<queryObjectLen;i++){
+		  var point=queryObject.myadviewlist[i].point;
+		  data.addRows([
+		       [i+1, parseInt(point)]         
+		  ]);
+	  }
+      
 
-                var sin = [], cos = [];
-                /* for (var i = 0; i < 12; i += 0.5) {
-                    sin.push([i, Math.sin(i)]);
-                    cos.push([i, Math.cos(i)]);
-                } */
-                sin.push([1, Math.sin(10)]);
-                cos.push([1, Math.cos(5)]);
-                sin.push([2, Math.sin(2)]);
-                cos.push([2, Math.cos(9)]);
-                sin.push([3, Math.sin(11)]);
-                cos.push([3, Math.cos(53)]);
-                sin.push([4, Math.sin(12)]);
-                cos.push([4, Math.cos(52)]);
-                sin.push([5, Math.sin(4)]);
-                cos.push([5, Math.cos(5)]);
-                sin.push([6, Math.sin(20)]);
-                cos.push([6, Math.cos(20)]);
-                sin.push([7, Math.sin(3)]);
-                cos.push([7, Math.cos(5)]);
-                sin.push([8, Math.sin(13)]);
-                cos.push([8, Math.cos(24)]);
-                sin.push([9, Math.sin(1)]);
-                cos.push([9, Math.cos(55)]);
-                sin.push([10, Math.sin(14)]);
-                cos.push([10, Math.cos(52)]);
-                sin.push([11, Math.sin(13)]);
-                cos.push([11, Math.cos(45)]);
-                var line_data1 = {
-                    data: sin,
-                    color: "#3c8dbc"
-                };
-                var line_data2 = {
-                    data: cos,
-                    color: "#00c0ef"
-                };
-                $.plot("#line-chart", [line_data1, line_data2], {
-                    grid: {
-                        hoverable: true,
-                        borderColor: "#f3f3f3",
-                        borderWidth: 1,
-                        tickColor: "#f3f3f3"
-                    },
-                    series: {
-                        shadowSize: 0,
-                        lines: {
-                            show: true
-                        },
-                        points: {
-                            show: true
-                        }
-                    },
-                    lines: {
-                        fill: false,
-                        color: ["#3c8dbc", "#f56954"]
-                    },
-                    yaxis: {
-                        show: true,
-                    },
-                    xaxis: {
-                        show: true
-                    }
-                });
-                //Initialize tooltip on hover
-                $("<div class='tooltip-inner' id='line-chart-tooltip'></div>").css({
-                    position: "absolute",
-                    display: "none",
-                    opacity: 0.8
-                }).appendTo("body");
-                $("#line-chart").bind("plothover", function(event, pos, item) {
+      var options = {
+        chart: {
+          title: '일일 광고 시청 현황',
+          subtitle: '포인트 적립 내역 (원)'
+        },
+        width: 600,
+        height: 450
+      };
 
-                    if (item) {
-                        var x = item.datapoint[0].toFixed(2),
-                                y = item.datapoint[1].toFixed(2);
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
 
-                        $("#line-chart-tooltip").html(item.series.label + " of " + x + " = " + y)
-                                .css({top: item.pageY + 5, left: item.pageX + 5})
-                                .fadeIn(200);
-                    } else {
-                        $("#line-chart-tooltip").hide();
-                    }
-
-                });
-                /* END LINE CHART */
-
-           
-            });
-
-            /*
-             * Custom Label formatter
-             * ----------------------
-             */
-            function labelFormatter(label, series) {
-                return "<div style='font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;'>"
-                        + label
-                        + "<br/>"
-                        + Math.round(series.percent) + "%</div>";
-            }
-        </script>
+      chart.draw(data, options);
+    }
+  </script>
 </body>
 </html>
