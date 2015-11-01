@@ -38,7 +38,19 @@ public class AdGraphDAO {
     	return list;
     }
     // 중복카운트값
-    
+    public static int AdOverlapCount(int adno){
+    	SqlSession session=ssf.openSession();
+    	int OverlapCount = session.selectOne("AdOverlapCount", adno);
+    	session.close();
+    	return OverlapCount;
+    	
+    }
+    public static int AdNoOverlapCount(int adno){
+    	SqlSession session=ssf.openSession();
+    	int NoOverlapCount = session.selectOne("AdNoOverlapCount", adno);
+    	session.close();
+    	return NoOverlapCount;
+    }
     //단일 카운트값
     
     

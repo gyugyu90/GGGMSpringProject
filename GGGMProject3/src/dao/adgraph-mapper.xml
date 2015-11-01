@@ -19,7 +19,11 @@
 	SELECT sum(count) FROM adviewlist WHERE adno=${adno} AND SELECT(viewtime FROM adviewlist WHERE adid=${adid})
  	BETWEEN (SELECT to_char(sysdate -30 ,'yyyymmdd hh24:mi:ss') FROM DUAL) AND (select to_char(sysdate,'yyyymmdd hh24:mi:ss') FROM DUAL);
 	</select>
-	
-	
+	<select id="AdOverlapCount" parameterType="int" resultType="int">
+		SELECT sum(count) FROM adviewlist WHERE adno=${adno}
+	</select>
+	<select id="AdNoOverlapCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM adviewlist WHERE adno=${adno}
+	</select>
 	
 </mapper>

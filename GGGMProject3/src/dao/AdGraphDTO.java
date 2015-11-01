@@ -9,7 +9,7 @@ public class AdGraphDTO {
 	private int sumpoint;
 	private Date viewtime;
 	private int count;
-	private int sumcount;
+
 	public String getAdid() {
 		return adid;
 	}

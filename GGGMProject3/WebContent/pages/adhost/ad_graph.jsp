@@ -95,13 +95,13 @@
 							<tr>
 								<td colspan="2">광고시청건수</td>
 								<td>중복</td>
-								<td>1,000,000</td>
+								<td>${OverlapCount }</td>
 								
 							</tr>
 							<tr>
 								<td colspan="2"></td>
 								<td>단일</td>
-								<td>600,000</td>
+								<td>${NoOverlapCount }</td>
 								
 							</tr>
 						</table>
