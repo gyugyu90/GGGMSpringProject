@@ -1,8 +1,7 @@
 package model;
 
 import java.util.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import dao.*;
 
 public class MemberModel implements Model {

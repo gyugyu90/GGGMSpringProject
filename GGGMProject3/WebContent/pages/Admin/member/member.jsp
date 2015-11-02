@@ -21,11 +21,6 @@
 	type="text/css" />
 <!-- Theme style -->
 <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-#aa{
-text-align: right;
-}
-</style>
 </head>
 <body class="skin-black">
 	<div class="row">
@@ -91,33 +86,33 @@ text-align: right;
 											</c:choose></td>
 									</tr>
 								</c:forEach>
-							</tbody>							
+							</tbody>
 						</table>
 						<div class="row">
-						<div class="col-lg-12">										
+							<div class="col-lg-12">
 								<div class="col-lg-8">
-								<select id="aa"><option>전체</option>
-								<option>이름</option>
-								<option style="text-align: right;">ID</option></select> <input
+									<select id="aa"><option>전체</option>
+										<option>이름</option>
+										<option style="text-align: right;">ID</option></select> <input
 										type="search">
-								
-								<button type="submit" >검색</button>
+
+									<button type="submit">검색</button>
 								</div>
-								<div class="col-lg-4" style="text-align: right;">							
-								<a href="member.do?page=${curpage>1?curpage-1:curpage }"> <img
-									src="img/prev_icon.gif"></a>&nbsp; <a
-									href="member.do?page=${curpage<totalpage?curpage+1:curpage }">
-									<img src="img/next_icon.gif">
-								</a>&nbsp;&nbsp; ${curpage } page / ${totalpage } pages
+								<div class="col-lg-4" style="text-align: right;">
+									<a href="member.do?page=${curpage>1?curpage-1:curpage }"> <img
+										src="img/prev_icon.gif"></a>&nbsp; <a
+										href="member.do?page=${curpage<totalpage?curpage+1:curpage }">
+										<img src="img/next_icon.gif">
+									</a>&nbsp;&nbsp; ${curpage } page / ${totalpage } pages
+								</div>
+
 							</div>
-							
+
 						</div>
-		
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
