@@ -9,6 +9,8 @@
      <typeAlias type="dao.SignupDTO" alias="Signup"/>
      <typeAlias type="dao.FaqDTO" alias="Faq"/>
      <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
+     <typeAlias type="dao.ReplyBoardDTO" alias="Board"/>
+     <typeAlias type="dao.ReplyDTO" alias="Reply"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -25,6 +27,7 @@
     <mapper resource="dao/Member-mapper.xml"/>
     <mapper resource="dao/faq-mapper.xml"/>
     <mapper resource="dao/ad-mapper.xml"/>
+    <mapper resource="dao/board-mapper.xml"/>
   </mappers>
 </configuration>
 

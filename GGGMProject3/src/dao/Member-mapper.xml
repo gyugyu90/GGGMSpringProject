@@ -63,6 +63,8 @@
 			#{post}, #{addr1}, #{addr2}, 0, #{email}, 
 			#{emailreceive})
 	</insert>
+
+
 	
 	
 </mapper>
