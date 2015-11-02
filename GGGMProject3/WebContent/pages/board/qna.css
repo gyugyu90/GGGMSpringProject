@@ -1,5 +1,5 @@
  <!-- qna.jsp -->
- <style>
+<style>
 #boardtable TABLE { border-collapse : collapse; }
 #boardtable IMG { border : 0px; }
 
@@ -247,10 +247,11 @@ div#privercy_contract {
 	border: 1px solid #bababa;
 }
 </style>
- 
- <!-- qna_content.jsp (전체 레이아웃)-->
- 
- <style type="text/css">
+
+
+<!-- qna.content-->
+
+<style type="text/css">
 #boardtable TABLE { border-collapse : collapse;}
 #boardtable IMG { border : 0px; }
 #bv_writedate {
@@ -328,4 +329,4 @@ table#b_recommend_box_out tr td.b_recommend_out_td {
     padding-right : 63px;
 }
 </style>
-
+<!-- qna.content (comment)-->

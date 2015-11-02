@@ -1,16 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*,com.dao.*"%>
+    pageEncoding="EUC-KR" import="java.util.*,dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="dao" class="com.dao.BoardDAO"/>
-<%
-	String strNo=request.getParameter("no");
-	String strPage=request.getParameter("page");
-	String strRn=request.getParameter("rn");
-	int curpage=Integer.parseInt(strPage);
-    BoardDTO d=dao.qnaContentData2(Integer.parseInt(strNo));
-%>
-<c:set var="d" value="<%=d %>"/>
-<c:set var="curpage" value="<%=strPage %>"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,7 +53,7 @@
 <td valign="top" width="640" align="center" id="mk_center"><table id="boardtable" border="0" cellpadding="0" cellspacing="0" width="620">
 <tbody><tr>
     <td align="center">
-<form id="authorizedForm" name="form1" action="qna_authorized_ok.jsp" method="post"><!-- CHECK PASSWORD FORM -->
+<form id="authorizedForm" name="form1" action="qna_authorized_ok.do" method="post"><!-- CHECK PASSWORD FORM -->
 <style>
 #bp_input SPAN {
     color           : #000000;
@@ -101,10 +92,9 @@
       <tr>
         <td align="center"><div id="bp_middle"><span><b>비밀번호</b> </span>
         <input id="bp_input_passwd" type="password" name="pwd" size="12">
-        <input type=hidden name=no value="<%=strNo %>">
-        <input type=hidden name=rn value="<%=strRn %>">
-        <input type=hidden name=page value="<%=strPage %>">
-		<%--hidden no,page,rn --%>
+        <input type=hidden name=no value="${strNo }">
+        <input type=hidden name=page value="${strPage }">
+		
         </div></td>
       </tr>
       <tr>
@@ -112,7 +102,7 @@
           <tbody><tr>
             <td height="70" colspan="3" align="center">
               <img src="img/detail_ok.gif" border="0" id="btnSub"></a>
-			  <a href="javascript:history.back()"><img src="img/detail_cancel.gif" border="0"></a></td>
+			  <a href="qna_list.do"><img src="img/detail_cancel.gif" border="0"></a></td>
             </tr>
        
         </tbody></table></td>

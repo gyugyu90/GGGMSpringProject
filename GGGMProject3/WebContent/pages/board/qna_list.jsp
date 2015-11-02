@@ -1,33 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*,com.dao.*,java.text.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="dao" class="com.dao.BoardDAO"/>
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-   <%
-      String strPage = request.getParameter("page");
-      if(strPage==null) strPage="1";
-      int curpage=Integer.parseInt(strPage);
-      List<BoardDTO> list = dao.qnaListData(curpage);
-      int totalpage = dao.qnaTotalPage();
-      int count = dao.qnaRowCount();
-          count=count-((curpage*10)-10);
-      int block=5;
-      int fromPage=((curpage-1)/block*block)+1;
-      int toPage=((curpage-1)/block*block)+block;
-          if(toPage>totalpage)
-          {
-          	toPage=totalpage;
-          }
-
-   %>
-<c:set var="curpage" value="<%=curpage %>"/>
-<c:set var="totalpage" value="<%=totalpage %>"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="qna.css"/>
+<link rel="stylesheet" type="text/css" href="pages/board/qna.css"/>
+
 </head>
 <body>
 <table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner">
@@ -50,7 +32,7 @@
 <td valign="top" width="640" align="center" id="mk_center"><table id="boardtable" border="0" cellpadding="0" cellspacing="0" width="620">
 <tbody>
 <tr><td align="center">
-<form action="qna.jsp" name="form1">
+<form action="qna_list.do" name="form1">
 <table width="1078" border="0" align="center" cellpadding="0" cellspacing="0">
   <tbody>
   <tr align="center">
@@ -74,32 +56,29 @@
       <td class="bl_list" colspan="5"><font color="#000000"><b>&nbsp;&nbsp;&nbsp;이용하시면서 궁금한 문의사항을 남겨주세요</b></font></td>
 	</tr>
 
-	<%for(BoardDTO d:list){%>
+	<c:forEach var="dto" items="${list }">
 	<tr class="bl_oddline">
-      <td class="bl_list bl_no"><%=d.getNo() %></td>
+      <td class="bl_list bl_no">${dto.no }</td>
       <td class="bl_list bl_icon"><img src="img/lock.gif" border="0"></td>
-	  <td class="bl_list bl_subject leftalign" colspan="1"><img src="img/board_head.gif" style="margin-right:5px;" align="absmiddle">
+	  <td class="bl_list bl_subject leftalign" colspan="1"><img src="img/board_head.gif" style="margin-right:5px;">
 	  <span class="BoardBrandName"></span>
-      <a href="qna_authorized.jsp?no=<%=d.getNo()%>&page=<%=curpage%>&rn=<%=d.getRownum()%>"><%=d.getSubject() %></a> 
+      <a href="qna_authorized.do?no=${dto.no }&page=${curpage }">${dto.subject }</a>
+       <c:if test="${dto.replyCount!=0 }">
+          (${dto.replyCount })
+       </c:if>
+       <c:if test="${today==dto.dbday }">
+         <sup><img src="img/qna_new.gif"></sup>
+       </c:if> 
          <!-- <span class="bl_commtstyle">(1)</span>&nbsp; -->
-      	<%
-		      String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-              String dbday=d.getRegdate().toString();
-                 if(today.equals(dbday))
-                   {
-        %>
-                     	<img src="img/qna_new.gif">
-        <%
-                   }
-        %>
       </td>
       <td class="bl_list bl_name">
-      <div style="padding-left:2px; padding-right:2px;" onmouseover="document.getElementById('MK_searchId_438235_00000').style.display='block'" onmouseout="document.getElementById('MK_searchId_438235_00000').style.display='none'"><%=d.getId() %>
+      <div style="padding-left:2px; padding-right:2px;" onmouseover="document.getElementById('MK_searchId_438235_00000').style.display='block'" onmouseout="document.getElementById('MK_searchId_438235_00000').style.display='none'">${dto.name }
       <div id="MK_searchId_438235_00000" style="display:none"></div></div></td>
     
-      <td class="bl_list bl_date"><span class="bl_oldcontent"><%=d.getRegdate() %></span></td>
+      <td class="bl_list bl_date"><span class="bl_oldcontent"><fmt:formatDate value="${dto.regdate }" pattern="yyyy-MM-dd"/></span></td>
 	</tr>
-    <%} %>
+	</c:forEach>
+   
 <!-- LIST REPEAT END -->
 	</tbody></table></td>
    </tr>
@@ -107,7 +86,7 @@
     <td><table width="850" border="0" align="center" cellpadding="0" cellspacing="0">
      <tbody><tr>
       <td height="50" align="right">
-      <a href="qna_write.jsp"><img src="img/detail_write.gif" border="0"></a>
+      <a href="qna_write.do"><img src="img/detail_write.gif" border="0"></a>
       </td>
       </tr>
       <tr>
@@ -115,43 +94,22 @@
    
       <td id="bl_pages">
       
-       <%
-            if(curpage>block)
-            {
-       %>
- 		   <a href="qna.jsp?page=<%=fromPage-1%>"><img src="img/page_prev.gif" border="0"></a>&nbsp;&nbsp;
-       <%
-            }
-       %>
       
-      <% for(int i=fromPage;i<=toPage;i++){
-    	  if(i==curpage)
-    	  { 
-    		  
-      %>
-    		 <span class="bl_pagetext" style="color:red"><%=i %></span>
-      <%
-    	  }
-    	  else
-    	  {
-      %>
-      	     <span class="bl_pagetext"><a href="qna.jsp?page=<%=i%>"><%=i %></a></span>
-      <%
-    	  }
-      %>
-      <%
-      }
-      %>
+      <c:if test="${curpage>block}">
+       <a href="qna_list.do?page=${fromPage-1 }"><img src="img/page_prev.gif" border="0"></a>&nbsp;&nbsp;
+      </c:if>
+ 	 <c:forEach var="i" begin="${fromPage }" end="${toPage }">
+ 	  <c:if test="${i==curpage }">
+ 	  	<span class="bl_pagetext" style="color:red">${i }</span>
+ 	  </c:if>
+ 	  <c:if test="${i!=curpage }">
+ 	  	 <span class="bl_pagetext"><a href="qna_list.do?page=${i }">${i }</a></span>
+ 	  </c:if>
+ 	 </c:forEach>
+     <c:if test="${toPage<totalpage }">
+       <a href="qna_list.do?page=${toPage+1 }"><img src="img/page_end.gif" border="0"></a>&nbsp;&nbsp;
+     </c:if>
      
-       <%
-          if(toPage<totalpage)
-           {
-       %>
-       		<a href="qna.jsp?page=<%=toPage+1%>"><img src="img/page_end.gif" border="0"></a>&nbsp;&nbsp;
-       <%
-           }
-       %>
-
        </td>
       </tr>
      </tbody></table></td>
@@ -164,7 +122,7 @@
         <input type="checkbox" name="scontent" value="ok" onclick="change(3)">내용
       </td>
       <td><input type="text" name="stext" size="10">
-      <a href="JavaScript:document.form1.submit();"><img src="img/search.gif" border="0"></a></td>
+      <a href="JavaScript:document.form1.submit();"><img src="img/search.gif" border="0" align="absmiddle"></a></td>
       </tr></tbody></table>
      </td>
      </tr>
@@ -174,7 +132,6 @@
     <input type="hidden" name="page" value="1">
     <input type="hidden" name="type" value="s">
 </form>
-
 <script type="text/javascript">
 function change(temp) {
     onoff   = new Array(document.form1.shname,document.form1.ssubject,document.form1.scontent, document.form1.sbrand);

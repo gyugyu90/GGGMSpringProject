@@ -322,7 +322,7 @@
 						<ul class="treeview-menu">
 							<li><a href="point.do"><i
 									class="fa fa-angle-double-right"></i>환전</a></li>
-							<li><a href="#"><i
+							<li><a href="myadviewlist.do"><i
 									class="fa fa-angle-double-right"></i>포인트 관리</a></li>
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>경품 관리</a></li>
@@ -334,7 +334,7 @@
 						<ul class="treeview-menu">
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>공지사항</a></li>
-							<li><a href="#"><i
+							<li><a href="qna_list.do"><i
 									class="fa fa-angle-double-right"></i>QnA</a></li>
 							<li><a href="faq.do"><i
 									class="fa fa-angle-double-right"></i>FAQ</a></li>

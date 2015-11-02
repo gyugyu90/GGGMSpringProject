@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AdvertiseDAO;
 import dao.AdvertiseDTO;
@@ -21,7 +22,8 @@ public class AdListModel implements Model {
 		
 		List<AdvertiseDTO> list=
 				AdvertiseDAO.adListData();
-		
+		HttpSession session = req.getSession();
+		session.setAttribute("count", list);
 		req.setAttribute("count", list);
 		req.setAttribute("jsp", "/pages/adview/slidebanner.jsp");
 		return "pages/main/main.jsp";

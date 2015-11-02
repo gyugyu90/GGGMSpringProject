@@ -47,9 +47,9 @@
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover">
 							<thead>
-								<tr>
-									<th>이름</th>
+								<tr>									
 									<th>회원ID</th>
+									<th>이름</th>
 									<th>생일</th>
 									<th>전화번호</th>
 									<th>성별</th>
@@ -62,8 +62,8 @@
 							<tbody>
 								<c:forEach var="dto" items="${list}">
 									<tr>
-										<td width="7%">${dto.name}</td>
 										<td width="7%">${dto.id}</td>
+										<td width="7%">${dto.name}</td>										
 										<td width="10%"><fmt:formatDate value="${dto.birth }" pattern="yyyy-MM-dd"/></td>
 										<td width="12%">${dto.tel}</td>
 										<td width="7%">${dto.sex}</td>
@@ -74,7 +74,7 @@
 									</tr>
 								</c:forEach>
 							</tbody>
-						</table>
+						</table>						
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="col-lg-8">

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!-- PreparedStatement,ResultSet -->
+<mapper namespace="dao.board-mapper">
+  <!-- public List<BoardDTO> boardListData(Map map) 
+  
+       public String boardGetPwd(int no)
+       resultType   : String
+       paramterType : int
+       
+       public int boardRowCount()
+       resultType : int
+       parameterType : (X)
+       
+       public void boardInsert(BoardDTO d)
+       resultType : (X)
+       parameterType : Board
+       
+       while(rs.next())
+       {
+          Class clsName=Class.forName(reaultType)
+          
+       }
+       
+  -->
+  <select id="boardListData" resultType="ReplyBoard" parameterType="java.util.Map">
+    SELECT no,subject,name,regdate,hit,num 
+    FROM (SELECT no,subject,name,regdate,hit,rownum as num 
+    FROM (SELECT no,subject,name,regdate,hit 
+    FROM replyBoard ORDER BY no DESC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <!-- 총페이지 -->
+  <select id="boardRowCount" resultType="int">
+   SELECT COUNT(*) FROM replyBoard
+  </select>
+  <!-- 게시물 추가 -->
+  <insert id="boardInsert" parameterType="ReplyBoard">
+    <!-- Sequence -->
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(no)+1,1) as no FROM replyBoard
+    </selectKey>
+    INSERT INTO replyBoard VALUES(#{no},
+     #{name},#{subject},#{content},#{pwd},
+     SYSDATE,0)
+  </insert>
+  <sql id="where-no">
+    WHERE no=#{no}
+  </sql>
+  <!-- 조회수 증가 -->
+  <update id="boardHitIncrement" parameterType="int">
+    UPDATE replyBoard SET
+    hit=hit+1
+    <include refid="where-no"/>
+  </update>
+  <!-- 내용보기  -->
+  <select id="boardContentData" resultType="ReplyBoard" parameterType="int">
+    SELECT no,name,subject,content,regdate,hit
+    FROM replyBoard
+    <include refid="where-no"/>
+  </select>
+  <!-- 수정 -->
+  <select id="boardGetPwd" resultType="String" parameterType="int">
+    SELECT pwd FROM replyBoard
+    <include refid="where-no"/>
+  </select>
+  <update id="boardUpdate" parameterType="ReplyBoard">
+    UPDATE replyBoard SET
+    name=#{name},subject=#{subject},
+    content=#{content},regdate=SYSDATE
+    <include refid="where-no"/>
+  </update>
+  <delete id="boardReplyDelete" parameterType="int">
+    DELETE FROM reply
+    WHERE bno=#{bno}
+  </delete>
+  <delete id="boardDelete" parameterType="int">
+    DELETE FROM replyBoard
+    WHERE no=#{no}
+  </delete>
+  <select id="boardReplyCount" resultType="int"
+   parameterType="int">
+    SELECT COUNT(*) FROM reply
+    WHERE bno=#{bno}
+  </select>
+  <!-- 댓글 -->
+  <select id="replyListData" resultType="Reply" parameterType="int">
+    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
+    FROM reply
+    WHERE bno=#{bno}
+    ORDER BY group_id DESC,group_step ASC
+  </select>
+  <insert id="replyNewWrite" parameterType="Reply">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(no)+1,1) as no FROM reply
+    </selectKey>
+    INSERT INTO reply VALUES(#{no},#{bno},#{id},
+       #{name},#{msg},SYSDATE,
+       (SELECT NVL(MAX(group_id)+1,1) FROM reply),
+       0,0,0,0)
+  </insert>
+  <!-- 댓글 댓글 -->
+  <select id="replyParentInfo" resultType="Reply" parameterType="int">
+    SELECT group_id,group_step,group_tab 
+    FROM reply
+    WHERE no=#{no}
+  </select>
+  <!-- 
+        AAAAA
+          => DDDDD    1
+          => BBBBB    2
+          
+            => CCCCC  3
+                
+   -->
+  <update id="replyStepIncrement" parameterType="Reply">
+    UPDATE reply SET
+    group_step=group_step+1 
+    WHERE group_id=#{group_id} AND group_step>#{group_step}
+  </update>
+  <insert id="replyReplyWrite" parameterType="Reply">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(no)+1,1) as no FROM reply
+    </selectKey>
+    INSERT INTO reply VALUES(#{no},#{bno},#{id},
+       #{name},#{msg},SYSDATE,
+       #{group_id},
+       #{group_step},#{group_tab},#{root},0)
+  </insert>
+  <update id="replyDepthIncrement" parameterType="int">
+    UPDATE reply SET
+    depth=depth+1
+    WHERE no=#{no}
+  </update>
+  <!-- 댓글 삭제 -->
+  <select id="replyDataInfo" resultType="Reply" parameterType="int">
+    SELECT depth,root FROM reply
+    WHERE no=#{no}
+  </select>
+  <delete id="replyDelete" parameterType="int">
+    DELETE FROM reply
+    WHERE no=#{no}
+  </delete>
+  <update id="replyMsgUpdate" parameterType="int">
+    UPDATE reply SET
+    msg='관리자가 삭제한 댓글입니다'
+    WHERE no=#{no}
+  </update>
+  <update id="replyDepthDecrement" parameterType="int">
+    UPDATE reply SET
+    depth=depth-1
+    WHERE no=#{no}
+  </update>
+ <update id="replyUpdate" parameterType="Reply">
+    UPDATE reply SET
+    msg=#{msg}
+    WHERE no=#{no}
+  </update>
+  <select id="replyTotalPage" parameterType="int" resultType="int">
+  	SELECT COUNT(*) FROM reply
+  	WHERE bno=#{bno}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
