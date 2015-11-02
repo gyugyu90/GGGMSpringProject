@@ -5,28 +5,150 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+
 </head>
 <body>
-	<div class="row">
+	<div id="adrequestform">
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-header">
 					<h3>&nbsp;&nbsp;※ 광고 등록 신청</h3>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-12">
-							<textarea name=editor1 class="ckeditor" rows="20" cols="50"></textarea>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<br>
-							<input type="file" id="exampleInputFile"><br> <input
-								type="file" id="exampleInputFile">
-						</div>
-					</div>
-				</div>
+					
+    <table border=1 width=850 height=800 align=center>
+    <tr>
+     <td align=center >광고 제목</td>
+     <td colspan="3">
+      <input type=text name="adsubject" id="adsubject" > 
+     </td>
+    <tr>
+      <td align=center >광고 동영상</td>
+      <td colspan="3" >
+       <input type="file" id="exampleInputFile">
+      </td>
+    <tr>
+      <td align=center >광고 url</td>
+      <td colspan="3">
+       <input type="text" id="adurl">
+      </td>
+    <tr>
+      <td align=center >광고 설명</td>
+      <td colspan="3">
+       <textarea name=adcontent  class="adcontent" rows="20" cols="100"></textarea>
+    </tr>
+		
+		<tr>
+          <td rowspan = "7", align="center" width=100>타겟</td>
+          <td align=center>성별</td>
+          <td>
+            <input type=radio name="sex" id="usersex" checked value="남자">남자
+            <input type=radio name="sex" id="usersex" value="여자">여자
+        	<input type=radio name="sex" id="usersex" value="무관">성별무관
+          </td>
+          <td align=center>가중치
+        	<input type="text" id="sexvalue">
+          </td>
+        </tr>
+		<tr>
+    	  <td align=center>나이</td>
+    	  <td>
+    		<input type=checkbox name="age" id="userage" value="10">10대
+        	<input type=checkbox name="age" id="userage" value="20">20대
+    		<input type=checkbox name="age" id="userage" value="30">30대
+  	 		<input type=checkbox name="age" id="userage" value="40">40대
+    		<input type=checkbox name="age" id="userage" value="50">50대
+    		<input type=checkbox name="age" id="userage" value="60">60대 이상
+    	  </td>
+          <td align=center >가중치
+        	<input type="text" id="agevalue">
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>주소지</td>
+    	  <td>&nbsp;
+    	    <select id="useraddr" name="addr">
+	      	  <option>강원</option>
+	      	  <option>경기</option>
+	      	  <option>경상남</option>
+	      	  <option>경상북</option>
+	      	  <option>광주</option>
+	      	  <option>대구</option>
+	      	  <option>대전</option>
+	      	  <option>부산</option>
+	      	  <option>서울</option>
+	      	  <option>세종</option>
+	      	  <option>울산</option>
+	      	  <option>인천</option>
+	      	  <option>전라남</option>
+	      	  <option>전라북</option>
+	      	  <option>제주</option>
+	      	  <option>충청남</option>
+	      	  <option>충청북</option>
+	    	</select>
+	      </td>
+	      <td align=center >가중치
+        	<input type="text" id="addrvalue">
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>결혼여부</td>
+    	  <td>
+            <input type=radio name="marry" id="usermarry" checked value="미혼">미혼
+            <input type=radio name="marry" id="usermarry" value="기혼">기혼
+        	<input type=radio name="marry" id="usermarry" value="무관">무관
+          </td>
+          <td align=center>가중치
+        	<input type="text" id="marryvalue">
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>직업</td>
+    	  <td>
+    	    <input type=checkbox name="job" id="userjob" value="학생">학생
+    	    <input type=checkbox name="job" id="userjob" value="사업가">사업가
+    	    <input type=checkbox name="job" id="userjob" value="운동선수">운동선수
+    	    <input type=checkbox name="job" id="userjob" value="주부">주부<br>
+    	    <input type=checkbox name="job" id="userjob" value="회사원">회사원
+    	    <input type=checkbox name="job" id="userjob" value="아티스트">아티스트
+    	    <input type=checkbox name="job" id="userjob" value="기타">기타
+    	    </td>
+          <td align=center>가중치
+        	<input type="text" id="jobvalue">
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>소득</td>
+    	  <td>
+    		<input type=checkbox name="sal" id="usersal" value="100">100~200
+    		<input type=checkbox name="sal" id="usersal" value="200">200~300
+    		<input type=checkbox name="sal" id="usersal" value="300">300~400<br>
+    		<input type=checkbox name="sal" id="usersal" value="400">400~500
+    		<input type=checkbox name="sal" id="usersal" value="500">500~600
+   			<input type=checkbox name="sal" id="usersal" value="600">600이상
+   		  </td>
+          <td align=center>가중치
+        	<input type="text" id="salvalue">
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>관심분야</td>
+    	  <td>
+    	    <input type=checkbox name="hobby" id="userhobby" value="스포츠">스포츠
+    		<input type=checkbox name="hobby" id="userhobby" value="쇼핑">쇼핑
+    		<input type=checkbox name="hobby" id="userhobby" value="인터넷">인터넷
+    		<input type=checkbox name="hobby" id="userhobby" value="여행">여행
+    		<input type=checkbox name="hobby" id="userhobby" value="독서">독서<br>
+    		<input type=checkbox name="hobby" id="userhobby" value="영화감상">영화감상
+    		<input type=checkbox name="hobby" id="userhobby" value="음악감상">음악감상
+    		<input type=checkbox name="hobby" id="userhobby" value="게임">게임
+    		<input type=checkbox name="hobby" id="userhobby" value="공연">공연
+    	  </td>
+          <td align=center>가중치
+        	<input type="text" id="salvalue">
+          </td>
+		</tr>
+       </table>		
+				<br>
+					
 				<div class="panel-footer" style="text-align: center;">
 					<button type="submit" class="btn btn-primary">전송</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
