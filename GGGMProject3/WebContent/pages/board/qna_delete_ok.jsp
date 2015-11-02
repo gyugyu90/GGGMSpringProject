@@ -1,13 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="com.dao.*"%>
-<jsp:useBean id="dao" class="com.dao.BoardDAO"/>
-<%
-    String no=request.getParameter("no");
-    String strPage=request.getParameter("page"); 
-   //DB
-    dao.qnaDelete(Integer.parseInt(no));
-    response.sendRedirect("qna.jsp?page="+strPage); 
-	
-%>
-
-
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:redirect url="qna_list.do?page=${strPage }"/>

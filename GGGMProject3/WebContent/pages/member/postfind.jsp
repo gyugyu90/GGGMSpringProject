@@ -24,9 +24,9 @@ window.onload=function()
   <table border=0 width=400>
    <tr>
      <td align=center>
-     <form method="post" action="postfind_result.jsp">
-     입력:<input type=text name=dong size=15>
-      <input type=submit value=검색>
+     <form method="post" action="<%=request.getContextPath() %>/postfind.do">
+     입력:<input type="text" name="dong" size="15">
+      <input type="submit" value="검색">
      </form>
      </td>
    </tr>

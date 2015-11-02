@@ -24,7 +24,6 @@ public class AdvertiseDAO {
     	}catch(Exception ex)
     	{
     		System.out.println(ex.getMessage());
-    
     	}
     }
     public static List<AdvertiseDTO> adListData(){

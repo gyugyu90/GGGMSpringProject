@@ -14,10 +14,10 @@ public class FaqModel implements Model{
 		req.setAttribute("faqlist", faqlist);
 		System.out.println("¸ðµ¨ °Ë»ç");
 		System.out.println(faqlist.get(0).getSubject());
-		req.setAttribute("jsp", "pages/board/faq.jsp");
+		req.setAttribute("jsp", "../board/faq.jsp");
 		
 		
-		return "main.jsp";
+		return "/pages/main/main.jsp";
 //		return "/pages/board/faq.jsp";
 	}
 
