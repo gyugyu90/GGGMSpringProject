@@ -5,6 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+	
 </head>
 <body>
 	<div class="row">
@@ -25,7 +26,7 @@
 							<input type="file" id="exampleInputFile"><br> <input
 								type="file" id="exampleInputFile">
 						</div>
-					</div>
+					</div>					
 				</div>
 				<div class="panel-footer" style="text-align: center;">
 					<button type="submit" class="btn btn-primary">전송</button>
