@@ -21,6 +21,20 @@
 	type="text/css" />
 <!-- Theme style -->
 <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
+<script type="text/javascript" src="../../js/shadowbox.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+   players:["iframe"]		
+});
+$(function(){
+	function memberClick(id){
+		alert(trObj.id);
+	}
+})
+
+</script>
 </head>
 <body class="skin-black">
 	<div class="row">
@@ -48,8 +62,8 @@
 						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
-									<th>이름</th>
 									<th>회원ID</th>
+									<th>이름</th>
 									<th>생일</th>
 									<th>전화번호</th>
 									<th>성별</th>
@@ -62,9 +76,9 @@
 							</thead>
 							<tbody>
 								<c:forEach var="d" items="${list}">
-									<tr style="font-size: 9pt; text-align: center;">
+									<tr style="font-size: 9pt;" onclick="memberClick(${d.id})">
+										<td width="8%">${d.id}</td>
 										<td width="8%">${d.name}</td>
-										<td width="5%">${d.id}</td>
 										<td width="10%"><fmt:formatDate value="${d.birth }"
 												pattern="yyyy-MM-dd" /></td>
 										<td width="12%">${d.tel}</td>
