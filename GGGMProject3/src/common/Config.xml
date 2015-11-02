@@ -11,7 +11,8 @@
      <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
      <typeAlias type="dao.AdGraphDTO" alias="PointDTO"/>
      <typeAlias type="dao.MyAdViewListDTO" alias="myad"/>
-
+	 <typeAlias type="dao.BoardDTO" alias="Board"/>
+     <typeAlias type="dao.ReplyDTO" alias="Reply"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -32,7 +33,7 @@
     <mapper resource="dao/adgraph-mapper.xml"/>
 
     <mapper resource="dao/adview-mapper.xml"/>
-
+	<mapper resource="dao/qna-mapper.xml"/>
   </mappers>
 </configuration>
 

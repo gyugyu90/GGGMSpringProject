@@ -334,7 +334,7 @@
 						<ul class="treeview-menu">
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>공지사항</a></li>
-							<li><a href="#"><i
+							<li><a href="qna_list.do"><i
 									class="fa fa-angle-double-right"></i>QnA</a></li>
 							<li><a href="faq.do"><i
 									class="fa fa-angle-double-right"></i>FAQ</a></li>
