@@ -8,17 +8,12 @@
      <typeAlias type="dao.memberAddDTO" alias="MemberAdd"/>
      <typeAlias type="dao.SignupDTO" alias="Signup"/>
      <typeAlias type="dao.FaqDTO" alias="Faq"/>
-<<<<<<< HEAD
-     <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
-     <typeAlias type="dao.ReplyBoardDTO" alias="Board"/>
-     <typeAlias type="dao.ReplyDTO" alias="Reply"/>
-=======
+     <typeAlias type="dao.ReplyBoardDTO" alias="ReplyBoard"/>
      <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
      <typeAlias type="dao.AdGraphDTO" alias="PointDTO"/>
      <typeAlias type="dao.MyAdViewListDTO" alias="myad"/>
 	 <typeAlias type="dao.BoardDTO" alias="Board"/>
      <typeAlias type="dao.ReplyDTO" alias="Reply"/>
->>>>>>> refs/remotes/origin/master
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -35,15 +30,10 @@
     <mapper resource="dao/Member-mapper.xml"/>
     <mapper resource="dao/faq-mapper.xml"/>
     <mapper resource="dao/ad-mapper.xml"/>
-<<<<<<< HEAD
     <mapper resource="dao/board-mapper.xml"/>
-=======
-
     <mapper resource="dao/adgraph-mapper.xml"/>
-
     <mapper resource="dao/adview-mapper.xml"/>
 	<mapper resource="dao/qna-mapper.xml"/>
->>>>>>> refs/remotes/origin/master
   </mappers>
 </configuration>
 

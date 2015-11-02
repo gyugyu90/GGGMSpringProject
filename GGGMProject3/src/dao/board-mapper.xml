@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <!-- PreparedStatement,ResultSet -->
-<mapper namespace="com.board.dao.board-mapper">
+<mapper namespace="dao.board-mapper">
   <!-- public List<BoardDTO> boardListData(Map map) 
   
        public String boardGetPwd(int no)
@@ -24,7 +24,7 @@
        }
        
   -->
-  <select id="boardListData" resultType="Board" parameterType="java.util.Map">
+  <select id="boardListData" resultType="ReplyBoard" parameterType="java.util.Map">
     SELECT no,subject,name,regdate,hit,num 
     FROM (SELECT no,subject,name,regdate,hit,rownum as num 
     FROM (SELECT no,subject,name,regdate,hit 
@@ -36,7 +36,7 @@
    SELECT COUNT(*) FROM replyBoard
   </select>
   <!-- 게시물 추가 -->
-  <insert id="boardInsert" parameterType="Board">
+  <insert id="boardInsert" parameterType="ReplyBoard">
     <!-- Sequence -->
     <selectKey keyProperty="no" resultType="int" order="BEFORE">
      SELECT NVL(MAX(no)+1,1) as no FROM replyBoard
@@ -55,7 +55,7 @@
     <include refid="where-no"/>
   </update>
   <!-- 내용보기  -->
-  <select id="boardContentData" resultType="Board" parameterType="int">
+  <select id="boardContentData" resultType="ReplyBoard" parameterType="int">
     SELECT no,name,subject,content,regdate,hit
     FROM replyBoard
     <include refid="where-no"/>
@@ -65,7 +65,7 @@
     SELECT pwd FROM replyBoard
     <include refid="where-no"/>
   </select>
-  <update id="boardUpdate" parameterType="Board">
+  <update id="boardUpdate" parameterType="ReplyBoard">
     UPDATE replyBoard SET
     name=#{name},subject=#{subject},
     content=#{content},regdate=SYSDATE
