@@ -48,8 +48,8 @@
 						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
-									<th>이름</th>
 									<th>회원ID</th>
+									<th>이름</th>
 									<th>생일</th>
 									<th>전화번호</th>
 									<th>성별</th>
@@ -62,8 +62,8 @@
 							<tbody>
 								<c:forEach var="dto" items="${list}">
 									<tr>
+										<td width="8%">${dto.id}</td>
 										<td width="7%">${dto.name}</td>
-										<td width="7%">${dto.id}</td>
 										<td width="10%"><fmt:formatDate value="${dto.birth }"
 												pattern="yyyy-MM-dd" /></td>
 										<td width="12%">${dto.tel}</td>
@@ -77,11 +77,17 @@
 							</tbody>
 						</table>
 						<div class="row">
+							<div class="col-lg-12" style="text-align: right;">
+								<input type="button" value="추가"> <input type="button"
+									value="수정"> <input type="button" value="삭제">
+							</div>
+						</div>
+						<div class="row">
 							<div class="col-lg-12">
 								<div class="col-lg-8">
-									<select id="aa"><option>전체</option>
+									<select id="aa">
 										<option>이름</option>
-										<option style="text-align: right;">ID</option></select> <input
+										<option>ID</option></select> <input
 										type="search">
 
 									<button type="submit">검색</button>
