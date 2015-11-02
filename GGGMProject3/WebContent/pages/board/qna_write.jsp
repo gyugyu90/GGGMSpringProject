@@ -5,15 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="qna.css"/>
+<link rel="stylesheet" type="text/css" href="pages/board/qna.css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
 	/* $('#username').focus(); */
 	$('#btnSub').click(function(){
-		if(document.form1.id.value=="")
+		if(document.form1.name.value=="")
 		{
-			alert("아이디를 입력하세요");
+			alert("이름를 입력하세요");
 			document.form1.id.focus();
 			return;
 		}
@@ -30,8 +30,7 @@ $(function(){
 		}
 		if (document.form1.content.value.length==0) 
 		{
-		      alert('내용을 입력하세요.');
-		      document.form1.content.focus();
+		      alert('내용을 입력하세요.');document.form1.content.focus();
 		      return;
 		}
 		$('#writeForm').submit();
@@ -40,7 +39,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<form id="writeForm" name="form1" action="qna_write_ok.jsp" method="post">
+	<form id="writeForm" name="form1" action="qna_write_ok.do" method="post">
 		<div id="passimg" name="passimg"
 			style="position: absolute; visibility: hidden;"></div>
 		<input type="hidden" name="attach1" value="">
@@ -60,8 +59,8 @@ $(function(){
 											id="bw_table">
 											<tbody>
 												<tr>
-													<td width="100" align="center" class="bw_title_color">아이디</td>
-													<td><input id="bw_input_writer" type="text" name="id"
+													<td width="100" align="center" class="bw_title_color">이름</td>
+													<td><input id="bw_input_writer" type="text" name="name"
 														size="10" value=""> &nbsp;&nbsp;&nbsp; <span
 														class="bw_title_color">비밀번호&nbsp; </span> <input
 														id="bw_input_passwd" name="pwd" type="password" size="10"></td>

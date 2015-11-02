@@ -47,9 +47,9 @@
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover">
 							<thead>
-								<tr>
-									<th>이름</th>
+								<tr>									
 									<th>회원ID</th>
+									<th>이름</th>
 									<th>생일</th>
 									<th>전화번호</th>
 									<th>성별</th>
@@ -62,8 +62,8 @@
 							<tbody>
 								<c:forEach var="dto" items="${list}">
 									<tr>
-										<td width="7%">${dto.name}</td>
 										<td width="7%">${dto.id}</td>
+										<td width="7%">${dto.name}</td>										
 										<td width="10%"><fmt:formatDate value="${dto.birth }" pattern="yyyy-MM-dd"/></td>
 										<td width="12%">${dto.tel}</td>
 										<td width="7%">${dto.sex}</td>
@@ -74,28 +74,28 @@
 									</tr>
 								</c:forEach>
 							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="panel-footer">
-					<div class="container-fluid">
+						</table>						
 						<div class="row">
-							<div class="col-xs-9 text-left">
-								<a href="#"><i class="fa fa-angle-double-left"></i></a> <a
-									href="#"><i class="fa fa-angle-left"></i></a> <a href="#">1</a>
-								<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a
-									href="#">5</a> <a href="#">6</a> <a href="#">7</a> <a href="#">8</a>
-								<a href="#">9</a> <a href="#">10</a> <a href="#"><i
-									class="fa fa-angle-right"></i></a> <a href="#"><i
-									class="fa fa-angle-double-right"></i></a>
-							</div>
-							<div class="col-xs-3 text-right">
-								<input type="button" value="수정"> <input type="button"
-									value="삭제">
+							<div class="col-lg-12">
+								<div class="col-lg-8">
+									<select id="aa"><option>전체</option>
+										<option>이름</option>
+										<option style="text-align: right;">ID</option></select> <input
+										type="search">
+
+									<button type="submit">검색</button>
+								</div>
+								<div class="col-lg-4" style="text-align: right;">
+									<a href="member.do?page=${curpage>1?curpage-1:curpage }"> <img
+										src="img/prev_icon.gif"></a>&nbsp; <a
+										href="member.do?page=${curpage<totalpage?curpage+1:curpage }">
+										<img src="img/next_icon.gif">
+									</a>&nbsp;&nbsp; ${curpage } page / ${totalpage } pages
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>				
 			</div>
 		</div>
 	</div>

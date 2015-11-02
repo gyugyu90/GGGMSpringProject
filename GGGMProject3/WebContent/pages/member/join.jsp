@@ -142,6 +142,7 @@ $(function(){
     <input type=radio name="emailreceive" id="usermail" checked value="수신동의">수신동의
     <input type=radio name="emailreceive" id="usermail" value="수신거절">수신거절
     </p>
+    <hr width="330%">
     <p>
     <label for="userjob">직업</label>
     <select id="userjob" name="job">

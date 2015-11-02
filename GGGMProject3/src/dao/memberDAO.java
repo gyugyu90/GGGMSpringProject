@@ -35,24 +35,24 @@ public class memberDAO {
 		return d;
 	}
 
-	public static List<memberDTO> getADMemberAllData() {
+	public static List<memberDTO> getADMemberAllData(Map map) {
 		SqlSession session = ssf.openSession();
-		List<memberDTO> list = session.selectList("getADMemberAllData");
-		session.close();
+		List<memberDTO> list = session.selectList("getADMemberAllData", map);
+		session.close();// 반환
 		return list;
 	}
 
-	public static List<memberDTO> getNormalMemberAllData() {
+	public static List<memberDTO> getNormalMemberAllData(Map map) {
 		SqlSession session = ssf.openSession();
-		List<memberDTO> list = session.selectList("getNormalMemberAllData");
-		session.close();
+		List<memberDTO> list = session.selectList("getNormalMemberAllData", map);
+		session.close();// 반환
 		return list;
 	}
 
-	public static List<memberDTO> getAdminMemberAllData() {
+	public static List<memberDTO> getAdminMemberAllData(Map map) {
 		SqlSession session = ssf.openSession();
-		List<memberDTO> list = session.selectList("getAdminMemberAllData");
-		session.close();
+		List<memberDTO> list = session.selectList("getAdminMemberAllData", map);
+		session.close();// 반환
 		return list;
 	}
 
@@ -68,6 +68,36 @@ public class memberDAO {
 		System.out.println("dao안쪽");
 		SqlSession session = ssf.openSession();
 		int count = session.selectOne("memberRowCount");
+		int total = (int) (Math.ceil(count / 10.0));
+		session.close();
+		return total;
+	}
+	public static int memberTotalPoint() {
+		System.out.println("dao안쪽");
+		SqlSession session = ssf.openSession();
+		int point = session.selectOne("memberTotalPoint");		
+		session.close();
+		return point;
+	}
+	public static int normalmemberTotalPage() {
+		System.out.println("dao안쪽");
+		SqlSession session = ssf.openSession();
+		int count = session.selectOne("normalmemberRowCount");
+		int total = (int) (Math.ceil(count / 10.0));
+		session.close();
+		return total;
+	}
+	public static int admemberTotalPage() {
+		System.out.println("dao안쪽");
+		SqlSession session = ssf.openSession();
+		int count = session.selectOne("admemberRowCount");
+		int total = (int) (Math.ceil(count / 10.0));
+		session.close();
+		return total;
+	}public static int adminmemberTotalPage() {
+		System.out.println("dao안쪽");
+		SqlSession session = ssf.openSession();
+		int count = session.selectOne("adminmemberRowCount");
 		int total = (int) (Math.ceil(count / 10.0));
 		session.close();
 		return total;

@@ -1,0 +1,65 @@
+DROP TABLE memberAdditional;
+DROP TABLE memberData;
+CREATE TABLE memberData(
+      name VARCHAR2(50) CONSTRAINT memberData_nn_name NOT NULL,
+      id VARCHAR2(20),
+      pwd VARCHAR2(50) CONSTRAINT memberData_nn_pwd NOT NULL,
+      birth DATE CONSTRAINT memberData_nn_birth NOT NULL,
+      tel VARCHAR2(20) CONSTRAINT memberData_nn_tel NOT NULL,
+      sex VARCHAR2(10) CONSTRAINT memberData_nn_sex NOT NULL CONSTRAINT memberData_ck_sex CHECK(sex IN('남자','여자')), 
+      post VARCHAR2(100) CONSTRAINT memberData_nn_post NOT NULL,
+      addr1 VARCHAR2(50) CONSTRAINT memberData_nn_addr1 NOT NULL,
+      addr2 VARCHAR2(50) CONSTRAINT memberData_nn_addr2 NOT NULL,
+      sumpoint NUMBER,
+      email VARCHAR2(30) CONSTRAINT memberData_nn_email NOT NULL,
+      emailreceive VARCHAR2(10) CONSTRAINT memberData_nn_er NOT NULL CONSTRAINT memberData_ck_er CHECK(emailreceive IN('수신동의','수신거절')), 
+      grade NUMBER CONSTRAINT memberData_nn_grade NOT NULL CONSTRAINT memberData_ck_grade CHECK(grade IN(1,2,3)),
+      CONSTRAINT memberData_pk_id PRIMARY KEY(id)
+);
+
+
+INSERT INTO memberData VALUES('홍길동','hong',1234,'1990-01-01','010-1111-1111','남자','100-100','서울시 강남구 삼성동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('심청이','sim',1234,'1990-01-01','010-2222-2222','여자','100-100','서울시 강남구 논현동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('김두한','kim',1234,'1990-01-01','010-3333-3333','남자','100-100','서울시 강남구 역삼동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('성춘향','seong',1234,'1990-01-01','010-4444-4444','여자','100-100','서울시 성동구 성수동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('이진욱','lee',1234,'1990-01-01','010-5555-5555','남자','100-100','서울시 성동구 금호동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('전지현','jeon',1234,'1990-01-01','010-6666-6666','여자','100-100','서울시 성동구 상왕십리동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('박서준','park',1234,'1990-01-01','010-7777-7777','남자','100-100','서울시 용산구 후암동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('황정음','hwnag',1234,'1990-01-01','010-8888-8888','여자','100-100','서울시 용산구 용산동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('김수현','kims',1234,'1990-01-01','010-9999-9999','남자','100-100','서울시 용산구 보광동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('한가인','han',1234,'1990-01-01','010-1010-1010','여자','100-100','서울시 용산구 이태원동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('이종석','leej',1234,'1990-01-01','010-1101-1011','남자','100-100','서울시 동작구 노량진동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('박신혜','parks',1234,'1990-01-01','010-1212-1212','여자','100-100','서울시 동작구 상도동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('이민호','leem',1234,'1990-01-01','010-1313-1313','남자','100-100','서울시 서초구 방배동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('배수지','bae',1234,'1990-01-01','010-1414-1414','여자','100-100','서울시 서초구 양재동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('조인성','jo',1234,'1990-01-01','010-1515-1515','남자','100-100','서울시 서초구 우면동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('공효진','gong',1234,'1990-01-01','010-1616-1616','여자','100-100','서울시 관악구 봉천동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('신민아','sin',1234,'1990-01-01','010-1717-1717','여자','100-100','서울시 관악구 신림동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('김우빈','kimw',1234,'1990-01-01','010-1818-1818','남자','100-100','서울시 관악구 남현동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('유아인','yu',1234,'1990-01-01','010-1919-1919','남자','100-100','서울시 광진구 중곡동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('정유미','jeong',1234,'1990-01-01','010-2020-2020','여자','100-100','서울시 광진구 능동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('고준희','go',1234,'1990-01-01','010-2121-2121','여자','100-100','서울시 광진구 구의동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('최시원','choi',1234,'1990-01-01','010-2202-2022','남자','100-100','서울시 광진구 광장동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('하지원','ha',1234,'1990-01-01','010-2323-2323','여자','100-100','서울시 도봉구 쌍문동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('현빈','hyeon',1234,'1990-01-01','010-2424-2424','남자','100-100','서울시 도봉구 방학동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('한효주','hanh',1234,'1990-01-01','010-2525-2525','여자','100-100','서울시 중랑구 면목동','100번지',0,'aaaa@gmail.com','수신동의',1);
+COMMIT;
+
+
+CREATE TABLE memberAdditional(
+    id VARCHAR2(50),
+    interest VARCHAR2(2000),
+    job VARCHAR2(50),
+    salary VARCHAR2(20),
+    ismarried VARCHAR2(4) CONSTRAINT ma_ck_ismarried CHECK(ismarried IN('기혼','미혼')),
+    accountno VARCHAR2(30), 
+   CONSTRAINT ma_pk_id PRIMARY KEY(id),CONSTRAINT ma_fk_id FOREIGN KEY(id) REFERENCES memberData(id)
+);
+
+
+INSERT INTO memberAdditional VALUES('hong','스포츠|쇼핑','학생','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('sim','영화감상|쇼핑','취준생','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('han','스포츠|독서','회사원','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('jeong','음악감상|쇼핑','주부','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('kim','스포츠|쇼핑','학생','100~200','미혼','123456-123456');
+COMMIT;

@@ -1,7 +1,6 @@
 package dao;
 
 import java.io.Reader;
-import java.sql.*;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -9,9 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import dao.*;
-
-public class AdvertiseDAO {
+public class MyAdViewListDAO {
 	private static SqlSessionFactory ssf;
     static
     {
@@ -24,17 +21,15 @@ public class AdvertiseDAO {
     	}catch(Exception ex)
     	{
     		System.out.println(ex.getMessage());
+    
     	}
     }
-    public static List<AdvertiseDTO> adListData(){
+    
+    public static List<MyAdViewListDTO> adListData(String memberid){
     	SqlSession session=ssf.openSession();
-    	List<AdvertiseDTO> count=session.selectList("adListData");
+    	List<MyAdViewListDTO> list=session.selectList("myadviewlist", memberid);
     	session.close();
-    	return count;
+    	return list;
     	
     }
-
-	
-	
-	
 }

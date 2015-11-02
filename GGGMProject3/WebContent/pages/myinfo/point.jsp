@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>광고구마</title>
-		<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="./css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="./css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 	
@@ -80,13 +81,13 @@ li{ list-style-type : none;
 		<div id="top">
 			<div id="top_left">
 			
-				<ul >
+				<ul style="padding-left:10px;">
 				<li>
-				보유 포인트 : 
+				보유 포인트 : ${point}
 				<input type="text" size=20 readonly="readonly">
 				</li>
 				<li>
-					<img id="arrow"src="#">
+					<i class="fa fa-chevron-down"></i>
 				</li>
 				<li>
 				받을 포인트 : 
@@ -101,23 +102,9 @@ li{ list-style-type : none;
 			</div>
 			<div id="top_right">
 				
-
-           
                             <!-- Line chart -->
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                    <h3 class="box-title">Line Chart</h3>
-                                </div>
-                                <div class="box-body">
-                                    <div id="line-chart" style="height: 300px;"></div>
-                                </div><!-- /.box-body-->
-                            </div><!-- /.box -->
-                       
+                            <div id="linechart_material"></div>
                   
-             
-
-           
 			</div></div>
 		</div>
 		<div class=row>
@@ -130,10 +117,10 @@ li{ list-style-type : none;
 						일자
 					</th>
 					<th class="point_table">
-					획득포인트
+					입금포인트
 					</th>
 					<th class="point_table">
-					사용
+					출금포인트
 					</th>
 					<th class="point_table">
 					입/출금내용
@@ -142,145 +129,83 @@ li{ list-style-type : none;
 					잔고
 					</th>
 				</tr>
+				<c:forEach var="ad" items="${myadviewlist}">
 				<tr>
 					<td class="point_table">
-						2010-10-16
+						${ad.when }
 					</td>
 					<td class="point_table">
-					100
+					    ${ad.point }
 					</td>
 					<td class="point_table">
-					사용
+					    사용
 					</td>
 					<td class="point_table">
-					현대자동차
+					    ${ad.description}
 					</td >
 					<td class="point_table" >
-					29,990
+					    ${ad.balance}	
 					</td>
 				</tr>
-				<tr>
-					<td class="point_table">
-						2010-10-17
-					</td>
-					<td class="point_table">
-					10
-					</td>
-					<td class="point_table">
-					사용
-					</td>
-					<td class="point_table">
-					현대자동차
-					</td >
-					<td class="point_table" >
-					30,000
-					</td>
-				</tr>
+				</c:forEach>
+				
 			</table>
 		</div>
 		</div>
 	</div>
 	<!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="./js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    //from googlechart.blogspot.kr
+    var queryObject="";
+    var queryObjectLen="";
+    $.ajax({
+    	type:'POST',
+    	url:'pages/myinfo/getdata.jsp',
+    	dataType:'json',
+    	success:function(data){
+    		queryObject=eval('('+JSON.stringify(data)+')');
+    		queryObjectLen=queryObject.myadviewlist.length;
+    	},
+    	error:function(xhr,type){
+    		alert('server error occured!')
+    	}
+    });
+    
+    //google chart api
+    google.load('visualization', '1.1', {packages: ['line']});
+    google.setOnLoadCallback(drawChart);
 
-        <!-- FLOT CHARTS -->
-        <script src="./js/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
-        <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-        <script src="./js/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
-        <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-        <script src="./js/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
-        <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-        <script src="./js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
-	<script type="text/javascript">
+    function drawChart() {
 
-            $(function() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Day');
+      data.addColumn('number', 'point');
+      
+	  for(var i=0;i<queryObjectLen;i++){
+		  var point=queryObject.myadviewlist[i].point;
+		  data.addRows([
+		       [i+1, parseInt(point)]         
+		  ]);
+	  }
+      
 
+      var options = {
+        chart: {
+          title: '일일 광고 시청 현황',
+          subtitle: '포인트 적립 내역 (원)'
+        },
+        width: 600,
+        height: 450
+      };
 
-                /*
-                 * LINE CHART
-                 * ----------
-                 */
-                //LINE randomly generated data
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
 
-                var sin = [], cos = [];
-                for (var i = 0; i < 14; i += 0.5) {
-                    sin.push([i, Math.sin(i)]);
-                    cos.push([i, Math.cos(i)]);
-                }
-                var line_data1 = {
-                    data: sin,
-                    color: "#3c8dbc"
-                };
-                var line_data2 = {
-                    data: cos,
-                    color: "#00c0ef"
-                };
-                $.plot("#line-chart", [line_data1, line_data2], {
-                    grid: {
-                        hoverable: true,
-                        borderColor: "#f3f3f3",
-                        borderWidth: 1,
-                        tickColor: "#f3f3f3"
-                    },
-                    series: {
-                        shadowSize: 0,
-                        lines: {
-                            show: true
-                        },
-                        points: {
-                            show: true
-                        }
-                    },
-                    lines: {
-                        fill: false,
-                        color: ["#3c8dbc", "#f56954"]
-                    },
-                    yaxis: {
-                        show: true,
-                    },
-                    xaxis: {
-                        show: true
-                    }
-                });
-                //Initialize tooltip on hover
-                $("<div class='tooltip-inner' id='line-chart-tooltip'></div>").css({
-                    position: "absolute",
-                    display: "none",
-                    opacity: 0.8
-                }).appendTo("body");
-                $("#line-chart").bind("plothover", function(event, pos, item) {
-
-                    if (item) {
-                        var x = item.datapoint[0].toFixed(2),
-                                y = item.datapoint[1].toFixed(2);
-
-                        $("#line-chart-tooltip").html(item.series.label + " of " + x + " = " + y)
-                                .css({top: item.pageY + 5, left: item.pageX + 5})
-                                .fadeIn(200);
-                    } else {
-                        $("#line-chart-tooltip").hide();
-                    }
-
-                });
-                /* END LINE CHART */
-
-           
-            });
-
-            /*
-             * Custom Label formatter
-             * ----------------------
-             */
-            function labelFormatter(label, series) {
-                return "<div style='font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;'>"
-                        + label
-                        + "<br/>"
-                        + Math.round(series.percent) + "%</div>";
-            }
-        </script>
+      chart.draw(data, options);
+    }
+  </script>
 </body>
 </html>
