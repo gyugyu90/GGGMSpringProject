@@ -137,7 +137,7 @@ li {
 	padding: 0;
 	margin: 0 auto;
 	vertical-align: middle;
-	text-align: center;
+	text-align: left;
 }
 
 #banner_wrap .banner_margin {
