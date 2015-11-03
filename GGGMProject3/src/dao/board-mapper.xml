@@ -85,13 +85,13 @@
     WHERE bno=#{bno}
   </select>
   <!-- 댓글 -->
-  <select id="replyListData" resultType="Reply" parameterType="int">
+  <select id="addReplyListData" resultType="Reply" parameterType="int">
     SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
     FROM reply
     WHERE bno=#{bno}
     ORDER BY group_id DESC,group_step ASC
   </select>
-  <insert id="replyNewWrite" parameterType="Reply">
+  <insert id="addReplyNewWrite" parameterType="Reply">
     <selectKey keyProperty="no" resultType="int" order="BEFORE">
      SELECT NVL(MAX(no)+1,1) as no FROM reply
     </selectKey>
@@ -101,7 +101,7 @@
        0,0,0,0)
   </insert>
   <!-- 댓글 댓글 -->
-  <select id="replyParentInfo" resultType="Reply" parameterType="int">
+  <select id="addReplyParentInfo" resultType="Reply" parameterType="int">
     SELECT group_id,group_step,group_tab 
     FROM reply
     WHERE no=#{no}
@@ -114,12 +114,12 @@
             => CCCCC  3
                 
    -->
-  <update id="replyStepIncrement" parameterType="Reply">
+  <update id="addReplyStepIncrement" parameterType="Reply">
     UPDATE reply SET
     group_step=group_step+1 
     WHERE group_id=#{group_id} AND group_step>#{group_step}
   </update>
-  <insert id="replyReplyWrite" parameterType="Reply">
+  <insert id="addReplyReplyWrite" parameterType="Reply">
     <selectKey keyProperty="no" resultType="int" order="BEFORE">
      SELECT NVL(MAX(no)+1,1) as no FROM reply
     </selectKey>
@@ -128,36 +128,36 @@
        #{group_id},
        #{group_step},#{group_tab},#{root},0)
   </insert>
-  <update id="replyDepthIncrement" parameterType="int">
+  <update id="addReplyDepthIncrement" parameterType="int">
     UPDATE reply SET
     depth=depth+1
     WHERE no=#{no}
   </update>
   <!-- 댓글 삭제 -->
-  <select id="replyDataInfo" resultType="Reply" parameterType="int">
+  <select id="addReplyDataInfo" resultType="Reply" parameterType="int">
     SELECT depth,root FROM reply
     WHERE no=#{no}
   </select>
-  <delete id="replyDelete" parameterType="int">
+  <delete id="addReplyDelete" parameterType="int">
     DELETE FROM reply
     WHERE no=#{no}
   </delete>
-  <update id="replyMsgUpdate" parameterType="int">
+  <update id="addReplyMsgUpdate" parameterType="int">
     UPDATE reply SET
     msg='관리자가 삭제한 댓글입니다'
     WHERE no=#{no}
   </update>
-  <update id="replyDepthDecrement" parameterType="int">
+  <update id="addReplyDepthDecrement" parameterType="int">
     UPDATE reply SET
     depth=depth-1
     WHERE no=#{no}
   </update>
- <update id="replyUpdate" parameterType="Reply">
+ <update id="addReplyUpdate" parameterType="Reply">
     UPDATE reply SET
     msg=#{msg}
     WHERE no=#{no}
   </update>
-  <select id="replyTotalPage" parameterType="int" resultType="int">
+  <select id="addReplyTotalPage" parameterType="int" resultType="int">
   	SELECT COUNT(*) FROM reply
   	WHERE bno=#{bno}
   </select>
