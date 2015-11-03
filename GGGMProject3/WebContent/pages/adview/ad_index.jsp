@@ -101,62 +101,23 @@ $('#re_update_frm'+no).submit();
 		<div id="body_content">
 
 			<video id="main_video"
-				src="http://techslides.com/demos/sample-videos/small.mp4" controls
+				src="ADs/${adinfo.url}.mp4" controls
 				autoplay poster=""></video>
 
 		</div>
 		<div id="body_recommend">
 
 			<div id="sub_video" align=center>
+			<c:forEach var="side" items="${sidelist}">
 				<div class="sub_1">
-					<a href="#"><video class="subvideo"
-							src="http://techslides.com/demos/sample-videos/small.mp4"
-							poster="">
-						</video> </a>
+					<a href="ad_index.do?adno=${side.adno}">
+					<img src="poster/ad${side.adno}.PNG" class="poster"></a>
 				</div>
 				<div class="sub_2">
-					<a href="#">http://techslides.com/demos/sample-videos/small.mp4</a>
+					<a href="ad_index.do?adno=${side.adno}">${side.url}</a>
+					<b>HIT ${side.hit}</b>
 				</div>
-
-				<div class="sub_1">
-					<a href="#"><video class="subvideo"
-							src="http://techslides.com/demos/sample-videos/small.mp4"
-							poster="">
-						</video> </a>
-				</div>
-				<div class="sub_2">
-					<a href="#">http://techslides.com/demos/sample-videos/small.mp4</a>
-				</div>
-
-				<div class="sub_1">
-					<a href="#"><video class="subvideo"
-							src="http://techslides.com/demos/sample-videos/small.mp4"
-							poster="">
-						</video> </a>
-				</div>
-				<div class="sub_2">
-					<a href="#">http://techslides.com/demos/sample-videos/small.mp4</a>
-				</div>
-
-				<div class="sub_1">
-					<a href="#"><video class="subvideo"
-							src="http://techslides.com/demos/sample-videos/small.mp4"
-							poster="">
-						</video> </a>
-				</div>
-				<div class="sub_2">
-					<a href="#">http://techslides.com/demos/sample-videos/small.mp4</a>
-				</div>
-
-				<div class="sub_1">
-					<a href="#"><video class="subvideo"
-							src="http://techslides.com/demos/sample-videos/small.mp4"
-							poster="">
-						</video> </a>
-				</div>
-				<div class="sub_2">
-					<a href="#">http://techslides.com/demos/sample-videos/small.mp4</a>
-				</div>
+			</c:forEach>
 			</div>
 			<%-- div#sub_video --%>
 		</div>

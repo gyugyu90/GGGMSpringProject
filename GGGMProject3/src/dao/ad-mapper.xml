@@ -10,6 +10,8 @@
 		SELECT adsubject,url,adid,pointrange,presentrange,msg
 		FROM ad WHERE adno=#{adno}
 	</select>
-
+	<select id="side_info" resultType="AdDTO" parameterType="int">
+		SELECT adno, url, hit FROM ad WHERE adno=#{adno}
+	</select>
 
 </mapper>

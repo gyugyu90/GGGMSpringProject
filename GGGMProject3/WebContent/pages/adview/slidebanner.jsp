@@ -200,7 +200,7 @@ li {
 				<c:if test="${d.adno%3==2 }">
 					<li>
 						<div class="ad_top">
-							<a href="ad_index.jsp?adno=${d.adno }" target="_blank"> <img
+							<a href="ad_index.do?adno=${d.adno }" target="_blank"> <img
 								src="poster/ad${d.adno}.PNG" title="." alt="" class="poster"></a>
 						</div>
 						<div class="ad_bottom">
@@ -219,7 +219,7 @@ li {
 				<c:if test="${d.adno%3==1 }">
 					<li>
 						<div class="ad_top">
-							<a href="ad_index.jsp?adno=${d.adno }" target="_blank"> <img
+							<a href="ad_index.do?adno=${d.adno }" target="_blank"> <img
 								src="poster/ad${d.adno}.PNG" title="." alt="" class="poster"></a>
 						</div>
 						<div class="ad_bottom">

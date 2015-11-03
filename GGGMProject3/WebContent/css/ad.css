@@ -82,3 +82,7 @@ li{ list-style-type : none }
 	float: left;
 	margin-left: 100px;
 }
+.poster{
+	width:250px;
+	height:205px;
+}

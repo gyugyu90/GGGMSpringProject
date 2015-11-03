@@ -43,7 +43,13 @@ public class AdvertiseDAO {
     	return dto;
     }
 
-	
+	public static AdvertiseDTO side_info(int adno){
+		SqlSession session=ssf.openSession();
+		AdvertiseDTO dto=new AdvertiseDTO();
+		dto=session.selectOne("side_info", adno);
+		session.close();
+		return dto;
+	}
 	
 	
 }
