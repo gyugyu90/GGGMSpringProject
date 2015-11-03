@@ -1,0 +1,211 @@
+--회원가입
+/*
+DROP TABLE memberAdditional;
+DROP TABLE memberData;
+
+CREATE TABLE memberData(
+      name VARCHAR2(50) CONSTRAINT memberData_nn_name NOT NULL,
+      id VARCHAR2(20),
+      pwd VARCHAR2(50) CONSTRAINT memberData_nn_pwd NOT NULL,
+      birth DATE CONSTRAINT memberData_nn_birth NOT NULL,
+      tel VARCHAR2(20) CONSTRAINT memberData_nn_tel NOT NULL,
+      sex VARCHAR2(10) CONSTRAINT memberData_nn_sex NOT NULL CONSTRAINT memberData_ck_sex CHECK(sex IN('남자','여자')), 
+      post VARCHAR2(100) CONSTRAINT memberData_nn_post NOT NULL,
+      addr1 VARCHAR2(50) CONSTRAINT memberData_nn_addr1 NOT NULL,
+      addr2 VARCHAR2(50) CONSTRAINT memberData_nn_addr2 NOT NULL,
+      sumpoint NUMBER,
+      email VARCHAR2(30) CONSTRAINT memberData_nn_email NOT NULL,
+      emailreceive VARCHAR2(10) CONSTRAINT memberData_nn_er NOT NULL CONSTRAINT memberData_ck_er CHECK(emailreceive IN('수신동의','수신거절')), 
+      CONSTRAINT memberData_pk_id PRIMARY KEY(id)
+);
+
+
+INSERT INTO memberData VALUES('홍길동','hong',1234,'1990-01-01','010-1111-1111','남자','100-100','서울시 강남구 삼성동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('심청이','sim',1234,'1990-01-01','010-2222-2222','여자','100-100','서울시 강남구 논현동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('김두한','kim',1234,'1990-01-01','010-3333-3333','남자','100-100','서울시 강남구 역삼동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('성춘향','seong',1234,'1990-01-01','010-4444-4444','여자','100-100','서울시 성동구 성수동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('이진욱','lee',1234,'1990-01-01','010-5555-5555','남자','100-100','서울시 성동구 금호동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('전지현','jeon',1234,'1990-01-01','010-6666-6666','여자','100-100','서울시 성동구 상왕십리동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('박서준','park',1234,'1990-01-01','010-7777-7777','남자','100-100','서울시 용산구 후암동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('황정음','hwnag',1234,'1990-01-01','010-8888-8888','여자','100-100','서울시 용산구 용산동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('김수현','kims',1234,'1990-01-01','010-9999-9999','남자','100-100','서울시 용산구 보광동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('한가인','han',1234,'1990-01-01','010-1010-1010','여자','100-100','서울시 용산구 이태원동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('이종석','leej',1234,'1990-01-01','010-1101-1011','남자','100-100','서울시 동작구 노량진동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('박신혜','parks',1234,'1990-01-01','010-1212-1212','여자','100-100','서울시 동작구 상도동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('이민호','leem',1234,'1990-01-01','010-1313-1313','남자','100-100','서울시 서초구 방배동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('배수지','bae',1234,'1990-01-01','010-1414-1414','여자','100-100','서울시 서초구 양재동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('조인성','jo',1234,'1990-01-01','010-1515-1515','남자','100-100','서울시 서초구 우면동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('공효진','gong',1234,'1990-01-01','010-1616-1616','여자','100-100','서울시 관악구 봉천동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('신민아','sin',1234,'1990-01-01','010-1717-1717','여자','100-100','서울시 관악구 신림동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('김우빈','kimw',1234,'1990-01-01','010-1818-1818','남자','100-100','서울시 관악구 남현동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('유아인','yu',1234,'1990-01-01','010-1919-1919','남자','100-100','서울시 광진구 중곡동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('정유미','jeong',1234,'1990-01-01','010-2020-2020','여자','100-100','서울시 광진구 능동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('고준희','go',1234,'1990-01-01','010-2121-2121','여자','100-100','서울시 광진구 구의동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('최시원','choi',1234,'1990-01-01','010-2202-2022','남자','100-100','서울시 광진구 광장동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('하지원','ha',1234,'1990-01-01','010-2323-2323','여자','100-100','서울시 도봉구 쌍문동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('현빈','hyeon',1234,'1990-01-01','010-2424-2424','남자','100-100','서울시 도봉구 방학동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('한효주','hanh',1234,'1990-01-01','010-2525-2525','여자','100-100','서울시 중랑구 면목동','100번지',0,'aaaa@gmail.com','수신동의');
+COMMIT;
+
+
+CREATE TABLE memberAdditional(
+    id VARCHAR2(50),
+    interest VARCHAR2(2000),
+    job VARCHAR2(50),
+    salary VARCHAR2(20),
+    ismarried VARCHAR2(4) CONSTRAINT ma_ck_ismarried CHECK(ismarried IN('기혼','미혼')),
+    bankname VARCHAR2(10),
+    accountno VARCHAR2(30), 
+   CONSTRAINT ma_pk_id PRIMARY KEY(id),CONSTRAINT ma_fk_id FOREIGN KEY(id) REFERENCES memberData(id)
+);
+
+
+INSERT INTO memberAdditional VALUES('hong','스포츠|쇼핑','학생','100~200','미혼','우리','123456-123456');
+INSERT INTO memberAdditional VALUES('sim','영화감상|쇼핑','취준생','100~200','미혼','신한','123456-123456');
+INSERT INTO memberAdditional VALUES('han','스포츠|독서','회사원','100~200','미혼','국민','123456-123456');
+INSERT INTO memberAdditional VALUES('jeong','음악감상|쇼핑','주부','100~200','미혼','SC제일','123456-123456');
+INSERT INTO memberAdditional VALUES('kim','스포츠|쇼핑','학생','100~200','미혼','하나','123456-123456');
+COMMIT;
+*/
+
+--ad table
+DROP TABLE myadviewlist;
+DROP TABLE ad;
+CREATE TABLE ad(
+   adno NUMBER,
+   adid VARCHAR2(20) CONSTRAINT ad_nn_adid NOT NULL,
+   adsubject VARCHAR2(50) CONSTRAINT ad_nn_subject NOT NULL,
+   adtime VARCHAR(20) CONSTRAINT ad_nn_adtime NOT NULL,
+   msg CLOB CONSTRAINT ad_nn_msg NOT NULL,
+   hit NUMBER DEFAULT 0,
+   pointrange VARCHAR2(50) CONSTRAINT ad_nn_prange NOT NULL, 
+   url VARCHAR2(200),
+   maj_category VARCHAR2(20) CONSTRAINT ad_nn_maj NOT NULL,
+   sub_category VARCHAR2(20) CONSTRAINT ad_nn_sub NOT NULL,
+   presentrange VARCHAR2(50),
+   presentinfo VARCHAR2(50),
+   img VARCHAR2(50) CONSTRAINT ad_nn_img NOT NULL,
+   CONSTRAINT ad_pk_adno PRIMARY KEY(adno)
+);
+
+DROP SEQUENCE ad_adno_seq;
+CREATE SEQUENCE ad_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
+
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름', '0:01','메세지','1000','[미미월드 TV광고] 미미 화장핸드백','메인카테고리','부카테고리','선물범위','선물정보','이미지이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:02', '메세지','200','[스킨푸드 슈가티비] 정창욱, 김유정의 매끈 맑은결 레시피 블랙슈가 첫술세','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:03', '메세지','200','[오뚜기 진라면] 류현진 CF_30초','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:04', '메세지','200','[우루사(URSA)] 우루사 please #해외진출편','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:05', '메세지','200','[지지 않는다. 고로, 존재한다] VEGA 브랜드 광고.','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:06', '메세지','200','25대 포카리걸 김소현! 김소현의 2015년 포카리스웨트 광고! POCARI 30_','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:07', '메세지','200','MIRAEN CF_미래엔 광고(30'')','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:08', '메세지','200','가슴을 뭉클하게 하는 태국의 한 광고 - 소리없는 사랑','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:09', '메세지','200','감성 자극하는 전구 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:10', '메세지','200','강력한 금연 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:11', '메세지','200','겔럭시 11 광고 (Galaxy 11 FULL MOVIE)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:12', '메세지','200','귀염돋는 추사랑의 이지덤 습윤밴드 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:13', '메세지','200','기아 2012_','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:14', '메세지','200','김유정 초코파이 광고 30초 chocopie 30 keep','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:15', '메세지','200','노무현 - [대선 CF] 1편 눈물','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:16', '메세지','200','뉴질랜드 공익광고 실수편 한글자막','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:17', '메세지','200','당신은 당신이 생각하는 것보다 아름답습니다 - 도브 광고(한글자막)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:18', '메세지','200','레고 시티 특수경찰 TV광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:19', '메세지','200','물 절약 해외 공익광고 (K-water supporters Earth)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:20', '메세지','200','미국의 흔한 비누 광고 (Old Spice Bar Soap)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:21', '메세지','200','보건복지부 금연 광고 - 무용 뇌의고통 편 - 2015년 8월','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:22', '메세지','200','보면 세뇌당하는 반복 광고 모음','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:23', '메세지','200','새누리당 박근혜','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:24', '메세지','200','시리얼 허니오즈 광고모델 김소현(KIM SO-HYUN).','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:25', '메세지','200','아이폰6S 광고자막','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:26', '메세지','200','약빤 삼성의 청소기 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:27', '메세지','200','에이핑크 교복(미니).','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:28', '메세지','200','여러분의 세금, 내일의 희망이 되어 돌아옵니다.','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:29', '메세지','200','오뚜기 마요네스 광고 A','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:30', '메세지','200','오뚜기 마요네스 광고 B','메인카테고리','부카테고리','선물범위','선물정보','이미지
+이름');
+
+COMMIT;
+
+
+--myadviewlist
+--트리거를 이용해서 하면 됨
+
+CREATE TABLE myadviewlist(
+	memberid VARCHAR2(20),
+	when DATE DEFAULT SYSDATE,
+	adno NUMBER, --0은 사용했을 때를 말함
+	point NUMBER(7),
+	description VARCHAR2(20), --어디서 받아왔는지, 어떻게 썼는지를 알려줌
+	balance NUMBER(20),
+	CONSTRAINT myadviewlist_pk_ PRIMARY KEY(memberid, when),
+	CONSTRAINT myadviewlist_fk_id FOREIGN KEY(memberid) REFERENCES memberData(id),
+	CONSTRAINT myadviewlist_fk_adid FOREIGN KEY(adno) REFERENCES ad(adno)
+);
+
+
+INSERT INTO myadviewlist VALUES('hong', '2015-10-01', 2, 400, '현대자동차', 400);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-02', 2, 500, '현대자동차', 900);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-03', 3, -700, '해피문화상품권', 200);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-04', 2, 500, '현대자동차', 700);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-05', 2, 500, '현대자동차', 1200);
+INSERT INTO myadviewlist VALUES('test', '2015-10-01', 2, 500, '현대자동차', 500);
+INSERT INTO myadviewlist VALUES('test', '2015-10-02', 2, 500, '현대자동차', 1000);
+INSERT INTO myadviewlist VALUES('test', '2015-10-03', 2, 500, '현대자동차', 1500);
+COMMIT;

@@ -89,5 +89,4 @@ public class ReplyDTO {
 		this.depth = depth;
 	}
 	   
-
 }

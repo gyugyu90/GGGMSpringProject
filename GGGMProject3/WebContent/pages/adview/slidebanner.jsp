@@ -161,6 +161,10 @@ li {
 #banner_wrap .banner_margin {
 	
 }
+.poster{
+	width:250px;
+	height:205px;
+}
 </style>
 </head>
 
@@ -174,7 +178,7 @@ li {
 
 						<div class="ad_top">
 							<a href="ad_index.do?adno=${d.adno}"> <img
-								src="img/image_test1.jpg" title="" alt=""></a>
+								src="poster/ad${d.adno}.PNG" title="" alt="" class="poster"></a>
 							<form id="frm_${d.adno}" action="Ad_index.do" method="get">
 								<input type="hidden" name="adno" value="${d.adno}">
 							</form>
@@ -196,8 +200,8 @@ li {
 				<c:if test="${d.adno%3==2 }">
 					<li>
 						<div class="ad_top">
-							<a href="ad_index.jsp?adno=${d.adno }" target="_blank"> <img
-								src="img/image_test1.jpg" title="." alt=""></a>
+							<a href="ad_index.do?adno=${d.adno }" target="_blank"> <img
+								src="poster/ad${d.adno}.PNG" title="." alt="" class="poster"></a>
 						</div>
 						<div class="ad_bottom">
 							<ul>
@@ -215,8 +219,8 @@ li {
 				<c:if test="${d.adno%3==1 }">
 					<li>
 						<div class="ad_top">
-							<a href="ad_index.jsp?adno=${d.adno }" target="_blank"> <img
-								src="img/image_test1.jpg" title="." alt=""></a>
+							<a href="ad_index.do?adno=${d.adno }" target="_blank"> <img
+								src="poster/ad${d.adno}.PNG" title="." alt="" class="poster"></a>
 						</div>
 						<div class="ad_bottom">
 							<ul>

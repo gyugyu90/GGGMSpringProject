@@ -9,6 +9,7 @@
      <typeAlias type="dao.SignupDTO" alias="Signup"/>
      <typeAlias type="dao.FaqDTO" alias="Faq"/>
      <typeAlias type="dao.ReplyBoardDTO" alias="ReplyBoard"/>
+     <typeAlias type="dao.ReplyDTO" alias="Reply"/>
      <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
      <typeAlias type="dao.AdGraphDTO" alias="PointDTO"/>
      <typeAlias type="dao.MyAdViewListDTO" alias="myad"/>

@@ -86,7 +86,7 @@
     </delete>
     <!-- 댓글 -->
   <select id="replyListData" resultType="Reply" parameterType="int">
-    SELECT no,id,name,pwd,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
+    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
     FROM qnareply
     WHERE bno=#{bno}
     ORDER BY group_id DESC,group_step ASC
@@ -95,7 +95,7 @@
   <selectKey keyProperty="no" resultType="int" order="BEFORE">
   	SELECT NVL(MAX(no)+1,1) as no FROM qnareply
   </selectKey>
-    INSERT INTO qnareply VALUES(#{no},#{bno},#{id},#{name},#{pwd},#{msg},SYSDATE,
+    INSERT INTO qnareply VALUES(#{no},#{bno},#{id},#{name},#{msg},SYSDATE,
     (SELECT NVL(MAX(group_id)+1,1) FROM qnareply), 0,0,0,0)
   </insert>
 
@@ -124,7 +124,7 @@
      SELECT NVL(MAX(no)+1,1) as no FROM qnareply
     </selectKey>
     INSERT INTO qnareply VALUES(#{no},#{bno},#{id},
-       #{name},#{pwd},#{msg},SYSDATE,
+       #{name},#{msg},SYSDATE,
        #{group_id},
        #{group_step},#{group_tab},#{root},0)
   </insert>

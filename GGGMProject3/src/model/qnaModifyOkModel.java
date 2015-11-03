@@ -24,11 +24,11 @@ public class qnaModifyOkModel implements Model {
 		d.setContent(content);
 		d.setPwd(pwd);
 		// DB¿¬µ¿ 
-		
+	
 		BoardDAO.qnaUpdate(d);
 		req.setAttribute("no", d.getNo());
 		req.setAttribute("page", page);
-		return "qna/qna_modify_ok.jsp";
+		return "pages/board/qna_modify_ok.jsp";
 	}
 
 }
