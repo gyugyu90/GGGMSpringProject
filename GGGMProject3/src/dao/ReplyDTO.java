@@ -1,20 +1,21 @@
 package dao;
 import java.util.*;
-
 public class ReplyDTO {
-	private int no;
-	private int bno;
-	private String id;
-	private String name;
-	private String msg;
-	private Date regdate; // TO_CHAR(regdate,'yyyy-mm-dd hh24:mi:ss') as dbday
-	// rs.getString(1) , rs.getString("dbday")
-	private String dbday;
-	private int group_id;
-	private int group_step;
-	private int group_tab;
-	private int root;
-	private int depth;
+    private int no;
+    private int bno;
+    private String id;
+    private String name;
+    private String msg;
+    private Date regdate; // TO_CHAR(regdate,'yyyy-mm-dd hh24:mi:ss') as dbday
+   // rs.getString(1) , rs.getString("dbday")
+    private String dbday;
+    private int group_id;
+    private int group_step;
+    private int group_tab;
+    private int root;
+    private int depth;
+    
+    
 	public int getNo() {
 		return no;
 	}
@@ -87,6 +88,5 @@ public class ReplyDTO {
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
-	
-	
+	   
 }

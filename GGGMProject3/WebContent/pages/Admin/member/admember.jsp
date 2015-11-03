@@ -6,22 +6,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/shadowbox.css"/>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/shadowbox.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+	   players:["iframe"]		
+	});
+function ok(){
+	Shadowbox.open({
+		content:'pages/Admin/member/memberInfo.jsp',
+		player:'iframe',
+		title:'회원정보 보기',
+		width:800,
+		height:760
+	});
+}
+</script>
 <meta charset="UTF-8">
 <title>AdminLTE | Dashboard</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
 <!-- bootstrap 3.0.2 -->
-<link href="../../../css/bootstrap.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- font Awesome -->
-<link href="../../../css/font-awesome.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Ionicons -->
-<link href="../../../css/ionicons.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Theme style -->
-<link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="skin-black">
 	<div class="row">
@@ -61,7 +78,7 @@
 							</thead>
 							<tbody>
 								<c:forEach var="dto" items="${list}">
-									<tr>
+									<tr id=${dto.id } name=${dto.id } onclick="ok()">
 										<td width="8%">${dto.id}</td>
 										<td width="7%">${dto.name}</td>
 										<td width="10%"><fmt:formatDate value="${dto.birth }"
