@@ -31,7 +31,7 @@
 	<bean id="qna_delete" class="model.qnaDeleteModel" />
 	<bean id="qna_modify" class="model.qnaModifyModel" />
 	<bean id="qna_modify_ok" class="model.qnaModifyOkModel" />
-	<bean id="qna_reply_write" class="model.qnaReplyWrtieModel" />
+	<bean id="qna_reply_write" class="model.qnaReplyWriteModel" />
 	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
 	<!-- startElement(), endElement() -->
 </beans><!-- endElement(), endDocument() -->

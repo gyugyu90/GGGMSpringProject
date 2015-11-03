@@ -65,8 +65,8 @@ $(function(){
 														size="10" value="${d.name }"> &nbsp;&nbsp;&nbsp; <span
 														class="bw_title_color">비밀번호&nbsp; </span><input
 														id="bw_input_passwd" name="pwd" type="password" size="10" value="${d.pwd }">
-														 <input type=hidden size=15 name=no value=${no }>
-           												 <input type=hidden size=15 name=page value=${page }>
+														 <input type=hidden size=15 name=no value=${d.no }>
+           												 <input type=hidden size=15 name=page value=${strPage }>
 														
 												    </td>
 												</tr>

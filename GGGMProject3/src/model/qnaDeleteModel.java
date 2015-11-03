@@ -14,7 +14,7 @@ public class qnaDeleteModel implements Model {
 		String strNo=req.getParameter("no");
 		BoardDAO.qnaDelete(Integer.parseInt(strNo));
 		req.setAttribute("strPage", strPage);
-		return "qna/qna_delete_ok.jsp";
+		return "pages/board/qna_delete_ok.jsp";
 	}
 
 }
