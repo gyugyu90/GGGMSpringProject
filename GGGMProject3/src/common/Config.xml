@@ -8,17 +8,13 @@
      <typeAlias type="dao.memberAddDTO" alias="MemberAdd"/>
      <typeAlias type="dao.SignupDTO" alias="Signup"/>
      <typeAlias type="dao.FaqDTO" alias="Faq"/>
-<<<<<<< HEAD
      <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
-     <typeAlias type="dao.ReplyBoardDTO" alias="Board"/>
+     <typeAlias type="dao.ReplyBoardDTO" alias="ReplyBoard"/>
      <typeAlias type="dao.ReplyDTO" alias="Reply"/>
-=======
      <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
      <typeAlias type="dao.AdGraphDTO" alias="PointDTO"/>
      <typeAlias type="dao.MyAdViewListDTO" alias="myad"/>
 	 <typeAlias type="dao.BoardDTO" alias="Board"/>
-     <typeAlias type="dao.ReplyDTO" alias="Reply"/>
->>>>>>> refs/remotes/origin/master
   </typeAliases>
   <environments default="development">
     <environment id="development">
