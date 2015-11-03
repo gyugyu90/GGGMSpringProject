@@ -89,8 +89,4 @@ public class ReplyDTO {
 		this.depth = depth;
 	}
 	   
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
 }
