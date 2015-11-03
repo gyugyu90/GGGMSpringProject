@@ -332,7 +332,7 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="#"><i
+							<li><a href="notice.do"><i
 									class="fa fa-angle-double-right"></i>공지사항</a></li>
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>QnA</a></li>

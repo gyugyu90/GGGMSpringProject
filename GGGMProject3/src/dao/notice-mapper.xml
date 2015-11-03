@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.notice-mapper">
+	<!-- 리스트 불러오기 -->
+	<select id="noticeListData" resultType="Notice" parameterType="java.util.Map">
+		SELECT no, subject, regdate, hit, num
+		FROM (SELECT no, subject, regdate, hit, rownum as num
+		FROM (SELECT no, subject, regdate, hit
+		FROM notice ORDER BY no DESC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 총 페이지 열수 -->
+	<select id="noticeRowCount" resultType="int">
+		SELECT COUNT(*) FROM notice
+	</select>
+	<select id="noticeTotalPage" resultType="int">
+		SELECT COUNT(*) FROM notice
+	</select>
+	
+	<!-- hit 증가-->
+	<update id="noticeHitIncrement" parameterType="int">
+		UPDATE notice
+		SET hit=hit+1
+		WHERE no=#{no}
+	</update>
+		
+	<!-- 내용 보기-->	
+	<select id="noticeContentData" resultType="Notice" parameterType="int">
+		SELECT no,subject,regdate,hit,content
+		FROM notice
+		WHERE no=#{no}
+	</select>
+	
+	<!-- 게시물 추가 -->
+	<insert id="noticeWrite" parameterType="Notice">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(no)+1,1) as no FROM notice
+		</selectKey>
+		INSERT INTO notice VALUES(#{no},#{subject},#{content},SYSDATE,0) 
+	</insert>
+	
+	<!--  게시물 수정 -->
+	<update id="noticeModify" parameterType="Notice">
+		UPDATE notice SET
+		subject=#{subject},content=#{content},regdate=SYSDATE
+		WHERE no=#{no}
+	</update>
+	
+	<!-- 게시물 삭제 -->
+	<!-- 댓글 삭제 추가해야... -->
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM notice
+		WHERE no=#{no}
+	</delete>
+	
+	<!-- 댓글 연계 부분 -->
+	<!-- 댓글 list 가져오기 -->
+	<select id="replyListData" resultType="NoticeReply" parameterType="int">
+	    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
+	    FROM replynotice
+	    WHERE bno=#{bno}
+	    ORDER BY group_id DESC,group_step ASC
+  	</select>
+	
+	
+	<!-- get # of pages per post -->
+	<select id="replyTotalPage" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM replynotice
+		WHERE bno=#{bno}
+	</select>
+	
+	
+</mapper>
