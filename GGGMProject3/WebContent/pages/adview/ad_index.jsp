@@ -92,6 +92,28 @@ if(rmsg=="")
 }
 $('#re_update_frm'+no).submit();
 }
+
+//video관련
+var myVideo=$("#main_video"); 
+var playbutton=$("#play");
+function playPause() { 
+    if ($("#main_video").get(0).paused){
+    	$("#main_video").get(0).play();
+    	$("#play").get(0).textContent="||";
+    }
+    else{
+    	$("#main_video").get(0).pause();
+    	$("#play").get(0).textContent=">";
+    }
+        
+} 
+
+function end(){
+   $("#getpoint").get(0).disabled=false
+}
+function point(){
+   alert("야호!");
+}
 </script>
 <style type="text/css">
 </style>
@@ -101,9 +123,11 @@ $('#re_update_frm'+no).submit();
 		<div id="body_content">
 
 			<video id="main_video"
-				src="ADs/${adinfo.url}.mp4" controls
-				autoplay poster=""></video>
-
+				onended="end()">
+				<source src="ADs/${adinfo.url}.mp4" type="video/mp4">
+			</video><%-- autoplay --%>
+			<button onclick="playPause()" id="play">></button> 
+			<button id="getpoint" disabled="disabled" onclick="point()">포인트 적립</button>
 		</div>
 		<div id="body_recommend">
 
