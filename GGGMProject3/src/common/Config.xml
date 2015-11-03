@@ -33,7 +33,7 @@
     <mapper resource="dao/board-mapper.xml"/>
     <mapper resource="dao/adgraph-mapper.xml"/>
     <mapper resource="dao/adview-mapper.xml"/>
-	<mapper resource="dao/qna-mapper.xml"/>
+	<!-- <mapper resource="dao/qna-mapper.xml"/> -->
   </mappers>
 </configuration>
 
