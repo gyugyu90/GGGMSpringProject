@@ -12,6 +12,10 @@
 	<bean id="faq" class="model.FaqModel" />
 	<bean id="idcheck" class="model.IdCheckModel" />
 	<bean id="board_content" class="model.BoardContentModel" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 	<bean id="slidebanner" class="model.AdListModel" />
 	<bean id="fullpageMain" class="model.fullpageModel" />
 	<bean id="postfind" class="model.PostFindModel" />
@@ -21,10 +25,17 @@
 	<bean id="reply_delete" class="model.ReplyDeleteModel" />
 	<bean id="reply_reply_update" class="model.ReplyReplyUpdateModel" />
 	<bean id="ad_index" class="model.Ad_IndexModel" />
+<<<<<<< HEAD
 	<!-- startElement(), endElement() -->
+=======
+>>>>>>> refs/remotes/origin/master
 	<bean id="adgraph" class="model.AdGraphModel" />
 	<bean id="myadviewlist" class="model.MyAdViewListModel" />
 	<bean id="qna_list" class="model.qnaListModel" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 	<bean id="qna_write_ok" class="model.qnaWriteOkModel" />
 	<bean id="qna_write" class="model.qnaWriteModel" />
 	<bean id="qna_content" class="model.qnaContentModel" />
@@ -35,5 +46,8 @@
 	<bean id="qna_modify_ok" class="model.qnaModifyOkModel" />
 	<bean id="qna_reply_write" class="model.qnaReplyWrtieModel" />
 	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
+<<<<<<< HEAD
 	<!-- startElement(), endElement() -->
+=======
+>>>>>>> refs/remotes/origin/master
 </beans><!-- endElement(), endDocument() -->

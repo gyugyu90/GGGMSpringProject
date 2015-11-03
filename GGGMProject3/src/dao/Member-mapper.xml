@@ -70,8 +70,12 @@
 			#{post}, #{addr1}, #{addr2}, 0, #{email}, 
 			#{emailreceive})
 	</insert>
+<<<<<<< HEAD
 
 
+=======
+	
+>>>>>>> refs/remotes/origin/master
 	<select id="memberTotalPoint" parameterType="Member" resultType="int">
 	SELECT sumpoint FROM memberData WHERE id=#{id}
 	</select>
