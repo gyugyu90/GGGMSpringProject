@@ -22,19 +22,16 @@ $(function(){
 		    return;
 		}
 	});
-	$('#comment').click(function(){
-		var msg=$('#bc_textarea').val();
+	$('#commentA').click(function(){
+		var msg=$('#rmsg').val();
+		
 		if(msg=="")
 		{
 			alert("댓글내용을 입력하세요");
-			$('#bc_textarea').focus();
+			$('#rmsg').focus();
 			return;
 		}
-		else
-		{
-			$('#qna_reply_write').submit();
-			
-		}
+			$('#qna_re_write').submit();
 	});
 
 	var k=0;
@@ -71,6 +68,26 @@ $(function(){
 		}
 	});
 });
+function comment(){
+	
+		var msg=$('#rmsg').val();
+		
+		if(msg=="")
+		{
+			alert("댓글내용을 입력하세요");
+			$('#rmsg').focus();
+			return;
+		}
+		else
+		{
+			$('#qna_re_write').submit();
+			alert("댓글내용을 입력하세요");
+		}
+	}
+function ok(){
+	alert(1)
+	$('#qna_re_write').submit();
+}
 </script>
 </head>
 <body>
@@ -270,7 +287,8 @@ td.bc_agree_title {
 <input type="hidden" name="privercy_agree" value="">
 <input type="hidden" name="third_party_agree" value="">
 <input type="hidden" name="trust_agree" value="">
-</form><form id="comment_form" name="comment" action="board.html?" method="post">
+</form>
+
 
 <!-- COMMENT LIST -->
 <table id="bc_commentlist" border="1" cellpadding="0" cellspacing="0" width="100%"></table>
@@ -308,7 +326,7 @@ td.bc_agree_title {
      </td>
 </tr>
 </tbody>
-<!-- 댓글의댓글 시작-->
+<%-- <!-- 댓글의댓글 시작-->
 <tbody id="re_re_write${rDto.no }"  style="display:none">
 <tr>
  <td class="bc_title bc_title_name" width=110><img src="img/qna_dot_black.gif"> name
@@ -358,45 +376,40 @@ td.bc_agree_title {
     
  </tr>
  </tbody>
- <!-- 댓글수정끝 -->
+ <!-- 댓글수정끝 --> --%>
  </c:forEach>
  </table>
  <!-- COMMENT WRITE -->
-<div id="comment_input">
+
 
 <table id="bc_write" border="0" cellpadding="0" cellspacing="0" width="100%">
 <tbody><tr>
-    <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif" align="absmiddle"> name</td>
+    <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID</td>
     <td class="bc_title">
-        <input id="bc_input_writer" type="text" name="cname" size="10" value="" onclick="CheckLogin()" onkeyup="CheckLogin()">
-        <img src="img/qna_dot_black.gif" align="absmiddle"> password
-        <input id="bc_input_passwd" type="password" name="cpass" size="12" onclick="CheckLogin()" onkeyup="CheckLogin()">
+        <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
+        <img src="img/qna_dot_black.gif"> name
+        <input id="bc_input_name" type="text" name="name" size="12" value="${sessionScope.name }">
         <input type="hidden" name="secret" value="N">
     </td>
 </tr>
 <tr>
     <td class="bc_title_name"></td>
     <td>
-        <textarea id="bc_textarea" name="comment" rows="3" style="width:510px" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()"></textarea>
-        <a href="JavaScript:comment('');">
+    	<form id="qna_re_write" action="qna_reply_write.do" method="post">
+        <textarea id="rmsg" name="rmsg" rows="3" style="width:510px"></textarea>
+        <input type=hidden name="bno" value="${d.no }">
+        <input type=hidden name="page" value="${strPage }">
+        <a href="<%-- qna_reply_write.do?bno=${d.no }&rmsg=&page=${strPage} --%>#" id="commentA" onclick="ok()">
         <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+		</form>        
     </td>
 </tr>
 </tbody></table>
-</div>
-<!-- END COMMENT WRITE -->
-<input type="hidden" name="code" value="hyojung99">
-<input type="hidden" name="num1" value="438171">
-<input type="hidden" name="num2" value="00000">
-<input type="hidden" name="page" value="">
-<input type="hidden" name="lock" value="Y">
-<input type="hidden" name="type" value="v">
-<input type="hidden" name="type2">
-<input type="hidden" name="comnum">
-<input type="hidden" name="comtype">
-<input type="text" name="___DUMMY___" readonly="" disabled="" style="display:none;">
 
-</form>    </td>
+<!-- END COMMENT WRITE -->
+
+
+  </td>
     </tr>
 </tbody></table>
 <!-- COMMENT END -->
@@ -405,17 +418,12 @@ td.bc_agree_title {
 <table id="bv_showbutton" border="0" width="100%" style="margin-bottom:31px">
 <tbody><tr>
     <td align="right">
-     
         <a href="qna_delete.do?no=${d.no }&page=${strPage }" id="delA">
         <img src="img/qna_delete.gif" border="0"></a>    
         <a href="qna_modify.do?no=${d.no }&page=${strPage }">
         <img src="img/qna_modify.gif" border="0"></a>
         <a href="qna_list.do?page=${strPage }">
         <img src="img/detail_list.gif" border="0"></a>   
-       <%--  <form id="delForm" action="qna_delete.do">
-         <input type=hidden name="no" value="${d.no }">
-         <input type=hidden name="page" value="${curpage }">
-        </form>  --%>
     </td>
 </tr>
 
