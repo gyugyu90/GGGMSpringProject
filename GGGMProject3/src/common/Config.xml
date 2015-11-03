@@ -35,15 +35,10 @@
     <mapper resource="dao/Member-mapper.xml"/>
     <mapper resource="dao/faq-mapper.xml"/>
     <mapper resource="dao/ad-mapper.xml"/>
-<<<<<<< HEAD
     <mapper resource="dao/board-mapper.xml"/>
-=======
-
     <mapper resource="dao/adgraph-mapper.xml"/>
-
     <mapper resource="dao/adview-mapper.xml"/>
 	<mapper resource="dao/qna-mapper.xml"/>
->>>>>>> refs/remotes/origin/master
   </mappers>
 </configuration>
 
