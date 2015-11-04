@@ -63,7 +63,7 @@ public class NoticeDAO {
 //	페이지당 댓글모두 불러오 
 	public static List<NoticeReplyDTO> replyListData(int bno){
 		SqlSession session = ssf.openSession();
-		List<NoticeReplyDTO> list=session.selectList("replyListData",bno);
+		List<NoticeReplyDTO> list=session.selectList("noticeReplyListData",bno);
 		session.close();
 		return list;
 	}
@@ -72,7 +72,7 @@ public class NoticeDAO {
     public static int replyTotalPage(int bno)
     {
     	SqlSession session=ssf.openSession();
-    	int count=session.selectOne("replyTotalPage",bno);
+    	int count=session.selectOne("noticeReplyTotalPage",bno);
     	session.close();
     	return (int)(Math.ceil(count/5.0));
     }

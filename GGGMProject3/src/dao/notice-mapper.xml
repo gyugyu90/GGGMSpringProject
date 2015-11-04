@@ -55,7 +55,7 @@
 	
 	<!-- 댓글 연계 부분 -->
 	<!-- 댓글 list 가져오기 -->
-	<select id="replyListData" resultType="NoticeReply" parameterType="int">
+	<select id="noticeReplyListData" resultType="NoticeReply" parameterType="int">
 	    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
 	    FROM replynotice
 	    WHERE bno=#{bno}
@@ -64,7 +64,7 @@
 	
 	
 	<!-- get # of pages per post -->
-	<select id="replyTotalPage" parameterType="int" resultType="int">
+	<select id="noticeReplyTotalPage" parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM replynotice
 		WHERE bno=#{bno}
 	</select>
