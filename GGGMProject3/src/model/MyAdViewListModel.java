@@ -19,7 +19,15 @@ public class MyAdViewListModel implements Model {
 		String id=(String)session.getAttribute("id");
 		//id가 같은 
 		
+		//날짜 바꾸기
 		List<AdGraphDTO> list=MyAdViewListDAO.adListData(id);
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		for(AdGraphDTO dto:list){
+			String date=sdf.format(dto.getViewtime());
+			dto.setSdfviewtime(date);
+		}
+		
+		//보유 포인트
 		
 		
 		req.setAttribute("myadviewlist", list);

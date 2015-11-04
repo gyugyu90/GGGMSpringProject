@@ -20,7 +20,7 @@ public class ViewUpdateModel implements Model {
 		a.setAdid(adid);
 		a.setAdno(adno);
 		a.setId(userid);
-		a.setSumpoint(Integer.parseInt(adpoint));
+		a.setPoint(Integer.parseInt(adpoint));
 		
 		
 		AdGraphDAO.ViewListInsert(a);

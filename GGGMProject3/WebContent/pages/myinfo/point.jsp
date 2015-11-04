@@ -132,7 +132,7 @@ li{ list-style-type : none;
 				<c:forEach var="ad" items="${myadviewlist}">
 				<tr>
 					<td class="point_table">
-						${ad.when }
+						${ad.sdfviewtime }
 					</td>
 					<td class="point_table">
 					    ${ad.point }
@@ -141,10 +141,8 @@ li{ list-style-type : none;
 					    »ç¿ë
 					</td>
 					<td class="point_table">
-					    ${ad.description}
 					</td >
 					<td class="point_table" >
-					    ${ad.balance}	
 					</td>
 				</tr>
 				</c:forEach>
