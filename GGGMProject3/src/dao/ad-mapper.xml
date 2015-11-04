@@ -19,4 +19,10 @@
 	<insert id="insert_myadviewlist" parameterType="myad">
 		INSERT INTO myadviewlist VALUES(#{memberid}, SYSDATE, #{adno}, #{point}, 'test', 1400)
 	</insert>
+	<insert id="adrequestInsert" parameterType="AdDTO">
+	INSERT INTO ad VALUES(ad_adno_seq,#{adid},#{adsubject},#{msg},#{pointrange},#{url},#{maj_category},#{sub_category},#{img})
+	</insert>
+	<select id="adReqList" resultType="Adreq">
+	SELECT * FROM adrequest ORDER BY regdate DESC
+	</select>
 </mapper>

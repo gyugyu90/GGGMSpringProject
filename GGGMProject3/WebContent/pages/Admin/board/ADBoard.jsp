@@ -35,22 +35,16 @@
 							<th width="10%" style="text-align: center;">±§∞Ì¡÷∏Ì</th>
 							
 							</tr>
+							
+							<c:forEach var="d" items="${list}">
 							<tr onclick="location.href='AdminAdBoardInfo.do?adid=${d.adid}'">
-							<td width="10%" style="text-align: center;"></td>
-							<td width="10%" style="text-align: center;"></td>
-							<td width="10%" style="text-align: center;"></td>
-							<td width="60%" style="text-align: center;"></td>
-							<td width="10%" style="text-align: center;"></td>														
+							<td width="10%" style="text-align: center;">${d.maj_category }</td>
+							<td width="10%" style="text-align: center;">${d.sub_category }</td>
+							<td width="10%" style="text-align: center;">${d.adno }</td>
+							<td width="60%" style="text-align: center;">${d.adsubject }</td>
+							<td width="10%" style="text-align: center;">${d.adid }</td>														
 							</tr>
-							<%-- <c:forEach var="d" items="${list}">
-							<tr onclick="location.href='AdminAdBoardInfo.do?adid=${d.adid}'">
-							<td width="10%" style="text-align: center;"></td>
-							<td width="10%" style="text-align: center;"></td>
-							<td width="10%" style="text-align: center;"></td>
-							<td width="60%" style="text-align: center;"></td>
-							<td width="10%" style="text-align: center;"></td>														
-							</tr>
-							</c:forEach> --%>
+							</c:forEach>
 						</table>
 					</div>
 				</div>				

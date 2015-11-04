@@ -26,8 +26,6 @@
 					<div class="table-responsive">
 					<h3>&nbsp;&nbsp;※ 광고 등록 요청 내역</h3>
 						<table class="table table-bordered table-hover">				
-
-				
 						<tr>
 							<td width="20%" align=center>광고 제목</td>
 							<td width="75%" colspan="4"></td>
@@ -47,17 +45,13 @@
 						<tr>
 							<td width="20%" align=center>광고 카테고리</td>
 							<td width="75%" colspan="4"></td>
-
-
-
 						</tr>
 						<tr>
 							<td width="20%" rowspan="7" align="center" style="vertical-align: middle;">타겟</td>
 							<td width="10%" align=center>성별</td>
 							<td width="30%"></td>
 							<td width="10%" align=center>가중치
-							<td width="30%"></td> 
-							
+							<td width="30%"></td>						
 						</tr>
 						<tr>
 							<td width="10%" align=center>나이</td>
@@ -97,9 +91,8 @@
 						</tr>
 					</table>
 					<br>
-
 					<div class="panel-footer" style="text-align: center;">
-						<button type="submit" class="btn btn-primary">승인</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='AdminAdInsert.do?adid=${d.adid}'">승인</button>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn btn-primary">취소</button>
 					</div>
