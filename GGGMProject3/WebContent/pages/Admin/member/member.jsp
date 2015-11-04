@@ -21,20 +21,7 @@
 	type="text/css" />
 <!-- Theme style -->
 <link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
-<script type="text/javascript" src="../../js/shadowbox.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-Shadowbox.init({
-   players:["iframe"]		
-});
-$(function(){
-	function memberClick(id){
-		alert(trObj.id);
-	}
-})
 
-</script>
 </head>
 <body class="skin-black">
 	<div class="row">
@@ -76,7 +63,7 @@ $(function(){
 							</thead>
 							<tbody>
 								<c:forEach var="d" items="${list}">
-									<tr style="font-size: 9pt;" onclick="memberClick(${d.id})">
+									<tr onclick="location.href='MemberInfo.do?memberid=${d.id}'">
 										<td width="8%">${d.id}</td>
 										<td width="8%">${d.name}</td>
 										<td width="10%"><fmt:formatDate value="${d.birth }"

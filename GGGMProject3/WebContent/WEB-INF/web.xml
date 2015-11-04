@@ -8,6 +8,8 @@
   		<param-name>xmlPath</param-name>
   		<!-- <param-value>C:\Users\hong\git\GGGMProject2\GGGMProject2\WebContent\WEB-INF\applicationContext.xml</param-value> -->
   		<!-- <param-value>C:\Users\cjw\git\GGGMProject3\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value>-->
+  		<!-- <param-value>C:\Users\hong\git\GGGMProject4\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value> -->
+  		<!-- <param-value>C:\Users\hong\Git\GGGMProject4\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value> -->
   		<param-value>C:\Users\hong\git\GGGMProject4\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value>
   	</init-param>
   </servlet>
