@@ -25,26 +25,28 @@
 				<div class="panel-body">
 					<div class="table-responsive">
 					<h3>&nbsp;&nbsp;※ 광고 등록 요청 내역</h3>
+					<form action="AdminAdInsert.do">
+					<input type="hidden" name="adid" value="${d.adid }">
 						<table class="table table-bordered table-hover">				
 						<tr>
 							<td width="20%" align=center>광고 제목</td>
-							<td width="75%" colspan="4"></td>
+							<td width="75%" colspan="4">${d.adsubject }</td>
 						</tr>
 						<tr>
 							<td width="20%" align=center>광고 동영상</td>
-							<td width="75%" colspan="4"></td>
+							<td width="75%" colspan="4">${d.url}</td>
 						</tr>
 						<tr>
 							<td width="20%" align=center style="vertical-align: middle;">광고 설명</td>
 							<td width="75%" colspan="4"><textarea name=adcontent class="adcontent"
-									rows="20" cols="108" readonly="readonly"></textarea>
+									rows="20" cols="108" readonly="readonly">${d.msg}</textarea>
 						</tr>
 						<tr>
 							<td width="20%" align=center>포인트 범위</td>
-							<td width="75%" colspan="4"></td>
+							<td width="75%" colspan="4">${d.pointrange}Point</td>
 						<tr>
 							<td width="20%" align=center>광고 카테고리</td>
-							<td width="75%" colspan="4"></td>
+							<td width="75%" colspan="4">${d.maj_category} : ${d.sub_category}</td>
 						</tr>
 						<tr>
 							<td width="20%" rowspan="7" align="center" style="vertical-align: middle;">타겟</td>
@@ -90,12 +92,14 @@
 							<td width="30%"></td>
 						</tr>
 					</table>
+					
 					<br>
 					<div class="panel-footer" style="text-align: center;">
-						<button type="button" class="btn btn-primary" onclick="location.href='AdminAdInsert.do?adid=${d.adid}'">승인</button>
+						<button type="submit" class="btn btn-primary">승인</button>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button type="button" class="btn btn-primary">취소</button>
+						<button type="button" class="btn btn-primary">취소</button>						
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>

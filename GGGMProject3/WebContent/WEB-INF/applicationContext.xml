@@ -48,5 +48,5 @@
 	<bean id="adboard" class="model.AdminAdBoardModel"/>
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
-	<bean id="AdminAdInsert" class="model.AdminAdBoardInfoModel"/>
+	<bean id="AdminAdInsert" class="model.AdminAdInsertModel"/>
 </beans><!-- endElement(), endDocument() -->

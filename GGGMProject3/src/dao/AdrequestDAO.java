@@ -30,4 +30,22 @@ public class AdrequestDAO {
     	List<AdrequestDTO> list = session.selectList("adReqList");
     	return list;
     }
+    public AdrequestDTO adReqInfo(String adid){
+    	SqlSession session=ssf.openSession();
+    	AdrequestDTO d=session.selectOne("adReqInfo",adid);
+    	session.close();
+    	return d;
+    }
+    public void adInsert(AdvertiseDTO dto){
+    	SqlSession session=ssf.openSession(true);
+    	session.insert("adrequestInsert",dto);
+    	System.out.println("INSERT OK");
+    	session.close();
+    }
+    public void adReqDelete(String adid){
+    	SqlSession session=ssf.openSession(true);
+    	session.delete("adReqDelete",adid);
+    	session.close();
+    	System.out.println("DELETE OK");
+    }
 }
