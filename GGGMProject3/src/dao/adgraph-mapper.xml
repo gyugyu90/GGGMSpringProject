@@ -2,28 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="dao.adgraph-mapper">
-	<update id="PointUpdate" parameterType="PointDTO">
-		UPDATE member SET sumpoint=sumpoint+${adpoint} WHERE userid=${userid} AND (SELECT adno FROM ad)=${adno}
-	</update>
+
 	<insert id="ViewListInsert" parameterType="PointDTO">
-		INSERT INTO adviewlist SET adid=${adid}, adno=${adno}, userid=${userid}, point=${point}, viewtime=SYSDATE, count=count+1
-		WHERE adno=${adno} AND userid=${userid}
+		INSERT INTO adviewlist SET adid=#{adid}, adno=#{adno}, userid=#{userid}, point=#{point}, viewtime=SYSDATE, count=count+1
+		WHERE adno=#{adno} AND userid=#{userid}
 	</insert>
 	<select id="AllCountView" parameterType="PointDTO" resultType="PointDTO">
-		SELECT sum(count) FROM adviewlist WHERE adid=${adid} AND adno=${adno}
+		SELECT sum(count) FROM adviewlist WHERE adid=#{adid} AND adno=#{adno}
 	</select>
 	<select id="AllCountViewTime" parameterType="PointDTO" resultType="PointDTO">
-	SELECT count,adid,adno,viewtime FROM adviewlist WHERE adid=${adid} AND adno=${adno} ORDER BY (viewtime) DESC
+	SELECT count,adid,adno,viewtime FROM adviewlist WHERE adid=#{adid} AND adno=#{adno} ORDER BY (viewtime) DESC
 	</select>
 	<select id="AdViewChart" parameterType="PointDTO" resultType="java.util.Map">
-	SELECT sum(count) FROM adviewlist WHERE adno=${adno} AND SELECT(viewtime FROM adviewlist WHERE adid=${adid})
+	SELECT sum(count) FROM adviewlist WHERE adno=#{adno} AND SELECT(viewtime FROM adviewlist WHERE adid=#{adid})
  	BETWEEN (SELECT to_char(sysdate -30 ,'yyyymmdd hh24:mi:ss') FROM DUAL) AND (select to_char(sysdate,'yyyymmdd hh24:mi:ss') FROM DUAL);
 	</select>
 	<select id="AdOverlapCount" parameterType="int" resultType="int">
-		SELECT sum(count) FROM adviewlist WHERE adno=${adno}
+	
+		SELECT sum(count) FROM adviewlist WHERE adno=#{adno}
+		
 	</select>
-	<select id="AdNoOverlapCount" parameterType="int" resultType="int">
-		SELECT COUNT(*) FROM adviewlist WHERE adno=${adno}
+	<select id="AdNoOverlapCount" parameterType="int" resultType="int">	
+		SELECT COUNT(*) FROM adviewlist WHERE adno=#{adno}
 	</select>
+ 	<!-- adid,subject별 모든 adno를 가져온다 최근등록순 -->
+ 	<select id="ListOfAdno" parameterType="String" resultType="AdDTO">
+ 		SELECT adno,adsubject FROM ad WHERE adid=#{adid} ORDER BY (adno) DESC
+ 	</select>
+ 	<!-- 첫 adno 출력(높은값) 전부-->
+ 	<select id="MaxAdno" parameterType="String" resultType="AdDTO">
+ 		SELECT * FROM ad WHERE adno=(SELECT MAX(adno) as adno FROM ad WHERE ad.adid=#{adid})
+ 	</select>
+ 	<!-- 첫출력 중복 카운트, 중복x카운트 -->
+ 	<select id="FAdOverlapCount" parameterType="String" resultType="Int">
+		SELECT sum(count) FROM adviewlist WHERE adno=(SELECT MAX(adno) as adno FROM ad WHERE ad.adid=#{adid})
+	</select>
+	<select id="FAdNoOverlapCount" parameterType="String" resultType="Int">	
+		SELECT COUNT(*) FROM adviewlist WHERE adno=(SELECT MAX(adno) as adno FROM ad WHERE ad.adid=#{adid})
+	</select>
+	<select id="AllOfAdno" resultType="adDTO" parameterType="Int">
+		SELECT * FROM ad WHERE adno=#{adno}
+	</select>
+	<select id="idOfAdno" resultType="String" parameterType="Int">
+	SELECT id FROM adviewlist WHERE adno=#{adno}
+	</select>
+ 	<select id="manofadno" resultType="Int" parameterType="Int">
+		SELECT count(*) FROM memberdata m1,memberadditional m2 WHERE m1.id=m2.id AND sex='남자' AND m1.id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+	</select>
+	<select id="womanofadno" resultType="Int" parameterType="Int">
+		SELECT count(*) FROM memberdata m1,memberadditional m2 WHERE m1.id=m2.id AND sex='여자' AND m1.id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+	</select>
+	
+	
+	
 	
 </mapper>

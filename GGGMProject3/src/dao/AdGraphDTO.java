@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AdGraphDTO {
 	private String adid;
-	private String adno;
+	private int adno;
 	private String id;
 	private int point;
 	private Date viewtime;
@@ -22,10 +22,10 @@ public class AdGraphDTO {
 	public void setAdid(String adid) {
 		this.adid = adid;
 	}
-	public String getAdno() {
+	public int getAdno() {
 		return adno;
 	}
-	public void setAdno(String adno) {
+	public void setAdno(int adno) {
 		this.adno = adno;
 	}
 	public String getId() {

@@ -13,7 +13,7 @@ public class ViewUpdateModel implements Model {
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		AdGraphDTO a=new AdGraphDTO();
 		String adid =req.getParameter("adid");
-		String adno=req.getParameter("adno");
+		int adno=Integer.parseInt(req.getParameter("adno"));
 		String userid=req.getParameter("Userid");
 		String adpoint=req.getParameter("adpoint");
 		
