@@ -6,23 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/shadowbox.css"/>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/shadowbox.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-Shadowbox.init({
-	   players:["iframe"]		
-	});
-function ok(){
-	Shadowbox.open({
-		content:'pages/Admin/member/memberInfo.jsp',
-		player:'iframe',
-		title:'회원정보 보기',
-		width:800,
-		height:760
-	});
-}
-</script>
 <meta charset="UTF-8">
 <title>AdminLTE | Dashboard</title>
 <meta
@@ -78,8 +61,8 @@ function ok(){
 							</thead>
 							<tbody>
 								<c:forEach var="dto" items="${list}">
-									<tr id=${dto.id } name=${dto.id } onclick="ok()">
-										<td width="8%">${dto.id}</td>
+									<tr onclick="location.href='MemberInfo.do?memberid=${dto.id}'" >
+																<td width="8%">${dto.id}</td>
 										<td width="7%">${dto.name}</td>
 										<td width="10%"><fmt:formatDate value="${dto.birth }"
 												pattern="yyyy-MM-dd" /></td>
@@ -88,7 +71,8 @@ function ok(){
 										<td width="9%">${dto.post}</td>
 										<td><small>${dto.addr1}<br>${dto.addr2}</small></td>
 										<td>${dto.email}</td>
-										<td>${dto.emailreceive}</td>
+										<td>${dto.emailreceive}									
+										</td>										
 									</tr>
 								</c:forEach>
 							</tbody>

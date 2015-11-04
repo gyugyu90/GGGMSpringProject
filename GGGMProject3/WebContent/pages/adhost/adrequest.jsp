@@ -5,6 +5,42 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+
+
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	var target=document.getElementById("big_cat")
+
+	if(target.selectedIndex==1){
+		$('#sm_cat').text("선택이 됐어..");	
+// 		$('#sm_cat').text(target.options[target.selectedIndex].text);
+	}
+	
+
+	
+// 	$('#sm_cat').html();
+	
+// 	$('#big_cat').select(function(){
+		
+// 		$('#theaterInfo').html(httpRequest.responseText);
+	});
+	
+// 	click(function(){
+// 		var mno=$(this).attr("value");
+// 		$('#mimg').html('<img src="movie/image/s'+mno+'.jpg" width=100 height=120>');
+// 		var title=$(this).text();
+// 		$('#mtitle').text("제목:"+title);
+// 		var param="mno="+mno;
+// 		sendMessage("GET", "theater_info.do", param, theater_info);
+// 	});
+// });
+</script>
+
+
+
 </head>
 <body>
 	<div id="adrequestform">
@@ -19,24 +55,41 @@
      <td colspan="3">
       <input type=text name="adsubject" id="adsubject" > 
      </td>
+    </tr>
     <tr>
       <td align=center >광고 동영상</td>
       <td colspan="3" >
        <input type="file" id="exampleInputFile">
       </td>
-    <tr>
-      <td align=center >광고 url</td>
-      <td colspan="3">
-       <input type="text" id="adurl">
-      </td>
+    </tr>
     <tr>
       <td align=center >광고 설명</td>
       <td colspan="3">
        <textarea name=adcontent  class="adcontent" rows="20" cols="100"></textarea>
     </tr>
-		
+	<tr>
+      <td align=center >포인트 범위</td>
+      <td colspan="3">
+       <input type="text" id="adpoint">
+    </td>
+    <tr>
+      <td align=center >광고 카테고리</td>
+      <td colspan="3">
+      &nbsp;
+    	<select id="big_cat" name="big_cat">
+	    	<option id=>가전</option>
+	      	<option>의류</option>
+	      	<option>음식</option>
+	    </select>&nbsp;&nbsp;
+    	<span id="sm_cat">
+	    </span>
+	    </td>
+       
+    
+    
+    </tr>	
 		<tr>
-          <td rowspan = "7", align="center" width=100>타겟</td>
+          <td rowspan = "7" align="center" width=100>타겟</td>
           <td align=center>성별</td>
           <td>
             <input type=radio name="sex" id="usersex" checked value="남자">남자

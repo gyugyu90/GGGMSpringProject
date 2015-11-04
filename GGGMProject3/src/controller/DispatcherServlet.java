@@ -25,9 +25,11 @@ public class DispatcherServlet extends HttpServlet {
 			String cmd=request.getRequestURI();
 			cmd=cmd.substring(request.getContextPath().length()+1,
 					          cmd.lastIndexOf('.'));
+			System.out.println("cmd:"+cmd);
 			Model model=wc.getBean(cmd);
 			String jsp=model.handlerRequest(request, response);
 			String type=jsp.substring(jsp.lastIndexOf('.')+1);
+			
 			if(type.equals("do"))
 			{
 				// board_insert_ok.do => board_list.do
