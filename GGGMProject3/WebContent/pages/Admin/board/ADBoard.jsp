@@ -10,14 +10,14 @@
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
 <!-- bootstrap 3.0.2 -->
-<link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- font Awesome -->
-<link href="../../../css/font-awesome.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Ionicons -->
-<link href="../../../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 <!-- Theme style -->
-<link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="row">
@@ -35,15 +35,22 @@
 							<th width="10%" style="text-align: center;">±§∞Ì¡÷∏Ì</th>
 							
 							</tr>
-							<c:forEach var="d" items="${list}">
-							<tr onclick="location.href='AdInfo.do?adid=${d.adid}'">
+							<tr onclick="location.href='AdminAdBoardInfo.do?adid=${d.adid}'">
 							<td width="10%" style="text-align: center;"></td>
 							<td width="10%" style="text-align: center;"></td>
 							<td width="10%" style="text-align: center;"></td>
 							<td width="60%" style="text-align: center;"></td>
 							<td width="10%" style="text-align: center;"></td>														
 							</tr>
-							</c:forEach>
+							<%-- <c:forEach var="d" items="${list}">
+							<tr onclick="location.href='AdminAdBoardInfo.do?adid=${d.adid}'">
+							<td width="10%" style="text-align: center;"></td>
+							<td width="10%" style="text-align: center;"></td>
+							<td width="10%" style="text-align: center;"></td>
+							<td width="60%" style="text-align: center;"></td>
+							<td width="10%" style="text-align: center;"></td>														
+							</tr>
+							</c:forEach> --%>
 						</table>
 					</div>
 				</div>				
