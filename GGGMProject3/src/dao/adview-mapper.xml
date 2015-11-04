@@ -4,9 +4,9 @@
 <!-- PreparedStatement,ResultSet -->
 <mapper namespace="dao.adview-mapper">
 
-	<select id="myadviewlist" resultType="myad" parameterType="String">
-		SELECT when, point, description, balance FROM myadviewlist
-		WHERE memberid=#{memberid} ORDER BY when DESC
+	<select id="myadviewlist" resultType="PointDTO" parameterType="String">
+		SELECT viewlist, point FROM adviewlist
+		WHERE id=#{id} ORDER BY when DESC
 	</select>
 	
 </mapper>

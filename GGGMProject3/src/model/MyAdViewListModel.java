@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AdGraphDTO;
 import dao.MyAdViewListDAO;
-import dao.MyAdViewListDTO;
 
 public class MyAdViewListModel implements Model {
 
@@ -19,7 +19,7 @@ public class MyAdViewListModel implements Model {
 		String id=(String)session.getAttribute("id");
 		//id°¡ °°Àº 
 		
-		List<MyAdViewListDTO> list=MyAdViewListDAO.adListData(id);
+		List<AdGraphDTO> list=MyAdViewListDAO.adListData(id);
 		
 		
 		req.setAttribute("myadviewlist", list);

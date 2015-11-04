@@ -25,9 +25,9 @@ public class MyAdViewListDAO {
     	}
     }
     
-    public static List<MyAdViewListDTO> adListData(String memberid){
+    public static List<AdGraphDTO> adListData(String memberid){
     	SqlSession session=ssf.openSession();
-    	List<MyAdViewListDTO> list=session.selectList("myadviewlist", memberid);
+    	List<AdGraphDTO> list=session.selectList("myadviewlist", memberid);
     	session.close();
     	return list;
     	
