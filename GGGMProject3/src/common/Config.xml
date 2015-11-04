@@ -5,6 +5,7 @@
   <properties resource="common/db.properties"/>
   <typeAliases>    
      <typeAlias type="dao.memberDTO" alias="Member"/>
+     <typeAlias type="dao.AdrequestDTO" alias="Adreq"/>
      <typeAlias type="dao.memberAddDTO" alias="MemberAdd"/>
      <typeAlias type="dao.SignupDTO" alias="Signup"/>
      <typeAlias type="dao.FaqDTO" alias="Faq"/>
