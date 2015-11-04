@@ -45,4 +45,6 @@
 	<bean id="notice_delete" class="model.NoticeDeleteModel"/>
 	<bean id="board" class="model.AdminBoardModel"/>
 	<bean id="adboard" class="model.AdminAdBoardModel"/>
+	<bean id="ad_request" class="model.AdRequestModel"/>
+
 </beans><!-- endElement(), endDocument() -->
