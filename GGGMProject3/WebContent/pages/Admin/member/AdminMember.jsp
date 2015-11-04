@@ -60,7 +60,7 @@
 							</thead>
 							<tbody>
 								<c:forEach var="dto" items="${list}">
-									<tr>
+									<tr onclick="location.href='MemberInfo.do?memberid=${dto.id}'">
 										<td width="7%">${dto.id}</td>
 										<td width="10%">${dto.name}</td>
 										<td width="10%"><fmt:formatDate value="${dto.birth }"

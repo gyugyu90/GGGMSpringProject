@@ -87,7 +87,7 @@
 						<div class="row">
 							<div class="col-lg-12" style="text-align: center;">
 								<input type="submit"
-									value="수정"> <input type="button" value="취소">
+									value="수정"> <input type="button" onclick="history.back()" value="취소">
 							</div>
 						</div>
 						</form>						

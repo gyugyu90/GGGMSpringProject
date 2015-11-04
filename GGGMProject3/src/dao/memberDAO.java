@@ -102,4 +102,9 @@ public class memberDAO {
 		session.close();
 		return total;
 	}
+	public static void memberGradeUpdate(memberDTO d){
+		SqlSession session=ssf.openSession(true);
+		session.update("memberGradeUpdate",d);
+		session.close();
+	}
 }
