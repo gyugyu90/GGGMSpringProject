@@ -6,10 +6,16 @@ public class AdGraphDTO {
 	private String adid;
 	private String adno;
 	private String id;
-	private int sumpoint;
+	private int point;
 	private Date viewtime;
 	private int count;
-
+	private String sdfviewtime;
+	public String getSdfviewtime() {
+		return sdfviewtime;
+	}
+	public void setSdfviewtime(String sdfviewtime) {
+		this.sdfviewtime = sdfviewtime;
+	}
 	public String getAdid() {
 		return adid;
 	}
@@ -28,11 +34,11 @@ public class AdGraphDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getSumpoint() {
-		return sumpoint;
+	public int getPoint() {
+		return point;
 	}
-	public void setSumpoint(int sumpoint) {
-		this.sumpoint = sumpoint;
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	public Date getViewtime() {
 		return viewtime;

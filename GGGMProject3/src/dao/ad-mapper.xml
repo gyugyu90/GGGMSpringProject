@@ -16,8 +16,8 @@
 	<update id="getpoint" parameterType="java.util.Map">
 		UPDATE memberData SET sumpoint=sumpoint+#{point} WHERE id=#{id}
 	</update>
-	<insert id="insert_myadviewlist" parameterType="myad">
-		INSERT INTO myadviewlist VALUES(#{memberid}, SYSDATE, #{adno}, #{point}, 'test', 1400)
+	<insert id="insert_adviewlist" parameterType="PointDTO">
+		INSERT INTO adviewlist VALUES(#{adno}, #{id}, #{point}, SYSDATE)
 	</insert>
 	<insert id="adrequestInsert" parameterType="AdDTO">
 	INSERT INTO ad VALUES(ad_adno_seq,#{adid},#{adsubject},#{msg},#{pointrange},#{url},#{maj_category},#{sub_category},#{img})

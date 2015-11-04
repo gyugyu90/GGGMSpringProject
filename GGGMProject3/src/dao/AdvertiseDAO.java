@@ -60,7 +60,7 @@ public class AdvertiseDAO {
 	
 	public static void insertMyadviewlist(AdGraphDTO d){
 		SqlSession session=ssf.openSession(true);
-		session.insert("insert_myadviewlist", d);
+		session.insert("insert_adviewlist", d);
 		session.close();
 	}
 	

@@ -9,7 +9,7 @@
 		ResultSet rs=null;
 		List myadviewlist=new LinkedList();
 		JSONObject responseObj=new JSONObject();
-		String sql="SELECT viewtime, point FROM adviewlist WHERE memberid=?";//
+		String sql="SELECT viewtime, point FROM adviewlist WHERE id=?";//
 		PreparedStatement ps=conn.prepareStatement(sql);
 		String id=(String)session.getAttribute("id");
 		ps.setString(1, id);
@@ -17,10 +17,10 @@
 		JSONObject adviewObj=null;
 		
 		while(rs.next()){
-			String when=rs.getDate("when").toString();
+			String viewtime=rs.getDate("viewtime").toString();
 			int point=rs.getInt("point");
 			adviewObj=new JSONObject();
-			adviewObj.put("when", when);
+			adviewObj.put("viewtime", viewtime);
 			adviewObj.put("point", point);
 			myadviewlist.add(adviewObj);
 		}
