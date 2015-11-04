@@ -10,6 +10,13 @@
      <typeAlias type="dao.FaqDTO" alias="Faq"/>
      <typeAlias type="dao.NoticeDTO" alias="Notice"/>
      <typeAlias type="dao.NoticeReplyDTO" alias="NoticeReply"/>
+     <typeAlias type="dao.ReplyBoardDTO" alias="ReplyBoard"/>
+     <typeAlias type="dao.ReplyDTO" alias="Reply"/>
+     <typeAlias type="dao.AdvertiseDTO" alias="AdDTO"/>
+     <typeAlias type="dao.AdGraphDTO" alias="PointDTO"/>
+     <typeAlias type="dao.MyAdViewListDTO" alias="myad"/>
+	 <typeAlias type="dao.BoardDTO" alias="Board"/>
+     <typeAlias type="dao.ReplyDTO" alias="Reply"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -26,6 +33,11 @@
     <mapper resource="dao/Member-mapper.xml"/>
     <mapper resource="dao/faq-mapper.xml"/>
     <mapper resource="dao/notice-mapper.xml"/>
+    <mapper resource="dao/ad-mapper.xml"/>
+    <mapper resource="dao/board-mapper.xml"/>
+    <mapper resource="dao/adgraph-mapper.xml"/>
+    <mapper resource="dao/adview-mapper.xml"/>
+	<mapper resource="dao/qna-mapper.xml"/>
   </mappers>
 </configuration>
 

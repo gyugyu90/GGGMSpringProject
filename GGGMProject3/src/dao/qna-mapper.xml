@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- PreparedStatement, ResultSet -->
+<mapper namespace="dao.qna-mapper">
+<!-- public List<BoardDTO> boardListData(Map map) 
+
+	 public String boardGetPwd(int no)
+	 resultType  :String
+	 parameterType : int
+	 
+	 public int boardRowCount()
+	 resultType : int
+	 parameterType : (X)
+	 
+	 public void boardInsert(BoardDTO)
+	 resultType: (X)
+	 parameterType : Board 
+-->
+<select id="qnaListData" resultType="Board" parameterType="java.util.Map">
+	SELECT no,subject,name,regdate,hit,num
+	FROM (SELECT no,subject,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,name,regdate,hit
+	FROM qnaBoard ORDER BY no DESC))
+	WHERE num BETWEEN #{start} AND #{end}
+</select>
+<!--  총페이지 -->
+<select id ="qnaRowCount" resultType="int">
+	SELECT COUNT(*) FROM qnaBoard
+</select>
+<!--  게시물 추가 -->
+ <insert id="qnaWrite" parameterType="Board" >
+  <!-- Sequence -->
+  <selectKey keyProperty="no" resultType="int" order="BEFORE">
+    SELECT NVL(MAX(no)+1,1) as no FROM qnaBoard
+  </selectKey>
+    INSERT INTO qnaBoard VALUES(#{no}, #{name}, #{subject}, #{content}, #{pwd}, SYSDATE,0)
+ </insert>
+ 
+ <sql id ="where-no">
+ 	WHERE no=#{no}
+ </sql>
+ 
+  <!--  인증비밀번호 -->
+ <select id="qnaAuthorizedData" resultType="String" parameterType="int">
+ 	SELECT pwd FROM qnaBoard
+ 	<include refid="where-no"/>
+ </select>
+ 
+  <!--  내용보기 -->
+ <select id="qnaContentData" resultType="Board"  parameterType="int">
+    SELECT no,name,subject,content,regdate,hit
+    FROM qnaBoard
+    <include refid="where-no"/>
+ </select>
+ 
+ <!--  조회수 증가 -->
+ <update id="qnaHitIncrement" parameterType="int">
+   UPDATE qnaBoard SET
+   hit=hit+1
+   <include refid="where-no"/>
+ </update>
+
+ <!-- 수정하기 -->
+ 	<update id ="qnaUpdate" parameterType="Board">
+ 		UPDATE qnaBoard SET
+ 		name=#{name},subject=#{subject},pwd=#{pwd},
+ 		content=#{content},regdate=SYSDATE
+ 		 <include refid="where-no"/>
+ 	</update>
+<!-- 답글 세기-->
+ 
+  <select id="qnaReplyCount" resultType="int" parameterType="int">
+    	SELECT COUNT(*) FROM qnareply
+    	WHERE bno=#{bno}
+    </select>
+    
+    <!-- 삭제 -->
+    <delete id="qnaReplyDelete" parameterType="int">
+    	DELETE FROM qnareply
+    	WHERE bno=#{bno}
+    </delete>
+    
+    <delete id="qnaDelete" parameterType="int">
+    	DELETE FROM qnaBoard
+    	WHERE no=#{no}
+    </delete>
+    <!-- 댓글 -->
+  <select id="replyListData" resultType="Reply" parameterType="int">
+    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
+    FROM qnareply
+    WHERE bno=#{bno}
+    ORDER BY group_id DESC,group_step ASC
+  </select>
+  <insert id ="replyNewWrite" parameterType="Reply">
+  <selectKey keyProperty="no" resultType="int" order="BEFORE">
+  	SELECT NVL(MAX(no)+1,1) as no FROM qnareply
+  </selectKey>
+    INSERT INTO qnareply VALUES(#{no},#{bno},#{id},#{name},#{msg},SYSDATE,
+    (SELECT NVL(MAX(group_id)+1,1) FROM qnareply), 0,0,0,0)
+  </insert>
+
+ 
+ <!-- 댓글 댓글 -->
+  <select id="replyParentInfo" resultType="Reply" parameterType="int">
+    SELECT group_id,group_step,group_tab 
+    FROM qnareply
+    WHERE no=#{no}
+  </select>
+  <!-- 
+        AAAAA
+          => DDDDD    1
+          => BBBBB    2
+          
+            => CCCCC  3
+                
+   -->
+  <update id="replyStepIncrement" parameterType="Reply">
+    UPDATE qnareply SET
+    group_step=group_step+1 
+    WHERE group_id=#{group_id} AND group_step>#{group_step}
+  </update>
+  <insert id="replyReplyWrite" parameterType="Reply">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(no)+1,1) as no FROM qnareply
+    </selectKey>
+    INSERT INTO qnareply VALUES(#{no},#{bno},#{id},
+       #{name},#{msg},SYSDATE,
+       #{group_id},
+       #{group_step},#{group_tab},#{root},0)
+  </insert>
+  <update id="replyDepthIncrement" parameterType="int">
+    UPDATE qnareply SET
+    depth=depth+1
+    WHERE no=#{no}
+  </update>
+  <!-- 댓글삭제 -->
+  <!-- 댓글 삭제 -->
+  <select id="replyDataInfo" resultType="Reply" parameterType="int">
+    SELECT depth,root FROM qnareply
+    WHERE no=#{no}
+  </select>
+  <delete id="replyDelete" parameterType="int">
+    DELETE FROM qnareply
+    WHERE no=#{no}
+  </delete>
+  <update id="replyMsgUpdate" parameterType="int">
+    UPDATE qnareply SET
+    msg='관리자가 삭제한 댓글입니다'
+    WHERE no=#{no}
+  </update>
+  <update id="replyDepthDecrement" parameterType="int">
+    UPDATE qnareply SET
+    depth=depth-1
+    WHERE no=#{no}
+  </update>
+  
+  <update id="replyUpdate" parameterType="Reply">
+    UPDATE qnareply SET
+    msg=#{msg}
+    WHERE no=#{no}
+  </update>
+  
+  <!-- 댓글 갯수 -->
+   <select id="replyTotalPage" parameterType="int" resultType="int">
+    SELECT COUNT(*) FROM qnareply
+    WHERE bno=#{bno}
+  </select>
+</mapper>
+  

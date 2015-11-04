@@ -309,7 +309,7 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="#"><i
+							<li><a href="slidebanner.do"><i
 									class="fa fa-angle-double-right"></i>HOT</a></li>
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>Local</a></li>
@@ -320,9 +320,9 @@
 							<span>내정보</span> <i class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="#"><i
+							<li><a href="point.do"><i
 									class="fa fa-angle-double-right"></i>환전</a></li>
-							<li><a href="#"><i
+							<li><a href="myadviewlist.do"><i
 									class="fa fa-angle-double-right"></i>포인트 관리</a></li>
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>경품 관리</a></li>
@@ -334,7 +334,7 @@
 						<ul class="treeview-menu">
 							<li><a href="notice.do"><i
 									class="fa fa-angle-double-right"></i>공지사항</a></li>
-							<li><a href="#"><i
+							<li><a href="qna_list.do"><i
 									class="fa fa-angle-double-right"></i>QnA</a></li>
 							<li><a href="faq.do"><i
 									class="fa fa-angle-double-right"></i>FAQ</a></li>
@@ -345,7 +345,7 @@
 									<span>광고주분석</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 								<ul class="treeview-menu">
-									<li><a href="#"><i
+									<li><a href="adgraph.do"><i
 											class="fa fa-angle-double-right"></i>그래프</a></li>
 									<li><a href="#"><i
 											class="fa fa-angle-double-right"></i>광고비용 산출</a></li>

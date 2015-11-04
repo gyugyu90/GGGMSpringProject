@@ -7,8 +7,10 @@
 <title>회원가입</title>
 
 <link rel="stylesheet" type="text/css" href="join.css"/>
-<link rel="stylesheet" type="text/css" href="../css/shadowbox.css"/>
-<script type="text/javascript" src="../js/shadowbox.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript" src="../../js/shadowbox.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 Shadowbox.init({
    players:["iframe"]		
@@ -33,50 +35,88 @@ function postfind()
 		height:350
 	});
 }
+$(function(){
+	$('#userpwd2').focusout(function(){
+		var pwd1=$('#userpwd').val();
+		var pwd2=$('#userpwd2').val();
+		if(pwd1==''){
+			$('#pwdcheck').text('비밀번호를 입력하세요');
+			$('#pwd_fa').removeClass('fa fa-check');
+			return;
+		}
+		if(pwd2==''){
+			$('#pwdcheck').text('비밀번호를 입력하세요');
+			$('#pwd_fa').removeClass('fa fa-check');
+			return;
+		}
+		
+		if(pwd1==pwd2){
+			$('#pwdcheck').text('');
+			$('#pwd_fa').addClass('fa fa-check');
+		}else{
+			$('#pwdcheck').text('비밀번호를 확인하세요');
+			$('#pwd_fa').removeClass('fa fa-check');
+		}
+	});
+	$('#username').focusout(function(){
+		if($('#username').val()==''){
+			$('#namecheck').text('이름을 입력하세요');
+			$('#name_fa').removeClass('fa fa-check');
+		}else{
+			$('#namecheck').text('');
+			$('#name_fa').addClass('fa fa-check');
+		}
+	});
+	$('#btnSub').click(function(){
+		$('#joinForm').submit();
+	});
+});
 </script>
 </head>
 
 <body>
    <div id="wrapper">
-    <form id="joinForm" name="join_form">
+    <form id="joinForm" name="join_form" action="<%=request.getContextPath() %>/join.do" method="post">
     <p>
     <label for="userid">아이디</label>
-    <input type=text name="id" id="userid">
-    <input type=button value=중복체크 id="useridBtn" onclick="idcheck()">
+    <input type=text name="id" id="userid" onclick="idcheck()" tabindex="1">
+    <input type=button value=중복체크 id="useridBtn" onclick="idcheck()" tabindex="2">
  
     
     </p>
     <p>
     <label for="userpwd">비밀번호</label>
-    <input type=password name="pwd" id="userpwd">
-    <input type=password name="pwd" id="userpwd2" placeholder="재입력">
+    <input type=password name="pwd" id="userpwd" tabindex="3">
+    <input type=password name="pwd2" id="userpwd2" placeholder="재입력" tabindex="4">
+    <span id="pwdcheck"></span><i id="pwd_fa" class="" style="font-size:16px; color:lightcoral;"></i>
     </p>
     <p>
     <label for="username">이름</label>
-    <input type=text name="name" id="username">
+    <input type=text name="name" id="username" tabindex="5">
+    <span id="namecheck"></span><i id="name_fa" class="" style="font-size:16px; color:lightcoral;"></i>
     </p>
     <p>
     <label for="usersex">성별</label>
-    <input type=radio name="sex" id="usersex" checked value="남자">남자
-    <input type=radio name="sex" id="usersex" value="여자">여자
+    <input type=radio name="sex" id="usersex" checked value="남자" tabindex="6">남자
+    <input type=radio name="sex" id="usersex" value="여자" tabindex="7">여자
     </p>
     <p>
     <label for="userbday">생년월일</label>
-    <input type=date name="bday" id="userbday">
+    <input type=date name="bday" id="userbday" tabindex="8">
     </p>
     <p>
     <label for="userpost">주소</label>
     <span id="cellStyle">
-     <input type=text name="post" id="userpost" readonly>
+     <input type=text name="post" id="userpost" readonly tabindex="9">
      <input type=button value="우편번호검색" id="userpostBtn" onclick="postfind()">
-     <input type=text name="addr1" id="useraddr1" readonly>
-     <input type=text name="addr2" id="useraddr2">
+     <input type=text name="addr1" id="useraddr1" readonly tabindex="10">
+     <input type=text name="addr2" id="useraddr2" tabindex="11">
     </span>
     </p>
     <p>
     <label for="usertel">전화번호</label>
     <span id="cellStyle">
-	    <select id="usertel" name="tel1">
+	    <select id="usertel" name="tel1" tabindex="12">
 	      <option>010</option>
 	      <option>011</option>
 	      <option>017</option>
@@ -87,8 +127,8 @@ function postfind()
     </p>
     <p>
     <label for="useremail">e-mail</label>
-    <input type=text name="email" id="useremail"> @
-    <select id="useremail2" name="email2" style="width:inherit">
+    <input type=text name="email" id="useremail" tabindex="13"> @
+    <select id="useremail2" name="email2" style="width:inherit" tabindex="14">
 	      <option>naver.com</option>
 	      <option>hanmail.net</option>
 	      <option>gmail.com</option>
@@ -99,9 +139,10 @@ function postfind()
     </p>
     <p>
     <label for="usermail">메일수신</label>
-    <input type=radio name="mail" id="usermail" checked value="수신동의">수신동의
-    <input type=radio name="mail" id="usermail" value="수신거절">수신거절
+    <input type=radio name="emailreceive" id="usermail" checked value="수신동의">수신동의
+    <input type=radio name="emailreceive" id="usermail" value="수신거절">수신거절
     </p>
+    <hr width="330%">
     <p>
     <label for="userjob">직업</label>
     <select id="userjob" name="job">
@@ -134,16 +175,27 @@ function postfind()
    
      <p>
     <label for="usersal">소득수준</label>
-    <input type=checkbox name="sal" id="usersal" value="100">100~200
-    <input type=checkbox name="sal" id="usersal" value="200">200~300
-    <input type=checkbox name="sal" id="usersal" value="300">300~400<br>
-    <input type=checkbox name="sal" id="usersal" value="400">400~500
-    <input type=checkbox name="sal" id="usersal" value="500">500~600
-    <input type=checkbox name="sal" id="usersal" value="600">600이상
+    <input type=radio name="sal" id="usersal" value="100">100~200
+    <input type=radio name="sal" id="usersal" value="200">200~300
+    <input type=radio name="sal" id="usersal" value="300">300~400<br>
+    <input type=radio name="sal" id="usersal" value="400">400~500
+    <input type=radio name="sal" id="usersal" value="500">500~600
+    <input type=radio name="sal" id="usersal" value="600">600이상
     </p>
      <p>
     <label for="userid">계좌번호</label>
-    <input type=text name="num" id="usernum" >
+    <select id="bankname" name="bankname">
+    	<option>우리</option>
+    	<option>하나</option>
+    	<option>국민</option>
+    	<option>농협</option>
+    	<option>신한</option>
+    	<option>기업</option>
+    	<option>SC제일</option>
+    </select>
+    <input type=text name="account1" id="useraccount1">-
+    <input type=text name="account2" id="useraccount2">-
+    <input type=text name="account3" id="useraccount3">
     </p>
     <p class="btnSubmit">
     <input type=button id="btnSub" value=회원가입>

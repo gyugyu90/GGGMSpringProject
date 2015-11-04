@@ -1,21 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*,com.dao.*"%>
+    pageEncoding="EUC-KR" import="java.util.*,dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="dao" class="com.dao.BoardDAO"/>
-<%
-	String strNo=request.getParameter("no");
-	String strPage=request.getParameter("page");
-    BoardDTO d=dao.qnaUpdateData(Integer.parseInt(strNo));
-%>
-<c:set var="d" value="<%=d %>"/>
-<c:set var="page" value="<%=strPage %>"/>
-<c:set var="no" value="<%=strNo %>"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="qna.css"/>
+<link rel="stylesheet" type="text/css" href="pages/board/qna.css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -49,7 +40,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<form id="writeForm" name="form1" action="qna_modify_ok.jsp" method="post">
+	<form id="writeForm" name="form1" action="qna_modify_ok.do" method="post">
 		<div id="passimg" name="passimg"
 			style="position: absolute; visibility: hidden;"></div>
 		<input type="hidden" name="attach1" value="">
@@ -70,12 +61,12 @@ $(function(){
 											<tbody>
 												<tr>
 													<td width="100" align="center" class="bw_title_color">아이디</td>
-													<td><input id="bw_input_writer" type="text" name="id"
-														size="10" value="${d.id }"> &nbsp;&nbsp;&nbsp; <span
+													<td><input id="bw_input_writer" type="text" name="name"
+														size="10" value="${d.name }"> &nbsp;&nbsp;&nbsp; <span
 														class="bw_title_color">비밀번호&nbsp; </span><input
 														id="bw_input_passwd" name="pwd" type="password" size="10" value="${d.pwd }">
-														 <input type=hidden size=15 name=no value=${no }>
-           												 <input type=hidden size=15 name=page value=${page }>
+														 <input type=hidden size=15 name=no value=${d.no }>
+           												 <input type=hidden size=15 name=page value=${strPage }>
 														
 												    </td>
 												</tr>

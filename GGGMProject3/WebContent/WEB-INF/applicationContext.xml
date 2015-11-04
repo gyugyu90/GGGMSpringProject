@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- src/com/controller/WebApplicationContext에서 파싱 -->
-<!-- 
-	SAX방식에서 태그를 읽는 메소드들
-	startDocument() : xml이 시작이 되었음을 알림
- -->
+<!-- SAX방식에서 태그를 읽는 메소드들 startDocument() : xml이 시작이 되었음을 알림 -->
 <beans><!-- startElement() -->
 	<!-- main.do가 들어왔을 때 매핑할 클래스 => MainModel -->
-	<bean id="login" class="model.LoginModel"/>
-	<bean id="member" class="model.MemberModel"/>
-	<bean id="main" class="model.MainModel"/>
-	<bean id="admember" class="model.ADMemberModel"/>
-	<bean id="normalmember" class="model.NormalMemberModel"/>
-	<bean id="AdminMember" class="model.AdminMemberModel"/>
-	<bean id="faq" class="model.FaqModel"/>
-	
+	<!-- startElement(), endElement() -->	
+	<bean id="login" class="model.LoginModel" />
+	<bean id="member" class="model.MemberModel" />
+	<bean id="main" class="model.MainModel" />
+	<bean id="admember" class="model.ADMemberModel" />
+	<bean id="normalmember" class="model.NormalMemberModel" />
+	<bean id="AdminMember" class="model.AdminMemberModel" />
+	<bean id="faq" class="model.FaqModel" />
+	<bean id="idcheck" class="model.IdCheckModel" />
+	<bean id="board_content" class="model.BoardContentModel" />
+	<bean id="slidebanner" class="model.AdListModel" />
+	<bean id="fullpageMain" class="model.fullpageModel" />
+	<bean id="postfind" class="model.PostFindModel" />
+	<bean id="join" class="model.JoinModel" />
+	<bean id="reply_new_write" class="model.ReplyNewWriteModel" />
+	<bean id="reply_reply_write" class="model.ReplyReplyWriteModel" />
+	<bean id="reply_delete" class="model.ReplyDeleteModel" />
+	<bean id="reply_reply_update" class="model.ReplyReplyUpdateModel" />
+	<bean id="ad_index" class="model.Ad_IndexModel" />
+	<bean id="adgraph" class="model.AdGraphModel" />
+	<bean id="myadviewlist" class="model.MyAdViewListModel" />
+	<bean id="qna_list" class="model.qnaListModel" />
+	<bean id="qna_write_ok" class="model.qnaWriteOkModel" />
+	<bean id="qna_write" class="model.qnaWriteModel" />
+	<bean id="qna_content" class="model.qnaContentModel" />
+	<bean id="qna_authorized" class="model.qnaAuthorizedModel" />
+	<bean id="qna_authorized_ok" class="model.qnaAuthorizedOkModel" />
+	<bean id="qna_delete" class="model.qnaDeleteModel" />
+	<bean id="qna_modify" class="model.qnaModifyModel" />
+	<bean id="qna_modify_ok" class="model.qnaModifyOkModel" />
+	<bean id="qna_reply_write" class="model.qnaReplyWriteModel" />
+	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
 	<bean id="notice" class="model.NoticeModel"/>
-	
 	<bean id="notice_content" class="model.NoticeContentModel"/>
-	
 	<bean id="notice_write" class="model.NoticeWriteModel"/>
 	<bean id="notice_write_ok" class="model.NoticeWriteOkModel"/>
-	
 	<bean id="notice_modify" class="model.NoticeModifyModel"/>
 	<bean id="notice_modify_ok" class="model.NoticeModifyOkModel"/>
-	
 	<bean id="notice_delete" class="model.NoticeDeleteModel"/>
-	
-<!-- 	<bean id="reply_new_write" class="com.model.ReplyNewWriteModel"/> -->
-<!-- 	<bean id="reply_reply_write" class="com.model.ReplyReplyWriteModel"/> -->
-<!-- 	<bean id="reply_delete" class="com.model.ReplyDeleteModel"/> -->
-<!-- 	<bean id="reply_reply_update" class="com.model.ReplyReplyUpdateModel"/> -->
-	
-	
-	
-	<!-- startElement(), endElement() -->	
 </beans><!-- endElement(), endDocument() -->

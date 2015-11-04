@@ -1,0 +1,21 @@
+CREATE TABLE myadviewlist(
+   memberid VARCHAR2(20),
+   when DATE DEFAULT SYSDATE,
+   adno NUMBER, --0은 사용했을 때를 말함
+   point NUMBER(7),
+   description VARCHAR2(20), --어디서 받아왔는지, 어떻게 썼는지를 알려줌
+   balance NUMBER(20),
+   CONSTRAINT myadviewlist_pk_ PRIMARY KEY(memberid, when),
+   CONSTRAINT myadviewlist_fk_id FOREIGN KEY(memberid) REFERENCES memberData(id),
+   CONSTRAINT myadviewlist_fk_adid FOREIGN KEY(adno) REFERENCES ad(adno)
+);
+
+INSERT INTO myadviewlist VALUES('hong', '2015-10-01', 2, 500, '현대자동차', 500);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-02', 2, 500, '현대자동차', 1000);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-03', 3, -800, '해피문화상품권', 200);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-04', 2, 500, '현대자동차', 700);
+INSERT INTO myadviewlist VALUES('hong', '2015-10-05', 2, 500, '현대자동차', 1200);
+INSERT INTO myadviewlist VALUES('test', '2015-10-01', 2, 500, '현대자동차', 500);
+INSERT INTO myadviewlist VALUES('test', '2015-10-02', 2, 500, '현대자동차', 1000);
+INSERT INTO myadviewlist VALUES('test', '2015-10-03', 2, 500, '현대자동차', 1500);
+commit;

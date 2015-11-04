@@ -1,34 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*,com.dao.*"%>
+    pageEncoding="EUC-KR" import="java.util.*,dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="dao" class="com.dao.BoardDAO"/>
-<%
-	String strNo=request.getParameter("no");
-	String strPage=request.getParameter("page");
-	int curpage=Integer.parseInt(strPage);
-	String strRn=request.getParameter("rn");
-    BoardDTO d=dao.qnaContentData(Integer.parseInt(strNo));
-%>
-<c:set var="d" value="<%=d %>"/>
-<c:set var="page" value="<%=strPage %>"/>
-<c:set var="no" value="<%=strNo %>"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="qna.css"/>
+<link rel="stylesheet" type="text/css" href="pages/board/qna.css"/>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
-function del()
-{
-	if(!confirm("삭제하시겠습니까?"))         
-	 {
-	     return                                            
-	 }
-	 else 
-	 { 
-		 document.deleteform.submit();     
-	 }                    
+$(function(){
+	$('#delA').click(function(){
+		if(confirm("정말 삭제하시겠습니까?")== true)
+		{   
+		    $('#delForm').submit();
+		}else
+		{   
+		    return;
+		}
+	});
+	$('#commentA').click(function(){
+		var msg=$('#rmsg').val();
+		
+		if(msg=="")
+		{
+			alert("댓글내용을 입력하세요");
+			$('#rmsg').focus();
+			return;
+		}
+			$('#qna_re_write').submit();
+	});
+
+	var k=0;
+	$('.re_re_a').click(function(){
+		var no=$(this).attr("name");
+		//alert(no);
+		if(k==0)
+		{
+		   $('#re_re_write'+no).show();
+		   $('#re_re_update'+no).hide();
+		   k=1;
+		}
+		else
+		{
+			$('#re_re_write'+no).hide();
+			k=0;
+		}
+	});
+	var p=0;
+	$('.re_up_a').click(function(){
+		$('#re_re_update'+no).hide();
+		var no=$(this).attr("name");
+		//alert(no);
+		if(p==0)
+		{
+		   $('#re_re_update'+no).show();
+		   $('#re_re_write'+no).hide();
+		   p=1;
+		}
+		else
+		{
+			$('#re_re_update'+no).hide();
+			p=0;
+		}
+	});
+});
+function comment(){
+	
+		var msg=$('#rmsg').val();
+		
+		if(msg=="")
+		{
+			alert("댓글내용을 입력하세요");
+			$('#rmsg').focus();
+			return;
+		}
+		else
+		{
+			$('#qna_re_write').submit();
+			alert("댓글내용을 입력하세요");
+		}
+	}
+function ok(){
+	alert(1)
+	$('#qna_re_write').submit();
 }
 </script>
 </head>
@@ -53,8 +111,8 @@ function del()
 <td valign="top" width="640" align="center" id="mk_center"><table id="boardtable" border="0" cellpadding="0" cellspacing="0" width="620">
 <tbody><tr>
     <td align="center">
-<form id="DeleteForm" name="deleteform" action="qna_delete_ok.jsp" method="post">
- <table width="1078" border="0" cellspacing="0" cellpadding="0">
+
+<table width="1078" border="0" cellspacing="0" cellpadding="0">
 
   <tbody><tr align="center">
     <td><table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -70,92 +128,30 @@ function del()
     <td><table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
       <tbody><tr>
        <td width="700">
-  		<table width="700" align="center" id="bv_viewdetail">
+	<table width="700" align="center" id="bv_viewdetail">
 <tbody><tr>
     <td width=50% class="bv_title bv_subject" height="26">
     <span class="bv_titlesub">제 &nbsp; 목</span> : <strong>${d.subject }</strong>
-    <a href="qna_content.jsp&bno=${dto.no }&page=${curpage}">${dto.subject }</a>
+    <a href="qna_content.jsp&bno=${d.no }&page=${strPage}"></a>
     <td width=50% align=left height="28" class="bv_title bv_subject" style="padding-left: 8px; padding-top:5px;">
-    <span class="bv_titlesub">작성자</span> : ${d.id } </td>
+    <span class="bv_titlesub">작성자</span> : ${d.name } </td>
     </td>
 </tr>
 <tr>
     <td width=50% height="28" class="bv_subject" style="padding-left: 8px; padding-top:5px;">
     <span class="bv_titlesub">조회수</span> : ${d.hit } </td>
      <td width=50% align=left height="28" class="bv_subject" style="padding-left: 8px; padding-top:5px;">
-    <span class="bv_titlesub">작성일</span> : ${d.regdate }
-    <input type=hidden size=15 name=no value=${no }>
-    <input type=hidden size=15 name=page value=${page }> 
-    </td>
-   
-</tr>
+    <span class="bv_titlesub">작성일</span> : <fmt:formatDate value="${d.regdate }" pattern="yyyy-MM-dd"/></td>
+    </tr>
 <tr>
-    <td class="bv_subject" height="230" valign="top" style="padding: 13px 8px">${d.content }</td>
+	
+    <td class="bv_subject" colspan="2" height="230" valign="top" style="padding: 13px 8px">${d.content }</td>
+
 </tr>
 </tbody></table>
-
 <!-- END BOARD VIEW -->
 
-
-
-<!-- COMMENT -->
-<table align="center" id="bv_commenttable">
-    <tbody><tr>
-    <td style="padding-bottom:10">
-    <style type="text/css">
-#comment_reply_input {
-    position: absolute;
-    display: none;
-    border: 2px solid #757575;
-    padding: 7px;
-    background: #FFF;
-    z-index: 5;
-}
-#comment_password {
-    position: absolute;
-    display: none;
-    width: 300px;
-    border: 2px solid #757575;
-    padding: 7px;
-    background: #FFF;
-    z-index: 6;
-}
-</style>
-<div id="check_auth" style="position: absolute; z-index: 10;"></div>
-<div id="comment_reply_input"></div>
-<div id="comment_password">
-    <form onsubmit="comment_password_submit(); return false;" style="height: 20px; margin: 0; padding: 0;">
-    <input type="hidden" id="pw_num" name="pw_num" value="">
-    <input type="hidden" id="pw_mode" name="pw_mode" value="">
-    <input type="hidden" id="formnum" name="formnum" value="1">
-    <span style="font-weight: bold;">비밀번호</span>
-    <input type="password" id="input_passwd" name="input_passwd" size="25" value="" style="vertical-align: middle;">
-    <img src="images/btn_ok.gif" alt="확인" onclick="comment_password_submit();" style="border: 0px; cursor: pointer; vertical-align: middle;">
-    <img src="images/btn_close.gif" alt="닫기" onclick="comment_password_close();" style="border: 0px; cursor: pointer; position: absolute; top: 5px; right: 5px;">
-    </form>
-</div>
-<form name="comment_reply_form" action="board.html?" method="post">
-<input type="hidden" name="code" value="hyojung99">
-<input type="hidden" name="num1" value="438171">
-<input type="hidden" name="num2" value="00000">
-<input type="hidden" name="page" value="">
-<input type="hidden" name="lock" value="Y">
-<input type="hidden" name="type" value="v">
-<input type="hidden" name="type2" value="">
-<input type="hidden" name="comnum" value="">
-<input type="hidden" name="comtype" value="">
-<input type="hidden" name="depth" value="">
-<input type="hidden" name="cname" value="">
-<input type="hidden" name="cpass" value="">
-<input type="hidden" name="secret" value="">
-<input type="hidden" name="comment" value="">
-<input type="hidden" name="privercy_agree" value="">
-<input type="hidden" name="third_party_agree" value="">
-<input type="hidden" name="trust_agree" value="">
-</form>
-<form id="comment_form" name="comment" action="board.html?" method="post">
-
-<style type="text/css">
+<style>
 #bc_commentlist , #bc_write{
     border-collapse : collapse;
 }
@@ -192,7 +188,7 @@ function del()
 
 .bc_title {
     color  : #555555;
-    font-weight : bold;
+    font-weight : normal;
     text-align : left;
     padding : 3px 0px 3px 0px;
 }
@@ -235,50 +231,185 @@ td.bc_agree_title {
 }
 </style>
 
-<!-- COMMENT LIST -->
-<table id="bc_commentlist" border="0" cellpadding="0" cellspacing="0" width="100%">
-<!-- LOOP START -->
 
-<!-- LOOP END -->
-</table>
-<!-- END COMMENT LIST -->
+<!-- COMMENT -->
+<table align="center" id="bv_commenttable">
+    <tbody><tr>
+    <td style="padding-bottom:10">
+    
+<style type="text/css">
+#comment_reply_input {
+    position: absolute;
+    display: none;
+    border: 2px solid #757575;
+    padding: 7px;
+    background: #FFF;
+    z-index: 5;
+}
+#comment_password {
+    position: absolute;
+    display: none;
+    width: 300px;
+    border: 2px solid #757575;
+    padding: 7px;
+    background: #FFF;
+    z-index: 6;
+}
+</style>
 
-<!-- COMMENT WRITE -->
-<div id="comment_input">
-
-<table id="bc_write" border="0" cellpadding="0" cellspacing="0" width="100%">
-<tbody><tr>
-    <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif" align="absmiddle"> name</td>
-    <td class="bc_title">
-        <input id="bc_input_writer" type="text" name="cname" size="10" value="" onclick="CheckLogin()" onkeyup="CheckLogin()">
-        <img src="img/qna_dot_black.gif" align="absmiddle"> password
-        <input id="bc_input_passwd" type="password" name="cpass" size="12" onclick="CheckLogin()" onkeyup="CheckLogin()">
-        <input type="hidden" name="secret" value="N">
-    </td>
-</tr>
-<tr>
-    <td class="bc_title_name"></td>
-    <td>
-        <textarea id="bc_textarea" name="comment" rows="3" style="width:510px" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()"></textarea>
-        <a href="JavaScript:comment('');">
-        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
-    </td>
-</tr>
-</tbody></table>
-</div>
-<!-- END COMMENT WRITE -->
+<div id="check_auth" style="position: absolute; z-index: 10;"></div>
+<div id="comment_reply_input"></div>
+<div id="comment_password">
+    <form onsubmit="comment_password_submit(); return false;" style="height: 20px; margin: 0; padding: 0;">
+    <input type="hidden" id="pw_num" name="pw_num" value="">
+    <input type="hidden" id="pw_mode" name="pw_mode" value="">
+    <input type="hidden" id="formnum" name="formnum" value="1">
+    <span style="font-weight: bold;">비밀번호</span>
+    <input type="password" id="input_passwd" name="input_passwd" size="25" value="" style="vertical-align: middle;">
+    <img src="images/btn_ok.gif" alt="확인" onclick="comment_password_submit();" style="border: 0px; cursor: pointer; vertical-align: middle;">
+    <img src="images/btn_close.gif" alt="닫기" onclick="comment_password_close();" style="border: 0px; cursor: pointer; position: absolute; top: 5px; right: 5px;">
+    </form>
+</div><form name="comment_reply_form" action="board.html?" method="post">
 <input type="hidden" name="code" value="hyojung99">
 <input type="hidden" name="num1" value="438171">
 <input type="hidden" name="num2" value="00000">
 <input type="hidden" name="page" value="">
 <input type="hidden" name="lock" value="Y">
 <input type="hidden" name="type" value="v">
-<input type="hidden" name="type2">
-<input type="hidden" name="comnum">
-<input type="hidden" name="comtype">
-<input type="text" name="___DUMMY___" readonly="" disabled="" style="display:none;">
+<input type="hidden" name="type2" value="">
+<input type="hidden" name="comnum" value="">
+<input type="hidden" name="comtype" value="">
+<input type="hidden" name="depth" value="">
+<input type="hidden" name="cname" value="">
+<input type="hidden" name="cpass" value="">
+<input type="hidden" name="secret" value="">
+<input type="hidden" name="comment" value="">
+<input type="hidden" name="privercy_agree" value="">
+<input type="hidden" name="third_party_agree" value="">
+<input type="hidden" name="trust_agree" value="">
+</form>
 
-</form>    </td>
+
+<!-- COMMENT LIST -->
+<table id="bc_commentlist" border="1" cellpadding="0" cellspacing="0" width="100%"></table>
+<!-- END COMMENT LIST -->
+
+<!-- COMMENT WRITE -->
+<div id="comment_input">
+
+<!--  출력폼 -->
+<table id="bc_write" border="0" cellpadding="0" cellspacing="0" width="100%">
+ <c:forEach var="rDto" items="${rlist }">
+ <tbody><tr>
+    <td class="bc_title bc_title_name" align=left width="60%">
+      <c:if test="${rDto.group_tab!=0 }">
+         <c:forEach var="i" begin="1" end="${rDto.group_tab }">
+         &nbsp;&nbsp;
+         </c:forEach><img src="img/qna_reply.gif">
+      </c:if>
+      <img src="img/qna_dot_black.gif">&nbsp;&nbsp;${rDto.name } (${rDto.dbday })
+      <br>
+      <c:if test="${rDto.group_tab!=0 }">
+        <c:forEach var="i" begin="1" end="${rDto.group_tab }">
+        &nbsp;&nbsp;
+        </c:forEach>
+      </c:if>
+      ${rDto.msg }
+    </td>
+     <td align=right width="40%">
+      <c:if test="${sessionScope.id!=null }">
+        └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
+      <c:if test="${sessionScope.id!=null }">
+        └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;└ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
+      </c:if>
+      </c:if>
+     </td>
+</tr>
+</tbody>
+<%-- <!-- 댓글의댓글 시작-->
+<tbody id="re_re_write${rDto.no }"  style="display:none">
+<tr>
+ <td class="bc_title bc_title_name" width=110><img src="img/qna_dot_black.gif"> name
+        <input id="bc_input_writer" type="text" name="cname" size="10" value="" onclick="CheckLogin()" onkeyup="CheckLogin()">
+        <img src="img/qna_dot_black.gif"> password
+        <input id="bc_input_passwd" type="password" name="cpass" size="12" onclick="CheckLogin()" onkeyup="CheckLogin()">
+        <input type=hidden name="bno" value="${d.no }">
+        <input type=hidden name="page" value="${strPage }">
+		<input type="hidden" name="no" value="${rDto.no }">
+        <!-- <input type="hidden" name="secret" value="N"> -->
+    </td>
+    <td></td>
+ </tr>
+ <tr>
+   <td> 
+     <textarea id="bc_textarea" name="comment" rows="3" style="width:550px"></textarea>
+   </td>
+   <td align=center>
+     <a href="#" id="comment">
+     <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+    </td>
+    
+ </tr>
+ </tbody>
+ <!--  댓글수정 -->
+ <tbody id="re_re_update${rDto.no }" style="display:none">
+ <tr>
+ <td class="bc_title bc_title_name" width=110><img src="img/qna_dot_black.gif"> name
+        <input id="bc_input_writer" type="text" name="cname" size="10" value="${rDto.name }" onclick="CheckLogin()" onkeyup="CheckLogin()">
+        <img src="img/qna_dot_black.gif"> password
+        <input id="bc_input_passwd" type="password" name="cpass" size="12" onclick="CheckLogin()" onkeyup="CheckLogin()">
+        <input type=hidden name="bno" value="${d.no }">
+        <input type=hidden name="page" value="${strPage }">
+		<input type="hidden" name="no" value="${rDto.no }">
+        <!-- <input type="hidden" name="secret" value="N"> -->
+    </td>
+    <td></td>
+ </tr>
+ <tr>
+   <td> 
+     <textarea id="bc_textarea" name="comment" rows="3" style="width:550px"></textarea>
+   </td>
+   <td align=center>
+     <a href="#" id="comment">
+     <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+    </td>
+    
+ </tr>
+ </tbody>
+ <!-- 댓글수정끝 --> --%>
+ </c:forEach>
+ </table>
+ <!-- COMMENT WRITE -->
+
+
+<table id="bc_write" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+    <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID</td>
+    <td class="bc_title">
+        <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
+        <img src="img/qna_dot_black.gif"> name
+        <input id="bc_input_name" type="text" name="name" size="12" value="${sessionScope.name }">
+        <input type="hidden" name="secret" value="N">
+    </td>
+</tr>
+<tr>
+    <td class="bc_title_name"></td>
+    <td>
+    	<form id="qna_re_write" action="qna_reply_write.do" method="post">
+        <textarea id="rmsg" name="rmsg" rows="3" style="width:510px"></textarea>
+        <input type=hidden name="bno" value="${d.no }">
+        <input type=hidden name="page" value="${strPage }">
+        <a href="<%-- qna_reply_write.do?bno=${d.no }&rmsg=&page=${strPage} --%>#" id="commentA" onclick="ok()">
+        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+		</form>        
+    </td>
+</tr>
+</tbody></table>
+
+<!-- END COMMENT WRITE -->
+
+
+  </td>
     </tr>
 </tbody></table>
 <!-- COMMENT END -->
@@ -287,13 +418,15 @@ td.bc_agree_title {
 <table id="bv_showbutton" border="0" width="100%" style="margin-bottom:31px">
 <tbody><tr>
     <td align="right">
-     
-        <a href="javascript:del()">
+        <a href="qna_delete.do?no=${d.no }&page=${strPage }" id="delA">
         <img src="img/qna_delete.gif" border="0"></a>    
-        <a href="qna_modify.jsp?no=<%=d.getNo()%>&page=<%=curpage%>&rn=<%=d.getRownum()%>">
+        <a href="qna_modify.do?no=${d.no }&page=${strPage }">
         <img src="img/qna_modify.gif" border="0"></a>
-        <a href="qna.jsp?page=<%=strPage %>"><img src="img/detail_list.gif" border="0"></a> </td>
+        <a href="qna_list.do?page=${strPage }">
+        <img src="img/detail_list.gif" border="0"></a>   
+    </td>
 </tr>
+
 </tbody></table>
 <!-- LINK_ END -->
 
@@ -306,7 +439,7 @@ td.bc_agree_title {
   </tr>
   
 </tbody></table>
-</form>
+
     </td>
 </tr>
 </tbody></table>

@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- PreparedStatement,ResultSet -->
 <mapper namespace="dao.Member-mapper">
-	
+
 	<select id="memberIdCount" resultType="int" parameterType="String">
 		SELECT COUNT(*) FROM memberData
 		WHERE id=#{id}
@@ -13,15 +13,67 @@
 		WHERE id=#{id}
 	</select>
 	<select id="getNormalMemberAllData" resultType="Member">
-		SELECT * FROM memberData WHERE grade=1
-	</select>
-	<select id="getMemberAllData" resultType="Member">
-		SELECT * FROM memberData
-	</select>
+		SELECT * FROM 
+		(SELECT ROWNUM num, m.* FROM memberData m WHERE grade=1 ORDER BY id DESC)		
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>	
 	<select id="getADMemberAllData" resultType="Member">
-		SELECT * FROM memberData WHERE grade=2
+		SELECT * FROM 
+		(SELECT ROWNUM num, m.* FROM memberData m WHERE grade=2 ORDER BY id DESC)		
+		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<select id="getAdminMemberAllData" resultType="Member">
-		SELECT * FROM memberData WHERE grade=3
+		SELECT * FROM 
+		(SELECT ROWNUM num, m.* FROM memberData m WHERE grade=3 ORDER BY id DESC)		
+		WHERE num BETWEEN #{start} AND #{end}
 	</select>
+	<select id="memberListData" resultType="Member" parameterType="java.util.Map">
+		SELECT * FROM 
+		(SELECT ROWNUM num, m.* FROM memberData m ORDER BY id DESC)		
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 총페이지 -->
+	<select id="memberRowCount" resultType="int">
+		SELECT COUNT(*) FROM memberData
+	</select>
+	<select id="admemberRowCount" resultType="int">
+		SELECT COUNT(*) FROM memberData WHERE grade=2
+	</select>
+	<select id="normalmemberRowCount" resultType="int">
+		SELECT COUNT(*) FROM memberData WHERE grade=1
+	</select>
+	<select id="adminmemberRowCount" resultType="int">
+		SELECT COUNT(*) FROM memberData WHERE grade=3
+	</select>
+	<!-- procedure 호출하는 부분 -->
+	<!-- 주소 갯수 -->
+	<select id="PostFindCount" resultType="int" parameterType="String">
+		SELECT postCount(#{dong}) FROM DUAL
+	</select>
+	
+	<!-- cursor 호출하는 부분 -->
+	<!-- 주소 찾기 -->
+	<resultMap id="postData" type="dao.ZipcodeDTO"></resultMap>
+	<select id="postFindData" statementType="CALLABLE" parameterType="java.util.Map">
+		{
+			CALL postfind(
+				#{dong, mode=IN},
+				#{result, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=postData}
+			)
+		}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="memberJoin" parameterType="Member">
+		INSERT INTO memberData VALUES(
+			#{name}, #{id}, #{pwd}, #{birth}, #{tel}, #{sex}, 
+			#{post}, #{addr1}, #{addr2}, 0, #{email}, 
+			#{emailreceive})
+	</insert>
+	
+	<select id="memberTotalPoint" parameterType="Member" resultType="int">
+	SELECT sumpoint FROM memberData WHERE id=#{id}
+	</select>
+	
+	
 </mapper>

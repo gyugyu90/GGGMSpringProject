@@ -16,7 +16,7 @@ public class IdCheckModel implements Model {
 		System.out.println("bcheck:"+bcheck);
 		req.setAttribute("idcheck", 2-bcheck);
 		req.setAttribute("usableId", id);
-		return "/member/idcheck.jsp";
+		return "pages/member/idcheck.jsp";
 	}
 
 }
