@@ -35,14 +35,13 @@
 	<div class="row">
 		<div class="col-md-offset-1">
 			&nbsp;&nbsp;&nbsp;&nbsp; <a href="main.jsp?no=14&pno=0">ÀüÃ¼±Û | </a> <a
-				href="main.jsp?no=14&pno=1">±¤°í | </a> <a href="main.jsp?no=14&pno=2">´ñ±Û
+				href="adboard.do">±¤°í | </a> <a href="main.jsp?no=14&pno=2">´ñ±Û
 				| </a> <a href="main.jsp?no=14&pno=3">FAQ | </a> <a
 				href="main.jsp?no=14&pno=4">QnA | </a> <a
 				href="main.jsp?no=14&pno=5">1:1¹®ÀÇ </a>
 		</div>
 	</div>
 
-	<jsp:include page="${jsp }"></jsp:include>
 
 </body>
 </html>

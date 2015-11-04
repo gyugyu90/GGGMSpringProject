@@ -43,4 +43,6 @@
 	<bean id="notice_modify" class="model.NoticeModifyModel"/>
 	<bean id="notice_modify_ok" class="model.NoticeModifyOkModel"/>
 	<bean id="notice_delete" class="model.NoticeDeleteModel"/>
+	<bean id="board" class="model.AdminBoardModel"/>
+	<bean id="adboard" class="model.AdminAdBoardModel"/>
 </beans><!-- endElement(), endDocument() -->
