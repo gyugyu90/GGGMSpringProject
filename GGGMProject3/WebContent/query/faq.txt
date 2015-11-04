@@ -1,0 +1,45 @@
+/*
+create table gggm_faq(
+	no NUMBER CONSTRAINT faq_nn_no NOT NULL,
+	subject VARCHAR2(200) CONSTRAINT faq_nn_sub NOT NULL,
+	content VARCHAR2(4000) CONSTRAINT faq_nn_con NOT NULL
+);
+
+insert into gggm_faq values(
+	1,
+	'개인정보는 누출되지 않나요?',
+	'입력하신 개인정보는 고객님의 성향을 파악하여 추천광고를 띄우는데 사용됩니다. 그 외에 용도로는 사용되지 않습니다.'
+);
+insert into gggm_faq values(
+	2,
+	'회원가입이 되지 않습니다.',
+	'사용하시는 브라우져의 옵션항목에서 자바스크립트 사용에 "허용"을 눌러 주십시오.'
+);
+insert into gggm_faq values(
+	3,
+	'원하지 않는 광고가 자꾸 떠요.',
+	'광고의 노출은 1.고객님이 선택하신 연령, 지역 등에 기반 2.과거 클릭한 광고의 종류 에 기반하여 진행됩니다. 추가적인 사항은 관리자에게 1:1 문의 부탁 드립니다.'
+);
+insert into gggm_faq values(
+	4,
+	'포인트를 상품권으로 바꾸고 싶어요.',
+	'좌측의 내 정보 항목을 누르시면, 포인트 관리라는 항목이 뜹니다. 그 쪽으로 가시면, 원하시는 상품권을 선택하신 후, 환전이 가능합니다. 이 때, 상품권은 개인정보에 저장된 주소로 발송되니, 반드시 확인하여 주십시오.'
+);
+insert into gggm_faq values(
+	5,
+	'환전 버튼이 눌러지지 않아요.',
+	'각 상품권에는 환전 가능한 기본 단위가 지정되어 있습니다. 보유하신 포인트가 각 상품권 별 최소액에 미달하는 경우, 환전이 불가능합니다.'
+);
+commit;
+
+CREATE OR REPLACE PROCEDURE getAllFaq(
+	pResult OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+	OPEN pResult FOR
+	SELECT no,subject,content
+	FROM gggm_faq
+	ORDER BY no ASC;
+END;
+/

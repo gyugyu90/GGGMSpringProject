@@ -1,0 +1,47 @@
+--2015.10.29 광고구마 공지
+/*
+DROP TABLE notice;
+DROP TABLE replynotice;
+
+create table notice(
+	no NUMBER,
+	subject VARCHAR2 (50) CONSTRAINT notice_nn_subject NOT NULL,
+	content CLOB CONSTRAINT notice_nn_content NOT NULL,
+	regdate DATE DEFAULT SYSDATE,
+	hit NUMBER DEFAULT 0,
+	CONSTRAINT notice_pk_no PRIMARY KEY(no)
+);
+*/
+create table replynotice(
+	no NUMBER,
+	bno NUMBER,
+	id VARCHAR2(20) CONSTRAINT replynotice_nn_id NOT NULL,
+	name VARCHAR2(20) CONSTRAINT replynotice_nn_name NOT NULL,
+	msg VARCHAR2(4000) CONSTRAINT replynotice_nn_msg NOT NULL,
+	regdate DATE DEFAULT SYSDATE,
+	group_id NUMBER,
+	group_step NUMBER,
+	group_tab NUMBER,
+	root NUMBER,
+	depth NUMBER,
+	CONSTRAINT replynotice_pk_no PRIMARY KEY(no),
+	CONSTRAINT replynotice_pk_bno FOREIGN KEY(bno)
+	REFERENCES notice(no)
+);
+/*
+INSERT INTO notice(no,subject,content) VALUES(1,'오픈 기념 이벤트','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(2,'오픈 기념 이벤트 당첨자 안내','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(3,'불법 이용자 단속 안내','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(4,'불법 이용자 리스트','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(5,'대박 포인트 주간 안내','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(6,'공익광고 이벤트 안내','댓글~댓글...');
+*/
+INSERT INTO replynotice VALUES(1,1,'hong','홍길동','축하합니다..',SYSDATE,1,0,0,0,0);
+INSERT INTO replynotice VALUES(2,1,'shim','심청이','축하해요~.',SYSDATE,2,0,0,0,0);
+INSERT INTO replynotice VALUES(3,4,'hong','홍길동','난 억울하다..',SYSDATE,3,0,0,0,0);
+INSERT INTO replynotice VALUES(4,4,'shim','심청이','위엣분 사기.',SYSDATE,4,0,0,0,0);
+INSERT INTO replynotice VALUES(5,5,'hong','홍길동','아싸 두배!.',SYSDATE,5,0,0,0,0);
+INSERT INTO replynotice VALUES(6,6,'shim','심청이','좋아요!!!',SYSDATE,6,0,0,0,0);
+commit;
+
+
