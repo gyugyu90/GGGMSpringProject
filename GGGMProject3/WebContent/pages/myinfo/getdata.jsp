@@ -9,7 +9,7 @@
 		ResultSet rs=null;
 		List myadviewlist=new LinkedList();
 		JSONObject responseObj=new JSONObject();
-		String sql="SELECT when, point FROM myadviewlist WHERE memberid=?";//
+		String sql="SELECT viewtime, point FROM adviewlist WHERE memberid=?";//
 		PreparedStatement ps=conn.prepareStatement(sql);
 		String id=(String)session.getAttribute("id");
 		ps.setString(1, id);

@@ -13,5 +13,10 @@
 	<select id="side_info" resultType="AdDTO" parameterType="int">
 		SELECT adno, url, hit FROM ad WHERE adno=#{adno}
 	</select>
-
+	<update id="getpoint" parameterType="java.util.Map">
+		UPDATE memberData SET sumpoint=sumpoint+#{point} WHERE id=#{id}
+	</update>
+	<insert id="insert_myadviewlist" parameterType="myad">
+		INSERT INTO myadviewlist VALUES(#{memberid}, SYSDATE, #{adno}, #{point}, 'test', 1400)
+	</insert>
 </mapper>

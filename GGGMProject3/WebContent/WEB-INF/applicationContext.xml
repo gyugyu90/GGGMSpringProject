@@ -36,6 +36,7 @@
 	<bean id="qna_modify_ok" class="model.qnaModifyOkModel" />
 	<bean id="qna_reply_write" class="model.qnaReplyWriteModel" />
 	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
+	<bean id="getpoint" class="model.GetPointModel" />
 	<bean id="notice" class="model.NoticeModel"/>
 	<bean id="notice_content" class="model.NoticeContentModel"/>
 	<bean id="notice_write" class="model.NoticeWriteModel"/>

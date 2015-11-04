@@ -3,6 +3,7 @@ package dao;
 import java.io.Reader;
 import java.sql.*;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -51,5 +52,16 @@ public class AdvertiseDAO {
 		return dto;
 	}
 	
+	public static void getpoint(Map map){
+		SqlSession session=ssf.openSession(true);
+		session.update("getpoint",map);
+		session.close();
+	}
+	
+	public static void insertMyadviewlist(AdGraphDTO d){
+		SqlSession session=ssf.openSession(true);
+		session.insert("insert_myadviewlist", d);
+		session.close();
+	}
 	
 }
