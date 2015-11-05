@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>광고구마</title>
 		<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -13,22 +14,25 @@
         <link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
+	
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-		var mancount=$('#mancount');
-		var womancount=$('#womancount');
+
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['남자', mancount],
-          ['여자',    womancount]
+          ['클릭수', 'ToDay'],
+          ['여자',     <%=request.getAttribute("womancount")%>],
+          ['남자',      <%=request.getAttribute("mancount")%>]
+          
         ]);
 
         var options = {
-          title: '성별'
+          title: '성별 분류',
+          'sliceVisibilityThreshold':0 ,
+          'width' : 450,
+          'height' : 450
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -36,54 +40,38 @@
         chart.draw(data, options);
       }
     </script>
-     <script type="text/javascript">
-    //from googlechart.blogspot.kr
-    var queryObject="";
-    var queryObjectLen="";
-    var listadno=$('#adno').val();
-    $.ajax({
-    	type:'POST',
-    	url:'pages/adhost/adgetdata.jsp',
-    	data:{adno:listadno},
-    	dataType:'json',
-    	success:function(data){
-    		queryObject=eval('('+JSON.stringify(data)+')');
-    		queryObjectLen=queryObject.adviewlist.length;
-    	},
-    	error:function(xhr,type){
-    		alert('server error occured!')
-    	}
-    });
-    
-    //google chart api
-    google.load('visualization', '1.1', {packages: ['line']});
-    google.setOnLoadCallback(drawChart);
+    <script type="text/javascript">
+	
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
 
-    function drawChart() {
-		
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Day');
-      data.addColumn('number', 'count');
-      
-	  for(var i=0;i<queryObjectLen;i++){
-		  var count=queryObject.adviewlist[i].count;
-		  data.addRows([
-		       [i+1, parseInt(count)]         
-		  ]);
-	  }
-      
-
-      var options = {
-        chart: {
-          title: '광고 시청 현황',
+        var data = google.visualization.arrayToDataTable([
+          ['클릭수', 'ToDay'],
+          ['10대미만',     <%=request.getAttribute("age0")%>+0],
+          ['10대',      <%=request.getAttribute("age1")%>+0],
+          ['20대',      <%=request.getAttribute("age2")%>+0],
+          ['30대',      <%=request.getAttribute("age3")%>+0],
+          ['40대',      <%=request.getAttribute("age4")%>+0],
+          ['50대',      <%=request.getAttribute("age5")%>+0],
+          ['60대',      <%=request.getAttribute("age6")%>+0],
+          ['70대',      <%=request.getAttribute("age7")%>+0],
+          ['80대 이상',      <%=request.getAttribute("age8")%>]
           
-        },
-        width: 400,
-        height: 350
-      };
+        ]);
 
-    }
-  </script>
+        var options = {
+          title: '나이별 분류',
+          'sliceVisibilityThreshold':0 ,
+          'width' : 450,
+          'height' : 450
+        };
+		
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+        chart.draw(data, options);
+      }
+    </script>
 <style type="text/css">
 #body {
 	width: 100%;
@@ -97,18 +85,29 @@
 	float: left;
 	width:50%;
 	height:100%;
-	font-family: 맑은 고딕;
-	font-size: 15pt;
-
-	text-align: center;
 	
+	
+	
+	
+	
+}
+#body #top #top_left #img{
+	float : left;
+	margin-left: 16%;
+	padding-left: 16%;
 }
 #body #top #top_right{
 	float: right;
 	width:50%;
 	height:100%;
 	
-	text-align: center;
+	
+	
+}
+#body #top #top_right #linechart_material{
+	float : right;
+	margin-right: 15%;
+	padding-right: 15%;
 	
 }
 #body #bottom{
@@ -119,6 +118,23 @@
 	font-size: 15pt;
 	padding-left: 15px;
 	
+}
+#body #bottom #piechart{
+	width: 50%;
+	height: 100%;
+	float: left;
+	
+	padding-top: 30px;
+	margin-left: 15%;
+}
+#body #bottom #piechart1{
+	
+	width: 50%;
+	height: 100%;
+	float: right;
+	
+	padding-top: 30px;
+	margin-right: 15%;
 }
 #body #bottom .point_table{
 	width: 10%;
@@ -148,11 +164,11 @@ li{ list-style-type : none;
 		<div class=row>
 		<div id="top">
 			<div id="top_left">
-				<img src="poster/ad${list.adno}.PNG" width=300 height=300>
-				<input type="hidden" id="adno" value="${list.adno}"/>
 				
-				<input type="hidden" id="mancount" value="${mancount }"/>
-				<input type="hidden" id="womancount" value="${womancount }"/>
+				<img id="img" src="poster/ad${list.adno}.PNG" width=450 height=450>
+				<input type="hidden" id="adno" value="${list.adno}"/>
+				<input type="hidden" id="mancount" value="mancount" value="${mancount }"/>
+				<input type="hidden" id="womancount" name="womancount"value="${womancount }">
 			</div>
 			<div id="top_right">
 				
@@ -163,9 +179,8 @@ li{ list-style-type : none;
 		</div>
 		<div class=row>
 		<div id="bottom">
-			광고 현황
-			<table>
-				
+			
+			<!-- <table>
 				<tr  id="first_list">
 					<th  class="point_table">
 					성별
@@ -189,28 +204,22 @@ li{ list-style-type : none;
 					취미별
 					</th>
 				</tr>
-				
 				<tr>
 					<td class="point_table">
-						
 					</td>
 					<td class="point_table">
-					    
 					</td>
 					<td class="point_table">
 					    사용
 					</td>
 					<td class="point_table">
-					    
 					</td >
 					<td class="point_table" >
-					    	
 					</td>
 				</tr>
-				
-				
-			</table>
-			<div id="piechart" style="width: 900px; height: 500px;"></div>
+			</table> -->
+			<div id="piechart" style="width: 450px; height: 450px;"></div>
+			<div id="piechart1" style="width: 450px; height: 450px;"></div>
 		</div>
 		</div>
 	</div>
@@ -242,7 +251,7 @@ li{ list-style-type : none;
     google.load('visualization', '1.1', {packages: ['line']});
     google.setOnLoadCallback(drawChart);
 
-    function drawChart() {
+    function drawChart() {;
 		
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'Day');
@@ -261,8 +270,8 @@ li{ list-style-type : none;
           title: '광고 시청 현황',
           
         },
-        width: 400,
-        height: 350
+        width: 450,
+        height: 450
       };
       var chart = new google.charts.Line(document.getElementById('linechart_material'));
 		

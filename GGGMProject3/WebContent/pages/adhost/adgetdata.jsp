@@ -9,12 +9,13 @@
 		ResultSet rs=null;
 		List adviewlist=new LinkedList();
 		JSONObject responseObj=new JSONObject();
+		String adno=request.getParameter("adno");
 		String sql="SELECT COUNT(*) as count FROM adviewlist WHERE adno=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
-		String adno=request.getParameter("adno");
-		
+		System.out.println(adno);
 		ps.setInt(1, Integer.parseInt(adno));
 		rs=ps.executeQuery();
+		
 		JSONObject adviewObj=new JSONObject();
 		
 		while(rs.next()){
@@ -28,6 +29,9 @@
 		responseObj.put("adviewlist", adviewlist);
 		out.println(responseObj.toString());
 		System.out.println("adgetdata 전송완료");
+		
+		
+		
 		/* // 하루에 몇명 카운트/ 하루에 어떤 사람이 많이봤나.
 		while(rs.next()){
 			String when=rs.getDate("when").toString();
