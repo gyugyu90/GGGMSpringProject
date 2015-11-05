@@ -15,9 +15,9 @@ public class GetPointModel implements Model {
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 			
 		req.setCharacterEncoding("EUC-KR");
-		String adno=req.getParameter("adno");
+		//String adno=req.getParameter("adno");
 		//String point=req.getParameter("point");
-		//int adno=Integer.parseInt(req.getParameter("adno"));
+		int adno=Integer.parseInt(req.getParameter("adno"));
 		int point=Integer.parseInt(req.getParameter("point"));
 		System.out.println("adno:"+adno);
 		System.out.println("point:"+point);

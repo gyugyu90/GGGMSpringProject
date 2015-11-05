@@ -5,8 +5,11 @@
 <mapper namespace="dao.adview-mapper">
 
 	<select id="myadviewlist" resultType="PointDTO" parameterType="String">
-		SELECT viewtime, point FROM adviewlist
+		SELECT viewtime, point, adno FROM adviewlist
 		WHERE id=#{id} ORDER BY viewtime DESC
 	</select>
 	
+	<select id="getDescription" resultType="String" parameterType="int">
+		SELECT adsubject FROM ad WHERE adno=#{adno}
+	</select>
 </mapper>

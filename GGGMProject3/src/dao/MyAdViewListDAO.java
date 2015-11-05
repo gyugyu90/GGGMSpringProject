@@ -30,6 +30,12 @@ public class MyAdViewListDAO {
     	List<AdGraphDTO> list=session.selectList("myadviewlist", id);
     	session.close();
     	return list;
-    	
+    }
+    
+    public static String getDescription(int adno){
+    	SqlSession session=ssf.openSession();
+    	String desc=session.selectOne("getDescription", adno);
+    	session.close();
+    	return desc;
     }
 }

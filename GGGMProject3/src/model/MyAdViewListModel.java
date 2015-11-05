@@ -25,11 +25,18 @@ public class MyAdViewListModel implements Model {
 		for(AdGraphDTO dto:list){
 			String date=sdf.format(dto.getViewtime());
 			dto.setSdfviewtime(date);
+			String description=MyAdViewListDAO.getDescription(dto.getAdno());
+			dto.setDescription(description);
 		}
 		
-		//보유 포인트
+		//잔고
+		int balance=0;
+		for(int i=list.size()-1;i>=0;i--){
+			balance+=list.get(i).getPoint();
+			list.get(i).setBalance(balance);
+		}
 		
-		
+		req.setAttribute("point", balance);
 		req.setAttribute("myadviewlist", list);
 		req.setAttribute("jsp", "../myinfo/point.jsp");
 		
