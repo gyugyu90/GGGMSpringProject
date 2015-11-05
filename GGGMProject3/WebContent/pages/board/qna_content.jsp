@@ -22,43 +22,29 @@ $(function(){
 		    return;
 		}
 	});
-	$('#commentA').click(function(){
-		var msg=$('#rmsg').val();
-		
-		if(msg=="")
-		{
-			alert("댓글내용을 입력하세요");
-			$('#rmsg').focus();
-			return;
-		}
-			$('#qna_re_write').submit();
-	});
-
 	var k=0;
 	$('.re_re_a').click(function(){
 		var no=$(this).attr("name");
-		//alert(no);
 		if(k==0)
 		{
-		   $('#re_re_write'+no).show();
-		   $('#re_re_update'+no).hide();
+		   $('#qna_reply_reply_write'+no).show();
+		   $('#qna_re_re_update'+no).hide();
 		   k=1;
 		}
 		else
 		{
-			$('#re_re_write'+no).hide();
+			$('#qna_reply_reply_write'+no).hide();
 			k=0;
 		}
 	});
-	var p=0;
+	/* var p=0;
 	$('.re_up_a').click(function(){
-		$('#re_re_update'+no).hide();
 		var no=$(this).attr("name");
 		//alert(no);
 		if(p==0)
 		{
-		   $('#re_re_update'+no).show();
-		   $('#re_re_write'+no).hide();
+		   $('#qna_re_re_update'+no).show();
+		   $('#qna_reply_reply_write'+no).hide();
 		   p=1;
 		}
 		else
@@ -66,28 +52,42 @@ $(function(){
 			$('#re_re_update'+no).hide();
 			p=0;
 		}
-	});
+	}); */
 });
-function comment(){
+
+function re_ok(){
+	var msg=$('#msg').val();
 	
-		var msg=$('#rmsg').val();
+	if(msg=="")
+	{
+		alert("댓글내용을 입력하세요");
+		$('#msg').focus();
+		return;
+	}
+	$('#qna_re_write').submit();
+}
+ function re_re_ok(no){
+	var msg=$('#rrmsg'+no).val();
+	
+	if(msg=="")
+	{
+		alert("댓글댓글내용을 입력하세요");
+		$('#rrmsg'+no).focus();
+		return;
+	}
+	$('#qna_re_re_write'+no).submit();
+} 
+ function re_up_ok(no){
+		var msg=$('#umsg'+no).val();
 		
 		if(msg=="")
 		{
-			alert("댓글내용을 입력하세요");
-			$('#rmsg').focus();
+			alert("댓글댓글내용을 입력하세요");
+			$('#umsg'+no).focus();
 			return;
 		}
-		else
-		{
-			$('#qna_re_write').submit();
-			alert("댓글내용을 입력하세요");
-		}
-	}
-function ok(){
-	alert(1)
-	$('#qna_re_write').submit();
-}
+		$('#qna_re_update'+no).submit();
+} 
 </script>
 </head>
 <body>
@@ -293,71 +293,111 @@ td.bc_agree_title {
 <!-- COMMENT LIST -->
 <table id="bc_commentlist" border="1" cellpadding="0" cellspacing="0" width="100%"></table>
 <!-- END COMMENT LIST -->
+</table>
 
 <!-- COMMENT WRITE -->
-<div id="comment_input">
-
+<div id="">
+<table>
 <!--  출력폼 -->
-<table id="bc_write" border="0" cellpadding="0" cellspacing="0" width="100%">
- <c:forEach var="rDto" items="${rlist }">
- <tbody><tr>
-    <td class="bc_title bc_title_name" align=left width="60%">
-      <c:if test="${rDto.group_tab!=0 }">
-         <c:forEach var="i" begin="1" end="${rDto.group_tab }">
-         &nbsp;&nbsp;
-         </c:forEach><img src="img/qna_reply.gif">
-      </c:if>
-      <img src="img/qna_dot_black.gif">&nbsp;&nbsp;${rDto.name } (${rDto.dbday })
-      <br>
-      <c:if test="${rDto.group_tab!=0 }">
-        <c:forEach var="i" begin="1" end="${rDto.group_tab }">
-        &nbsp;&nbsp;
-        </c:forEach>
-      </c:if>
-      ${rDto.msg }
+
+     <table id="table_content">
+        <c:forEach var="rDto" items="${rlist }">
+          <tr>
+           <td width="70%" colspan="2" align=left>
+            <c:if test="${rDto.group_tab!=0 }">
+              <c:forEach var="i" begin="1" end="${rDto.group_tab }">
+               &nbsp;&nbsp;
+              </c:forEach>
+              <img src="img/qna_reply.gif">
+            </c:if>
+            <img src="img/qna_dot_black.gif">&nbsp;&nbsp;${rDto.name }
+            (${rDto.dbday })
+            <br>
+            <c:if test="${rDto.group_tab!=0 }">
+              <c:forEach var="i" begin="1" end="${rDto.group_tab }">
+               &nbsp;&nbsp;
+              </c:forEach>
+            </c:if>
+            ${rDto.msg }
+           </td>
+           <td width="30%" align=right>
+            <c:if test="${sessionScope.id!=null }">
+            └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
+             <c:if test="${sessionScope.id==rDto.id }">
+             └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;└ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
+             </c:if>
+            </c:if>
+           </td>
+          </tr>
+<!-- 댓글 댓글 -->
+<tr id="qna_reply_reply_write${rDto.no }">
+    <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID </td>
+    <td>
+        <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
+        <img src="img/qna_dot_black.gif"> name
+        <input id="bc_input_name" type="text" name="name" size="12" value="${sessionScope.name }">
     </td>
-     <td align=right width="40%">
-      <c:if test="${sessionScope.id!=null }">
-        └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
-      <c:if test="${sessionScope.id!=null }">
-        └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;└ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
-      </c:if>
-      </c:if>
-     </td>
 </tr>
-</tbody>
-<%-- <!-- 댓글의댓글 시작-->
-<tbody id="re_re_write${rDto.no }"  style="display:none">
 <tr>
- <td class="bc_title bc_title_name" width=110><img src="img/qna_dot_black.gif"> name
-        <input id="bc_input_writer" type="text" name="cname" size="10" value="" onclick="CheckLogin()" onkeyup="CheckLogin()">
-        <img src="img/qna_dot_black.gif"> password
-        <input id="bc_input_passwd" type="password" name="cpass" size="12" onclick="CheckLogin()" onkeyup="CheckLogin()">
+    <td class="bc_title_name"></td>
+    <td>
+    	<form id="qna_re_re_write${rDto.no }" action="qna_reply_reply_write.do" method="post">
+        <textarea id="rrmsg${rDto.no }" name="rrmsg" rows="3" style="width:510px"></textarea>
+    </td>
+    <td>
+     	<input type=hidden name="no" value="${rDto.no }">
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
-		<input type="hidden" name="no" value="${rDto.no }">
-        <!-- <input type="hidden" name="secret" value="N"> -->
+        <a href="#" onclick="re_re_ok(${rDto.no })">
+        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+		</form>        
+    </td>
+</tr>
+
+<tr id="qna_reply_modify_write${rDto.no }">
+    <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID </td>
+    <td>
+        <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
+        <img src="img/qna_dot_black.gif"> name
+        <input id="bc_input_name" type="text" name="name" size="12" value="${sessionScope.name }">
     </td>
     <td></td>
- </tr>
- <tr>
-   <td> 
-     <textarea id="bc_textarea" name="comment" rows="3" style="width:550px"></textarea>
-   </td>
-   <td align=center>
-     <a href="#" id="comment">
-     <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+</tr>
+<!--  댓글 수정 -->
+<tr>
+    <td class="bc_title_name"></td>
+    <td>
+    	<form id="qna_re_update${rDto.no }" action="qna_reply_modify.do" method="post">
+        <textarea id="umsg${rDto.no }" name="umsg" rows="3" style="width:510px">${rDto.msg }</textarea>
     </td>
-    
- </tr>
- </tbody>
- <!--  댓글수정 -->
- <tbody id="re_re_update${rDto.no }" style="display:none">
+    <td>
+    	<input type=hidden name="no" value="${rDto.no }">
+        <input type=hidden name="bno" value="${d.no }">
+        <input type=hidden name="page" value="${strPage }">
+        <a href="#" onclick="re_up_ok(${rDto.no })">
+        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+		</form>        
+    </td>
+</tr>
+
+</c:forEach>  
+</table>
+
+<!-- 댓글의댓글 시작-->
+
+<table>
+
+
+</tbody>
+
+</table>
+<%--  <!--  댓글수정 -->
+ <tbody id="qna_re_re_update${rDto.no }" style="display:none">
  <tr>
- <td class="bc_title bc_title_name" width=110><img src="img/qna_dot_black.gif"> name
-        <input id="bc_input_writer" type="text" name="cname" size="10" value="${rDto.name }" onclick="CheckLogin()" onkeyup="CheckLogin()">
-        <img src="img/qna_dot_black.gif"> password
-        <input id="bc_input_passwd" type="password" name="cpass" size="12" onclick="CheckLogin()" onkeyup="CheckLogin()">
+ <td class="bc_title bc_title_name" width=110><img src="img/qna_dot_black.gif"> ID
+        <input id="bc_input_writer" type="text" name="cname" size="10" value="${sessionScope.id }">
+        <img src="img/qna_dot_black.gif"> name
+        <input id="bc_input_passwd" type="password" name="cpass" size="12">
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
 		<input type="hidden" name="no" value="${rDto.no }">
@@ -377,11 +417,8 @@ td.bc_agree_title {
  </tr>
  </tbody>
  <!-- 댓글수정끝 --> --%>
- </c:forEach>
- </table>
+
  <!-- COMMENT WRITE -->
-
-
 <table id="bc_write" border="0" cellpadding="0" cellspacing="0" width="100%">
 <tbody><tr>
     <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID</td>
@@ -389,23 +426,22 @@ td.bc_agree_title {
         <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
         <img src="img/qna_dot_black.gif"> name
         <input id="bc_input_name" type="text" name="name" size="12" value="${sessionScope.name }">
-        <input type="hidden" name="secret" value="N">
+   
     </td>
 </tr>
 <tr>
     <td class="bc_title_name"></td>
     <td>
     	<form id="qna_re_write" action="qna_reply_write.do" method="post">
-        <textarea id="rmsg" name="rmsg" rows="3" style="width:510px"></textarea>
+        <textarea id="msg" name="msg" rows="3" style="width:510px"></textarea>
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
-        <a href="<%-- qna_reply_write.do?bno=${d.no }&rmsg=&page=${strPage} --%>#" id="commentA" onclick="ok()">
+        <a href="#" onclick="re_ok()">
         <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
 		</form>        
     </td>
 </tr>
 </tbody></table>
-
 <!-- END COMMENT WRITE -->
 
 

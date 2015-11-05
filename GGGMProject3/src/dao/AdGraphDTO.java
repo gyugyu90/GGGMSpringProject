@@ -10,6 +10,21 @@ public class AdGraphDTO {
 	private Date viewtime;
 	private int count;
 	private String sdfviewtime;
+	private String description;
+	private int balance;
+	
+	public int getBalance() {
+		return balance;
+	}
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public String getSdfviewtime() {
 		return sdfviewtime;
 	}

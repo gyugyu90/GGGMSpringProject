@@ -9,7 +9,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="pages/board/qna.css"/>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#searchA').click(function(){
+		var msg=$('#search').val();
+		if(msg=="")
+		{ 
+		 $('#search').val="";
+		 $('#qna_search').submit();
+		}
+		 $('#qna_search').submit();
+	});
+});
+</script>
 </head>
 <body>
 <table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner">
@@ -32,7 +45,7 @@
 <td valign="top" width="640" align="center" id="mk_center"><table id="boardtable" border="0" cellpadding="0" cellspacing="0" width="620">
 <tbody>
 <tr><td align="center">
-<form action="qna_list.do" name="form1">
+<form action="qna_list.do" name="form1" id="qna_search">
 <table width="1078" border="0" align="center" cellpadding="0" cellspacing="0">
   <tbody>
   <tr align="center">
@@ -93,8 +106,6 @@
       <!-- 페이지 부분 -->
    
       <td id="bl_pages">
-      
-      
       <c:if test="${curpage>block}">
        <a href="qna_list.do?page=${fromPage-1 }"><img src="img/page_prev.gif" border="0"></a>&nbsp;&nbsp;
       </c:if>
@@ -117,20 +128,17 @@
     <tr>
     <td><table width="260" border="0" align="center" cellpadding="0" cellspacing="0">
      <tbody><tr>
-      <td class="style2"><input type="checkbox" name="shname" value="ok" onclick="change(1)">이름
-        <input type="checkbox" name="ssubject" value="ok" checked="" onclick="change(2)">제목
+      <td class="style2"><input type="checkbox" name="shname" value="ok" checked="" onclick="change(1)">이름
+        <input type="checkbox" name="ssubject" value="ok" onclick="change(2)">제목
         <input type="checkbox" name="scontent" value="ok" onclick="change(3)">내용
       </td>
-      <td><input type="text" name="stext" size="10">
-      <a href="JavaScript:document.form1.submit();"><img src="img/search.gif" border="0" align="absmiddle"></a></td>
+      <td>
+      <input type="text" name="search" size="10" id="search">
+      <a href="#"><img src="img/search.gif" border="0" id="searchA"></a></td>
       </tr></tbody></table>
      </td>
      </tr>
  </tbody></table>
-    <input type="hidden" name="s_id" value="">
-    <input type="hidden" name="code" value="hyojung99">
-    <input type="hidden" name="page" value="1">
-    <input type="hidden" name="type" value="s">
 </form>
 <script type="text/javascript">
 function change(temp) {

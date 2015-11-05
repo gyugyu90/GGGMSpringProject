@@ -83,8 +83,8 @@ li{ list-style-type : none;
 			
 				<ul style="padding-left:10px;">
 				<li>
-				보유 포인트 : ${point}
-				<input type="text" size=20 readonly="readonly">
+				보유 포인트 : 
+				<input type="text" size=20 readonly="readonly" value="${point}">
 				</li>
 				<li>
 					<i class="fa fa-chevron-down"></i>
@@ -135,14 +135,16 @@ li{ list-style-type : none;
 						${ad.sdfviewtime }
 					</td>
 					<td class="point_table">
-					    ${ad.point }
+					    ${ad.point>0?ad.point:""}
 					</td>
 					<td class="point_table">
-					    사용
+					    ${ad.point<0?ad.point:""}
 					</td>
 					<td class="point_table">
+						${ad.description}
 					</td >
 					<td class="point_table" >
+						${ad.balance}
 					</td>
 				</tr>
 				</c:forEach>
@@ -180,13 +182,16 @@ li{ list-style-type : none;
     function drawChart() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Day');
+      data.addColumn('date', 'Day');
       data.addColumn('number', 'point');
       
 	  for(var i=0;i<queryObjectLen;i++){
+		  var year=queryObject.myadviewlist[i].year;
+		  var month=queryObject.myadviewlist[i].month;
+		  var day=queryObject.myadviewlist[i].day;
 		  var point=queryObject.myadviewlist[i].point;
 		  data.addRows([
-		       [i+1, parseInt(point)]         
+		       [new Date(year, month, day), parseInt(point)]         
 		  ]);
 	  }
       
