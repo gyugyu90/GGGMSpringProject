@@ -117,7 +117,12 @@ function getpoint(adno, point, adsubject){
    sendMessage('GET', "getpoint.do", "adno="+adno+"&point="+point+"&description="+adsubject, check);
 }
 function check(){
-	alert("ajax´Â º°°Å ¾Æ´Ô!");
+	if(httpRequest.readyState==4){
+		if(httpRequest.status==200){
+			alert("ajax´Â º°°Å ¾Æ´Ô!");
+			//$('#theaterInfo').html(httpRequest.responseText);
+		}
+	}
 }
 </script>
 <style type="text/css">

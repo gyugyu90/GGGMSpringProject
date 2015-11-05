@@ -15,10 +15,10 @@ public class GetPointModel implements Model {
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 			
 		req.setCharacterEncoding("EUC-KR");
-		String adno=req.getParameter("adno");
-		String point=req.getParameter("point");
-		//int adno=Integer.parseInt(req.getParameter("adno"));
-		//int point=Integer.parseInt(req.getParameter("point"));
+		//String adno=req.getParameter("adno");
+		//String point=req.getParameter("point");
+		int adno=Integer.parseInt(req.getParameter("adno"));
+		int point=Integer.parseInt(req.getParameter("point"));
 		System.out.println("adno:"+adno);
 		System.out.println("point:"+point);
 		//point 올리기
@@ -26,16 +26,17 @@ public class GetPointModel implements Model {
 		String id=(String)session.getAttribute("id");
 		Map map=new HashMap();
 		map.put("id", id);
+		System.out.println("id:"+id);
+		
 		map.put("point", point);
+		System.out.println("point:"+point);
 		AdvertiseDAO.getpoint(map);
 		
 		AdGraphDTO mdto=new AdGraphDTO();
 		mdto.setAdno(adno);
 		mdto.setId(id);
-		//mdto.setPoint(point);
+		mdto.setPoint(point);
 		AdvertiseDAO.insertMyadviewlist(mdto);
-		
-		System.out.println("여기");
 		
 		return null;
 	}

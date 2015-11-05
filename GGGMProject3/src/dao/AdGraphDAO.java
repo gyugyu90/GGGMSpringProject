@@ -2,6 +2,7 @@ package dao;
 
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -45,14 +46,59 @@ public class AdGraphDAO {
     	return OverlapCount;
     	
     }
+  //단일 카운트값
     public static int AdNoOverlapCount(int adno){
     	SqlSession session=ssf.openSession();
     	int NoOverlapCount = session.selectOne("AdNoOverlapCount", adno);
     	session.close();
     	return NoOverlapCount;
     }
-    //단일 카운트값
-    
-    
-    
+    // 광고포인트가져옴
+    public static int Point(int adno){
+    	SqlSession session=ssf.openSession();
+    	int point=session.selectOne("Point", adno);
+    	session.close();
+    	return point;
+    	
+    }
+
+ // ADID별 모든 ADNO가져옴
+    public static List<AdvertiseDTO> ListOfAdno(String adid){
+    		SqlSession session=ssf.openSession();
+    		List<AdvertiseDTO> list=session.selectList("ListOfAdno", adid);
+    		session.close();
+    		return list;
+    }
+
+    public static AdvertiseDTO AllOfAdno(int adno){
+    	SqlSession session=ssf.openSession();
+    	AdvertiseDTO list=session.selectOne("AllOfAdno", adno);
+    	session.close();
+    	return list;
+    }
+    public static List<AdvertiseDTO> alldataofuser(String id){
+    	SqlSession session=ssf.openSession();
+    	List<AdvertiseDTO> list=session.selectList("alldataofuser", id);
+		session.close();
+		return list;
+    }
+    public static List<String> idOfAdno(int adno){
+    	SqlSession session=ssf.openSession();
+    	List<String> list=session.selectList("idOfAdno", adno);
+    	
+    	session.close();
+    	return list;
+    }
+    public static int manofadno(int adno){
+    	SqlSession session=ssf.openSession();
+    	int mancount=session.selectOne("manofadno", adno);
+    	session.close();
+    	return mancount;
+    }
+    public static int womanofadno(int adno){
+    	SqlSession session=ssf.openSession();
+    	int womancount=session.selectOne("womanofadno", adno);
+    	session.close();
+    	return womancount;
+    }
 }
