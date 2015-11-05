@@ -23,7 +23,6 @@ public class AdminAdInsertModel implements Model {
 		dto.setMsg(d.getMsg());
 		dto.setMaj_category(d.getMaj_category());
 		dto.setSub_category(d.getSub_category());
-		dto.setPointrange(d.getPointrange());		
 		dao.adInsert(dto);
 		dao.adReqDelete(adid);
 		return "adboard.do";

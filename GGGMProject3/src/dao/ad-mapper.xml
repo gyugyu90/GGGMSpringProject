@@ -24,6 +24,8 @@
 	<insert id="insert_adviewlist" parameterType="PointDTO">
 		INSERT INTO adviewlist VALUES(#{adno}, #{id}, #{point}, SYSDATE)
 	</insert>
+	
+	
 	<insert id="adrequestInsert" parameterType="AdDTO">
 	INSERT INTO ad(adno,adid,adsubject,msg,pointrange,url,maj_category,sub_category,img) 
 	VALUES(ad_adno_seq.NEXTVAL,#{adid},#{adsubject},#{msg},#{pointrange},#{url},#{maj_category},#{sub_category},#{img})

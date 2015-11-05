@@ -28,6 +28,7 @@ public class AdrequestDAO {
     public List<AdrequestDTO> adRequestList(){
     	SqlSession session=ssf.openSession();
     	List<AdrequestDTO> list = session.selectList("adReqList");
+    	session.close();
     	return list;
     }
     public AdrequestDTO adReqInfo(String adid){
