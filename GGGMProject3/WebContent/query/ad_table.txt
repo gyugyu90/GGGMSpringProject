@@ -1,4 +1,54 @@
+/*	
+	adno		광고 번호			: 자동 증가
+	adid		광고주 번호			: 광고 등록시 session값 불러들임.
 
+	adsubject	광고 제목			: 광고 등록시 기재	
+	adtime		동영상 플레이 시간		: 관리자가 등록 혹은 작성자가 등록
+
+	msg		광고 설명			: 광고 등록시 기재
+	maj_category	광고 카테고리(대분류)		: 광고 등록시 기재
+	sub_category	광고 카테고리(소분류)		: 광고 등록시 기재
+
+	url		동영상				: 광고 등록시 기재
+	img		스틸 컷				: 광고 등록시 기재
+
+	ppc		클릭 당 포인트			: 광고 등록시 기재
+
+	hit		조회수				: 기본값 0, 클릭 시 증가
+	
+	data1		추천광고를 위한 최소값 모음	: 광고 등록시 기재
+	data2		추천광고를 위한 최대값 모음	: 광고 등록시 기재
+	weight		추천광고를 위한 가중치 모음	: 광고 등록시 기재
+*/
+
+drop tabel ad;
+
+DROP TABLE myadviewlist;
+DROP TABLE ad;
+CREATE TABLE ad(
+   adno NUMBER,
+   adid VARCHAR2(20) CONSTRAINT ad_nn_adid NOT NULL,
+   adsubject VARCHAR2(50) CONSTRAINT ad_nn_subject NOT NULL,
+   adtime VARCHAR(20),
+   msg CLOB CONSTRAINT ad_nn_msg NOT NULL,
+   maj_category VARCHAR2(20) CONSTRAINT ad_nn_maj NOT NULL,
+   sub_category VARCHAR2(20) CONSTRAINT ad_nn_sub NOT NULL,
+   url VARCHAR2(200),
+   img VARCHAR2(200) CONSTRAINT ad_nn_img NOT NULL,
+   ppc NUMBER CONSTRAINT ad_nn_prange NOT NULL, 
+   hit NUMBER DEFAULT 0,
+   data1 VARCHAR2(60) CONSTRAINT ad_nn_dt1 NOT NULL,
+   data2 VARCHAR2(60) CONSTRAINT ad_nn_dt2 NOT NULL,
+   weight VARCHAR2(50) CONSTRAINT ad_nn_wgt NOT NULL,
+
+   CONSTRAINT ad_pk_adno PRIMARY KEY(adno)
+);
+
+DROP SEQUENCE ad_adno_seq;
+CREATE SEQUENCE ad_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
+
+
+/*
 CREATE TABLE ad(
 	adno VARCHAR2(20) CONSTRAINT ad_nn_adno NOT NULL,
 	adid VARCHAR2(20),
@@ -43,3 +93,4 @@ INSERT INTO ad(adid,adsubject,msg,pointrange,url,maj_category,sub_category,prese
 VALUES(ad_adno_seq.nextval, '광고주','광고이름', '메세지','포인트범위','영상주소','메인카테고리','부카테고리','선물범위','선물정보','이미지
 
 이름');
+*/
