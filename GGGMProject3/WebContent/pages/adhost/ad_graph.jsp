@@ -36,6 +36,54 @@
         chart.draw(data, options);
       }
     </script>
+     <script type="text/javascript">
+    //from googlechart.blogspot.kr
+    var queryObject="";
+    var queryObjectLen="";
+    var listadno=$('#adno').val();
+    $.ajax({
+    	type:'POST',
+    	url:'pages/adhost/adgetdata.jsp',
+    	data:{adno:listadno},
+    	dataType:'json',
+    	success:function(data){
+    		queryObject=eval('('+JSON.stringify(data)+')');
+    		queryObjectLen=queryObject.adviewlist.length;
+    	},
+    	error:function(xhr,type){
+    		alert('server error occured!')
+    	}
+    });
+    
+    //google chart api
+    google.load('visualization', '1.1', {packages: ['line']});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+		
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Day');
+      data.addColumn('number', 'count');
+      
+	  for(var i=0;i<queryObjectLen;i++){
+		  var count=queryObject.adviewlist[i].count;
+		  data.addRows([
+		       [i+1, parseInt(count)]         
+		  ]);
+	  }
+      
+
+      var options = {
+        chart: {
+          title: '광고 시청 현황',
+          
+        },
+        width: 400,
+        height: 350
+      };
+
+    }
+  </script>
 <style type="text/css">
 #body {
 	width: 100%;
