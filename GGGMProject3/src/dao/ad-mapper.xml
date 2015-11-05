@@ -17,8 +17,8 @@
 		UPDATE memberData SET sumpoint=sumpoint+#{point} WHERE id=#{id}
 	</update>
 
-	<insert id="insert_myadviewlist" parameterType="myad">
-		INSERT INTO myadviewlist VALUES(#{memberid}, SYSDATE, #{adno}, #{point}, 'test', 1400)
+	<insert id="insert_myadviewlist" parameterType="PointDTO">
+		INSERT INTO adviewlist VALUES(#{adno}, #{id}, #{point}, SYSDATE)
 	</insert>
 
 	<insert id="insert_adviewlist" parameterType="PointDTO">
