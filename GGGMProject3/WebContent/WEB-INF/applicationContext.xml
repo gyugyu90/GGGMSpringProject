@@ -35,7 +35,10 @@
 	<bean id="qna_modify" class="model.qnaModifyModel" />
 	<bean id="qna_modify_ok" class="model.qnaModifyOkModel" />
 	<bean id="qna_reply_write" class="model.qnaReplyWriteModel" />
+	<bean id="qna_reply_reply_write" class="model.qnaReplyReplyWriteModel" />
+	<bean id="qna_reply_modify" class="model.qnaReplyModifyModel" />
 	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
+	<bean id="getpoint" class="model.GetPointModel" />
 	<bean id="notice" class="model.NoticeModel"/>
 	<bean id="notice_content" class="model.NoticeContentModel"/>
 	<bean id="notice_write" class="model.NoticeWriteModel"/>
@@ -43,7 +46,14 @@
 	<bean id="notice_modify" class="model.NoticeModifyModel"/>
 	<bean id="notice_modify_ok" class="model.NoticeModifyOkModel"/>
 	<bean id="notice_delete" class="model.NoticeDeleteModel"/>
-	
+	<bean id="board" class="model.AdminBoardModel"/>
+	<bean id="adboard" class="model.AdminAdBoardModel"/>
+
 	<bean id="ad_request" class="model.AdRequestModel"/>
-	
+	<bean id="adgraphlist" class="model.Ad_List_GraphModel"/>
+
+	<bean id="ad_request" class="model.AdRequestModel"/>
+	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
+	<bean id="AdminAdInsert" class="model.AdminAdInsertModel"/>
+
 </beans><!-- endElement(), endDocument() -->

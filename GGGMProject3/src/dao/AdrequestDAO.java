@@ -1,14 +1,15 @@
 package dao;
 
 import java.io.Reader;
-import java.util.List;
-
+import java.util.*;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class MyAdViewListDAO {
+import com.sun.activation.registries.MailcapParseException;
+
+public class AdrequestDAO {
 	private static SqlSessionFactory ssf;
     static
     {
@@ -24,18 +25,27 @@ public class MyAdViewListDAO {
     
     	}
     }
-    
-    public static List<AdGraphDTO> adListData(String id){
+    public List<AdrequestDTO> adRequestList(){
     	SqlSession session=ssf.openSession();
-    	List<AdGraphDTO> list=session.selectList("myadviewlist", id);
-    	session.close();
+    	List<AdrequestDTO> list = session.selectList("adReqList");
     	return list;
     }
-    
-    public static String getDescription(int adno){
+    public AdrequestDTO adReqInfo(String adid){
     	SqlSession session=ssf.openSession();
-    	String desc=session.selectOne("getDescription", adno);
+    	AdrequestDTO d=session.selectOne("adReqInfo",adid);
     	session.close();
-    	return desc;
+    	return d;
+    }
+    public void adInsert(AdvertiseDTO dto){
+    	SqlSession session=ssf.openSession(true);
+    	session.insert("adrequestInsert",dto);
+    	System.out.println("INSERT OK");
+    	session.close();
+    }
+    public void adReqDelete(String adid){
+    	SqlSession session=ssf.openSession(true);
+    	session.delete("adReqDelete",adid);
+    	session.close();
+    	System.out.println("DELETE OK");
     }
 }

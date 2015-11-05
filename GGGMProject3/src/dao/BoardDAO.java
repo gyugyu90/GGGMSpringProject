@@ -50,6 +50,28 @@ public class BoardDAO {
     	return list;
     }
     
+    public static List<BoardDTO> myBoardListSearch(Map map)
+    {
+    	/*
+    	 *   class A
+    	 *   {
+    	 *      selectList(){}
+    	 *   }
+    	 *   
+    	 *   new A().selectList()
+    	 *   new A().close()
+    	 *   
+    	 *   A a=new A();
+    	 *   a.selectList();
+    	 *   a.close()
+    	 */
+    	SqlSession session=ssf.openSession();
+    	List<BoardDTO> list=
+    			session.selectList("myBoardListSearch",map);
+    	session.close();// ¹ÝÈ¯
+    	return list;
+    }
+    
     
     
     public static int qnaRowCount()
@@ -65,6 +87,15 @@ public class BoardDAO {
     {
     	SqlSession session=ssf.openSession();
     	int count=session.selectOne("qnaRowCount");
+    	int total=(int)(Math.ceil(count/10.0));
+    	session.close();
+    	return total;
+    }
+    public static int qnaSearchTotalPage(Map map)
+    {
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("qnaSearchTotalPage",map);
+    	System.out.println("DAO:"+count);
     	int total=(int)(Math.ceil(count/10.0));
     	session.close();
     	return total;
@@ -122,10 +153,10 @@ public class BoardDAO {
     	session.delete("qnaDelete",no);
     	session.close();
     }
-    public static int qnaReplyCount(int bno)
+    public static int qnaReplyCount(int no)
     {
     	SqlSession session=ssf.openSession();
-    	int count=session.selectOne("qnaReplyCount",bno);
+    	int count=session.selectOne("qnaReplyCount",no);
     	session.close();
     	return count;
     }

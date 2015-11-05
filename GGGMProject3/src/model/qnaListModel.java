@@ -16,10 +16,14 @@ public class qnaListModel implements Model {
 	
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String search = req.getParameter("search");
 		String strPage = req.getParameter("page");
 		if(strPage==null)
 			strPage="1";
+		if(search==null)
+		    search="";
 		int curpage=Integer.parseInt(strPage);
 		int rowSize=10;
 		int start=(curpage*rowSize)-(rowSize-1);
@@ -27,35 +31,78 @@ public class qnaListModel implements Model {
 		Map map = new HashMap();
 		map.put("start", start); //#{start}
 		map.put("end", end); //#{end}
-		List<BoardDTO> list = BoardDAO.qnaListData(map);
-		for(BoardDTO d:list)
+		map.put("search", search);
+		if(search=="")
 		{
-			d.setDbday(sdf.format(d.getRegdate()));
-			d.setReplyCount(BoardDAO.qnaReplyCount(d.getNo()));
+			List<BoardDTO> list = BoardDAO.qnaListData(map);
+			for(BoardDTO d:list)
+			{
+				d.setDbday(sdf.format(d.getRegdate()));
+				d.setReplyCount(BoardDAO.qnaReplyCount(d.getNo()));
+			}
+			int totalpage=BoardDAO.qnaTotalPage();
+			int count = BoardDAO.qnaRowCount();
+			    count=count-((curpage*10)-10);
+			int block=5;
+			int fromPage=((curpage-1)/block*block)+1;
+		    int toPage=((curpage-1)/block*block)+block;
+		       if(toPage>totalpage)
+		        {
+		           toPage=totalpage;
+		        }
+		    req.setAttribute("toPage", toPage);
+		    req.setAttribute("fromPage", fromPage);
+		    req.setAttribute("block", block);
+		    req.setAttribute("count", count);
+			req.setAttribute("today", sdf.format(new Date()));
+			req.setAttribute("totalpage", totalpage);
+			req.setAttribute("list", list);
+			req.setAttribute("curpage", curpage);
+			req.setAttribute("title", "자유게시판");
+			// ${title}
+			req.setAttribute("jsp", "../board/qna_list.jsp");
+			//${jsp}
+			return "pages/main/main.jsp";
 		}
-		int totalpage=BoardDAO.qnaTotalPage();
-		int count = BoardDAO.qnaRowCount();
-		    count=count-((curpage*10)-10);
-		int block=5;
-		int fromPage=((curpage-1)/block*block)+1;
-	    int toPage=((curpage-1)/block*block)+block;
-	       if(toPage>totalpage)
-	        {
-	           toPage=totalpage;
-	        }
-	    req.setAttribute("toPage", toPage);
-	    req.setAttribute("fromPage", fromPage);
-	    req.setAttribute("block", block);
-	    req.setAttribute("count", count);
-		req.setAttribute("today", sdf.format(new Date()));
-		req.setAttribute("totalpage", totalpage);
-		req.setAttribute("list", list);
-		req.setAttribute("curpage", curpage);
-		req.setAttribute("title", "자유게시판");
-		// ${title}
-		req.setAttribute("jsp", "../board/qna_list.jsp");
-		//${jsp}
-		return "pages/main/main.jsp";
+		else
+		{
+			
+			List<BoardDTO> list = BoardDAO.myBoardListSearch(map);
+			for(BoardDTO d:list)
+			{
+				d.setDbday(sdf.format(d.getRegdate()));
+				d.setReplyCount(BoardDAO.qnaReplyCount(d.getNo()));
+			}
+			int totalpage=BoardDAO.qnaSearchTotalPage(map);
+			int count = BoardDAO.qnaRowCount();
+			    count=count-((curpage*10)-10);
+			int block=5;
+			int fromPage=((curpage-1)/block*block)+1;
+		    int toPage=((curpage-1)/block*block)+block;
+		       if(toPage>totalpage)
+		        {
+		           toPage=totalpage;
+		        }
+		       
+		       System.out.println("count:"+count);
+		       System.out.println("total:"+totalpage);
+		       System.out.println("topage:"+toPage);
+		    req.setAttribute("toPage", toPage);
+		    req.setAttribute("fromPage", fromPage);
+		    req.setAttribute("block", block);
+		    req.setAttribute("count", count);
+			req.setAttribute("today", sdf.format(new Date()));
+			req.setAttribute("totalpage", totalpage);
+			req.setAttribute("list", list);
+			req.setAttribute("curpage", curpage);
+			req.setAttribute("title", "자유게시판");
+			// ${title}
+			req.setAttribute("jsp", "../board/qna_list.jsp");
+			//${jsp}
+			return "pages/main/main.jsp";
+		}
+		
+		
 	}
 
 }

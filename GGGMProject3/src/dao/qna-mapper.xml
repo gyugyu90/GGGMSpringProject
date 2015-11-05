@@ -23,6 +23,20 @@
 	FROM qnaBoard ORDER BY no DESC))
 	WHERE num BETWEEN #{start} AND #{end}
 </select>
+<select id="myBoardListSearch" resultType="Board" parameterType="java.util.Map">
+	SELECT no,subject,name,regdate,hit,num
+	FROM (SELECT no,subject,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,name,regdate,hit
+	FROM qnaBoard ORDER BY no DESC))
+	WHERE num BETWEEN #{start} AND #{end} AND name LIKE '%${search}%'
+</select>
+<select id ="qnaSearchTotalPage" resultType="int" parameterType="java.util.Map">
+	SELECT COUNT(*)
+	FROM (SELECT no,subject,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,name,regdate,hit
+	FROM qnaBoard ORDER BY no DESC))
+	WHERE name LIKE '%${search}%'
+</select>
 <!--  총페이지 -->
 <select id ="qnaRowCount" resultType="int">
 	SELECT COUNT(*) FROM qnaBoard

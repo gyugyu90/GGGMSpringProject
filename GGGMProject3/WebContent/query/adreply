@@ -1,0 +1,66 @@
+/*
+CREATE TABLE replyBoard(
+   no NUMBER,
+   name VARCHAR2(20) CONSTRAINT rb_nn_name NOT NULL,
+   subject VARCHAR2(1000) CONSTRAINT rb_nn_sub NOT NULL,
+   content CLOB CONSTRAINT rb_nn_cont NOT NULL,
+   pwd VARCHAR2(10) CONSTRAINT rb_nn_pwd NOT NULL,
+   regdate DATE DEFAULT SYSDATE,
+   hit NUMBER DEFAULT 0,
+   CONSTRAINT rb_pk_no PRIMARY KEY(no)
+);
+
+CREATE TABLE reply(
+   no NUMBER,
+   bno NUMBER,
+   id VARCHAR2(20) CONSTRAINT reply_nn_id NOT NULL,
+   name VARCHAR2(20) CONSTRAINT reply_nn_name NOT NULL,
+   msg VARCHAR2(4000) CONSTRAINT reply_nn_msg NOT NULL,
+   regdate DATE DEFAULT SYSDATE,
+   group_id NUMBER,
+   group_step NUMBER,
+   group_tab NUMBER,
+   root NUMBER,
+   depth NUMBER,
+   CONSTRAINT reply_pk_no PRIMARY KEY(no),
+   CONSTRAINT reply_fk_bno FOREIGN KEY(bno)
+   REFERENCES replyBoard(no)
+);
+*/
+/*
+INSERT INTO replyBoard(no,name,subject,content,pwd) VALUES(
+1, 'È«±æµ¿', '´ñ±ÛÇü °Ô½ÃÆÇ ÀÔ´Ï´Ù', '´ñ±Û~´ñ±Û....', '1234' 
+);
+INSERT INTO replyBoard(no,name,subject,content,pwd) VALUES(
+2, 'È«±æµ¿', '´ñ±ÛÇü °Ô½ÃÆÇ ÀÔ´Ï´Ù', '´ñ±Û~´ñ±Û....', '1234' 
+);
+INSERT INTO replyBoard(no,name,subject,content,pwd) VALUES(
+3, 'È«±æµ¿', '´ñ±ÛÇü °Ô½ÃÆÇ ÀÔ´Ï´Ù', '´ñ±Û~´ñ±Û....', '1234' 
+);
+INSERT INTO replyBoard(no,name,subject,content,pwd) VALUES(
+4, 'È«±æµ¿', '´ñ±ÛÇü °Ô½ÃÆÇ ÀÔ´Ï´Ù', '´ñ±Û~´ñ±Û....', '1234' 
+);
+INSERT INTO replyBoard(no,name,subject,content,pwd) VALUES(
+5, 'È«±æµ¿', '´ñ±ÛÇü °Ô½ÃÆÇ ÀÔ´Ï´Ù', '´ñ±Û~´ñ±Û....', '1234' 
+);
+INSERT INTO replyBoard(no,name,subject,content,pwd) VALUES(
+6, 'È«±æµ¿', '´ñ±ÛÇü °Ô½ÃÆÇ ÀÔ´Ï´Ù', '´ñ±Û~´ñ±Û....', '1234' 
+);
+COMMIT;
+
+INSERT INTO reply VALUES(1,5,'hong','È«±æµ¿','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,1,0,0,0,0);
+
+INSERT INTO reply VALUES(2,6,'hong','È«±æµ¿','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,2,0,0,0,0);
+
+INSERT INTO reply VALUES(3,7,'hong','È«±æµ¿','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,3,0,0,0,0);
+
+INSERT INTO reply VALUES(4,8,'hong','È«±æµ¿','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,4,0,0,0,0);
+
+INSERT INTO reply VALUES(5,9,'hong','È«±æµ¿','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,5,0,0,0,0);
+
+INSERT INTO reply VALUES(6,9,'hong','½ÉÃ»ÀÌ','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,6,0,0,0,0);
+*/
+UPDATE reply SET depth=depth+1 WHERE no=6;
+INSERT INTO reply VALUES(7,9,'hong','½ÉÃ»ÀÌ','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,6,1,1,6,0);
+INSERT INTO reply VALUES(8,9,'hong','½ÉÃ»ÀÌ','´ñ±Û ¿¬½ÀÀÔ´Ï´Ù',SYSDATE,6,2,2,7,0);
+COMMIT;

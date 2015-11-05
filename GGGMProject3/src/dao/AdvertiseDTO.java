@@ -1,7 +1,7 @@
 package dao;
 
 public class AdvertiseDTO {
-	private String adno;
+	private int adno;
 	private String adid;
 	private String adsubject;
 	private String msg;
@@ -21,10 +21,10 @@ public class AdvertiseDTO {
 	public void setAdtime(String adtime) {
 		this.adtime = adtime;
 	}
-	public String getAdno() {
+	public int getAdno() {
 		return adno;
 	}
-	public void setAdno(String adno) {
+	public void setAdno(int adno) {
 		this.adno = adno;
 	}
 	public String getAdid() {
