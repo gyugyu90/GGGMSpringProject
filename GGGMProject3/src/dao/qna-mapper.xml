@@ -40,9 +40,9 @@
 	FROM (SELECT no,subject,name,regdate,hit,rownum as num
 	FROM (SELECT no,subject,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
-	WHERE name LIKE '%${search}%'
+	WHERE name LIKE '%'||#{search}||'%'
 </select>
-
+<!-- '%${search}%' -->
 <!--  총페이지 -->
 <select id ="qnaRowCount" resultType="int">
 	SELECT COUNT(*) FROM qnaBoard
