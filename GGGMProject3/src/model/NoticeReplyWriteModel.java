@@ -4,10 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BoardDAO;
+import dao.NoticeDAO;
 import dao.ReplyDTO;
 
-public class qnaReplyWriteModel implements Model {
+public class NoticeReplyWriteModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -27,11 +27,11 @@ public class qnaReplyWriteModel implements Model {
 		d.setId(id);
 		d.setName(name);
 		d.setMsg(msg);
-		BoardDAO.replyNewWrite(d);
+		NoticeDAO.noticeReplyNewWrite(d);
 		//Insert¿Ï·á
 		req.setAttribute("no", bno);
 		req.setAttribute("page", page);
-		return "pages/board/qna_reply_write.jsp";
+		return "pages/board/notice_reply_write.jsp";
 	}
 
 }

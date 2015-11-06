@@ -30,7 +30,7 @@ $(function(){
 <tr>
 
 <!-- 전체 레이아웃 테이블 -->
-<form action="qna_search.jsp" method="post" name="search"></form>
+
 <td valign="top" width="150" height="100%" id="mk_left">
 <br><script>
 		// login id setting
@@ -99,6 +99,7 @@ $(function(){
     <td><table width="850" border="0" align="center" cellpadding="0" cellspacing="0">
      <tbody><tr>
       <td height="50" align="right">
+      <a href="qna_list.do"><img src="img/detail_list.gif" border="0"></a> 
       <a href="qna_write.do"><img src="img/detail_write.gif" border="0"></a>
       </td>
       </tr>
@@ -128,13 +129,15 @@ $(function(){
     <tr>
     <td><table width="260" border="0" align="center" cellpadding="0" cellspacing="0">
      <tbody><tr>
-      <td class="style2"><input type="checkbox" name="shname" value="ok" checked="" onclick="change(1)">이름
-        <input type="checkbox" name="ssubject" value="ok" onclick="change(2)">제목
-        <input type="checkbox" name="scontent" value="ok" onclick="change(3)">내용
+      <td class="style2">
+      <input type="checkbox" name="searchCheck" value="name" checked="" onclick="change(1)">이름
+        <input type="checkbox" name="searchCheck" value="subject" onclick="change(2)">제목
+        <input type="checkbox" name="searchCheck" value="content" onclick="change(3)">내용
       </td>
       <td>
       <input type="text" name="search" size="10" id="search">
-      <a href="#"><img src="img/search.gif" border="0" id="searchA"></a></td>
+      <a href="#"><img src="img/search.gif" border="0" id="searchA"></a>
+      </td>
       </tr></tbody></table>
      </td>
      </tr>
@@ -142,7 +145,7 @@ $(function(){
 </form>
 <script type="text/javascript">
 function change(temp) {
-    onoff   = new Array(document.form1.shname,document.form1.ssubject,document.form1.scontent, document.form1.sbrand);
+    onoff   = new Array(document.form1.name,document.form1.subject,document.form1.content, document.form1.sbrand);
     temp    = temp-1;
     if(typeof document.form1.sbrand !="undefined") temp2=4;
     else temp2=3;

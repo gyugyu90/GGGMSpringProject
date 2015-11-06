@@ -55,6 +55,11 @@
 	
 	<!-- 댓글 연계 부분 -->
 	<!-- 댓글 list 가져오기 -->
+	<select id="noticeReplyCount" resultType="int" parameterType="int">
+    	SELECT COUNT(*) FROM replynotice
+    	WHERE bno=#{bno}
+    </select>
+    
 	<select id="noticeReplyListData" resultType="NoticeReply" parameterType="int">
 	    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
 	    FROM replynotice
@@ -68,6 +73,74 @@
 		SELECT COUNT(*) FROM replynotice
 		WHERE bno=#{bno}
 	</select>
-	
+	<!-- 댓글 추가 -->
+	<insert id ="noticeReplyNewWrite" parameterType="Reply">
+  <selectKey keyProperty="no" resultType="int" order="BEFORE">
+  	SELECT NVL(MAX(no)+1,1) as no FROM replynotice
+  </selectKey>
+    INSERT INTO replynotice VALUES(#{no},#{bno},#{id},#{name},#{msg},SYSDATE,
+    (SELECT NVL(MAX(group_id)+1,1) FROM replynotice), 0,0,0,0)
+  </insert>
+	 <!-- 댓글 댓글 -->
+  <select id="noticeReplyParentInfo" resultType="Reply" parameterType="int">
+    SELECT group_id,group_step,group_tab 
+    FROM replynotice
+    WHERE no=#{no}
+  </select>
+  <!-- 
+        AAAAA
+          => DDDDD    1
+          => BBBBB    2
+          
+            => CCCCC  3
+                
+   -->
+  <update id="noticeReplyStepIncrement" parameterType="Reply">
+    UPDATE replynotice SET
+    group_step=group_step+1 
+    WHERE group_id=#{group_id} AND group_step>#{group_step}
+  </update>
+  <insert id="noticeReplyReplyWrite" parameterType="Reply">
+    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(no)+1,1) as no FROM replynotice
+    </selectKey>
+    INSERT INTO replynotice VALUES(#{no},#{bno},#{id},
+       #{name},#{msg},SYSDATE,
+       #{group_id},
+       #{group_step},#{group_tab},#{root},0)
+  </insert>
+  <update id="noticeReplyDepthIncrement" parameterType="int">
+    UPDATE replynotice SET
+    depth=depth+1
+    WHERE no=#{no}
+  </update>
+  <!-- 댓글삭제 -->
+  <!-- 댓글 삭제 -->
+  <select id="noticeReplyDataInfo" resultType="Reply" parameterType="int">
+    SELECT depth,root FROM replynotice
+    WHERE no=#{no}
+  </select>
+  <delete id="noticeReplyDelete" parameterType="int">
+    DELETE FROM replynotice
+    WHERE no=#{no}
+  </delete>
+  <update id="noticeReplyMsgUpdate" parameterType="int">
+    UPDATE replynotice SET
+    msg='관리자가 삭제한 댓글입니다'
+    WHERE no=#{no}
+  </update>
+
+  <update id="noticeReplyDepthDecrement" parameterType="int">
+    UPDATE replynotice SET
+    depth=depth-1
+    WHERE no=#{no}
+  </update>
+  
+  <update id="noticeReplyUpdate" parameterType="Reply">
+    UPDATE replynotice SET
+    msg=#{msg}
+    WHERE no=#{no}
+  </update>
+  
 	
 </mapper>

@@ -25,34 +25,40 @@ $(function(){
 	var k=0;
 	$('.re_re_a').click(function(){
 		var no=$(this).attr("name");
+		//alert(no);
 		if(k==0)
 		{
-		   $('#qna_reply_reply_write'+no).show();
-		   $('#qna_re_re_update'+no).hide();
+			$('.hide_comment').hide();
+			$('#qna_reply_reply_write1'+no).show();
+			$('#qna_reply_reply_write'+no).show();
 		   k=1;
 		}
 		else
 		{
+			$('#qna_reply_reply_write1'+no).hide();
 			$('#qna_reply_reply_write'+no).hide();
 			k=0;
 		}
 	});
-	/* var p=0;
+	var p=0;
 	$('.re_up_a').click(function(){
 		var no=$(this).attr("name");
 		//alert(no);
 		if(p==0)
 		{
-		   $('#qna_re_re_update'+no).show();
-		   $('#qna_reply_reply_write'+no).hide();
+			$('.hide_comment').hide();
+			$('#qna_reply_modify_write1'+no).show();
+			$('#qna_reply_modify_write'+no).show();
 		   p=1;
 		}
 		else
 		{
-			$('#re_re_update'+no).hide();
+			$('#qna_reply_modify_write1'+no).hide();
+			$('#qna_reply_modify_write'+no).hide();
 			p=0;
 		}
-	}); */
+	});
+
 });
 
 function re_ok(){
@@ -87,71 +93,15 @@ function re_ok(){
 			return;
 		}
 		$('#qna_re_update'+no).submit();
-} 
+}
+ // login id setting
+ if(typeof document.search != "undefined" && typeof document.search.id != "undefined" && typeof document.search.save_id != "undefined") {
+     document.search.id.value = getCookieMS('save_id');
+     if(document.search.id.value=="null") document.search.id.value="";
+     if(typeof document.search.id != "undefined" && document.search.id.value.length>0) document.search.save_id.checked=true; 
+ }
 </script>
-</head>
-<body>
-
- <table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner">
-<tbody><tr>
-
-<!-- 전체 레이아웃 테이블 -->
-<form action="/shop/shopbrand.html" method="post" name="search"></form>
-<td valign="top" width="150" height="100%" id="mk_left">
-<br>            <script>
-                // login id setting
-                if(typeof document.search != "undefined" && typeof document.search.id != "undefined" && typeof document.search.save_id != "undefined") {
-                    document.search.id.value = getCookieMS('save_id');
-                    if(document.search.id.value=="null") document.search.id.value="";
-                    if(typeof document.search.id != "undefined" && document.search.id.value.length>0) document.search.save_id.checked=true; 
-                }
-            </script></td>
-
-
-<td valign="top" width="640" align="center" id="mk_center"><table id="boardtable" border="0" cellpadding="0" cellspacing="0" width="620">
-<tbody><tr>
-    <td align="center">
-
-<table width="1078" border="0" cellspacing="0" cellpadding="0">
-
-  <tbody><tr align="center">
-    <td><table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
-      <tbody><tr align="center">
-       <td height="100" style="padding-left:110"><img src="img/board_1.gif"></td>
-        </tr>
-      <tr>
-        <td></td>
-        </tr>
-    </tbody></table></td>
-  </tr>
-  <tr>
-    <td><table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
-      <tbody><tr>
-       <td width="700">
-	<table width="700" align="center" id="bv_viewdetail">
-<tbody><tr>
-    <td width=50% class="bv_title bv_subject" height="26">
-    <span class="bv_titlesub">제 &nbsp; 목</span> : <strong>${d.subject }</strong>
-    <a href="qna_content.jsp&bno=${d.no }&page=${strPage}"></a>
-    <td width=50% align=left height="28" class="bv_title bv_subject" style="padding-left: 8px; padding-top:5px;">
-    <span class="bv_titlesub">작성자</span> : ${d.name } </td>
-    </td>
-</tr>
-<tr>
-    <td width=50% height="28" class="bv_subject" style="padding-left: 8px; padding-top:5px;">
-    <span class="bv_titlesub">조회수</span> : ${d.hit } </td>
-     <td width=50% align=left height="28" class="bv_subject" style="padding-left: 8px; padding-top:5px;">
-    <span class="bv_titlesub">작성일</span> : <fmt:formatDate value="${d.regdate }" pattern="yyyy-MM-dd"/></td>
-    </tr>
-<tr>
-	
-    <td class="bv_subject" colspan="2" height="230" valign="top" style="padding: 13px 8px">${d.content }</td>
-
-</tr>
-</tbody></table>
-<!-- END BOARD VIEW -->
-
-<style>
+<style type="text/css">
 #bc_commentlist , #bc_write{
     border-collapse : collapse;
 }
@@ -229,78 +179,51 @@ td.bc_agree_title {
     height : 100px;
     border : 1px solid #CCCCCC;
 }
-</style>
-
-
-<!-- COMMENT -->
-<table align="center" id="bv_commenttable">
-    <tbody><tr>
-    <td style="padding-bottom:10">
-    
-<style type="text/css">
-#comment_reply_input {
-    position: absolute;
-    display: none;
-    border: 2px solid #757575;
-    padding: 7px;
-    background: #FFF;
-    z-index: 5;
+#replyStyle {
+    padding-left: 1px;
+    padding-top: 20px;
+    padding-bottom: 0px;
 }
-#comment_password {
-    position: absolute;
-    display: none;
-    width: 300px;
-    border: 2px solid #757575;
-    padding: 7px;
-    background: #FFF;
-    z-index: 6;
+#qnafunction{
+	padding-top: 10px;
+    padding-bottom: 10px;
 }
 </style>
 
-<div id="check_auth" style="position: absolute; z-index: 10;"></div>
-<div id="comment_reply_input"></div>
-<div id="comment_password">
-    <form onsubmit="comment_password_submit(); return false;" style="height: 20px; margin: 0; padding: 0;">
-    <input type="hidden" id="pw_num" name="pw_num" value="">
-    <input type="hidden" id="pw_mode" name="pw_mode" value="">
-    <input type="hidden" id="formnum" name="formnum" value="1">
-    <span style="font-weight: bold;">비밀번호</span>
-    <input type="password" id="input_passwd" name="input_passwd" size="25" value="" style="vertical-align: middle;">
-    <img src="images/btn_ok.gif" alt="확인" onclick="comment_password_submit();" style="border: 0px; cursor: pointer; vertical-align: middle;">
-    <img src="images/btn_close.gif" alt="닫기" onclick="comment_password_close();" style="border: 0px; cursor: pointer; position: absolute; top: 5px; right: 5px;">
-    </form>
-</div><form name="comment_reply_form" action="board.html?" method="post">
-<input type="hidden" name="code" value="hyojung99">
-<input type="hidden" name="num1" value="438171">
-<input type="hidden" name="num2" value="00000">
-<input type="hidden" name="page" value="">
-<input type="hidden" name="lock" value="Y">
-<input type="hidden" name="type" value="v">
-<input type="hidden" name="type2" value="">
-<input type="hidden" name="comnum" value="">
-<input type="hidden" name="comtype" value="">
-<input type="hidden" name="depth" value="">
-<input type="hidden" name="cname" value="">
-<input type="hidden" name="cpass" value="">
-<input type="hidden" name="secret" value="">
-<input type="hidden" name="comment" value="">
-<input type="hidden" name="privercy_agree" value="">
-<input type="hidden" name="third_party_agree" value="">
-<input type="hidden" name="trust_agree" value="">
-</form>
+</head>
+<body>
 
+<!-- 백업 -->
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tbody><tr align="center">
+       <td height="100" style="padding-left:110"><img src="img/board_1.gif"></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </tbody></table>
+<table width="700" align="center" id="bv_viewdetail">
+<tbody><tr>
+    <td width=50% class="bv_title bv_subject" height="26">
+    <span class="bv_titlesub">제 &nbsp; 목</span> : <strong>${d.subject }</strong>
+    <a href="qna_content.jsp&bno=${d.no }&page=${strPage}"></a>
+    <td width=50% align=left height="28" class="bv_title bv_subject" style="padding-left: 8px; padding-top:5px;">
+    <span class="bv_titlesub">작성자</span> : ${d.name } </td>
+</tr>
+<tr>
+    <td width=50% height="28" class="bv_subject" style="padding-left: 8px; padding-top:5px;">
+    <span class="bv_titlesub">조회수</span> : ${d.hit } </td>
+     <td width=50% align=left height="28" class="bv_subject" style="padding-left: 8px; padding-top:5px;">
+    <span class="bv_titlesub">작성일</span> : <fmt:formatDate value="${d.regdate }" pattern="yyyy-MM-dd"/></td>
+    </tr>
+<tr>
+	
+    <td class="bv_subject" colspan="2" height="230" valign="top" style="padding: 13px 8px">${d.content }</td>
 
-<!-- COMMENT LIST -->
-<table id="bc_commentlist" border="1" cellpadding="0" cellspacing="0" width="100%"></table>
-<!-- END COMMENT LIST -->
+</tr>
+</tbody>
 </table>
-
-<!-- COMMENT WRITE -->
-<div id="">
-<table>
-<!--  출력폼 -->
-
-     <table id="table_content">
+<table id="table_content" width="700" align="center" >
         <c:forEach var="rDto" items="${rlist }">
           <tr>
            <td width="70%" colspan="2" align=left>
@@ -319,18 +242,35 @@ td.bc_agree_title {
               </c:forEach>
             </c:if>
             ${rDto.msg }
+            <hr>
            </td>
-           <td width="30%" align=right>
+           <td width="30%" align=right id="replyStyle">    
+			<c:choose>
+			<c:when test="${rDto.msg=='관리자가 삭제한 댓글입니다' }">
+			<c:if test="${sessionScope.grade==3}">
+			 └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
+             └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
+             <c:if test="${rDto.depth==0}">
+             <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">└삭제</a>
+             </c:if>
+             </c:if>
+			</c:when>
+			<c:otherwise>
             <c:if test="${sessionScope.id!=null }">
-            └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
-             <c:if test="${sessionScope.id==rDto.id }">
-             └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;└ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
+             └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
+             <c:if test="${sessionScope.id==rDto.id || sessionScope.grade==3 }">
+             └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
+             └ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
              </c:if>
             </c:if>
+            </c:otherwise>
+            </c:choose>
+       		 <hr>
            </td>
+       
           </tr>
 <!-- 댓글 댓글 -->
-<tr id="qna_reply_reply_write${rDto.no }">
+<tr id="qna_reply_reply_write1${rDto.no }" style="display:none" class="hide_comment">
     <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID </td>
     <td>
         <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
@@ -338,7 +278,7 @@ td.bc_agree_title {
         <input id="bc_input_name" type="text" name="name" size="12" value="${sessionScope.name }">
     </td>
 </tr>
-<tr>
+<tr style="display:none" class="hide_comment" id="qna_reply_reply_write${rDto.no }">
     <td class="bc_title_name"></td>
     <td>
     	<form id="qna_re_re_write${rDto.no }" action="qna_reply_reply_write.do" method="post">
@@ -353,8 +293,7 @@ td.bc_agree_title {
 		</form>        
     </td>
 </tr>
-
-<tr id="qna_reply_modify_write${rDto.no }">
+<tr id="qna_reply_modify_write1${rDto.no }" style="display:none" class="hide_comment">
     <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID </td>
     <td>
         <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
@@ -364,7 +303,7 @@ td.bc_agree_title {
     <td></td>
 </tr>
 <!--  댓글 수정 -->
-<tr>
+<tr style="display:none" class="hide_comment" id="qna_reply_modify_write${rDto.no }">
     <td class="bc_title_name"></td>
     <td>
     	<form id="qna_re_update${rDto.no }" action="qna_reply_modify.do" method="post">
@@ -382,45 +321,8 @@ td.bc_agree_title {
 
 </c:forEach>  
 </table>
-
-<!-- 댓글의댓글 시작-->
-
-<table>
-
-
-</tbody>
-
-</table>
-<%--  <!--  댓글수정 -->
- <tbody id="qna_re_re_update${rDto.no }" style="display:none">
- <tr>
- <td class="bc_title bc_title_name" width=110><img src="img/qna_dot_black.gif"> ID
-        <input id="bc_input_writer" type="text" name="cname" size="10" value="${sessionScope.id }">
-        <img src="img/qna_dot_black.gif"> name
-        <input id="bc_input_passwd" type="password" name="cpass" size="12">
-        <input type=hidden name="bno" value="${d.no }">
-        <input type=hidden name="page" value="${strPage }">
-		<input type="hidden" name="no" value="${rDto.no }">
-        <!-- <input type="hidden" name="secret" value="N"> -->
-    </td>
-    <td></td>
- </tr>
- <tr>
-   <td> 
-     <textarea id="bc_textarea" name="comment" rows="3" style="width:550px"></textarea>
-   </td>
-   <td align=center>
-     <a href="#" id="comment">
-     <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
-    </td>
-    
- </tr>
- </tbody>
- <!-- 댓글수정끝 --> --%>
-
- <!-- COMMENT WRITE -->
-<table id="bc_write" border="0" cellpadding="0" cellspacing="0" width="100%">
-<tbody><tr>
+<table id="table_content" width="700" align="center">
+<tr>
     <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID</td>
     <td class="bc_title">
         <input id="bc_input_writer" type="text" name="id" size="10" value="${sessionScope.id }">
@@ -438,22 +340,28 @@ td.bc_agree_title {
         <input type=hidden name="page" value="${strPage }">
         <a href="#" onclick="re_ok()">
         <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
-		</form>        
+		</form>      
+		<hr>  
     </td>
 </tr>
-</tbody></table>
-<!-- END COMMENT WRITE -->
+</table>
+<table width="700" border="0" align="center">
+			<tr>
+		    	<td id="bl_pages">
+					<span class="bl_curpage bl_pagetext">
+					${rcurpage } page / ${rtotal} pages
+					</span>
+			    </td>
 
-
-  </td>
-    </tr>
-</tbody></table>
-<!-- COMMENT END -->
-
-<!-- LINK_ (DELETE, MODIFY, INSERT ) -->
-<table id="bv_showbutton" border="0" width="100%" style="margin-bottom:31px">
-<tbody><tr>
-    <td align="right">
+	    		<td id="bl_linkbutton">
+					<a href="qna_content.do?no=${ d.no }&rPage=${rcurpage>1?rcurpage-1:rcurpage }&page=${strPage}">이전</a>&nbsp;&nbsp;&nbsp;
+					<a href="qna_content.do?no=${ d.no }&rPage=${rcurpage<rtotal?rcurpage+1:rcurpage }&page=${strPage}">다음</a>&nbsp;&nbsp;
+	    		</td>
+			</tr>
+</table>
+<table width="700" align="center">
+<tr>
+    <td align="right" id="qnafunction">
         <a href="qna_delete.do?no=${d.no }&page=${strPage }" id="delA">
         <img src="img/qna_delete.gif" border="0"></a>    
         <a href="qna_modify.do?no=${d.no }&page=${strPage }">
@@ -462,24 +370,8 @@ td.bc_agree_title {
         <img src="img/detail_list.gif" border="0"></a>   
     </td>
 </tr>
-
-</tbody></table>
-<!-- LINK_ END -->
-
-	</td>
-      </tr>
-    </tbody></table></td>
-  </tr>
-  <tr>
-    <td height="150"></td>
-  </tr>
-  
-</tbody></table>
-
-    </td>
-</tr>
-</tbody></table>
-
+</table>
+<br>
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript">
 var selectedobj;
@@ -525,6 +417,5 @@ document.onmouseup = drag_release;
         
     }
 </script>
-</td></tr></tbody></table>
 </body>
 </html>

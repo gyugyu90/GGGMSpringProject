@@ -20,6 +20,7 @@ public class qnaListModel implements Model {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String search = req.getParameter("search");
 		String strPage = req.getParameter("page");
+		String searchCheck=req.getParameter("searchCheck");
 		if(strPage==null)
 			strPage="1";
 		if(search==null)
@@ -32,6 +33,7 @@ public class qnaListModel implements Model {
 		map.put("start", start); //#{start}
 		map.put("end", end); //#{end}
 		map.put("search", search);
+		map.put("searchCheck",searchCheck);
 		if(search=="")
 		{
 			List<BoardDTO> list = BoardDAO.qnaListData(map);
@@ -66,42 +68,8 @@ public class qnaListModel implements Model {
 		}
 		else
 		{
-			
-			List<BoardDTO> list = BoardDAO.myBoardListSearch(map);
-			for(BoardDTO d:list)
-			{
-				d.setDbday(sdf.format(d.getRegdate()));
-				d.setReplyCount(BoardDAO.qnaReplyCount(d.getNo()));
-			}
-			int totalpage=BoardDAO.qnaSearchTotalPage(map);
-			int count = BoardDAO.qnaRowCount();
-			    count=count-((curpage*10)-10);
-			int block=5;
-			int fromPage=((curpage-1)/block*block)+1;
-		    int toPage=((curpage-1)/block*block)+block;
-		       if(toPage>totalpage)
-		        {
-		           toPage=totalpage;
-		        }
-		       
-		       System.out.println("count:"+count);
-		       System.out.println("total:"+totalpage);
-		       System.out.println("topage:"+toPage);
-		    req.setAttribute("toPage", toPage);
-		    req.setAttribute("fromPage", fromPage);
-		    req.setAttribute("block", block);
-		    req.setAttribute("count", count);
-			req.setAttribute("today", sdf.format(new Date()));
-			req.setAttribute("totalpage", totalpage);
-			req.setAttribute("list", list);
-			req.setAttribute("curpage", curpage);
-			req.setAttribute("title", "자유게시판");
-			// ${title}
-			req.setAttribute("jsp", "../board/qna_list.jsp");
-			//${jsp}
-			return "pages/main/main.jsp";
 		}
-		
+		return "pages/main/main.jsp";
 		
 	}
 

@@ -23,20 +23,26 @@
 	FROM qnaBoard ORDER BY no DESC))
 	WHERE num BETWEEN #{start} AND #{end}
 </select>
-<select id="myBoardListSearch" resultType="Board" parameterType="java.util.Map">
+<!-- 이름 검색 -->
+<select id="qnaNameSearchListData" resultType="Board" parameterType="java.util.Map">
 	SELECT no,subject,name,regdate,hit,num
 	FROM (SELECT no,subject,name,regdate,hit,rownum as num
 	FROM (SELECT no,subject,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
 	WHERE num BETWEEN #{start} AND #{end} AND name LIKE '%${search}%'
 </select>
-<select id ="qnaSearchTotalPage" resultType="int" parameterType="java.util.Map">
-	SELECT COUNT(*)
+<select id ="qnaNameSearchRowCount" resultType="int" parameterType="String">
+	SELECT COUNT(*) FROM qnaBoard 
+	WHERE name LIKE '%'||#{search}||'%'
+</select>
+<select id="qnaNameSearchReplyCount" resultType="int" parameterType="int">
+    SELECT COUNT(*)
 	FROM (SELECT no,subject,name,regdate,hit,rownum as num
 	FROM (SELECT no,subject,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
 	WHERE name LIKE '%${search}%'
 </select>
+
 <!--  총페이지 -->
 <select id ="qnaRowCount" resultType="int">
 	SELECT COUNT(*) FROM qnaBoard
@@ -100,7 +106,7 @@
     </delete>
     <!-- 댓글 -->
   <select id="replyListData" resultType="Reply" parameterType="int">
-    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
+    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab, depth
     FROM qnareply
     WHERE bno=#{bno}
     ORDER BY group_id DESC,group_step ASC
@@ -162,6 +168,7 @@
     msg='관리자가 삭제한 댓글입니다'
     WHERE no=#{no}
   </update>
+
   <update id="replyDepthDecrement" parameterType="int">
     UPDATE qnareply SET
     depth=depth-1

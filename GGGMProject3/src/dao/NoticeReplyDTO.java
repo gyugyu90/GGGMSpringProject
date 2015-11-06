@@ -14,7 +14,7 @@ public class NoticeReplyDTO {
 	private int group_tab;
 	private int root;
 	private int depth;
-	private String bdday;
+	private String dbday;
 	public int getNo() {
 		return no;
 	}
@@ -81,11 +81,11 @@ public class NoticeReplyDTO {
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
-	public String getBdday() {
-		return bdday;
+	public String getDbday() {
+		return dbday;
 	}
-	public void setBdday(String bdday) {
-		this.bdday = bdday;
+	public void setDbday(String dbday) {
+		this.dbday = dbday;
 	}
 	
 }
