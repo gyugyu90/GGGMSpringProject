@@ -52,8 +52,60 @@
 	<select id="womanofadno" resultType="Int" parameterType="Int">
 		SELECT count(*) FROM memberdata m1,memberadditional m2 WHERE m1.id=m2.id AND sex='여자' AND m1.id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
 	</select>
-	
-	
+	<select id="age0" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 1 AND 10 THEN 1 END) "10세미만" 
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
+	<select id="age1" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 10 AND 19 THEN 1 END) "10대" 
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
+	<select id="age2" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 20 AND 29 THEN 1 END) "20대" 
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=3)
+		)
+	</select>
+	<select id="age3" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 30 AND 39 THEN 1 END) "30대" 
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
+	<select id="age4" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 40 AND 49 THEN 1 END) "40대"
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
+	<select id="age5" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 50 AND 59 THEN 1 END) "50대" 
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
+	<select id="age6" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 60 AND 69 THEN 1 END) "60대"
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
+	<select id="age7" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age BETWEEN 70 AND 79 THEN 1 END) "70대" 
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'YYYY'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
+	<select id="age8" resultType="int" parameterType="int">
+		SELECT COUNT(CASE WHEN age >= 80 THEN 1 END) "80세이상" 
+		FROM (SELECT TO_CHAR(sysdate, 'yyyy') - (SUBSTR(TO_CHAR(birth, 'yyyy'),1,4)) as age
+		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
+		)
+	</select>
 	
 	
 </mapper>
