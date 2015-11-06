@@ -25,28 +25,44 @@ public class AdrequestDAO {
     
     	}
     }
-    public List<AdrequestDTO> adRequestList(){
-    	SqlSession session=ssf.openSession();
-    	List<AdrequestDTO> list = session.selectList("adReqList");
-    	session.close();
-    	return list;
-    }
-    public AdrequestDTO adReqInfo(String adid){
-    	SqlSession session=ssf.openSession();
-    	AdrequestDTO d=session.selectOne("adReqInfo",adid);
-    	session.close();
-    	return d;
-    }
-    public void adInsert(AdvertiseDTO dto){
-    	SqlSession session=ssf.openSession(true);
-    	session.insert("adrequestInsert",dto);
+    
+    
+    public void adRequestInsert(AdrequestDTO dto){
+    	SqlSession session = ssf.openSession(true);
+    	session.insert("adRequestInsert",dto);
     	System.out.println("INSERT OK");
     	session.close();
     }
-    public void adReqDelete(String adid){
-    	SqlSession session=ssf.openSession(true);
-    	session.delete("adReqDelete",adid);
-    	session.close();
-    	System.out.println("DELETE OK");
-    }
+    
+    
+    
+    
+    
+//    public List<AdrequestDTO> adRequestList(){
+//    	SqlSession session=ssf.openSession();
+//    	List<AdrequestDTO> list = session.selectList("adReqList");
+//    	session.close();
+//    	return list;
+//    }
+//    public AdrequestDTO adReqInfo(String adid){
+//    	SqlSession session=ssf.openSession();
+//    	AdrequestDTO d=session.selectOne("adReqInfo",adid);
+//    	session.close();
+//    	return d;
+//    }
+//    public void adInsert(AdvertiseDTO dto){
+//    	SqlSession session=ssf.openSession(true);
+//    	session.insert("adrequestInsert",dto);
+//    	System.out.println("INSERT OK");
+//    	session.close();
+//    }
+//    public void adReqDelete(String adid){
+//    	SqlSession session=ssf.openSession(true);
+//    	session.delete("adReqDelete",adid);
+//    	session.close();
+//    	System.out.println("DELETE OK");
+//    }
+    
+    
+    
 }

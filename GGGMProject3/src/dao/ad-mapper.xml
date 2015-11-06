@@ -26,18 +26,19 @@
 	</insert>
 	
 	
-	<insert id="adrequestInsert" parameterType="AdDTO">
-	INSERT INTO ad(adno,adid,adsubject,msg,pointrange,url,maj_category,sub_category,img) 
-	VALUES(ad_adno_seq.NEXTVAL,#{adid},#{adsubject},#{msg},#{pointrange},#{url},#{maj_category},#{sub_category},#{img})
+	<insert id="adRequestInsert" parameterType="Adreq">
+		INSERT INTO adrequest(adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight)
+		VALUES(adreq_no_seq.NEXTVAL,#{adid},#{adsubject},#{msg},#{maj_category},#{sub_category},#{url},#{img},#{ppc},#{data1},#{data2},#{weight})
 	</insert>
-	<select id="adReqList" resultType="Adreq">
-	SELECT * FROM adrequest ORDER BY regdate DESC
+	
+	<select id="adRequestList" resultType="Adreq">
+		SELECT * FROM adrequest ORDER BY regdate DESC
 	</select>
-	<select id="adReqInfo" parameterType="String" resultType="Adreq">
-	SELECT * FROM adrequest WHERE adid=#{adid}
+	<select id="adRequestInfo" parameterType="String" resultType="Adreq">
+		SELECT * FROM adrequest WHERE adid=#{adid}
 	</select>
-	<delete id="adReqDelete" parameterType="String">
-	DELETE FROM adrequest WHERE adid=#{adid}
+	<delete id="adRequestDelete" parameterType="String">
+		DELETE FROM adrequest WHERE adid=#{adid}
 	</delete>
 	
 	<select id="getWeightData" resultType="dao.RecomDTO"> 
@@ -45,3 +46,24 @@
 	</select>
 	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

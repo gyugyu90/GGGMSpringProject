@@ -1,0 +1,21 @@
+DROP SEQUENCE adreq_no_seq;
+DROP TABLE adrequest;
+CREATE TABLE adrequest(
+   adno NUMBER,
+   adid VARCHAR2(20) CONSTRAINT adreq_nn_adid NOT NULL,
+   adsubject VARCHAR2(50) CONSTRAINT adreq_nn_subject NOT NULL,
+   adtime VARCHAR(20) DEFAULT '0:00',
+   msg CLOB CONSTRAINT adreq_nn_msg NOT NULL,
+   maj_category VARCHAR2(20) CONSTRAINT adreq_nn_maj NOT NULL,
+   sub_category VARCHAR2(20) CONSTRAINT adreq_nn_sub NOT NULL,
+   url VARCHAR2(200),
+   img VARCHAR2(200) CONSTRAINT adreq_nn_img NOT NULL,
+   ppc NUMBER CONSTRAINT adreq_nn_prange NOT NULL, 
+   hit NUMBER DEFAULT 0,
+   data1 VARCHAR2(60) CONSTRAINT adreq_nn_dt1 NOT NULL,
+   data2 VARCHAR2(60) CONSTRAINT adreq_nn_dt2 NOT NULL,
+   weight VARCHAR2(50) CONSTRAINT adreq_nn_wgt NOT NULL,
+   CONSTRAINT ad_pk_adno PRIMARY KEY(adno)
+);
+CREATE SEQUENCE adreq_no_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
+commit;
