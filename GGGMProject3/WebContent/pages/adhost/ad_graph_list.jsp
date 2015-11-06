@@ -37,12 +37,12 @@ winObject.document.all.text2.value = document.all.text1.value;
 		});
 
 	
-
+		
 		$('#prevBtn').on('click', function() {
 			mySlider.goToPrevSlide(); //이전 슬라이드 배너로 이동
 			return false; //<a>에 링크 차단
 		});
-
+		
 		$('#nextBtn').on('click', function() {
 			mySlider.goToNextSlide();
 			return false;

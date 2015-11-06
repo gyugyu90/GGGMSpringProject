@@ -101,4 +101,59 @@ public class AdGraphDAO {
     	session.close();
     	return womancount;
     }
+    public static int age0(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age0", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age1(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age1", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age2(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age2", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age3(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age3", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age4(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age4", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age5(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age5", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age6(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age6", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age7(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age7", adno);
+    	session.close();
+    	return count;
+    }
+    public static int age8(int adno){
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("age8", adno);
+    	session.close();
+    	return count;
+    }
+    
 }

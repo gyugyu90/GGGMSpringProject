@@ -55,10 +55,11 @@
 	<bean id="adboard" class="model.AdminAdBoardModel"/>
 
 	<bean id="ad_request" class="model.AdRequestModel"/>
+	<bean id="ad_request_ok" class="model.AdRequestOKModel"/>
 	<bean id="adgraphlist" class="model.Ad_List_GraphModel"/>
 
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
 	<bean id="AdminAdInsert" class="model.AdminAdInsertModel"/>
-
+	<bean id="recom" class="model.RecomModel"/>
 </beans><!-- endElement(), endDocument() -->

@@ -16,7 +16,16 @@ public class memberDTO {
 	private String email;
 	private String emailreceive;
 	private int grade;
-	private memberAddDTO add;
+	private int age;
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	private memberAddDTO add=new memberAddDTO();
 
 	public String getName() {
 		return name;
