@@ -56,5 +56,5 @@
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
 	<bean id="AdminAdInsert" class="model.AdminAdInsertModel"/>
-
+	<bean id="recom" class="model.RecomModel"/>
 </beans><!-- endElement(), endDocument() -->

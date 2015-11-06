@@ -12,4 +12,5 @@
 	<select id="getDescription" resultType="String" parameterType="int">
 		SELECT adsubject FROM ad WHERE adno=#{adno}
 	</select>
+	
 </mapper>

@@ -78,5 +78,23 @@
 	UPDATE memberData SET
 	grade=#{grade} WHERE id=#{id}
 	</update>	
+
+	<!-- JOIN -->
+	<resultMap type="Member" id="MemberJoin">
+		<id column="id" property="id"/>
+		<result column="post" property="post"/>
+		<result column="sex" property="sex"/>
+		<result column="age" property="age"/>
+		<result column="ismarried" property="add.ismarried"/>
+		<result column="job" property="add.job"/>
+		<result column="salary" property="add.salary"/>
+		<result column="interest" property="add.interest"/>
+	</resultMap>
+	<select id="getMyInfo" resultMap="MemberJoin" parameterType="String">
+		SELECT post, sex, ismarried, job, salary, interest, 
+		(SELECT (TO_NUMBER(TO_CHAR(SYSDATE, 'yyyy'))-TO_NUMBER(TO_CHAR(birth,'yyyy'))) 
+		FROM memberdata m1 WHERE m1.id=#{id}) as age 
+		FROM memberdata m1, memberAdditional m2 WHERE m1.id=m2.id AND m1.id=#{id}
+	</select>
 	
 </mapper>

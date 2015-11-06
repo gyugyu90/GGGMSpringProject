@@ -40,4 +40,8 @@
 	DELETE FROM adrequest WHERE adid=#{adid}
 	</delete>
 	
+	<select id="getWeightData" resultType="dao.RecomDTO"> 
+		SELECT data1, data2, weight FROM ad
+	</select>
+	
 </mapper>
