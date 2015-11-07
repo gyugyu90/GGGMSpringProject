@@ -195,9 +195,7 @@ function re_ok(){
 			<c:if test="${sessionScope.grade==3}">
 			 ¶¶ <a href="#" class="re_re_a" name="${rDto.no }">¥Ò±€</a>&nbsp;
              ¶¶ <a href="#" class="re_up_a" name="${rDto.no }">ºˆ¡§</a>&nbsp;
-             <c:if test="${rDto.depth==0}">
-             <a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}">¶¶ªË¡¶</a>
-             </c:if>
+             <a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" >¶¶ªË¡¶</a>
              </c:if>
 			</c:when>
 			<c:otherwise>
@@ -210,7 +208,6 @@ function re_ok(){
             </c:if>
             </c:otherwise>
             </c:choose>
-       
            </td>
           </tr>
 <!-- ¥Ò±€ ¥Ò±€ -->

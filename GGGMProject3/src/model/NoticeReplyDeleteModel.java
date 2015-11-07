@@ -26,19 +26,20 @@ public class NoticeReplyDeleteModel implements Model {
 		if(d.getDepth()==0)
 		{
 			NoticeDAO.noticeReplyDelete(Integer.parseInt(no));
+			NoticeDAO.noticeReplyDepthDecrement(d.getRoot());
 		}
 		else
 		{
 			if(grade==3 && (d.getDepth()==0))
 			{
 				NoticeDAO.noticeReplyDelete(Integer.parseInt(no));
+				NoticeDAO.noticeReplyDepthDecrement(d.getRoot());
 			}
 			else if(grade==3 && (d.getDepth()!=0))
 			{
 				NoticeDAO.noticeReplyMsgUpdate(Integer.parseInt(no));
 			}
 		}
-		NoticeDAO.noticeReplyDepthDecrement(d.getRoot());
 		return "notice_content.do?no="+bno+"&page="+page;
 	}
 

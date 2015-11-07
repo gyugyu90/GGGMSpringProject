@@ -59,14 +59,14 @@ $(function(){
 		}
 	});
 });
-function re_del()
+function re_del1()
 {
 	var depth=$(this).attr("name");
 	if(depth==0)
 	{
 		alert("아랫댓글이 있어 삭제 할 수 없습니다");
 	}
-}
+} 
 function re_ok(){
 	var msg=$('#msg').val();
 	
@@ -256,7 +256,7 @@ td.bc_agree_title {
 			<c:if test="${sessionScope.grade==3}">
 			 └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name="${rDto.depth }" onclick="re_del()">└삭제</a>
+             <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" >└삭제</a>
              </c:if>
 			</c:when>
 			<c:otherwise>
@@ -264,7 +264,7 @@ td.bc_agree_title {
              └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              <c:if test="${sessionScope.id==rDto.id || sessionScope.grade==3 }">
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             └ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name="${rDto.depth }" onclick="re_del()">삭제</a>
+             └ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
              </c:if>
             </c:if>
             </c:otherwise>

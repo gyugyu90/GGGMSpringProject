@@ -15,6 +15,7 @@ public class qnaReplyWriteModel implements Model {
 		req.setCharacterEncoding("EUC-KR");
 		String msg=req.getParameter("msg");
 		System.out.println("msg:"+msg);
+		String root=req.getParameter("no");
 		String bno=req.getParameter("bno");
 		System.out.println("bno:"+bno);
 		String page=req.getParameter("page");
