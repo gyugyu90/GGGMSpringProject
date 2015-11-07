@@ -23,26 +23,21 @@
 	FROM qnaBoard ORDER BY no DESC))
 	WHERE num BETWEEN #{start} AND #{end}
 </select>
-<!-- 이름 검색 -->
-<select id="qnaNameSearchListData" resultType="Board" parameterType="java.util.Map">
+<!-- 검색 -->
+<select id="qnaSearchListData" resultType="Board" parameterType="java.util.Map">
 	SELECT no,subject,name,regdate,hit,num
 	FROM (SELECT no,subject,name,regdate,hit,rownum as num
 	FROM (SELECT no,subject,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
-	WHERE num BETWEEN #{start} AND #{end} AND name LIKE '%${search}%'
+	WHERE num BETWEEN #{start} AND #{end} AND ${searchCheck} LIKE '%${search}%'
 </select>
-<select id ="qnaNameSearchRowCount" resultType="int" parameterType="String">
-	SELECT COUNT(*) FROM qnaBoard 
-	WHERE name LIKE '%'||#{search}||'%'
-</select>
-<select id="qnaNameSearchReplyCount" resultType="int" parameterType="int">
-    SELECT COUNT(*)
+<select id ="qnaSearchRowCount" resultType="int" parameterType="java.util.Map">
+	SELECT COUNT(*)
 	FROM (SELECT no,subject,name,regdate,hit,rownum as num
 	FROM (SELECT no,subject,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
-	WHERE name LIKE '%${search}%'
+	WHERE num BETWEEN #{start} AND #{end} AND ${searchCheck} LIKE '%${search}%'
 </select>
-
 <!--  총페이지 -->
 <select id ="qnaRowCount" resultType="int">
 	SELECT COUNT(*) FROM qnaBoard

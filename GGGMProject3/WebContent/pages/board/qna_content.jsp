@@ -58,9 +58,15 @@ $(function(){
 			p=0;
 		}
 	});
-
 });
-
+function re_del()
+{
+	var depth=$(this).attr("name");
+	if(depth==0)
+	{
+		alert("아랫댓글이 있어 삭제 할 수 없습니다");
+	}
+}
 function re_ok(){
 	var msg=$('#msg').val();
 	
@@ -250,9 +256,7 @@ td.bc_agree_title {
 			<c:if test="${sessionScope.grade==3}">
 			 └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             <c:if test="${rDto.depth==0}">
-             <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">└삭제</a>
-             </c:if>
+             <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name="${rDto.depth }" onclick="re_del()">└삭제</a>
              </c:if>
 			</c:when>
 			<c:otherwise>
@@ -260,7 +264,7 @@ td.bc_agree_title {
              └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              <c:if test="${sessionScope.id==rDto.id || sessionScope.grade==3 }">
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             └ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
+             └ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name="${rDto.depth }" onclick="re_del()">삭제</a>
              </c:if>
             </c:if>
             </c:otherwise>
@@ -280,7 +284,7 @@ td.bc_agree_title {
 </tr>
 <tr style="display:none" class="hide_comment" id="qna_reply_reply_write${rDto.no }">
     <td class="bc_title_name"></td>
-    <td>
+    <td style="padding-bottom: 20px;, padding-top: 10px;">
     	<form id="qna_re_re_write${rDto.no }" action="qna_reply_reply_write.do" method="post">
         <textarea id="rrmsg${rDto.no }" name="rrmsg" rows="3" style="width:510px"></textarea>
     </td>
@@ -289,7 +293,7 @@ td.bc_agree_title {
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
         <a href="#" onclick="re_re_ok(${rDto.no })">
-        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+        <img src="img/button_comment.gif" style="vertical-align:middle;" border="0"></a>
 		</form>        
     </td>
 </tr>
@@ -305,7 +309,7 @@ td.bc_agree_title {
 <!--  댓글 수정 -->
 <tr style="display:none" class="hide_comment" id="qna_reply_modify_write${rDto.no }">
     <td class="bc_title_name"></td>
-    <td>
+   <td style="padding-bottom: 20px;, padding-top: 10px;">
     	<form id="qna_re_update${rDto.no }" action="qna_reply_modify.do" method="post">
         <textarea id="umsg${rDto.no }" name="umsg" rows="3" style="width:510px">${rDto.msg }</textarea>
     </td>
@@ -314,14 +318,14 @@ td.bc_agree_title {
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
         <a href="#" onclick="re_up_ok(${rDto.no })">
-        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+        <img src="img/button_comment.gif" style="vertical-align:middle;" border="0"></a>
 		</form>        
     </td>
 </tr>
 
 </c:forEach>  
 </table>
-<table id="table_content" width="700" align="center">
+<table width="700" align="center" id="bv_viewdetail">
 <tr>
     <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID</td>
     <td class="bc_title">
@@ -333,19 +337,18 @@ td.bc_agree_title {
 </tr>
 <tr>
     <td class="bc_title_name"></td>
-    <td>
+    <td style="padding-bottom: 20px;, padding-top: 10px;">
     	<form id="qna_re_write" action="qna_reply_write.do" method="post">
         <textarea id="msg" name="msg" rows="3" style="width:510px"></textarea>
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
         <a href="#" onclick="re_ok()">
-        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+        <img src="img/button_comment.gif" style="vertical-align:middle;" border="0"></a>
 		</form>      
-		<hr>  
     </td>
 </tr>
 </table>
-<table width="700" border="0" align="center">
+<table width="700" border="0" align="center" style="margin-top: 10px;">
 			<tr>
 		    	<td id="bl_pages">
 					<span class="bl_curpage bl_pagetext">
@@ -354,8 +357,8 @@ td.bc_agree_title {
 			    </td>
 
 	    		<td id="bl_linkbutton">
-					<a href="qna_content.do?no=${ d.no }&rPage=${rcurpage>1?rcurpage-1:rcurpage }&page=${strPage}">이전</a>&nbsp;&nbsp;&nbsp;
-					<a href="qna_content.do?no=${ d.no }&rPage=${rcurpage<rtotal?rcurpage+1:rcurpage }&page=${strPage}">다음</a>&nbsp;&nbsp;
+					<a href="qna_reply_content.do?no=${ d.no }&rPage=${rcurpage>1?rcurpage-1:rcurpage }&page=${strPage}">이전</a>&nbsp;&nbsp;&nbsp;
+					<a href="qna_reply_content.do?no=${ d.no }&rPage=${rcurpage<rtotal?rcurpage+1:rcurpage }&page=${strPage}">다음</a>&nbsp;&nbsp;
 	    		</td>
 			</tr>
 </table>

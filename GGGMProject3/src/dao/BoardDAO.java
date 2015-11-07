@@ -50,7 +50,7 @@ public class BoardDAO {
     	return list;
     }
     //이름검색
-    public static List<BoardDTO> qnaNameSearchListData(Map map)
+    public static List<BoardDTO> qnaSearchListData(Map map)
     {
     	/*
     	 *   class A
@@ -67,10 +67,64 @@ public class BoardDAO {
     	 */
     	SqlSession session=ssf.openSession();
     	List<BoardDTO> list=
-    			session.selectList("qnaNameSearchListData",map);
+    			session.selectList("qnaSearchListData",map);
     	session.close();// 반환
     	return list;
     }
+    public static int qnaSearchTotalPage(Map map)
+    {
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("qnaSearchRowCount",map);
+    	int total=(int)(Math.ceil(count/10.0));
+    	session.close();
+    	return total;
+    }
+    public static int qnaSearchRowCount(Map map)
+ 	{
+ 		
+     	SqlSession session=ssf.openSession();
+     	int total =session.selectOne("qnaSearchRowCount",map);
+     	session.close();
+ 		return total;
+ 	}
+    //제목 검색
+    public static List<BoardDTO> qnaSearchSubjectListData(Map map)
+    {
+    	/*
+    	 *   class A
+    	 *   {
+    	 *      selectList(){}
+    	 *   }
+    	 *   
+    	 *   new A().selectList()
+    	 *   new A().close()
+    	 *   
+    	 *   A a=new A();
+    	 *   a.selectList();
+    	 *   a.close()
+    	 */
+    	SqlSession session=ssf.openSession();
+    	List<BoardDTO> list=
+    			session.selectList("qnaSearchSubjectListData",map);
+    	session.close();// 반환
+    	return list;
+    }
+    public static int qnaSearchSubjectTotalPage(Map map)
+    {
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("qnaSearchSubjectRowCount",map);
+    	int total=(int)(Math.ceil(count/10.0));
+    	session.close();
+    	return total;
+    }
+    public static int qnaSearchSubjectRowCount(Map map)
+ 	{
+ 		
+     	SqlSession session=ssf.openSession();
+     	int total =session.selectOne("qnaSearchSubjectRowCount",map);
+     	session.close();
+ 		return total;
+ 	}
     // 리스트
     public static int qnaRowCount()
 	{

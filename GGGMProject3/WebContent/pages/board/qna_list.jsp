@@ -25,7 +25,7 @@ $(function(){
 </script>
 </head>
 <body>
-<table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner">
+<table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner" align="center">
 <tbody>
 <tr>
 
@@ -127,14 +127,11 @@ $(function(){
      </tbody></table></td>
     </tr>
     <tr>
-    <td><table width="260" border="0" align="center" cellpadding="0" cellspacing="0">
+    <td><table width="180" border="0" align="center" cellpadding="0" cellspacing="0">
      <tbody><tr>
       <td class="style2">
-      <input type="checkbox" name="searchCheck" value="name" checked="" onclick="change(1)">이름
-        <input type="checkbox" name="searchCheck" value="subject" onclick="change(2)">제목
-        <input type="checkbox" name="searchCheck" value="content" onclick="change(3)">내용
-      </td>
-      <td>
+      <input type="radio" name="searchCheck" value="name" checked="">이름
+      <input type="radio" name="searchCheck" value="subject"">제목
       <input type="text" name="search" size="10" id="search">
       <a href="#"><img src="img/search.gif" border="0" id="searchA"></a>
       </td>
@@ -143,25 +140,12 @@ $(function(){
      </tr>
  </tbody></table>
 </form>
-<script type="text/javascript">
-function change(temp) {
-    onoff   = new Array(document.form1.name,document.form1.subject,document.form1.content, document.form1.sbrand);
-    temp    = temp-1;
-    if(typeof document.form1.sbrand !="undefined") temp2=4;
-    else temp2=3;
-    for (i=0;i<temp2;i++) {
-        if(i == temp) {
-            onoff[i].checked = true;
-        } else {
-            onoff[i].checked = false;
-        }
-    }
-}
-</script></td></tr>
+</td></tr>
 </tbody></table>
 
 <script type="text/javascript" src="/js/cookie.js"></script>
 <script type="text/javascript">
+
 var selectedobj;
 var dragapproved = false;
 var zindex = 100;
