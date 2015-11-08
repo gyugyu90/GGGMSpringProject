@@ -75,7 +75,7 @@ $(function(){
       <td class="bl_list bl_icon"><img src="img/lock.gif" border="0"></td>
 	  <td class="bl_list bl_subject leftalign" colspan="1"><img src="img/board_head.gif" style="margin-right:5px;">
 	  <span class="BoardBrandName"></span>
-      <a href="qna_authorized.do?no=${dto.no }&page=${curpage }">${dto.subject }</a>
+      <a href="qna_authorized.do?no=${dto.no }&page=${curpage }">[${dto.subject }]&nbsp;${dto.subject2 }</a>
        <c:if test="${dto.replyCount!=0 }">
           (${dto.replyCount })
        </c:if>
@@ -131,7 +131,7 @@ $(function(){
      <tbody><tr>
       <td class="style2">
       <input type="radio" name="searchCheck" value="name" checked="">捞抚
-      <input type="radio" name="searchCheck" value="subject"">力格
+      <input type="radio" name="searchCheck" value="subject2">力格
       <input type="text" name="search" size="10" id="search">
       <a href="#"><img src="img/search.gif" border="0" id="searchA"></a>
       </td>

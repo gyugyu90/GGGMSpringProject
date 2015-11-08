@@ -12,26 +12,6 @@
 <link rel="stylesheet" type="text/css" href="./css/faq/table.css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="./js/faq/reply.js"></script>
-
-<!-- <link rel="stylesheet" type="text/css" href="./css/shadowbox.css"/> -->
-<!-- <script type="text/javascript" src="./js/shadowbox.js"></script> -->
-<!-- <script type="text/javascript"> -->
-<!-- Shadowbox.init({ -->
-<!--    players:["iframe"]		 -->
-<!-- }); -->
-
-<!-- function dblchk_del() -->
-<!-- { -->
-<!-- 	Shadowbox.open({ -->
-<!-- 		content:'dblchk_del.jsp', -->
-<!-- 		player:'iframe', -->
-<!-- 		title:'아이디 중복체크', -->
-<!-- 		width:300, -->
-<!-- 		height:150 -->
-<!-- 	}); -->
-<!-- } -->
-<!-- </script> -->
-
 <script type="text/javascript">
  var i=0;
 $(function(){
@@ -71,14 +51,15 @@ $(function(){
 			p=0;
 		}
 	});
-	$('#delete').click(function(){
-		var depth=$(this).val();
-		if(depth!=0){
-			alert("삭제 실패");
-			return;
-		}
-	});
 });
+
+function reply_del(no){
+		alert("아랫댓글까지는 삭제가 되지 않습니다");
+} 
+function reply_del1(no){
+	
+		alert("아랫댓글이 있어 삭제 할 수 없습니다");
+} 
 function re_ok(){
 	var msg=$('#msg').val();
 	
@@ -118,6 +99,11 @@ function re_ok(){
 </head>
 
 <body>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr align="center">
+       <td height="100" style="padding-left:110"><img src="img/notice.gif"></td>
+      </tr>
+</table>
 	<table width="700" align="center" id="bv_viewdetail">
 		<tr>
 			<td width=50% align=left height="28" class="bv_title bv_subject" style="padding-left: 8px; padding-top: 5px;">
@@ -138,7 +124,7 @@ function re_ok(){
 			</td>
 			
 			<td width=50% align=left height="28" class="bv_subject" style="padding-left: 8px; padding-top: 5px;">
-			<span class="bv_titlesub">작성일</span> : ${dto.regdate }
+			<span class="bv_titlesub">작성일</span> : <fmt:formatDate value="${dto.regdate }" pattern="yyyy-MM-dd"/>
 			</td>
 		</tr>
 		
@@ -150,9 +136,10 @@ function re_ok(){
 	<table width="700" border="0" align="center" id="bv_viewdetail">
 		<tr>
     		<td id="bl_linkbutton" align=right>
-    			<a href="notice_write.do">글쓰기</a>&nbsp;&nbsp;&nbsp;
+    		 <c:if test="${sessionScope.grade==3 }">
     			<a href="notice_modify.do?no=${dto.no}">수정</a>&nbsp;&nbsp;&nbsp;
     			<a href="notice_delete.do?no=${dto.no}">삭제</a>&nbsp;&nbsp;&nbsp;
+    		</c:if>
     			<a href="notice.do?page=${curpage }">목록</a>
     		</td>
 		</tr>
@@ -169,6 +156,7 @@ function re_ok(){
 	</table> -->
 	
 <!-- <div id="reply" align=center> -->
+<c:if test="${rDto.replyCount!=0 }">
 <table  width="700" align="center" height="100">
         <c:forEach var="rDto" items="${rlist }">
           <tr>
@@ -194,18 +182,38 @@ function re_ok(){
 			<c:when test="${rDto.msg=='관리자가 삭제한 댓글입니다' }">
 			<c:if test="${sessionScope.grade==3}">
 			 └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
-             └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             <a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" >└삭제</a>
+        	 └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
+             <c:choose>
+              <c:when test="${rDto.depth!=0 }">
+             	<a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" name="${rDto.depth }" onclick="reply_del1(${rDto.no})">└삭제</a>
+             </c:when>
+             <c:otherwise>
+             	<a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" >└삭제</a>
+             </c:otherwise>
+             </c:choose>
              </c:if>
 			</c:when>
 			<c:otherwise>
-            <c:if test="${sessionScope.id!=null }">
-             └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
+			 └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              <c:if test="${sessionScope.id==rDto.id || sessionScope.grade==3 }">
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             └ <a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}">삭제</a>
+              <c:choose>
+              <c:when test="${rDto.depth!=0 }">
+              <c:if  test="${sessionScope.id!=rDto.id && sessionScope.grade==3}">
+             	<a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" name="${rDto.depth }" onclick="reply_del(${rDto.no})">└삭제</a>
              </c:if>
-            </c:if>
+             <c:if  test="${sessionScope.id==rDto.id && sessionScope.grade==3}">
+             	<a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" name="${rDto.depth }" onclick="reply_del(${rDto.no})">└삭제</a>
+             </c:if>
+             <c:if test="${sessionScope.id==rDto.id && sessionScope.grade!=3}">
+             <a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" name="${rDto.depth }" onclick="reply_del1(${rDto.no})">└삭제</a>
+             </c:if>
+             </c:when>
+             <c:otherwise>
+             	<a href="notice_reply_delete.do?no=${rDto.no }&bno=${dto.no}&page=${curpage}" >└삭제</a>
+             </c:otherwise>
+             </c:choose>
+             </c:if>
             </c:otherwise>
             </c:choose>
            </td>
@@ -226,9 +234,9 @@ function re_ok(){
         <textarea id="rrmsg${rDto.no }" name="rrmsg" rows="3" style="width:510px"></textarea>
     </td>
     <td>
-     	<input type=hidden name="no" value="${rDto.no }">
-        <input type=hidden name="bno" value="${dto.no }">
-        <input type=hidden name="page" value="${curpage }">
+     	<input type="hidden" name="no" value="${rDto.no }">
+        <input type="hidden" name="bno" value="${dto.no }">
+        <input type="hidden" name="page" value="${curpage }">
       	 <a href="#" onclick="re_re_ok(${rDto.no })">
         <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
 		</form>        
@@ -262,6 +270,7 @@ function re_ok(){
 
 </c:forEach>  
 </table>
+</c:if>
 <table  width="700" align="center" id="bv_viewdetail">
 <tr>
     <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif">ID</td>
@@ -285,87 +294,6 @@ function re_ok(){
     </td>
 </tr>
 </table>
-		<%-- <table id="table_content">
-			<c:forEach var="rDto" items="${rlist }">
-				<tr><!-- 메시지를 아래쪽에 추가하되 tab만큼 들여써준다. -->
-					<td align="left">
-						<c:if test="${rDto.group_tab!=0 }">
-							<c:forEach var="i" begin="1" end="${rDto.group_tab }">
-								&nbsp;&nbsp;
-							</c:forEach>
-								<sup><span style="font-family:sans-serif;font-size: 5px; "></span></sup>
-						</c:if>
-						<font color=blue>${rDto.name }</font>
-						(${rDto.bdday })
-						<br>
-						
-						<c:forEach var="i" begin="1" end="${rDto.group_tab }">
-							&nbsp;&nbsp;
-						</c:forEach>
-						${rDto.msg }
-					</td>
-					
-					<td align=right>
-						<c:if test="${sessionScope.id!=null }"><!-- 로그인 하지 않으면 페이지로 못 넘어올 경우 필요없는 값 -->
-							<a href="#0" class="re_re_a" name="${rDto.no }"><li>댓글</li></a>&nbsp;
-							
-							<c:if test="${sessionScope.id==rDto.id }">
-								<a href="#0" class="re_up_a" name="${rDto.no }"><li>수정</li></a>&nbsp;
-								<a href="reply_delete.do?no=${rDto.no}&bno=${dto.no}&page=${curpage}"><li>삭제</li></a>
-							</c:if>
-							
-						</c:if>
-					</td>
-				</tr>
-				
-				<!-- 실제 댓글 박스가 나타나는 부분 -->
-				<tr id="re_re_write${rDto.no }" style="display:none" class="togl_intrfc">
-					<td colspan="2">
-					<span style="display: block;float: left;height: 50px">
-           				<form method=post action="reply_reply_write.do" id="re_re_frm${rDto.no }">
-            				<textarea rows="3" cols="55" name=rmsg id="rmsg${rDto.no }" style="vertical-align: middle;"></textarea>
-            				<input type="hidden" name="bno" value="${dto.no }">
-            				<input type="hidden" name="page" value="${curpage }">
-				            <input type="hidden" name="no" value="${rDto.no }">
-				            <input type="button" value="댓글" style="height: 50px" onclick="reReplyBtn(${rDto.no})">
-						</form>
-					</span>
-				   	</td>
-				</tr>
-				
-				<tr id="re_re_update${rDto.no }" style="display:none"  class="togl_intrfc">
-					<td colspan="2">
-					<span style="display: block;float: left;height: 50px">
-						<form method=post action="reply_reply_update.do" id="re_update_frm${rDto.no }">
-				            <textarea rows="3" cols="55" name=rmsg id="umsg${rDto.no }" style="vertical-align: middle;">${rDto.msg }</textarea>
-				            <input type="hidden" name="bno" value="${dto.no }">
-				            <input type="hidden" name="page" value="${curpage }">
-				            <input type="hidden" name="no" value="${rDto.no }">
-				            <input type="button" value="수정" style="height: 50px" onclick="reUpdateBtn(${rDto.no})">
-			           	</form>
-	          		</span>
-		       		</td>
-		        </tr>
-			</c:forEach>
-
-	        <c:if test="${sessionScope.id!=null }">
-		        <tr>
-					<td colspan="2">
-		          		<span style="display: block;float: left;height: 50px" >
-		           		<form method=post action="reply_new_write.do" id="new_re_write">
-			            	<textarea rows="3" cols="55" name=rmsg id=rmsg style="vertical-align: middle;"></textarea>
-			            	<input type="hidden" name="bno" value="${dto.no }">
-			            	<input type="hidden" name="page" value="${curpage }">
-			            	<input type="button" value="댓글" style="height: 50px" id="reWriteBtn">
-		           		</form>
-		          		</span>
-	         		</td>
-	        	</tr>
-	        </c:if>
-		</table> --%>
-		
-<!-- 		<hr width="650" align="center"> -->
-		
 		<table width="700" border="0" align="center">
 			<tr>
 		    	<td id="bl_pages">

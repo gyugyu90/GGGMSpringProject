@@ -34,7 +34,6 @@ public class qnaListModel implements Model {
 			strPage="1";
 		if(search==null)
 			search="";
-		System.out.println("searchCheck"+searchCheck);
 		int curpage=Integer.parseInt(strPage);
 		int rowSize=10;
 		int start=(curpage*rowSize)-(rowSize-1);

@@ -14,11 +14,13 @@ public class qnaWriteOkModel implements Model {
 		String name=req.getParameter("name");
 		System.out.println("name:"+name);
 		String subject=req.getParameter("subject");
+		String subject2=req.getParameter("subject2");
 		String content=req.getParameter("content");
 		String pwd=req.getParameter("pwd");
 		BoardDTO d = new BoardDTO();
 		d.setName(name);
 		d.setSubject(subject);
+		d.setSubject2(subject2);
 		d.setContent(content);
 		d.setPwd(pwd);
 		BoardDAO.qnaWrite(d);
