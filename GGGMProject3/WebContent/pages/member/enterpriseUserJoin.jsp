@@ -3,14 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="EUC-KR">
 <title>회원가입</title>
 <link rel="stylesheet" type="text/css" href="join.css"/>
-<link rel="stylesheet" type="text/css" href="../css/shadowbox.css"/>
-<script type="text/javascript" src="../js/shadowbox.js"></script>
-
-
+<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript" src="../../js/shadowbox.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+
 Shadowbox.init({
    players:["iframe"]		
 });
@@ -34,6 +35,42 @@ function postfind()
 		height:350
 	});
 }
+$(function(){
+	$('#pwd2').focusout(function(){
+		var pwd1=$('#pwd').val();
+		var pwd2=$('#pwd2').val();
+		if(pwd1==''){
+			$('#pwdcheck').text('비밀번호를 입력하세요');
+			$('#pwd_fa').removeClass('fa fa-check');
+			return;
+		}
+		if(pwd2==''){
+			$('#pwdcheck').text('비밀번호를 입력하세요');
+			$('#pwd_fa').removeClass('fa fa-check');
+			return;
+		}
+		
+		if(pwd1==pwd2){
+			$('#pwdcheck').text('');
+			$('#pwd_fa').addClass('fa fa-check');
+		}else{
+			$('#pwdcheck').text('비밀번호를 확인하세요');
+			$('#pwd_fa').removeClass('fa fa-check');
+		}
+	});
+	$('#name').focusout(function(){
+		if($('#name').val()==''){
+			$('#namecheck').text('이름을 입력하세요');
+			$('#name_fa').removeClass('fa fa-check');
+		}else{
+			$('#namecheck').text('');
+			$('#name_fa').addClass('fa fa-check');
+		}
+	});
+	$('#btnSub').click(function(){
+		$('#joinForm').submit();
+	});
+});
 </script>
 </head>
 <body>
@@ -41,35 +78,32 @@ function postfind()
 	<br>
 	<br>
 	<div id="wrapper">
-	<form id="joinForm" name="join_form">
+	<form id="joinForm" name="join_form" action="<%=request.getContextPath() %>/join.do?grade=2" method="post">
     <p>
     <label for="enterid">아이디</label>
-    <input type=text name="id" id="enterid">
+    <input type=text name="id" id="id">
     <input type=button value=중복체크 id="enteridBtn" onclick="idcheck()">
     </p>
     <p>
     <label for="enterpwd">비밀번호</label>
-    <input type=password name="pwd" id="enterpwd">
-    <input type=password name="pwd" id="enterpwd2" placeholder="재입력">
+    <input type=password name="pwd" id="pwd">
+    <input type=password name="pwd" id="pwd2" placeholder="재입력">
+    <span id="pwdcheck"></span><i id="pwd_fa" class="" style="font-size:16px; color:lightcoral;"></i>
     </p>
     <p>
     <label for="entername">이름</label>
-    <input type=text name="name" id="entername">
+    <input type=text name="name" id="name">
+    <span id="namecheck"></span><i id="name_fa" class="" style="font-size:16px; color:lightcoral;"></i>
     </p>
     <p>
     <label for="entername2">회사명</label>
-    <input type=text name="name" id="entername2">
+    <input type=text name="companyname" id="entername2">
     </p>
-    <p>
-	<label for="entermail">사업자 등록번호</label>			
-	<input type=text size=3 name=enterpriseNumber1>-
-	<input type=text size=4 name=enterpriseNumber2>-
-	<input type=text size=4 name=enterpriseNumber3>
-	</p>
+    
     <p>
     <label for="entersex">성별</label>
-    <input type=radio name="sex" id="entersex" checked value="남자">남자
-    <input type=radio name="sex" id="entersex" value="여자">여자
+    <input type=radio name="sex" id="sex" checked value="남자">남자
+    <input type=radio name="sex" id="sex" value="여자">여자
     </p>
     <p>
     <label for="enterbday">생년월일</label>
@@ -78,54 +112,28 @@ function postfind()
     <p>
     <label for="enterpost">주소</label>
     <span id="cellStyle">
-     <input type=text name="post" id="enterpost" readonly>
+     <input type=text name="post" id="post" readonly>
      <input type=button value="우편번호검색" id="enterpostBtn" onclick="postfind()">
-     <input type=text name="addr1" id="enteraddr1" readonly>
-     <input type=text name="addr2" id="enteraddr2">
+     <input type=text name="addr1" id="addr1" readonly>
+     <input type=text name="addr2" id="addr2">
     </span>
     </p>
     <p>
     <label for="enterphone">휴대폰번호</label>
     <span id="cellStyle">
-	    <select id="enterphone" name="phone1">
+	    <select id="enterphone" name="tel1">
 	      <option>010</option>
 	      <option>011</option>
 	      <option>017</option>
 	    </select>
-	    <input type=text name="phone2" id="enterphone1">-
-	    <input type=text name="phone3" id="enterphone2">
+	    <input type=text name="tel2" id="enterphone1">-
+	    <input type=text name="tel3" id="enterphone2">
     </span>
-    </p>
-     <p>
-    <label for="entertel">회사 전화번호</label>
-    <span id="cellStyle">
-	    <select id="entertel" name="tel1">
-	      <option>02</option>
-	      <option>031</option>
-	      <option>032</option>
-	      <option>033</option>
-	      <option>041</option>
-	      <option>042</option>
-	      <option>043</option>
-	      <option>044</option>
-	      <option>051</option>
-	      <option>052</option>
-	      <option>053</option>
-	      <option>054</option>
-	      <option>055</option>
-	      <option>061</option>
-	      <option>062</option>
-	      <option>063</option>
-	      <option>064</option>     
-	    </select>
-	    <input type=text name="tel2" id="entertel1">-
-	    <input type=text name="tel3" id="entertel2">
-    </span>
-    </p>
+    </p>     
     <p>
     <label for="enteremail">e-mail</label>
-    <input type=text name="email" id="enteremail"> @
-    <select id="enteremail2" name="email2" style="width:inherit">
+    <input type=text name="email" id="email"> @
+    <select id="email2" name="email2" style="width:inherit">
 	      <option>naver.com</option>
 	      <option>hanmail.net</option>
 	      <option>gmail.com</option>
@@ -136,8 +144,8 @@ function postfind()
     </p>
     <p>
     <label for="entermail">메일수신</label>
-    <input type=radio name="mail" id="entermail" checked value="수신동의">수신동의
-    <input type=radio name="mail" id="entermail" value="수신거절">수신거절
+    <input type=radio name="emailreceive" id="entermail" checked value="수신동의">수신동의
+    <input type=radio name="emailreceive" id="entermail" value="수신거절">수신거절
     </p>
     <p class="btnSubmit">
     <input type=button id="btnSub" value=회원가입>
