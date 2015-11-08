@@ -17,6 +17,15 @@ public class memberDTO {
 	private String emailreceive;
 	private int grade;
 	private int age;
+	private String companyname;
+	public String getCompanyname() {
+		return companyname;
+	}
+
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
+
 	public int getAge() {
 		return age;
 	}
