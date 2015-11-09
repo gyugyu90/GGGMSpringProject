@@ -342,13 +342,12 @@ section.main_1 {
 			</div>
 			<div class="scroll-icon1">
 				<div class="tags">
-					<input value="약관" onclick="clause()">
-				    <input value="개인정보" onclick="personalInfo()">
-					<input value="채용" onclick="recruit()"> 
-					<input value="지원" onclick="support()">
+					<a href="#" onclick="clause()">약관</a>
+					<a href="#" onclick="personalInfo()">개인정보</a>
+					<a href="#" onclick="recruit()">채용</a>
+					<a href="#" onclick="support()">지원</a>
 				</div>
 			</div>
-			
 		</section>
 		<%-------------------------------------------------------------------------- --%>
 		<section class="vertical-scrolling">

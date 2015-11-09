@@ -13,4 +13,8 @@
 		SELECT adsubject FROM ad WHERE adno=#{adno}
 	</select>
 	
+	<select id="getAdReplyTotalCount" resultType="int" parameterType="int">
+		SELECT reply FROM reply WHERE bno=#{adno}
+	</select>
+	
 </mapper>

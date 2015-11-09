@@ -29,8 +29,18 @@ public class Ad_IndexModel implements Model {
 		
 		List<ReplyDTO> list = ReplyBoardDAO.replyListData(adno);
 		System.out.println("list size:"+list.size());
+		
+		String rcurpage=req.getParameter("rcurpage");
+		if(rcurpage==null){
+			rcurpage="1";
+		}
+		
+		int rtotal=ReplyBoardDAO.replyTotalPage(adno);
+		
+		req.setAttribute("rcurpage", rcurpage);
+		req.setAttribute("rtotal", rtotal);
 		req.setAttribute("list", list);
-		req.setAttribute("curpage", adno);
+		req.setAttribute("adno", adno);
 		req.setAttribute("jsp", "../adview/ad_index.jsp?adno="+adno);
 		return "pages/main/main.jsp";
 	}
