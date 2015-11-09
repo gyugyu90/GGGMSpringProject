@@ -102,7 +102,6 @@ public class memberDAO {
 		session.close();
 		return total;
 	}
-<<<<<<< HEAD
 	public static void myInfoUpdate(memberDTO d){
 		SqlSession session=ssf.openSession(true);
 		session.update("myInfoUpdate",d);
@@ -113,7 +112,6 @@ public class memberDAO {
 		session.update("myAddInfoUpdate",d);
 		session.close();
 	}
-=======
 	public static void memberGradeUpdate(memberDTO d){
 		SqlSession session=ssf.openSession(true);
 		session.update("memberGradeUpdate",d);
@@ -134,6 +132,5 @@ public class memberDAO {
 		return list;
 	}
 	
->>>>>>> refs/remotes/origin/master
 }
 

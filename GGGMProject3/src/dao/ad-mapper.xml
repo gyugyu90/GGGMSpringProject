@@ -13,13 +13,9 @@
 	<select id="side_info" resultType="AdDTO" parameterType="int">
 		SELECT adno, url, hit FROM ad WHERE adno=#{adno}
 	</select>
-<<<<<<< HEAD
-	
 	<select id="aadListData" resultType="AdDTO">
 		SELECT * FROM ad ORDER BY adno DESC
 	</select>
-</mapper>
-=======
 	<update id="getpoint" parameterType="java.util.Map">
 		UPDATE memberData SET sumpoint=sumpoint+#{point} WHERE id=#{id}
 	</update>
@@ -56,22 +52,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> refs/remotes/origin/master

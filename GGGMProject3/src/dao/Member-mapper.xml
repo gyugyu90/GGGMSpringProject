@@ -74,7 +74,6 @@
 	<select id="memberTotalPoint" parameterType="Member" resultType="int">
 	SELECT sumpoint FROM memberData WHERE id=#{id}
 	</select>
-<<<<<<< HEAD
 	<update id="myInfoUpdate" parameterType="Member">
 	UPDATE memberData set pwd=#{pwd},<!-- post=#{post},addr1=#{addr1},addr2=#{addr2}, -->tel=#{tel},email=#{email},emailreceive=#{emailreceive}
 	WHERE id=#{id}
@@ -83,7 +82,6 @@
 	UPDATE memberAdditional set <!-- interest=#{interest}, -->job=#{job},salary=#{salary},ismarried=#{ismarried},accountno=#{accountno}
 	WHERE id=#{id}
 	</update>
-=======
 	<update id="memberGradeUpdate" parameterType="Member">
 	UPDATE memberData SET
 	grade=#{grade} WHERE id=#{id}
@@ -111,6 +109,5 @@
 		FROM memberdata m1 WHERE m1.id=#{id}) as age 
 		FROM memberdata m1, memberAdditional m2 WHERE m1.id=m2.id AND m1.id=#{id}
 	</select>
->>>>>>> refs/remotes/origin/master
 	
 </mapper>
