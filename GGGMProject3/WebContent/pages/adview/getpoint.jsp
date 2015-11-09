@@ -5,12 +5,17 @@
       Class.forName("oracle.jdbc.driver.OracleDriver");
       String url="jdbc:oracle:thin:@localhost:1521:ORCL";
       Connection conn=DriverManager.getConnection(url, "scott", "tiger");
-      String sql="UPDATE ";//자기 포인트 증가
+      
+      //자기 포인트 올리기
+      String sql="UPDATE memberData SET sumpoint=sumpoint+? WHERE id=?";
+      PreparedStatement ps=conn.prepareStatement(sql);
+      ps.setInt(1, 1);
+      
       //myadviewlist에 자기 본 정보 insert
       //adviewlist에 자기 본 정보 insert
       //js..... button 옆에 체크 아이콘 넣기
       
-      PreparedStatement ps=conn.prepareStatement(sql);
+      
       ResultSet rs=ps.executeQuery();
       
       

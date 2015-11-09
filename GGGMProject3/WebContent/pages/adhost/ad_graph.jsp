@@ -1,240 +1,282 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-        <title>AdminLTE | Morris.js Charts</title>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <!-- bootstrap 3.0.2 -->
-        <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>광고구마</title>
+		<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
         <link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
         <link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <!-- Morris charts -->
-        <link href="<%=request.getContextPath() %>/css/morris/morris.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
 	
-<style type="text/css">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
 
-#body{
+        var data = google.visualization.arrayToDataTable([
+          ['클릭수', 'ToDay'],
+          ['여자',     <%=request.getAttribute("womancount")%>],
+          ['남자',      <%=request.getAttribute("mancount")%>]
+          
+        ]);
+
+        var options = {
+          title: '성별 분류',
+          'sliceVisibilityThreshold':0 ,
+          'width' : 450,
+          'height' : 450
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+	
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['클릭수', 'ToDay'],
+          ['10대미만',     <%=request.getAttribute("age0")%>+0],
+          ['10대',      <%=request.getAttribute("age1")%>+0],
+          ['20대',      <%=request.getAttribute("age2")%>+0],
+          ['30대',      <%=request.getAttribute("age3")%>+0],
+          ['40대',      <%=request.getAttribute("age4")%>+0],
+          ['50대',      <%=request.getAttribute("age5")%>+0],
+          ['60대',      <%=request.getAttribute("age6")%>+0],
+          ['70대',      <%=request.getAttribute("age7")%>+0],
+          ['80대 이상',      <%=request.getAttribute("age8")%>]
+          
+        ]);
+
+        var options = {
+          title: '나이별 분류',
+          'sliceVisibilityThreshold':0 ,
+          'width' : 450,
+          'height' : 450
+        };
+		
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+        chart.draw(data, options);
+      }
+    </script>
+<style type="text/css">
+#body {
 	width: 100%;
 	height: 100%;
-	text-align: center;
 }
-#body #subject{
+#body #top{
 	width:100%;
-	height:10%;
+	height: 70%;
 }
-#body #content{
-	width:100%;
-	height:90%;
-}
-#body #content #period{
-	width:100%;
-	height:10%;
-}
-#body #content #summery{
-	width:100%;
-	height:30%;
-	display: block;
+#body #top #top_left{
 	float: left;
-	margin: 5%;
+	width:50%;
+	height:100%;
+	
+	
+	
+	
 	
 }
-#body #content #graph{
-	margin: 5%;
-	display:block;
+#body #top #top_left #img{
+	float : left;
+	margin-left: 16%;
+	padding-left: 16%;
+}
+#body #top #top_right{
+	float: right;
+	width:50%;
+	height:100%;
+	
+	
+	
+}
+#body #top #top_right #linechart_material{
+	float : right;
+	margin-right: 15%;
+	padding-right: 15%;
+	
+}
+#body #bottom{
+	width:100%;
+	height: 30%;
 	float: left;
-	width:100%;
-	height:30%;
+	font-family: 맑은 고딕;
+	font-size: 15pt;
+	padding-left: 15px;
+	
 }
-#body #content #search{
-	width:100%;
-	height:20%;
-}
-#body #content #search ul li	{list-style:none; line-height: 3em;}
-#body #content #search ul	{border:1;}
-
-#body #content #summery #summery_count{
-	float:left;
-	width: 45%;
-	text-align: center;
-	vertical-align: middle;
-	padding-left:20%;
+#body #bottom #piechart{
+	width: 50%;
 	height: 100%;
+	float: left;
+	
+	padding-top: 30px;
+	margin-left: 15%;
+}
+#body #bottom #piechart1{
+	
+	width: 50%;
+	height: 100%;
+	float: right;
+	
+	padding-top: 30px;
+	margin-right: 15%;
+}
+#body #bottom .point_table{
+	width: 10%;
+	text-align: center;
 	
 }
-#body #content #summery #summery_cost{
-	float:right;
-	width: 45%;
-	text-align: center;
-	vertical-align: middle;
-	padding-left:20%
+li{ list-style-type : none;
+	padding: 5px;
+	
+ }
+ table{
+ width:100%;
+ }
+#first_list{
+	color: white;
+	background-color: blue
+}
+#arrow{
+	padding-left: 125px;
 }
 </style>
 </head>
+
 <body>
 	
-		
-		
-		<div id="body">
-			<div id="subject">
-			광고주 = ?
-			</div>
-			<div id="content">
-				<div id="period">
-				 
-				</div>
-				<div id="summery">
-					
-					<div id="summery_count">
-						<table border=1>
-							<tr>
-								<td colspan="2">광고시청건수</td>
-								<td>중복</td>
-								<td>${OverlapCount }</td>
-								
-							</tr>
-							<tr>
-								<td colspan="2"></td>
-								<td>단일</td>
-								<td>${NoOverlapCount }</td>
-								
-							</tr>
-						</table>
-						
-					</div>
-					<div id="summery_cost">
-						<table border=1>
-							<tr>
-								<td colspan="2">광고비용 :</td>
-								
-								<td colspan="2">80,000,000</td>
-								
-							</tr>
-							<tr>
-								<td colspan="2"></td>
-								
-								<td colspan="2"></td>
-								
-							</tr>
-						</table>
-					</div>
-					
+	<div id="body">
+		<div class=row>
+		<div id="top">
+			<div id="top_left">
 				
-				</div>
-				
-				<div id="graph">
-
-                <!-- Main content -->
-                <div class="box box-primary">
-                                <div class="box-header">
-                                    <h3 class="box-title">Area Chart</h3>
-                                </div>
-                                <div class="box-body chart-responsive">
-                                    <div class="chart" id="revenue-chart" style="height: 300px;"></div>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
-                            </div>
-				<div id="search">
-					<ul>
-						<li>
-						<input type="checkbox" name=age10 value=age10>10대
-						
-						<input type="checkbox" name=age10 value=age10>20대
-						
-						<input type="checkbox" name=age10 value=age10>30대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						</li>
-						<li>
-						<input type="checkbox" name=age10 value=age10>10대
-						
-						<input type="checkbox" name=age10 value=age10>20대
-						
-						<input type="checkbox" name=age10 value=age10>30대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						</li>
-						<li>
-						<input type="checkbox" name=age10 value=age10>10대
-						
-						<input type="checkbox" name=age10 value=age10>20대
-						
-						<input type="checkbox" name=age10 value=age10>30대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						</li>
-						<li>
-						<input type="checkbox" name=age10 value=age10>10대
-						
-						<input type="checkbox" name=age10 value=age10>20대
-						
-						<input type="checkbox" name=age10 value=age10>30대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						
-						<input type="checkbox" name=age10 value=age10>40대
-						</li>
-					</ul>
-					
-					
-				</div>
+				<img id="img" src="poster/ad${list.adno}.PNG" width=450 height=450>
+				<input type="hidden" id="adno" value="${list.adno}"/>
+				<input type="hidden" id="mancount" value="mancount" value="${mancount }"/>
+				<input type="hidden" id="womancount" name="womancount"value="${womancount }">
 			</div>
-			
+			<div id="top_right">
+				
+                            <!-- Line chart -->
+                            <div id="linechart_material"></div>
+                  
+			</div></div>
 		</div>
+		<div class=row>
+		<div id="bottom">
+			
+			<!-- <table>
+				<tr  id="first_list">
+					<th  class="point_table">
+					성별
+					</th>
+					<th class="point_table">
+					나이별
+					</th>
+					<th class="point_table">
+					지역별
+					</th>
+					<th class="point_table">
+					연봉별
+					</th >
+					<th class="point_table" >
+					결혼여부
+					</th>
+					<th class="point_table" >
+					직업별
+					</th>
+					<th class="point_table" >
+					취미별
+					</th>
+				</tr>
+				<tr>
+					<td class="point_table">
+					</td>
+					<td class="point_table">
+					</td>
+					<td class="point_table">
+					    사용
+					</td>
+					<td class="point_table">
+					</td >
+					<td class="point_table" >
+					</td>
+				</tr>
+			</table> -->
+			<div id="piechart" style="width: 450px; height: 450px;"></div>
+			<div id="piechart1" style="width: 450px; height: 450px;"></div>
+		</div>
+		</div>
+	</div>
+	<!-- jQuery 2.0.2 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    //from googlechart.blogspot.kr
+    var queryObject="";
+    var queryObjectLen="";
+    var listadno=$('#adno').val();
+    $.ajax({
+    	type:'POST',
+    	url:'pages/adhost/adgetdata.jsp',
+    	data:{adno:listadno},
+    	dataType:'json',
+    	success:function(data){
+    		queryObject=eval('('+JSON.stringify(data)+')');
+    		queryObjectLen=queryObject.adviewlist.length;
+    	},
+    	error:function(xhr,type){
+    		alert('server error occured!')
+    	}
+    });
+    
+    //google chart api
+    google.load('visualization', '1.1', {packages: ['line']});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {;
 		
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Day');
+      data.addColumn('number', 'count');
+      
+	  for(var i=0;i<queryObjectLen;i++){
+		  var count=queryObject.adviewlist[i].count;
+		  data.addRows([
+		       [i+1, parseInt(count)]         
+		  ]);
+	  }
+      
+
+      var options = {
+        chart: {
+          title: '광고 시청 현황',
+          
+        },
+        width: 450,
+        height: 450
+      };
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
 		
-        <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
-
-        <!-- Morris.js charts -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="<%=request.getContextPath() %>/js/plugins/morris/morris.min.js" type="text/javascript"></script>
-
-        <!-- AdminLTE App -->
-        <script src="<%=request.getContextPath() %>/js/AdminLTE/app.js" type="text/javascript"></script>
-
-        <!-- page script -->
-        <script type="text/javascript">
-            $(function() {
-                "use strict";
-
-                // AREA CHART
-                var area = new Morris.Area({
-                    element: 'revenue-chart',
-                    resize: true,
-                    data: [
-                        {y: '2011 Q1', item1: 2666, item2: 2666},
-                        {y: '2011 Q2', item1: 2778, item2: 2294},
-                        {y: '2011 Q3', item1: 4912, item2: 1969},
-                        {y: '2011 Q4', item1: 3767, item2: 3597},
-                        {y: '2012 Q1', item1: 6810, item2: 1914},
-                        {y: '2012 Q2', item1: 5670, item2: 4293},
-                        {y: '2012 Q3', item1: 4820, item2: 3795},
-                        {y: '2012 Q4', item1: 15073, item2: 5967},
-                        {y: '2013 Q1', item1: 10687, item2: 4460},
-                        {y: '2013 Q2', item1: 8432, item2: 5713}
-                    ],
-                    xkey: 'y',
-                    ykeys: ['item1', 'item2'],
-                    labels: ['Item 1', 'Item 2'],
-                    lineColors: ['#a0d0e0', '#3c8dbc'],
-                    hideHover: 'auto'
-                });
-
-            });
-        </script>
+      chart.draw(data, options);
+    }
+  </script>
 </body>
 </html>

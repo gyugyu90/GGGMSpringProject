@@ -68,7 +68,7 @@
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
-                        <li class="dropdown messages-menu">
+                        <%--<li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
                                 <span class="label label-success">4</span>
@@ -253,7 +253,7 @@
                                     <a href="#">View all tasks</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --%>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu" >
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -334,7 +334,7 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="#"><i
+							<li><a href="notice.do"><i
 									class="fa fa-angle-double-right"></i>공지사항</a></li>
 							<li><a href="qna_list.do"><i
 									class="fa fa-angle-double-right"></i>QnA</a></li>
@@ -347,11 +347,11 @@
 									<span>광고주분석</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 								<ul class="treeview-menu">
-									<li><a href="adgraph.do"><i
+									<li><a href="adgraphlist.do"><i
 											class="fa fa-angle-double-right"></i>그래프</a></li>
 									<li><a href="#"><i
 											class="fa fa-angle-double-right"></i>광고비용 산출</a></li>
-									<li><a href="#"><i
+									<li><a href="ad_request.do"><i
 											class="fa fa-angle-double-right"></i>광고 신청</a></li>
 								</ul></li>
 						</c:when>
@@ -364,7 +364,7 @@
 											class="fa fa-angle-double-right"></i>그래프</a></li>
 									<li><a href="#"><i
 											class="fa fa-angle-double-right"></i>광고비용 산출</a></li>
-									<li><a href="#"><i
+									<li><a href="ad_request.do"><i
 											class="fa fa-angle-double-right"></i>광고 신청</a></li>
 								</ul></li>
 							<li class="treeview"><a href="#"> <i class="fa fa-table"></i>

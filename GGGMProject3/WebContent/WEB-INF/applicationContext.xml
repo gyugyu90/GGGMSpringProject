@@ -3,12 +3,14 @@
 <!-- SAX방식에서 태그를 읽는 메소드들 startDocument() : xml이 시작이 되었음을 알림 -->
 <beans><!-- startElement() -->
 	<!-- main.do가 들어왔을 때 매핑할 클래스 => MainModel -->
+	<!-- startElement(), endElement() -->	
 	<bean id="login" class="model.LoginModel" />
 	<bean id="member" class="model.MemberModel" />
 	<bean id="main" class="model.MainModel" />
 	<bean id="admember" class="model.ADMemberModel" />
 	<bean id="normalmember" class="model.NormalMemberModel" />
 	<bean id="AdminMember" class="model.AdminMemberModel" />
+	<bean id="MemberInfo" class="model.MemberInfoModel" />
 	<bean id="faq" class="model.FaqModel" />
 	<bean id="idcheck" class="model.IdCheckModel" />
 	<bean id="board_content" class="model.BoardContentModel" />
@@ -33,9 +35,34 @@
 	<bean id="qna_modify" class="model.qnaModifyModel" />
 	<bean id="qna_modify_ok" class="model.qnaModifyOkModel" />
 	<bean id="qna_reply_write" class="model.qnaReplyWriteModel" />
-	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
 	<bean id="home" class="model.HomeModel" />
 	<bean id="mypage" class="model.myPageModel" />
 	<bean id="myInfoUpdate" class="model.myInfoUpdateModel" />
-	
+	<bean id="qna_reply_reply_write" class="model.qnaReplyReplyWriteModel" />
+	<bean id="qna_reply_modify" class="model.qnaReplyModifyModel" />
+	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
+	<bean id="qna_reply_content" class="model.qnaReplyContentModel" />
+	<bean id="getpoint" class="model.GetPointModel" />
+	<bean id="notice" class="model.NoticeModel"/>
+	<bean id="notice_content" class="model.NoticeContentModel"/>
+	<bean id="notice_write" class="model.NoticeWriteModel"/>
+	<bean id="notice_write_ok" class="model.NoticeWriteOkModel"/>
+	<bean id="notice_modify" class="model.NoticeModifyModel"/>
+	<bean id="notice_modify_ok" class="model.NoticeModifyOkModel"/>
+	<bean id="notice_delete" class="model.NoticeDeleteModel"/>
+	<bean id="notice_reply_write" class="model.NoticeReplyWriteModel"/>
+	<bean id="notice_reply_modify" class="model.NoticeReplyModifyModel"/>
+	<bean id="notice_reply_reply_write" class="model.NoticeReplyReplyWriteModel"/>
+	<bean id="notice_reply_delete" class="model.NoticeReplyDeleteModel"/>
+	<bean id="board" class="model.AdminBoardModel"/>
+	<bean id="adboard" class="model.AdminAdBoardModel"/>
+
+	<bean id="ad_request" class="model.AdRequestModel"/>
+	<bean id="ad_request_ok" class="model.AdRequestOKModel"/>
+	<bean id="adgraphlist" class="model.Ad_List_GraphModel"/>
+
+	<bean id="ad_request" class="model.AdRequestModel"/>
+	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
+	<bean id="AdminAdInsert" class="model.AdminAdInsertModel"/>
+	<bean id="recom" class="model.RecomModel"/>
 </beans><!-- endElement(), endDocument() -->

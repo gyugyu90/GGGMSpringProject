@@ -11,30 +11,17 @@
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
 <!-- bootstrap 3.0.2 -->
-<link href="../../../css/bootstrap.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- font Awesome -->
-<link href="../../../css/font-awesome.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Ionicons -->
-<link href="../../../css/ionicons.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Theme style -->
-<link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
-<script type="text/javascript" src="../../js/shadowbox.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-Shadowbox.init({
-   players:["iframe"]		
-});
-$(function(){
-	function memberClick(id){
-		alert(trObj.id);
-	}
-})
+<link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-</script>
 </head>
 <body class="skin-black">
 	<div class="row">
@@ -76,7 +63,7 @@ $(function(){
 							</thead>
 							<tbody>
 								<c:forEach var="d" items="${list}">
-									<tr style="font-size: 9pt;" onclick="memberClick(${d.id})">
+									<tr onclick="location.href='MemberInfo.do?memberid=${d.id}'">
 										<td width="8%">${d.id}</td>
 										<td width="8%">${d.name}</td>
 										<td width="10%"><fmt:formatDate value="${d.birth }"

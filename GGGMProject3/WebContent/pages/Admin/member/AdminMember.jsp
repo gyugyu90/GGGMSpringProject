@@ -11,16 +11,16 @@
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
 <!-- bootstrap 3.0.2 -->
-<link href="../../../css/bootstrap.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- font Awesome -->
-<link href="../../../css/font-awesome.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Ionicons -->
-<link href="../../../css/ionicons.min.css" rel="stylesheet"
+<link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet"
 	type="text/css" />
 <!-- Theme style -->
-<link href="../../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="skin-black">
 	<div class="row">
@@ -60,7 +60,7 @@
 							</thead>
 							<tbody>
 								<c:forEach var="dto" items="${list}">
-									<tr>
+									<tr onclick="location.href='MemberInfo.do?memberid=${dto.id}'">
 										<td width="7%">${dto.id}</td>
 										<td width="10%">${dto.name}</td>
 										<td width="10%"><fmt:formatDate value="${dto.birth }"

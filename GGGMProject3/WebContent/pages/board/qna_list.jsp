@@ -9,15 +9,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="pages/board/qna.css"/>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#searchA').click(function(){
+		var msg=$('#search').val();
+		if(msg=="")
+		{ 
+		 $('#search').val="";
+		 $('#qna_search').submit();
+		}
+		 $('#qna_search').submit();
+	});
+});
+</script>
 </head>
 <body>
-<table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner">
+<table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner" align="center">
 <tbody>
 <tr>
 
 <!-- 전체 레이아웃 테이블 -->
-<form action="qna_search.jsp" method="post" name="search"></form>
+
 <td valign="top" width="150" height="100%" id="mk_left">
 <br><script>
 		// login id setting
@@ -32,7 +45,7 @@
 <td valign="top" width="640" align="center" id="mk_center"><table id="boardtable" border="0" cellpadding="0" cellspacing="0" width="620">
 <tbody>
 <tr><td align="center">
-<form action="qna_list.do" name="form1">
+<form action="qna_list.do" name="form1" id="qna_search">
 <table width="1078" border="0" align="center" cellpadding="0" cellspacing="0">
   <tbody>
   <tr align="center">
@@ -62,7 +75,7 @@
       <td class="bl_list bl_icon"><img src="img/lock.gif" border="0"></td>
 	  <td class="bl_list bl_subject leftalign" colspan="1"><img src="img/board_head.gif" style="margin-right:5px;">
 	  <span class="BoardBrandName"></span>
-      <a href="qna_authorized.do?no=${dto.no }&page=${curpage }">${dto.subject }</a>
+      <a href="qna_authorized.do?no=${dto.no }&page=${curpage }">[${dto.subject }]&nbsp;${dto.subject2 }</a>
        <c:if test="${dto.replyCount!=0 }">
           (${dto.replyCount })
        </c:if>
@@ -86,6 +99,7 @@
     <td><table width="850" border="0" align="center" cellpadding="0" cellspacing="0">
      <tbody><tr>
       <td height="50" align="right">
+      <a href="qna_list.do"><img src="img/detail_list.gif" border="0"></a> 
       <a href="qna_write.do"><img src="img/detail_write.gif" border="0"></a>
       </td>
       </tr>
@@ -93,8 +107,6 @@
       <!-- 페이지 부분 -->
    
       <td id="bl_pages">
-      
-      
       <c:if test="${curpage>block}">
        <a href="qna_list.do?page=${fromPage-1 }"><img src="img/page_prev.gif" border="0"></a>&nbsp;&nbsp;
       </c:if>
@@ -115,42 +127,25 @@
      </tbody></table></td>
     </tr>
     <tr>
-    <td><table width="260" border="0" align="center" cellpadding="0" cellspacing="0">
+    <td><table width="180" border="0" align="center" cellpadding="0" cellspacing="0">
      <tbody><tr>
-      <td class="style2"><input type="checkbox" name="shname" value="ok" onclick="change(1)">이름
-        <input type="checkbox" name="ssubject" value="ok" checked="" onclick="change(2)">제목
-        <input type="checkbox" name="scontent" value="ok" onclick="change(3)">내용
+      <td class="style2">
+      <input type="radio" name="searchCheck" value="name" checked="">이름
+      <input type="radio" name="searchCheck" value="subject2">제목
+      <input type="text" name="search" size="10" id="search">
+      <a href="#"><img src="img/search.gif" border="0" id="searchA"></a>
       </td>
-      <td><input type="text" name="stext" size="10">
-      <a href="JavaScript:document.form1.submit();"><img src="img/search.gif" border="0" align="absmiddle"></a></td>
       </tr></tbody></table>
      </td>
      </tr>
  </tbody></table>
-    <input type="hidden" name="s_id" value="">
-    <input type="hidden" name="code" value="hyojung99">
-    <input type="hidden" name="page" value="1">
-    <input type="hidden" name="type" value="s">
 </form>
-<script type="text/javascript">
-function change(temp) {
-    onoff   = new Array(document.form1.shname,document.form1.ssubject,document.form1.scontent, document.form1.sbrand);
-    temp    = temp-1;
-    if(typeof document.form1.sbrand !="undefined") temp2=4;
-    else temp2=3;
-    for (i=0;i<temp2;i++) {
-        if(i == temp) {
-            onoff[i].checked = true;
-        } else {
-            onoff[i].checked = false;
-        }
-    }
-}
-</script></td></tr>
+</td></tr>
 </tbody></table>
 
 <script type="text/javascript" src="/js/cookie.js"></script>
 <script type="text/javascript">
+
 var selectedobj;
 var dragapproved = false;
 var zindex = 100;

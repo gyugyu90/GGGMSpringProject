@@ -102,6 +102,7 @@ public class memberDAO {
 		session.close();
 		return total;
 	}
+<<<<<<< HEAD
 	public static void myInfoUpdate(memberDTO d){
 		SqlSession session=ssf.openSession(true);
 		session.update("myInfoUpdate",d);
@@ -112,5 +113,27 @@ public class memberDAO {
 		session.update("myAddInfoUpdate",d);
 		session.close();
 	}
+=======
+	public static void memberGradeUpdate(memberDTO d){
+		SqlSession session=ssf.openSession(true);
+		session.update("memberGradeUpdate",d);
+		session.close();
+	}
+	
+	public static memberDTO getMyInfo(String id){
+		SqlSession session=ssf.openSession();
+		memberDTO dto=session.selectOne("getMyInfo", id);
+		session.close();
+		return dto;
+	}
+	
+	public static List<RecomDTO> getWeightData(){
+		SqlSession session=ssf.openSession();
+		List<RecomDTO> list=session.selectList("getWeightData");
+		session.close();
+		return list;
+	}
+	
+>>>>>>> refs/remotes/origin/master
 }
 

@@ -74,6 +74,7 @@
 	<select id="memberTotalPoint" parameterType="Member" resultType="int">
 	SELECT sumpoint FROM memberData WHERE id=#{id}
 	</select>
+<<<<<<< HEAD
 	<update id="myInfoUpdate" parameterType="Member">
 	UPDATE memberData set pwd=#{pwd},<!-- post=#{post},addr1=#{addr1},addr2=#{addr2}, -->tel=#{tel},email=#{email},emailreceive=#{emailreceive}
 	WHERE id=#{id}
@@ -82,5 +83,34 @@
 	UPDATE memberAdditional set <!-- interest=#{interest}, -->job=#{job},salary=#{salary},ismarried=#{ismarried},accountno=#{accountno}
 	WHERE id=#{id}
 	</update>
+=======
+	<update id="memberGradeUpdate" parameterType="Member">
+	UPDATE memberData SET
+	grade=#{grade} WHERE id=#{id}
+	</update>	
+<insert id="AdmemberJoin" parameterType="Member">
+		INSERT INTO memberData(name,id,pwd,birth,tel,sex,post,addr1,addr2,email,grade,emailreceive,companyname) VALUES(
+			#{name}, #{id}, #{pwd}, #{birth}, #{tel}, #{sex}, 
+			#{post}, #{addr1}, #{addr2}, #{email}, #{grade},
+			#{emailreceive},#{companyname})
+	</insert>
+	<!-- JOIN -->
+	<resultMap type="Member" id="MemberJoin">
+		<id column="id" property="id"/>
+		<result column="post" property="post"/>
+		<result column="sex" property="sex"/>
+		<result column="age" property="age"/>
+		<result column="ismarried" property="add.ismarried"/>
+		<result column="job" property="add.job"/>
+		<result column="salary" property="add.salary"/>
+		<result column="interest" property="add.interest"/>
+	</resultMap>
+	<select id="getMyInfo" resultMap="MemberJoin" parameterType="String">
+		SELECT post, sex, ismarried, job, salary, interest, 
+		(SELECT (TO_NUMBER(TO_CHAR(SYSDATE, 'yyyy'))-TO_NUMBER(TO_CHAR(birth,'yyyy'))) 
+		FROM memberdata m1 WHERE m1.id=#{id}) as age 
+		FROM memberdata m1, memberAdditional m2 WHERE m1.id=m2.id AND m1.id=#{id}
+	</select>
+>>>>>>> refs/remotes/origin/master
 	
 </mapper>

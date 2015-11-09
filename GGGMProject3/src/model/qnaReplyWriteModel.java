@@ -13,8 +13,9 @@ public class qnaReplyWriteModel implements Model {
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub		
 		req.setCharacterEncoding("EUC-KR");
-		String msg=req.getParameter("rmsg");
+		String msg=req.getParameter("msg");
 		System.out.println("msg:"+msg);
+		String root=req.getParameter("no");
 		String bno=req.getParameter("bno");
 		System.out.println("bno:"+bno);
 		String page=req.getParameter("page");
@@ -27,9 +28,7 @@ public class qnaReplyWriteModel implements Model {
 		d.setId(id);
 		d.setName(name);
 		d.setMsg(msg);
-		System.out.println(2222222);
 		BoardDAO.replyNewWrite(d);
-		System.out.println(333333);
 		//Insert¿Ï·á
 		req.setAttribute("no", bno);
 		req.setAttribute("page", page);

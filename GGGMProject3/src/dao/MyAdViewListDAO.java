@@ -25,11 +25,17 @@ public class MyAdViewListDAO {
     	}
     }
     
-    public static List<MyAdViewListDTO> adListData(String memberid){
+    public static List<AdGraphDTO> adListData(String id){
     	SqlSession session=ssf.openSession();
-    	List<MyAdViewListDTO> list=session.selectList("myadviewlist", memberid);
+    	List<AdGraphDTO> list=session.selectList("myadviewlist", id);
     	session.close();
     	return list;
-    	
+    }
+    
+    public static String getDescription(int adno){
+    	SqlSession session=ssf.openSession();
+    	String desc=session.selectOne("getDescription", adno);
+    	session.close();
+    	return desc;
     }
 }

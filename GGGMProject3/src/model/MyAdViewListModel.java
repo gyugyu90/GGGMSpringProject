@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AdGraphDTO;
 import dao.MyAdViewListDAO;
-import dao.MyAdViewListDTO;
 
 public class MyAdViewListModel implements Model {
 
@@ -19,9 +19,24 @@ public class MyAdViewListModel implements Model {
 		String id=(String)session.getAttribute("id");
 		//id가 같은 
 		
-		List<MyAdViewListDTO> list=MyAdViewListDAO.adListData(id);
+		//날짜 바꾸기
+		List<AdGraphDTO> list=MyAdViewListDAO.adListData(id);
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		for(AdGraphDTO dto:list){
+			String date=sdf.format(dto.getViewtime());
+			dto.setSdfviewtime(date);
+			String description=MyAdViewListDAO.getDescription(dto.getAdno());
+			dto.setDescription(description);
+		}
 		
+		//잔고
+		int balance=0;
+		for(int i=list.size()-1;i>=0;i--){
+			balance+=list.get(i).getPoint();
+			list.get(i).setBalance(balance);
+		}
 		
+		req.setAttribute("point", balance);
 		req.setAttribute("myadviewlist", list);
 		req.setAttribute("jsp", "../myinfo/point.jsp");
 		

@@ -9,7 +9,7 @@
 		ResultSet rs=null;
 		List myadviewlist=new LinkedList();
 		JSONObject responseObj=new JSONObject();
-		String sql="SELECT when, point FROM myadviewlist WHERE memberid=?";//
+		String sql="SELECT viewtime, SUM(point) as point FROM adviewlist WHERE id=? GROUP BY viewtime ORDER BY viewtime DESC";//
 		PreparedStatement ps=conn.prepareStatement(sql);
 		String id=(String)session.getAttribute("id");
 		ps.setString(1, id);
@@ -17,11 +17,18 @@
 		JSONObject adviewObj=null;
 		
 		while(rs.next()){
-			String when=rs.getDate("when").toString();
+			String viewtime=rs.getDate("viewtime").toString();
+			StringTokenizer st=new StringTokenizer(viewtime,"-");
+			int year=Integer.parseInt(st.nextToken());
+			int month=Integer.parseInt(st.nextToken())-1;
+			int day=Integer.parseInt(st.nextToken());
 			int point=rs.getInt("point");
 			adviewObj=new JSONObject();
-			adviewObj.put("when", when);
+			//adviewObj.put("viewtime", viewtime);
 			adviewObj.put("point", point);
+			adviewObj.put("year",year);
+			adviewObj.put("month",month);
+			adviewObj.put("day",day);
 			myadviewlist.add(adviewObj);
 		}
 		responseObj.put("myadviewlist", myadviewlist);

@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/css/ad.css" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/ajax/ajax.js"></script>
 <script type="text/javascript">
 $(function(){
 var j=0;
@@ -111,8 +112,17 @@ function playPause() {
 function end(){
    $("#getpoint").get(0).disabled=false
 }
-function point(){
-   alert("야호!");
+function getpoint(adno, point, adsubject){
+   alert("야호!"+adno+" "+point+" "+adsubject);
+   sendMessage('GET', "getpoint.do", "adno="+adno+"&point="+point+"&description="+adsubject, check);
+}
+function check(){
+	if(httpRequest.readyState==4){
+		if(httpRequest.status==200){
+			alert("ajax는 별거 아님!");
+			//$('#theaterInfo').html(httpRequest.responseText);
+		}
+	}
 }
 </script>
 <style type="text/css">
@@ -127,6 +137,8 @@ function point(){
 				<source src="ADs/${adinfo.url}.mp4" type="video/mp4">
 			</video><%-- autoplay --%>
 			<button onclick="playPause()" id="play">></button> 
+			<button id="getpoint" disabled="disabled" 
+				onclick="getpoint('<%=request.getParameter("adno")%>', '${adinfo.pointrange}', '${adinfo.adsubject}')">포인트 적립</button>
 		</div>
 		<div id="body_recommend">
 
