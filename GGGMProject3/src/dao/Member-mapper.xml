@@ -11,7 +11,7 @@
 	<select id="getMemberInfo" resultType="Member" parameterType="String">
 		SELECT * FROM memberData
 		WHERE id=#{id}
-	</select>
+	</select>	
 	<select id="getNormalMemberAllData" resultType="Member">
 		SELECT * FROM 
 		(SELECT ROWNUM num, m.* FROM memberData m WHERE grade=1 ORDER BY id DESC)		
@@ -74,6 +74,14 @@
 	<select id="memberTotalPoint" parameterType="Member" resultType="int">
 	SELECT sumpoint FROM memberData WHERE id=#{id}
 	</select>
+	<update id="myInfoUpdate" parameterType="Member">
+	UPDATE memberData set pwd=#{pwd},<!-- post=#{post},addr1=#{addr1},addr2=#{addr2}, -->tel=#{tel},email=#{email},emailreceive=#{emailreceive}
+	WHERE id=#{id}
+	</update>
+	<update id="myAddInfoUpdate" parameterType="MemberAdd">
+	UPDATE memberAdditional set <!-- interest=#{interest}, -->job=#{job},salary=#{salary},ismarried=#{ismarried},accountno=#{accountno}
+	WHERE id=#{id}
+	</update>
 	<update id="memberGradeUpdate" parameterType="Member">
 	UPDATE memberData SET
 	grade=#{grade} WHERE id=#{id}

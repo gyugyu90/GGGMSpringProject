@@ -51,9 +51,10 @@
 	margin: 5px 5px;
 	font-size: 200%;
 	padding: 0 29px 0 10px;
-    margin: 0 -25px 0 0;
-    horizontal-size: 35px;
+	margin: 0 -25px 0 0;
+	horizontal-size: 35px;
 }
+
 #signupBtn {
 	background-color: #EF851D;
 	color: white;
@@ -75,8 +76,6 @@ section.main {
 	font-family: 'SeoulHangang', sans-serif;
 }
 
-
-
 #video_bg {
 	position: absolute;
 	top: 0px;
@@ -87,16 +86,14 @@ section.main {
 	height: overflow: hidden 100%;
 }
 
-.vertical-scrolling{
-	position:relative;
+.vertical-scrolling {
+	position: relative;
 }
 
-.blackcover{
-	position:absolute;
-	width:100%;
-	height:100%;
-	
-	
+.blackcover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 
 #page2 {
@@ -121,7 +118,7 @@ section.main {
 
 #font2_1 {
 	font-size: 300%;
-	font-weight:bold;
+	font-weight: bold;
 	color: #3FE1E2;
 	text-shadow: 1.5px 1.5px #0A0A00;
 	font-family: 'SeoulHangang', sans-serif;
@@ -180,6 +177,9 @@ section.main_1 {
 	color: white;
 	font-size: 80%;
 	font-family: 'SeoulHangang';
+	opacity: 0.3;
+
+	
 }
 
 #page_1 {
@@ -249,20 +249,59 @@ section.main_1 {
 </style>
 <script type="text/javascript" src="js/shadowbox.js"></script>
 <script type="text/javascript">
-Shadowbox.init({
-   players:["iframe"]		
-});
-function twojoin()
-{
-	Shadowbox.open({
-		content:'pages/member/twojoin.jsp',
-		player:'iframe',
-		title:'회원가입',
-		width:650,
-		height:770
-		
+	Shadowbox.init({
+		players : [ "iframe" ]
 	});
-}
+	function twojoin() {
+		Shadowbox.open({
+			content : 'pages/member/twojoin.jsp',
+			player : 'iframe',
+			title : '회원가입',
+			width : 650,
+			height : 770
+
+		});
+	}
+	function clause() {
+		Shadowbox.open({
+			content : 'pages/member/clause.jsp',
+			player : 'iframe',
+			title : '약관',
+			width : 650,
+			height : 770
+
+		});
+	}
+	function personalInfo() {
+		Shadowbox.open({
+			content : 'pages/member/personalInfo.jsp',
+			player : 'iframe',
+			title : '개인정보',
+			width : 650,
+			height : 770
+
+		});
+	}
+	function recruit() {
+		Shadowbox.open({
+			content : 'pages/member/recruit.jsp',
+			player : 'iframe',
+			title : '채용',
+			width : 650,
+			height : 770
+
+		});
+	}
+	function support() {
+		Shadowbox.open({
+			content : 'pages/member/support.jsp',
+			player : 'iframe',
+			title : '지원',
+			width : 650,
+			height : 770
+
+		});
+	}
 </script>
 </head>
 <body>
@@ -280,10 +319,6 @@ function twojoin()
 			<!-- <h2>fullPage.js</h2> -->
 
 			<div id="loginMain">
-				<div id=signUp>
-					<input id="signupBtn" type="button" value="Sign Up Now"
-						onclick="twojoin()" style="position: absolute;top: 530px;right: 590px;">
-				</div>
 				<h3 id="mainHead">
 					광고를 보는 것만으로<br>돈을 벌 수 있다면?
 				</h3>
@@ -298,12 +333,20 @@ function twojoin()
 						<button type="button" id="loginBtn">
 							<i class="fa fa-arrow-right"></i> <span>Sign in</span>
 						</button>
+								<div id=signUp>
+					<input id="signupBtn" type="button" value="Sign Up Now"
+						onclick="twojoin()">
+				</div>
 					</form>
 				</section>
 			</div>
 			<div class="scroll-icon1">
-				<a href="" class="tags">약관</a> <a href="" class="tags">개인정보보호</a> <a
-					href="" class="tags">채용</a> <a href="" class="tags">지원</a>
+				<div class="tags">
+					<input value="약관" onclick="clause()">
+				    <input value="개인정보" onclick="personalInfo()">
+					<input value="채용" onclick="recruit()"> 
+					<input value="지원" onclick="support()">
+				</div>
 			</div>
 			
 		</section>
@@ -351,10 +394,7 @@ function twojoin()
 		<%-------------------------------------------------------------------------- --%>
 		<section class="vertical-scrolling">
 			<div id="page4">
-				<div id=signUp>
-					<input id="signupBtn" type="button" value="Sign Up Now"
-						onclick="twojoin()">
-				</div>
+			
 				<h3 id="page4_1">
 					지금까지 없었던 서비스<br>당신이 선두입니다.
 				</h3>
@@ -369,6 +409,10 @@ function twojoin()
 						<button type="button" id="loginBtn">
 							<i class="fa fa-arrow-right"></i> <span>Sign in</span>
 						</button>
+							<div id=signUp>
+					<input id="signupBtn" type="button" value="Sign Up Now"
+						onclick="twojoin()">
+				</div>
 					</form>
 				</section>
 			</div>
@@ -398,20 +442,18 @@ function twojoin()
 				height : 700
 			});
 		}
-		$('#loginBtn').click(function(){
-			var id=$('#login').val();
-			if(id=="")
-			{
+		$('#loginBtn').click(function() {
+			var id = $('#login').val();
+			if (id == "") {
 				$('#login').focus();
 				return;
 			}
-			var pwd=$('#password').val();
-			if(pwd=="")
-			{
+			var pwd = $('#password').val();
+			if (pwd == "") {
 				$('#password').focus();
 				return;
 			}
-			$('#frmlogin').submit();				
+			$('#frmlogin').submit();
 		});
 	</script>
 </body>

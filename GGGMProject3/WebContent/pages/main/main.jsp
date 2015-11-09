@@ -54,6 +54,7 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+<<<<<<< HEAD
 </head>
 <body class="skin-black">
 	<!-- header logo: style can be found in header.less -->
@@ -74,6 +75,29 @@
 				<ul class="nav navbar-nav">
 					<!-- Messages: style can be found in dropdown.less-->
 					<%--<li class="dropdown messages-menu">
+=======
+    </head>
+    <body class="skin-black" >
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <a href="home.do" class="logo" style="background-color: ${color}">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                GGGM
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <%--<li class="dropdown messages-menu">
+>>>>>>> refs/remotes/origin/master
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
                                 <span class="label label-success">4</span>
@@ -325,9 +349,15 @@
 						<ul class="treeview-menu">
 							<li><a href="myadviewlist.do"><i
 									class="fa fa-angle-double-right"></i>포인트 관리</a></li>
+
 							<li><a href="#"><i class="fa fa-angle-double-right"></i>경품
 									관리</a></li>
-						</ul></li>
+
+							<li><a href="#"><i
+									class="fa fa-angle-double-right"></i>경품 관리</a></li>
+									<li><a href="mypage.do"><i
+									class="fa fa-angle-double-right"></i>마이페이지</a></li>
+</ul></li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-bar-chart-o"></i> <span>게시판</span> <i
 							class="fa fa-angle-left pull-right"></i>

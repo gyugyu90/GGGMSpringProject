@@ -34,7 +34,13 @@ public class AdvertiseDAO {
     	return count;
     	
     }
-    
+    public static List<AdvertiseDTO> aadListData(){
+    	SqlSession session=ssf.openSession();
+    	List<AdvertiseDTO> count=session.selectList("aadListData");
+    	session.close();
+    	return count;
+    	
+    }
     public static AdvertiseDTO ad_info(int adno)
     {
     	SqlSession session=ssf.openSession();

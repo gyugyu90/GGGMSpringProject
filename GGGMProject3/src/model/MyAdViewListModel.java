@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.board.dao.ReplyBoardDAO;
-import com.board.dao.ReplyBoardDTO;
-
 import dao.AdGraphDTO;
 import dao.MyAdViewListDAO;
 
