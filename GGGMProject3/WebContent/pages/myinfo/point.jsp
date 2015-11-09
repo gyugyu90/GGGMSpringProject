@@ -148,7 +148,13 @@ li{ list-style-type : none;
 					</td>
 				</tr>
 				</c:forEach>
-				
+				<tr>
+					<td colspan="5" style="text-align:center;">
+						<a href="#"><img src="img/prev_icon.gif"></a>
+						<a href="#"><img src="img/next_icon.gif"></a>
+						0 page / 0 pages
+					</td>
+				</tr>
 			</table>
 		</div>
 		</div>
