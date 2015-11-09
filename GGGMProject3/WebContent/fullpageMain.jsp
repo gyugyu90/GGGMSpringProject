@@ -335,20 +335,19 @@ section.main_1 {
 						</button>
 								<div id=signUp>
 					<input id="signupBtn" type="button" value="Sign Up Now"
-						onclick="twojoin()">
+						onclick="twojoin()" style="padding:0px 2px;">
 				</div>
 					</form>
 				</section>
 			</div>
 			<div class="scroll-icon1">
 				<div class="tags">
-					<input value="약관" onclick="clause()">
-				    <input value="개인정보" onclick="personalInfo()">
-					<input value="채용" onclick="recruit()"> 
-					<input value="지원" onclick="support()">
+					<a href="#" onclick="clause()">약관</a>
+					<a href="#" onclick="personalInfo()">개인정보</a>
+					<a href="#" onclick="recruit()">채용</a>
+					<a href="#" onclick="support()">지원</a>
 				</div>
 			</div>
-			
 		</section>
 		<%-------------------------------------------------------------------------- --%>
 		<section class="vertical-scrolling">
@@ -411,7 +410,7 @@ section.main_1 {
 						</button>
 							<div id=signUp>
 					<input id="signupBtn" type="button" value="Sign Up Now"
-						onclick="twojoin()">
+						onclick="twojoin()" style="padding:0px 2px;">
 				</div>
 					</form>
 				</section>

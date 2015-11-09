@@ -104,81 +104,81 @@ public class ReplyBoardDAO {
     {
     	SqlSession session=ssf.openSession();
     	List<ReplyDTO> list=
-    		session.selectList("addReplyListData",bno);
+    		session.selectList("adReplyListData",bno);
     	session.close();
     	return list;
     }
     public static void replyNewWrite(ReplyDTO d)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.insert("addReplyNewWrite",d);
+    	session.insert("adReplyNewWrite",d);
     	session.close();
     }
     public static ReplyDTO replyParentInfo(int no)
     {
     	SqlSession session=ssf.openSession();
     	ReplyDTO list=
-    		session.selectOne("addReplyParentInfo",no);
+    		session.selectOne("adReplyParentInfo",no);
     	session.close();
     	return list;
     }
     public static void replyStepIncrement(ReplyDTO d)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.update("addReplyStepIncrement",d);
+    	session.update("adReplyStepIncrement",d);
     	session.close();
     }
     public static void replyReplyWrite(ReplyDTO d)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.insert("addReplyReplyWrite",d);
+    	session.insert("adReplyReplyWrite",d);
     	session.close();
     	
     }
     public static void replyDepthIncrement(int no)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.update("addReplyDepthIncrement",no);
+    	session.update("adReplyDepthIncrement",no);
     	session.close();
     }
     public static ReplyDTO replyDataInfo(int no)
     {
     	SqlSession session=ssf.openSession();
     	ReplyDTO list=
-    		session.selectOne("addReplyDataInfo",no);
+    		session.selectOne("adReplyDataInfo",no);
     	session.close();
     	return list;
     }
     public static void replyDepthDecrement(int no)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.update("addReplyDepthDecrement",no);
+    	session.update("adReplyDepthDecrement",no);
     	session.close();
     }
     public static void replyMsgUpdate(int no)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.update("addReplyMsgUpdate",no);
+    	session.update("adReplyMsgUpdate",no);
     	session.close();
     }
     public static void replyDelete(int no)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.delete("addReplyDelete",no);
+    	session.delete("adReplyDelete",no);
     	session.close();
     }
     
     public static void replyUpdate(ReplyDTO d)
     {
     	SqlSession session=ssf.openSession(true);
-    	session.update("addReplyUpdate",d);
+    	session.update("adReplyUpdate",d);
     	session.close();
     }
     
     public static int replyTotalPage(int bno)
     {
     	SqlSession session=ssf.openSession();
-    	int count=session.selectOne("addReplyTotalPage",bno);
+    	int count=session.selectOne("adReplyTotalPage",bno);
     	session.close();
     	return (int)(Math.ceil(count/5.0));
     }

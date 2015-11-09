@@ -4,13 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:choose>
 	<c:when test="${sessionScope.grade==1}">
-		<c:set var="color" value="black" />
+		<c:set var="color" value="RGB(123,101,80)" />
 	</c:when>
 	<c:when test="${sessionScope.grade==2}">
-		<c:set var="color" value="blue" />
+		<c:set var="color" value="RGB(151,193,169)" />
 	</c:when>
 	<c:otherwise>
-		<c:set var="color" value="red" />
+		<c:set var="color" value="RGB(253,221,102)" />
 	</c:otherwise>
 </c:choose>
 <!DOCTYPE html>
@@ -64,7 +64,7 @@
 			GGGM
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
-		<nav class="navbar navbar-static-top" role="navigation">
+		<nav class="navbar navbar-static-top" role="navigation" style="background-color: ${color}">
 			<!-- Sidebar toggle button-->
 			<a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas"
 				role="button"> <span class="sr-only">Toggle navigation</span> <span
@@ -287,7 +287,7 @@
 					<li class="dropdown user user-menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"> <i
 							class="glyphicon glyphicon-user"></i> <span
-							style="color:${color};">${sessionScope.name }<i
+							style="color:white;">${sessionScope.name }<i
 								class="caret"></i></span>
 					</a>
 						<ul class="dropdown-menu">

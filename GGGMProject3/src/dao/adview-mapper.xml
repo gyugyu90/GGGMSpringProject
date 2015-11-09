@@ -15,6 +15,11 @@
 	<select id="getDescription" resultType="String" parameterType="int">
 		SELECT adsubject FROM ad WHERE adno=#{adno}
 	</select>
+	
+	<select id="getAdReplyTotalCount" resultType="int" parameterType="int">
+		SELECT reply FROM reply WHERE bno=#{adno}
+	</select>
+	
 	<select id="myboardRowCount" resultType="int" parameterType="String">
    SELECT COUNT(*) FROM adviewlist WHERE id=#{id}
   </select>
