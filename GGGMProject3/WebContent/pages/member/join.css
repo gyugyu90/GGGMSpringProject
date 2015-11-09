@@ -51,6 +51,7 @@
 	padding: 3px;
 	margin: 5px;
 	width:60px;
+	border-radius:6px;
 }
 
 #joinForm input[type="button"],#joinForm input[type="submit"]{
@@ -68,19 +69,3 @@
 	top:2px;
 	border-bottom-style: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
