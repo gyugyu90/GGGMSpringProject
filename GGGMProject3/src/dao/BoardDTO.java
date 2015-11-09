@@ -28,6 +28,7 @@ public class BoardDTO {
     private int no;
     private String name;
     private String subject;
+    private String subject2;
     private String content;
     private String pwd;
     private Date regdate;
@@ -65,6 +66,12 @@ public class BoardDTO {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	public String getSubject2() {
+		return subject2;
+	}
+	public void setSubject2(String subject2) {
+		this.subject2 = subject2;
 	}
 	public String getContent() {
 		return content;

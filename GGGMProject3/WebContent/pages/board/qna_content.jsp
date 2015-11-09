@@ -58,9 +58,16 @@ $(function(){
 			p=0;
 		}
 	});
-
 });
+function re_del(no)
+{
 
+		alert("아랫댓글까지는 삭제가 되지 않습니다");
+} 
+function re_del1(no)
+{
+		alert("아랫댓글이 있어 삭제 할 수 없습니다");
+} 
 function re_ok(){
 	var msg=$('#msg').val();
 	
@@ -193,15 +200,13 @@ td.bc_agree_title {
 </head>
 <body>
 
-<!-- 백업 -->
+<!-- qna로고 -->
 <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
-      <tbody><tr align="center">
+      <tr align="center">
        <td height="100" style="padding-left:110"><img src="img/board_1.gif"></td>
-        </tr>
-      <tr>
-        <td></td>
-        </tr>
-    </tbody></table>
+      </tr>
+</table>
+<!-- qna내용폼 -->
 <table width="700" align="center" id="bv_viewdetail">
 <tbody><tr>
     <td width=50% class="bv_title bv_subject" height="26">
@@ -223,7 +228,9 @@ td.bc_agree_title {
 </tr>
 </tbody>
 </table>
-<table id="table_content" width="700" align="center" >
+<!-- qna댓글출력폼 -->
+<c:if test="${dto.replyCount!=0 }">
+<table  id="bv_viewdetail" width="700" align="center" >
         <c:forEach var="rDto" items="${rlist }">
           <tr>
            <td width="70%" colspan="2" align=left>
@@ -244,30 +251,48 @@ td.bc_agree_title {
             ${rDto.msg }
             <hr>
            </td>
+           <!-- qna댓글 댓글,수정,삭제 -->
            <td width="30%" align=right id="replyStyle">    
 			<c:choose>
 			<c:when test="${rDto.msg=='관리자가 삭제한 댓글입니다' }">
 			<c:if test="${sessionScope.grade==3}">
 			 └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             <c:if test="${rDto.depth==0}">
-             <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">└삭제</a>
-             </c:if>
+             <c:choose>
+              <c:when test="${rDto.depth!=0 }">
+             	<a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name=${rDto.depth } onclick="re_del1(${rDto.no})">└삭제</a>
+             </c:when>
+             <c:otherwise>
+             	<a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" >└삭제</a>
+             </c:otherwise>
+             </c:choose>
              </c:if>
 			</c:when>
 			<c:otherwise>
-            <c:if test="${sessionScope.id!=null }">
-             └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
+			 └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              <c:if test="${sessionScope.id==rDto.id || sessionScope.grade==3 }">
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;
-             └ <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}">삭제</a>
+              <c:choose>
+              <c:when test="${rDto.depth!=0 }">
+              <c:if  test="${sessionScope.id!=rDto.id && sessionScope.grade==3}">
+             	<a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name=${rDto.depth } onclick="re_del(${rDto.no})">└삭제</a>
              </c:if>
-            </c:if>
+             <c:if  test="${sessionScope.id==rDto.id && sessionScope.grade==3}">
+             	<a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name=${rDto.depth } onclick="re_del(${rDto.no})">└삭제</a>
+             </c:if>
+             <c:if test="${sessionScope.id==rDto.id && sessionScope.grade!=3}">
+             <a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" name=${rDto.depth } onclick="re_del1(${rDto.no})">└삭제</a>
+             </c:if>
+             </c:when>
+             <c:otherwise>
+             	<a href="qna_reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${strPage}" >└삭제</a>
+             </c:otherwise>
+             </c:choose>
+             </c:if>
             </c:otherwise>
             </c:choose>
        		 <hr>
            </td>
-       
           </tr>
 <!-- 댓글 댓글 -->
 <tr id="qna_reply_reply_write1${rDto.no }" style="display:none" class="hide_comment">
@@ -280,7 +305,7 @@ td.bc_agree_title {
 </tr>
 <tr style="display:none" class="hide_comment" id="qna_reply_reply_write${rDto.no }">
     <td class="bc_title_name"></td>
-    <td>
+    <td style="padding-bottom: 20px;, padding-top: 10px;">
     	<form id="qna_re_re_write${rDto.no }" action="qna_reply_reply_write.do" method="post">
         <textarea id="rrmsg${rDto.no }" name="rrmsg" rows="3" style="width:510px"></textarea>
     </td>
@@ -289,7 +314,7 @@ td.bc_agree_title {
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
         <a href="#" onclick="re_re_ok(${rDto.no })">
-        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+        <img src="img/button_comment.gif" style="vertical-align:middle;" border="0"></a>
 		</form>        
     </td>
 </tr>
@@ -305,7 +330,7 @@ td.bc_agree_title {
 <!--  댓글 수정 -->
 <tr style="display:none" class="hide_comment" id="qna_reply_modify_write${rDto.no }">
     <td class="bc_title_name"></td>
-    <td>
+   <td style="padding-bottom: 20px;, padding-top: 10px;">
     	<form id="qna_re_update${rDto.no }" action="qna_reply_modify.do" method="post">
         <textarea id="umsg${rDto.no }" name="umsg" rows="3" style="width:510px">${rDto.msg }</textarea>
     </td>
@@ -314,14 +339,16 @@ td.bc_agree_title {
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
         <a href="#" onclick="re_up_ok(${rDto.no })">
-        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+        <img src="img/button_comment.gif" style="vertical-align:middle;" border="0"></a>
 		</form>        
     </td>
 </tr>
 
 </c:forEach>  
 </table>
-<table id="table_content" width="700" align="center">
+</c:if>
+<!-- qna 처음댓글 입력폼 -->
+<table width="700" align="center" id="bv_viewdetail">
 <tr>
     <td class="bc_title bc_title_name"><img src="img/qna_dot_black.gif"> ID</td>
     <td class="bc_title">
@@ -333,19 +360,19 @@ td.bc_agree_title {
 </tr>
 <tr>
     <td class="bc_title_name"></td>
-    <td>
+    <td style="padding-bottom: 20px;, padding-top: 10px;">
     	<form id="qna_re_write" action="qna_reply_write.do" method="post">
         <textarea id="msg" name="msg" rows="3" style="width:510px"></textarea>
         <input type=hidden name="bno" value="${d.no }">
         <input type=hidden name="page" value="${strPage }">
         <a href="#" onclick="re_ok()">
-        <img src="img/button_comment.gif" style="vertical-align:top;" border="0"></a>
+        <img src="img/button_comment.gif" style="vertical-align:middle;" border="0"></a>
 		</form>      
-		<hr>  
     </td>
 </tr>
 </table>
-<table width="700" border="0" align="center">
+<!-- qna댓글 page넘기기 -->
+<table width="700" border="0" align="center" style="margin-top: 10px;">
 			<tr>
 		    	<td id="bl_pages">
 					<span class="bl_curpage bl_pagetext">
@@ -354,11 +381,12 @@ td.bc_agree_title {
 			    </td>
 
 	    		<td id="bl_linkbutton">
-					<a href="qna_content.do?no=${ d.no }&rPage=${rcurpage>1?rcurpage-1:rcurpage }&page=${strPage}">이전</a>&nbsp;&nbsp;&nbsp;
-					<a href="qna_content.do?no=${ d.no }&rPage=${rcurpage<rtotal?rcurpage+1:rcurpage }&page=${strPage}">다음</a>&nbsp;&nbsp;
+					<a href="qna_reply_content.do?no=${ d.no }&rPage=${rcurpage>1?rcurpage-1:rcurpage }&page=${strPage}">이전</a>&nbsp;&nbsp;&nbsp;
+					<a href="qna_reply_content.do?no=${ d.no }&rPage=${rcurpage<rtotal?rcurpage+1:rcurpage }&page=${strPage}">다음</a>&nbsp;&nbsp;
 	    		</td>
 			</tr>
 </table>
+<!-- qna내용 삭제,수정,리스트 -->
 <table width="700" align="center">
 <tr>
     <td align="right" id="qnafunction">

@@ -24,7 +24,7 @@
     </script>
 </head>
 <body>
-<table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner">
+<table border="0" cellspacing="0" cellpadding="0" width="770" id="makebanner" align="center">
 <tbody><tr>
 
 <!-- 전체 레이아웃 테이블 -->

@@ -17,32 +17,35 @@
 	 parameterType : Board 
 -->
 <select id="qnaListData" resultType="Board" parameterType="java.util.Map">
-	SELECT no,subject,name,regdate,hit,num
-	FROM (SELECT no,subject,name,regdate,hit,rownum as num
-	FROM (SELECT no,subject,name,regdate,hit
+	SELECT no,subject,subject2,name,regdate,hit,num
+	FROM (SELECT no,subject,subject2,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,subject2,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
 	WHERE num BETWEEN #{start} AND #{end}
 </select>
-<!-- 이름 검색 -->
-<select id="qnaNameSearchListData" resultType="Board" parameterType="java.util.Map">
-	SELECT no,subject,name,regdate,hit,num
-	FROM (SELECT no,subject,name,regdate,hit,rownum as num
-	FROM (SELECT no,subject,name,regdate,hit
+<!-- 검색 -->
+<select id="qnaSearchListData" resultType="Board" parameterType="java.util.Map">
+	SELECT no,subject,subject2,name,regdate,hit,num
+	FROM (SELECT no,subject,subject2,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,subject2,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
-	WHERE num BETWEEN #{start} AND #{end} AND name LIKE '%${search}%'
+	WHERE num BETWEEN #{start} AND #{end} AND ${searchCheck} LIKE '%${search}%'
 </select>
-<select id ="qnaNameSearchRowCount" resultType="int" parameterType="String">
-	SELECT COUNT(*) FROM qnaBoard 
-	WHERE name LIKE '%'||#{search}||'%'
-</select>
-<select id="qnaNameSearchReplyCount" resultType="int" parameterType="int">
-    SELECT COUNT(*)
-	FROM (SELECT no,subject,name,regdate,hit,rownum as num
-	FROM (SELECT no,subject,name,regdate,hit
+<select id ="qnaSearchRowCount" resultType="int" parameterType="java.util.Map">
+	SELECT COUNT(*)
+	FROM (SELECT no,subject,subject2,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,subject2,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
+<<<<<<< HEAD
 	WHERE name LIKE '%'||#{search}||'%'
+=======
+	WHERE num BETWEEN #{start} AND #{end} AND ${searchCheck} LIKE '%${search}%'
+>>>>>>> refs/remotes/origin/master
 </select>
+<<<<<<< HEAD
 <!-- '%${search}%' -->
+=======
+>>>>>>> refs/remotes/origin/master
 <!--  총페이지 -->
 <select id ="qnaRowCount" resultType="int">
 	SELECT COUNT(*) FROM qnaBoard
@@ -53,7 +56,7 @@
   <selectKey keyProperty="no" resultType="int" order="BEFORE">
     SELECT NVL(MAX(no)+1,1) as no FROM qnaBoard
   </selectKey>
-    INSERT INTO qnaBoard VALUES(#{no}, #{name}, #{subject}, #{content}, #{pwd}, SYSDATE,0)
+    INSERT INTO qnaBoard VALUES(#{no}, #{name}, #{subject}, #{subject2}, #{content}, #{pwd}, SYSDATE,0)
  </insert>
  
  <sql id ="where-no">
@@ -68,7 +71,7 @@
  
   <!--  내용보기 -->
  <select id="qnaContentData" resultType="Board"  parameterType="int">
-    SELECT no,name,subject,content,regdate,hit
+    SELECT no,name,subject,subject2,content,regdate,hit
     FROM qnaBoard
     <include refid="where-no"/>
  </select>
@@ -83,7 +86,7 @@
  <!-- 수정하기 -->
  	<update id ="qnaUpdate" parameterType="Board">
  		UPDATE qnaBoard SET
- 		name=#{name},subject=#{subject},pwd=#{pwd},
+ 		name=#{name},subject=#{subject},subject2=#{subject2},pwd=#{pwd},
  		content=#{content},regdate=SYSDATE
  		 <include refid="where-no"/>
  	</update>

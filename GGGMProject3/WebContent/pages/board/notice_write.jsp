@@ -36,8 +36,16 @@ $(function(){
 
 
 </head>
-
 <body>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tbody><tr align="center">
+       <td height="100" style="padding-left:110"><img src="img/notice.gif"></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </tbody>
+</table>
 	<form id="writeForm" name="write_form" action="notice_write_ok.do" method=post>
 	<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr>
@@ -57,8 +65,7 @@ $(function(){
 							<span style="text-align:center; color:red;" id="contentSpan"></span>
 						</td>
 						<td class="bw_value bw_border_top bw_contentscolor">
-							<textarea id="bw_contents" name="content" cols="67" rows="15" wrap="on" onfocus="clear_content()" style="font-family: ±¼¸²Ã¼; width: 100%;">
-							</textarea>
+							<textarea id="bw_contents" name="content" cols="67" rows="15" wrap="on" onfocus="clear_content()" style="font-family: ±¼¸²Ã¼; width: 100%;"></textarea>
 						</td>
 					</tr>
 				</table>

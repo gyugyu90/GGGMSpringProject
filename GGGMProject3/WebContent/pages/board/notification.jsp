@@ -17,13 +17,10 @@
       <tr>
         <td></td>
         </tr>
-    </tbody></table>
+    </tbody>
+</table>
 	<table>
 		<tr>
-			<!-- LIST TITLE -->
-			<table width="850" border="0" align="center" cellpadding="0" cellspacing="0">
-				<tr><td align="left"><a href="notice_write.do">±Û¾²±â</a></td></tr>
-			</table>
 			<table width="850" border="0" align="center" cellpadding="0" cellspacing="0" id="bl_table">
 				<tr>
 				    <td class="bl_title bl_no">NO</td>
@@ -62,7 +59,11 @@
 		</tr>
 		<br>
 		<!-- PAGING START-->
-		
+			<table width="850" border="0" align="center" cellpadding="0" cellspacing="0">
+			<c:if test="${sessionScope.grade==3 }">
+				<tr><td align="right"><a href="notice_write.do"><img src="img/detail_write.gif" border="0"></a></td></tr>
+			</c:if>
+			</table>
 		<tr>
 			<table width="850" border="0" align="center">
 				<tr>

@@ -78,7 +78,12 @@
 	UPDATE memberData SET
 	grade=#{grade} WHERE id=#{id}
 	</update>	
-
+<insert id="AdmemberJoin" parameterType="Member">
+		INSERT INTO memberData(name,id,pwd,birth,tel,sex,post,addr1,addr2,email,grade,emailreceive,companyname) VALUES(
+			#{name}, #{id}, #{pwd}, #{birth}, #{tel}, #{sex}, 
+			#{post}, #{addr1}, #{addr2}, #{email}, #{grade},
+			#{emailreceive},#{companyname})
+	</insert>
 	<!-- JOIN -->
 	<resultMap type="Member" id="MemberJoin">
 		<id column="id" property="id"/>

@@ -28,6 +28,12 @@ $(function(){
 			alert("말머리를 입력하세요");
 			return;
 		}
+		if(document.form1.subject2.value=="")
+		{
+			alert("제목을 입력하세요");
+			document.form1.subject2.focus();
+			return;
+		}
 		if (document.form1.content.value.length==0) 
 		{
 		      alert('내용을 입력하세요.');document.form1.content.focus();
@@ -44,7 +50,7 @@ $(function(){
 			style="position: absolute; visibility: hidden;"></div>
 		<input type="hidden" name="attach1" value="">
 
-		<table width="1078" border="0" cellspacing="0" cellpadding="0">
+		<table width="1078" border="0" cellspacing="0" cellpadding="0" align="center">
 			<tbody>
 				<tr>
 					<td align="center" height=100><img src="img/board_1.gif"></td>
@@ -77,6 +83,7 @@ $(function(){
 																<option value="경품관련">경품관련</option>
 																<option value="기타문의">기타문의</option>
 														</select>&nbsp;
+														<input id="bw_input_subject" type="text" name="subject2" size="30" maxlength="100" value="" style="display: inline-block;">
 													</span></td>
 												</tr>
 												<tr>

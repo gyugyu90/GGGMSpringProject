@@ -31,7 +31,9 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
+*{
+	font-family: 'SeoulHangang', sans-serif;
+}
 .header-top clearfix {
 	z-index: -1;
 }
@@ -303,11 +305,7 @@ function twojoin()
 				<a href="" class="tags">약관</a> <a href="" class="tags">개인정보보호</a> <a
 					href="" class="tags">채용</a> <a href="" class="tags">지원</a>
 			</div>
-			<div class="scroll-icon">
-				<p>Jump into the last slide</p>
-				<a href="#fifthSection/1" class="icon-up-open-big"></a>
-
-			</div>
+			
 		</section>
 		<%-------------------------------------------------------------------------- --%>
 		<section class="vertical-scrolling">
@@ -336,7 +334,7 @@ function twojoin()
 			</div>
 			<div id="container">
 				<div id="page_2">
-					<li id=font3_1>"1시간 광고만 봐도<br> ￦1,5000 수익을"
+					<li id=font3_1>"1시간 광고만 봐도<br> ￦15,000 수익을"
 					</li>
 				</div>
 				<div id="page_3">

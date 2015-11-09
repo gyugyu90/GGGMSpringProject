@@ -26,19 +26,20 @@ public class qnaReplyDeleteModel implements Model {
 		if(d.getDepth()==0)
 		{
 			BoardDAO.replyDelete(Integer.parseInt(no));
+			BoardDAO.replyDepthDecrement(d.getRoot());
 		}
 		else
 		{
 			if(grade==3 && (d.getDepth()==0))
 			{
 				BoardDAO.replyDelete(Integer.parseInt(no));
+				BoardDAO.replyDepthDecrement(d.getRoot());
 			}
 			else if(grade==3 && (d.getDepth()!=0))
 			{
 				BoardDAO.replyMsgUpdate(Integer.parseInt(no));
 			}
 		}
-		BoardDAO.replyDepthDecrement(d.getRoot());
 		return "qna_reply_content.do?no="+bno+"&page="+page;
 	}
 
