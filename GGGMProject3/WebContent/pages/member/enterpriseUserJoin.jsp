@@ -149,7 +149,7 @@ $(function(){
     </p>
     <p class="btnSubmit">
     <input type=button id="btnSub" value=회원가입>
-    <input type=button id="btnCancel" value=가입취소>
+    <input type=button onclick="javascript:history.back()" value=가입취소>
     </p>	
 		</form>
 		</div>

@@ -107,7 +107,7 @@ public class JoinModel implements Model {
 			SignupDAO.admemberJoin(d);
 		}
 		
-		return "join_ok.jsp";
+		return "pages/member/join_ok.jsp";
 	}
 
 }
