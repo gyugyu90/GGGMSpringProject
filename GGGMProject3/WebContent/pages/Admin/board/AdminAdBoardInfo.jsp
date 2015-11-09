@@ -3,108 +3,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>AdminLTE | Dashboard</title>
-<meta
-	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-	name='viewport'>
-<!-- bootstrap 3.0.2 -->
-<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<!-- font Awesome -->
-<link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css" />
-<!-- Ionicons -->
-<link href="<%=request.getContextPath() %>/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-<!-- Theme style -->
-<link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<meta charset="EUC-KR">
+<title>Ad Request Form</title>
+
+
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 </head>
 <body>
-	<div class="row">
-		<div class="col-lg-11 col-md-offset-1">
-			<div class="panel panel-default col-lg-12">
-				<div class="panel-body">
-					<div class="table-responsive">
-					<h3>&nbsp;&nbsp;※ 광고 등록 요청 내역</h3>
-					<form action="AdminAdInsert.do">
-					<input type="hidden" name="adid" value="${d.adid }">
-						<table class="table table-bordered table-hover">				
-						<tr>
-							<td width="20%" align=center>광고 제목</td>
-							<td width="75%" colspan="4">${d.adsubject }</td>
-						</tr>
-						<tr>
-							<td width="20%" align=center>광고 동영상</td>
-							<td width="75%" colspan="4">${d.url}</td>
-						</tr>
-						<tr>
-							<td width="20%" align=center style="vertical-align: middle;">광고 설명</td>
-							<td width="75%" colspan="4"><textarea name=adcontent class="adcontent"
-									rows="20" cols="108" readonly="readonly">${d.msg}</textarea>
-						</tr>
-						<tr>
-							<td width="20%" align=center>포인트 범위</td>
-							<td width="75%" colspan="4">${d.pointrange}Point</td>
-						<tr>
-							<td width="20%" align=center>광고 카테고리</td>
-							<td width="75%" colspan="4">${d.maj_category} : ${d.sub_category}</td>
-						</tr>
-						<tr>
-							<td width="20%" rowspan="7" align="center" style="vertical-align: middle;">타겟</td>
-							<td width="10%" align=center>성별</td>
-							<td width="30%"></td>
-							<td width="10%" align=center>가중치
-							<td width="30%"></td>						
-						</tr>
-						<tr>
-							<td width="10%" align=center>나이</td>
-							<td width="30%"></td>
-							<td width="10%" align=center>가중치</td>
-							<td width="30%"></td>
-						</tr>
-						<tr>
-							<td width="10%" align=center>주소지</td>
-							<td width="30%"></td>
-							<td width="10%" align=center>가중치</td>
-							<td width="30%"></td>
-						</tr>
-						<tr>
-							<td width="10%" align=center>결혼여부</td>
-							<td width="30%"></td>
-							<td width="10%" align=center>가중치</td>
-							<td width="30%"></td>
-						</tr>
-						<tr>
-							<td width="10%" align=center>직업</td>
-							<td width="30%"></td>
-							<td width="10%" align=center>가중치</td>
-							<td width="30%"></td>
-						</tr>
-						<tr>
-							<td width="10%" align=center>소득</td>
-							<td width="30%"></td>
-							<td width="10%" align=center>가중치</td>
-							<td width="30%"></td>
-						</tr>
-						<tr>
-							<td width="10%" align=center>관심분야</td>
-							<td width="30%"></td>
-							<td width="10%" align="center">가중치</td>
-							<td width="30%"></td>
-						</tr>
-					</table>
+	<div id="adrequestform">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-header">
+					<h3>&nbsp;&nbsp;※ 광고 등록 신청</h3>
+	
+	<form action="AdminAdInsert.do" method="post">			
+    <table border=1 width=850 height=800 align=center>
+    
+    <tr>
+     <td align=center >광고 제목</td>
+     <td colspan="3">
+      <input type=text name="adsubject" id="sbmFrm1" readonly="readonly" value="${d.adsubject }"> 
+     </td>
+    </tr>
+    <tr>
+      <td align=center >광고 동영상</td>
+      <td colspan="3" >
+       ${d.url }
+      </td>
+    </tr>
+    <tr>
+      <td align=center >광고 이미지</td>
+      <td colspan="3" >
+       ${d.img }
+      </td>
+    </tr>
+    <tr>
+      <td align=center >광고 설명</td>
+      <td colspan="3">
+       <textarea name="msg"  class="adcontent" id="sbmFrm3" rows="20" cols="100" readonly="readonly">${d.msg }</textarea>
+    </tr>
+	<tr>
+      <td align=center >클릭 당 포인트</td>
+      <td colspan="3">
+       <input type="text" id="sbmFrm4" name="ppc" readonly="readonly" value="${d.ppc }">
+    </td>
+    <tr>
+      <td align=center >광고<br>카테고리</td>
+      <td colspan="3">
+      &nbsp;
+대분류:${d.maj_category }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  소분류:${d.sub_category }
+	    </td>
+    </tr>	
+		<tr>
+          <td rowspan = "7" align="center" width=100>타겟</td>
+          <td align=center>성별</td>
+          <td>
+           
+          </td>
+          <td align=center>가중치
+        	<input type="number" max=1 min=0 step=0.05 id="wgt1" name="wgt1" readonly="readonly" value="${weight[0]}">
+        	<span id=err1 style="color:red"></span>
+          </td>
+        </tr>
+		<tr>
+    	  <td align=center>나이</td>
+    	  <td>최소 나이:
+    	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최대 나이:
+    	  	<span id="mx_age">
+    	  	</span>
+    	  </td>
+          <td align=center>가중치
+        	<input type="number" max=1 min=0 step=0.05 id="wgt2" name="wgt2" readonly="readonly" value="${weight[1]}">
+        	<span id=err2 style="color:red"></span>
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>주소지</td>
+    	  <td>&nbsp;
+    	   
+	      </td>
+	      <td align=center>가중치
+        	<input type="number" max=1 min=0 step=0.05 id="wgt3" name="wgt3" readonly="readonly" value="${weight[2]}">
+        	<span id=err3 style="color:red"></span>
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>결혼여부</td>
+    	  <td>
+            
+          </td>
+          <td align=center>가중치
+        	<input type="number" max=1 min=0 step=0.05 id="wgt4" name="wgt4" readonly="readonly" value="${weight[3]}">
+        	<span id=err4 style="color:red"></span>
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>직업</td>
+    	  <td>
+    	    
+    	    </td>
+          <td align=center>가중치
+        	<input type="number" max=1 min=0 step=0.05 id="wgt5" name="wgt5" readonly="readonly" value="${weight[4]}">
+        	<span id=err5 style="color:red"></span>
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>소득</td>
+    	  
+    	  <td>최소:(         )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  최대:(         )
+ 
+    	  </td>
+    	  
+          <td align=center>가중치
+        	<input type="number" max=1 min=0 step=0.05 id="wgt6" name="wgt6" readonly="readonly" value="${weight[5]}">
+        	<span id=err6 style="color:red"></span>
+          </td>
+		</tr>
+		<tr>
+    	  <td align=center>관심분야</td>
+    	  <td>
+    	    
+    	  </td>
+          <td align=center>가중치
+        	<input type="number" max=1 min=0 step=0.05 id="wgt7" name="wgt7" readonly="readonly" value="${weight[6]}">
+        	<span id=err7 style="color:red"></span>
+          </td>
+		</tr>
+		
+       </table>
+       </form>		
+				<br>
 					
-					<br>
-					<div class="panel-footer" style="text-align: center;">
-						<button type="submit" class="btn btn-primary">승인</button>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button type="button" class="btn btn-primary">취소</button>						
-					</div>
-					</form>
+				<div class="panel-footer" style="text-align: center;">
+					<button type="submit">승인</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="javascript:history.back()">취소</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
+	</div>
 </body>
 </html>

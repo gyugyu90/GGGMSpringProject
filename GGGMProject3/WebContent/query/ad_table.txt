@@ -40,7 +40,6 @@ CREATE TABLE ad(
    data1 VARCHAR2(60) CONSTRAINT ad_nn_dt1 NOT NULL,
    data2 VARCHAR2(60) CONSTRAINT ad_nn_dt2 NOT NULL,
    weight VARCHAR2(50) CONSTRAINT ad_nn_wgt NOT NULL,
-
    CONSTRAINT ad_pk_adno PRIMARY KEY(adno)
 );
 

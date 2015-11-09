@@ -33,14 +33,14 @@ public class AdrequestDAO {
 
 	public List<AdrequestDTO> adRequestList() {
 		SqlSession session = ssf.openSession();
-		List<AdrequestDTO> list = session.selectList("adReqList");
+		List<AdrequestDTO> list = session.selectList("adRequestList");
 		session.close();
 		return list;
 	}
 
 	public AdrequestDTO adReqInfo(String adid) {
 		SqlSession session = ssf.openSession();
-		AdrequestDTO d = session.selectOne("adReqInfo", adid);
+		AdrequestDTO d = session.selectOne("adRequestInfo", adid);
 		session.close();
 		return d;
 	}
