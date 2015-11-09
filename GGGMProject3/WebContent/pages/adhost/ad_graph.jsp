@@ -258,12 +258,13 @@ li{ list-style-type : none;
       data.addColumn('number', 'Å¬¸¯¼ö');
       
 	  for(var i=0;i<queryObjectLen;i++){
-		  
-		  var viewtime=queryObject.adviewlist[i].viewtime;
+		  var year=queryObject.adviewlist[i].year;
+		  var month=queryObject.adviewlist[i].month;
+		  var day=queryObject.adviewlist[i].day;
 		  var dayCount=queryObject.adviewlist[i].dayCount;
 		  data.addRows([
 		                
-		       [new Date(viewtime), parseInt(dayCount)]         
+		       [new Date(year, month, day), parseInt(dayCount)]         
 		  ]);
 	  }
       
