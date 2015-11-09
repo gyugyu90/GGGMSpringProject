@@ -36,8 +36,16 @@
 	FROM (SELECT no,subject,subject2,name,regdate,hit,rownum as num
 	FROM (SELECT no,subject,subject2,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
+<<<<<<< HEAD
+	WHERE name LIKE '%'||#{search}||'%'
+=======
 	WHERE num BETWEEN #{start} AND #{end} AND ${searchCheck} LIKE '%${search}%'
+>>>>>>> refs/remotes/origin/master
 </select>
+<<<<<<< HEAD
+<!-- '%${search}%' -->
+=======
+>>>>>>> refs/remotes/origin/master
 <!--  총페이지 -->
 <select id ="qnaRowCount" resultType="int">
 	SELECT COUNT(*) FROM qnaBoard

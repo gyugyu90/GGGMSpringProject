@@ -134,11 +134,29 @@ public class BoardDAO {
     	session.close();
 		return total;
 	}
-
+    
+    public static int qnaRowCount(String search)
+	{
+		
+    	SqlSession session=ssf.openSession();
+    	int total =session.selectOne("qnaNameSearchRowCount", search);
+    	session.close();
+		return total;
+	}
+    
     public static int qnaTotalPage()
     {
     	SqlSession session=ssf.openSession();
     	int count=session.selectOne("qnaRowCount");
+    	int total=(int)(Math.ceil(count/10.0));
+    	session.close();
+    	return total;
+    }
+    
+    public static int qnaTotalPage(String search)
+    {
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("qnaNameSearchRowCount", search);
     	int total=(int)(Math.ceil(count/10.0));
     	session.close();
     	return total;
