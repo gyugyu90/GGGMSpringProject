@@ -25,11 +25,11 @@
 	
 }
 #main_video{
-	width:80%;
-	height:80%;
-	padding-top: 10%;
-	padding-left: 10%;
-	padding-right: 10%;
+	width:730px;
+	height:375px;
+	padding-top: 5%;
+	padding-left: 5%;
+	padding-right: 2.6%;
 }
 .subvideo{
 	width:30%;
@@ -81,7 +81,6 @@ li{ list-style-type : none }
 
 #table_content{
 	float: left;
-	margin-left: 100px;
 }
 .poster{
 	width:250px;

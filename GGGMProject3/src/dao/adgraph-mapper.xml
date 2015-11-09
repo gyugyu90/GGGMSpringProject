@@ -106,6 +106,6 @@
 		FROM memberdata WHERE id IN(SELECT id FROM adviewlist WHERE adno=#{adno})
 		)
 	</select>
-	
+
 	
 </mapper>

@@ -2,6 +2,7 @@ package dao;
 
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -25,9 +26,9 @@ public class MyAdViewListDAO {
     	}
     }
     
-    public static List<AdGraphDTO> adListData(String id){
+    public static List<AdGraphDTO> adListData(Map map){
     	SqlSession session=ssf.openSession();
-    	List<AdGraphDTO> list=session.selectList("myadviewlist", id);
+    	List<AdGraphDTO> list=session.selectList("myadviewlist", map);
     	session.close();
     	return list;
     }
@@ -37,5 +38,13 @@ public class MyAdViewListDAO {
     	String desc=session.selectOne("getDescription", adno);
     	session.close();
     	return desc;
+    }
+    public static int boardTotalPage(String id)
+    {
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("myboardRowCount", id);
+    	int total=(int)(Math.ceil(count/5.0));
+    	session.close();
+    	return total;
     }
 }

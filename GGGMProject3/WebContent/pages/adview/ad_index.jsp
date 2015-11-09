@@ -14,6 +14,7 @@
 <script type="text/javascript">
 $(function(){
 var j=0;
+
 $('#replyShow').click(function(){
 	if(j==0)
 	{
@@ -100,11 +101,11 @@ var playbutton=$("#play");
 function playPause() { 
     if ($("#main_video").get(0).paused){
     	$("#main_video").get(0).play();
-    	$("#play").get(0).textContent="||";
+    	$("#play").get(0).textContent="pause";
     }
     else{
     	$("#main_video").get(0).pause();
-    	$("#play").get(0).textContent=">";
+    	$("#play").get(0).textContent="play!";
     }
         
 } 
@@ -126,6 +127,15 @@ function check(){
 }
 </script>
 <style type="text/css">
+#ad_comment ul li{
+	background-color:#99FF66;
+	cursor:pointer;
+}
+#ad_comment ul li:hover{
+	background-color:#CCFF99;
+	cursor:pointer;
+}
+
 </style>
 </head>
 <body id="body">
@@ -134,11 +144,12 @@ function check(){
 
 			<video id="main_video"
 				onended="end()">
-				<source src="ADs/${adinfo.url}.mp4" type="video/mp4">
+				<source src="<%=request.getContextPath()%>/ADs/${adinfo.url}.mp4" type="video/mp4">
 			</video><%-- autoplay --%>
-			<button onclick="playPause()" id="play">></button> 
+			<button onclick="playPause()" id="play" style="margin-left:5%">play!</button> 
 			<button id="getpoint" disabled="disabled" 
 				onclick="getpoint('<%=request.getParameter("adno")%>', '${adinfo.pointrange}', '${adinfo.adsubject}')">포인트 적립</button>
+			<br><br>
 		</div>
 		<div id="body_recommend">
 
@@ -157,57 +168,60 @@ function check(){
 			<%-- div#sub_video --%>
 		</div>
 		<%-- div#body_recommend --%>
-
-		<div id="ad_info" align=center>
-			<ul>
-				<li>광고이름=${adinfo.adsubject }</li>
-				<li>광고사이트=${adinfo.url }</li>
-				<li>광고주=${adinfo.adid }</li>
-				<li>포인트=${adinfo.pointrange }</li>
-				<li>경품=${adinfo.presentrange }</li>
-			</ul>
+		<div id="ad_info" align=center style="padding-left:30px">
+		<table width="680px">
+			<tr>
+				<td width="20%">광고이름</td><td width="80%"><b>${adinfo.adsubject }</b></td>
+			</tr>
+			<tr>
+				<td width="20%">광고사이트</td><td width="80%"><b>${adinfo.url }</b></td>
+			</tr>
+			<tr>
+				<td width="20%">광고주</td><td width="80%"><b>${adinfo.adid }</b></td>
+			</tr>
+			<tr>
+				<td width="20%">포인트</td><td width="80%"><b>${adinfo.pointrange }</b></td>
+			</tr>
+			<tr>
+				<td width="20%">경품</td><td width="80%"><b>${adinfo.presentrange }</b></td>
+			</tr>
+			<tr>
+				<td colspan="2">${adinfo.msg}<br><br></td>
+			</tr>
+		</table>
 		</div>
-		<div id="ad_msg">
-		<span>${adinfo.msg}</span>	
-		</div>
-		<div id="ad_comment" align=center>
-			<table border=0 width=400>
-				<tr>
-					<td align=right>
-						<button id="replyShow">댓글열기</button>
-					</td>
-				</tr>
-			</table>
-			<div id="reply">
-				<table border=0 width=700 id="table_content">
+		<div id="ad_comment" align=center style="padding-left:30px">
+			<ul style="padding-left:0px"><li id="replyShow" style="padding-top:10px;padding-bottom:10px;">댓글열기</li></ul>
+			<div id="reply" style="display:none">
+				<table border=0 width=680 id="table_content">
 					<c:forEach var="rDto" items="${list }">
 						<tr>
-							<td align=left><c:if test="${rDto.group_tab!=0 }">
+							<td align=left>
+								<c:if test="${rDto.group_tab!=0 }">
 									<c:forEach var="i" begin="1" end="${rDto.group_tab }">
-               &nbsp;&nbsp;
-              </c:forEach>
+									&nbsp;&nbsp;
+              						</c:forEach>
 									<img src="img/re_icon.gif">
 								</c:if> <font color=blue>${rDto.name }</font> (${rDto.dbday }) <br>
 								<c:if test="${rDto.group_tab!=0 }">
 									<c:forEach var="i" begin="1" end="${rDto.group_tab }">
-               &nbsp;&nbsp;
-              </c:forEach>
+               						&nbsp;&nbsp;
+              						</c:forEach>
 								</c:if> ${rDto.msg }</td>
 							<td align=right><c:if test="${sessionScope.id!=null }">
             └ <a href="#" class="re_re_a" name="${rDto.no }">댓글</a>&nbsp;
              <c:if test="${sessionScope.id==rDto.id }">
              └ <a href="#" class="re_up_a" name="${rDto.no }">수정</a>&nbsp;└ <a
-											href="reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${curpage}">삭제</a>
+											href="reply_delete.do?no=${rDto.no }&bno=${d.no}&page=${adno}">삭제</a>
 									</c:if>
 								</c:if></td>
 						</tr>
 						<tr id="re_re_write${rDto.no }" style="display: none">
 							<td colspan="2"><form method=post
 									action="reply_reply_write.do" id="re_re_frm${rDto.no }">
-									<span
-										style="display: block; float: left; height: 50px; width: 700px;">
+									<span style="display: block; float: left; height: 50px; width: 680px;">
 
-										<textarea rows="3" cols="55" name=rmsg id="rmsg${rDto.no }"
+										<textarea rows="2.5" cols="80" name=rmsg id="rmsg${rDto.no }"
 											style="vertical-align: middle;"></textarea> <input
 										type="hidden" name="bno" value="${d.no }"> <input
 										type="hidden" name="page" value="${adno }"> <input
@@ -223,12 +237,12 @@ function check(){
 								<form method=post action="reply_reply_update.do"
 									id="re_update_frm${rDto.no }">
 									<span
-										style="display: block; float: left; height: 50px; width: 700px;">
+										style="display: block; float: left; height: 50px; width: 680px;">
 
 
-										<textarea rows="3" cols="55" name=rmsg id="umsg${rDto.no }"
+										<textarea rows="2.5" cols="80" name=rmsg id="umsg${rDto.no }"
 											style="vertical-align: middle;">${rDto.msg }</textarea> <input
-										type="hidden" name="bno" value="${curpage }"> <%--  <input type="hidden" name="page" value="${curpage }"> --%>
+										type="hidden" name="bno" value="${adno }"> <%--  <input type="hidden" name="page" value="${adno }"> --%>
 										<input type="hidden" name="no" value="${d.no }"> <input
 										type="button" value="댓글" style="height: 50px"
 										onclick="reUpdateBtn(${rDto.no})">
@@ -248,9 +262,9 @@ function check(){
 									id="new_re_write">
 									<span style="display: block; float: left; height: 50px">
 
-										<textarea rows="3" cols="55" name=rmsg id=rmsg
+										<textarea rows="2.5" cols="80" name=rmsg id=rmsg
 											style="vertical-align: middle;"></textarea> <input
-										type="hidden" name="bno" value="${curpage }"> <%-- <input type="hidden" name="page" value="${curpage }"> --%>
+										type="hidden" name="bno" value="${adno }"> <%-- <input type="hidden" name="page" value="${adno }"> --%>
 										<input type="button" value="댓글" style="height: 50px"
 										id="reWriteBtn">
 
@@ -263,9 +277,9 @@ function check(){
 				<table border=0 width=600>
 					<tr>
 						<td align=right><a
-							href="board_content.do?no=${ d.no }&rPage=${rcurpage>1?rcurpage-1:rcurpage }&page=${curpage}"><img
+							href="ad_index.do?adno=${adno}&rcurpage=${rcurpage>1?rcurpage-1:rcurpage }"><img
 								src="img/prev_icon.gif"></a>&nbsp; <a
-							href="board_content.do?no=${ d.no }&rPage=${rcurpage<rtotal?rcurpage+1:rcurpage }&page=${curpage}"><img
+							href="ad_index.do?adno=${adno}&rcurpage=${rcurpage<rtotal?rcurpage+1:rcurpage }"><img
 								src="img/next_icon.gif"></a>&nbsp;&nbsp; ${rcurpage } page /
 							${rtotal } pages</td>
 					</tr>

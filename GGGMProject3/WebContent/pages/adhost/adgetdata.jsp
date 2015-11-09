@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="java.sql.*, java.util.*, org.json.JSONObject"%>
 <%
@@ -5,26 +6,43 @@
 	try{
 		Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
 		conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "tiger");
-		
+		System.out.println("getdata 연결");
 		ResultSet rs=null;
 		List adviewlist=new LinkedList();
 		JSONObject responseObj=new JSONObject();
-		String adno=request.getParameter("adno");
-		String sql="SELECT COUNT(*) as count FROM adviewlist WHERE adno=?";
+		String a=request.getParameter("adno");
+		int adno=Integer.parseInt(a);
+		System.out.println(adno+" 겟데이터 adno값");
+		String sql="SELECT viewtime, SUM(count) FROM (SELECT adno, TO_CHAR(viewtime, 'yyyy-MM-DD') as viewtime, count FROM adviewlist ORDER BY viewtime DESC) WHERE adno=? GROUP BY viewtime";
 		PreparedStatement ps=conn.prepareStatement(sql);
-		System.out.println(adno);
-		ps.setInt(1, Integer.parseInt(adno));
+		
+		ps.setInt(1, adno);
 		rs=ps.executeQuery();
-		
+		System.out.println("get query 날림");
 		JSONObject adviewObj=new JSONObject();
-		
+		System.out.println("while  시작 전 날림");
 		while(rs.next()){
-			int count = rs.getInt("count");
+			int dayCount= rs.getInt("SUM(count)");
+			System.out.println(dayCount+"카운트값");
+			/* String viewtime=rs.getDate("viewtime").toString();
+			StringTokenizer st=new StringTokenizer(viewtime,"-");
+			int year=Integer.parseInt(st.nextToken());
+			int month=Integer.parseInt(st.nextToken())-1;
+			int day=Integer.parseInt(st.nextToken()); */
+			Date viewtime= rs.getDate("viewtime");
 			
-			adviewObj.put("count", count);
+			adviewObj=new JSONObject();
+			
+			adviewObj.put("viewtime", viewtime);
+		
+			/* adviewObj.put("year",year);
+			adviewObj.put("month",month);
+			adviewObj.put("day",day); */
+			adviewObj.put("dayCount", dayCount);
 			
 			adviewlist.add(adviewObj);
 		}
+		
 		
 		responseObj.put("adviewlist", adviewlist);
 		out.println(responseObj.toString());
@@ -65,4 +83,5 @@
 			}catch(Exception ex){}
 		}
 	}
+
 %>
