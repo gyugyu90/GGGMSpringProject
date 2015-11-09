@@ -107,4 +107,19 @@ public class memberDAO {
 		session.update("memberGradeUpdate",d);
 		session.close();
 	}
+	
+	public static memberDTO getMyInfo(String id){
+		SqlSession session=ssf.openSession();
+		memberDTO dto=session.selectOne("getMyInfo", id);
+		session.close();
+		return dto;
+	}
+	
+	public static List<RecomDTO> getWeightData(){
+		SqlSession session=ssf.openSession();
+		List<RecomDTO> list=session.selectList("getWeightData");
+		session.close();
+		return list;
+	}
+	
 }

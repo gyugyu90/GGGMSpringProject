@@ -31,7 +31,7 @@ public class NoticeModel implements Model {
 
 		for(NoticeDTO d:noticelist){
 			d.setDbday(sdf.format(d.getRegdate()));
-//			d.setReplyCount(NoticeDAO.boardReplyCount(d.getNo()));
+			d.setReplyCount(NoticeDAO.noticeReplyCount(d.getNo()));
 		}
 //////////////////////////////		
 		

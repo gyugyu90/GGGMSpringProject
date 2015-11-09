@@ -10,12 +10,17 @@
 <link rel="stylesheet" type="text/css" href="./css/faq/qna.css"/>
 </head>
 <body>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tbody><tr align="center">
+       <td height="100" style="padding-left:110"><img src="img/notice.gif"></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </tbody>
+</table>
 	<table>
 		<tr>
-			<!-- LIST TITLE -->
-			<table width="850" border="0" align="center" cellpadding="0" cellspacing="0">
-				<tr><td align="left"><a href="notice_write.do">±Û¾²±â</a></td></tr>
-			</table>
 			<table width="850" border="0" align="center" cellpadding="0" cellspacing="0" id="bl_table">
 				<tr>
 				    <td class="bl_title bl_no">NO</td>
@@ -34,6 +39,9 @@
 					<td class="bl_list bl_subject leftalign" colspan="1">
 				       <img src="img/board_head.gif" style="margin-right:5px;">
 				    	<span class="BoardBrandName"></span><a href="notice_content.do?no=${dto.no}&page=${curpage}">${dto.subject }</a>&nbsp;&nbsp;
+				      <c:if test="${dto.replyCount!=0 }">
+      				    (${dto.replyCount })
+      				   </c:if>
 				    </td>
 				    
 				    <td class="bl_list bl_date"><span class="bl_oldcontent">
@@ -51,6 +59,11 @@
 		</tr>
 		<br>
 		<!-- PAGING START-->
+			<table width="850" border="0" align="center" cellpadding="0" cellspacing="0">
+			<c:if test="${sessionScope.grade==3 }">
+				<tr><td align="right"><a href="notice_write.do"><img src="img/detail_write.gif" border="0"></a></td></tr>
+			</c:if>
+			</table>
 		<tr>
 			<table width="850" border="0" align="center">
 				<tr>

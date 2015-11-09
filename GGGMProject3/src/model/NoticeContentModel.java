@@ -42,7 +42,7 @@ public class NoticeContentModel implements Model{
 				j++;
 			}
 		}
-		int rtotal=NoticeDAO.replyTotalPage(no);
+		int rtotal=NoticeDAO.noticeReplyTotalPage(no);
 
 		req.setAttribute("rcurpage", rcurpage);
 		req.setAttribute("rtotal", rtotal);

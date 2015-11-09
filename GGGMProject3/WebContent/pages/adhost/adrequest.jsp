@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Ad Request Form</title>
 
 
 <script type="text/javascript" src="js/ajax.js"></script>
@@ -69,7 +69,21 @@ function showMaxSal(msg){
 }
 
 function send(){
-
+	
+	var ttl = 0;
+	for(var i=1;i<=7;i++){
+		ttl+=($('#wgt'+i).val()*1);
+	}
+	
+	if(ttl!=1){
+		for(var i=1;i<=7;i++)
+			$('#err'+i).text("error");
+		return;
+	}else{
+		for(var i=1;i<=7;i++)
+			$('#err'+i).text("ok");
+	}
+	
 	$('#adReq').submit();
 // 	var target="";
 // 	for(var i=1;i<4;i++){
@@ -149,7 +163,8 @@ function send(){
         	<input type=radio name="sex" id="sbmSlt2" value="3">성별무관
           </td>
           <td align=center>가중치
-        	<input type="text" id="wgt1" name="wgt1">
+        	<input type="number" max=1 min=0 step=0.05 id="wgt1" name="wgt1">
+        	<span id=err1 style="color:red"></span>
           </td>
         </tr>
 		<tr>
@@ -168,7 +183,8 @@ function send(){
     	  	</span>
     	  </td>
           <td align=center>가중치
-        	<input type="text" id="agevalue" name="wgt2">
+        	<input type="number" max=1 min=0 step=0.05 id="wgt2" name="wgt2">
+        	<span id=err2 style="color:red"></span>
           </td>
 		</tr>
 		<tr>
@@ -187,7 +203,8 @@ function send(){
 	    	</select>
 	      </td>
 	      <td align=center>가중치
-        	<input type="text" id="addrvalue" name="wgt3">
+        	<input type="number" max=1 min=0 step=0.05 id="wgt3" name="wgt3">
+        	<span id=err3 style="color:red"></span>
           </td>
 		</tr>
 		<tr>
@@ -198,7 +215,8 @@ function send(){
         	<input type=radio name="marry" id="usermarry" value="3">무관
           </td>
           <td align=center>가중치
-        	<input type="text" id="marryvalue" name="wgt4">
+        	<input type="number" max=1 min=0 step=0.05 id="wgt4" name="wgt4">
+        	<span id=err4 style="color:red"></span>
           </td>
 		</tr>
 		<tr>
@@ -213,7 +231,8 @@ function send(){
     	    <input type=checkbox name="job" id="userjob" value="64">기타
     	    </td>
           <td align=center>가중치
-        	<input type="text" id="jobvalue" name="wgt5">
+        	<input type="number" max=1 min=0 step=0.05 id="wgt5" name="wgt5">
+        	<span id=err5 style="color:red"></span>
           </td>
 		</tr>
 		<tr>
@@ -234,7 +253,8 @@ function send(){
     	  </td>
     	  
           <td align=center>가중치
-        	<input type="text" id="salvalue" name="wgt6">
+        	<input type="number" max=1 min=0 step=0.05 id="wgt6" name="wgt6">
+        	<span id=err6 style="color:red"></span>
           </td>
 		</tr>
 		<tr>
@@ -251,7 +271,8 @@ function send(){
     		<input type=checkbox name="interest" id="userhobby" value="256">공연
     	  </td>
           <td align=center>가중치
-        	<input type="text" id="salvalue" name="wgt7">
+        	<input type="number" max=1 min=0 step=0.05 id="wgt7" name="wgt7">
+        	<span id=err7 style="color:red"></span>
           </td>
 		</tr>
 		

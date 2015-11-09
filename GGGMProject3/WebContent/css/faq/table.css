@@ -1,12 +1,16 @@
 #table_content{
-	border-collapse: collapse;
+	margin-right: 0px;
+    margin-left: 8/0;
+    height: 203px;
+    margin-left: 65px;
+	/* border-collapse: collapse;
 	border-top-width: 2px;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-top-style: solid;
 	border-top-color: #333;
-	border-bottom-color: #333;
-	width: 500px;
+	border-bottom-color: #333; */
+	width: 700px;
 }
 #table_content th,td{
 	margin: 0px;
@@ -44,6 +48,4 @@
 	text-decoration: underline;
 	color: green;
 }
-
-
 

@@ -9,6 +9,14 @@ public class NoticeDTO {
 	private Date regdate;
 	private int hit;
 	private String dbday;
+	private int replyCount;
+	
+	public int getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
 	public String getDbday() {
 		return dbday;
 	}

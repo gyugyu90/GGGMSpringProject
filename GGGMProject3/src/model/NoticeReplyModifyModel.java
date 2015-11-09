@@ -4,11 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BoardDAO;
+import dao.NoticeDAO;
 import dao.ReplyDTO;
 
-public class qnaReplyModifyModel implements Model {
-
+public class NoticeReplyModifyModel implements Model {
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		req.setCharacterEncoding("EUC-KR");
@@ -21,9 +20,9 @@ public class qnaReplyModifyModel implements Model {
 		d.setNo(Integer.parseInt(no));
 		d.setMsg(rmsg);
 		// DB
-		BoardDAO.replyUpdate(d);
+		NoticeDAO.noticeReplyUpdate(d);
 		// Insert¿Ï·á 
-		return "qna_reply_content.do?no="+bno+"&page="+page;
+		return "notice_content.do?no="+bno+"&page="+page;
 	}
 
 }

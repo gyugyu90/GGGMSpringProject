@@ -17,25 +17,26 @@
 	 parameterType : Board 
 -->
 <select id="qnaListData" resultType="Board" parameterType="java.util.Map">
-	SELECT no,subject,name,regdate,hit,num
-	FROM (SELECT no,subject,name,regdate,hit,rownum as num
-	FROM (SELECT no,subject,name,regdate,hit
+	SELECT no,subject,subject2,name,regdate,hit,num
+	FROM (SELECT no,subject,subject2,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,subject2,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
 	WHERE num BETWEEN #{start} AND #{end}
 </select>
-<select id="myBoardListSearch" resultType="Board" parameterType="java.util.Map">
-	SELECT no,subject,name,regdate,hit,num
-	FROM (SELECT no,subject,name,regdate,hit,rownum as num
-	FROM (SELECT no,subject,name,regdate,hit
+<!-- 검색 -->
+<select id="qnaSearchListData" resultType="Board" parameterType="java.util.Map">
+	SELECT no,subject,subject2,name,regdate,hit,num
+	FROM (SELECT no,subject,subject2,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,subject2,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
-	WHERE num BETWEEN #{start} AND #{end} AND name LIKE '%${search}%'
+	WHERE num BETWEEN #{start} AND #{end} AND ${searchCheck} LIKE '%${search}%'
 </select>
-<select id ="qnaSearchTotalPage" resultType="int" parameterType="java.util.Map">
+<select id ="qnaSearchRowCount" resultType="int" parameterType="java.util.Map">
 	SELECT COUNT(*)
-	FROM (SELECT no,subject,name,regdate,hit,rownum as num
-	FROM (SELECT no,subject,name,regdate,hit
+	FROM (SELECT no,subject,subject2,name,regdate,hit,rownum as num
+	FROM (SELECT no,subject,subject2,name,regdate,hit
 	FROM qnaBoard ORDER BY no DESC))
-	WHERE name LIKE '%${search}%'
+	WHERE num BETWEEN #{start} AND #{end} AND ${searchCheck} LIKE '%${search}%'
 </select>
 <!--  총페이지 -->
 <select id ="qnaRowCount" resultType="int">
@@ -47,7 +48,7 @@
   <selectKey keyProperty="no" resultType="int" order="BEFORE">
     SELECT NVL(MAX(no)+1,1) as no FROM qnaBoard
   </selectKey>
-    INSERT INTO qnaBoard VALUES(#{no}, #{name}, #{subject}, #{content}, #{pwd}, SYSDATE,0)
+    INSERT INTO qnaBoard VALUES(#{no}, #{name}, #{subject}, #{subject2}, #{content}, #{pwd}, SYSDATE,0)
  </insert>
  
  <sql id ="where-no">
@@ -62,7 +63,7 @@
  
   <!--  내용보기 -->
  <select id="qnaContentData" resultType="Board"  parameterType="int">
-    SELECT no,name,subject,content,regdate,hit
+    SELECT no,name,subject,subject2,content,regdate,hit
     FROM qnaBoard
     <include refid="where-no"/>
  </select>
@@ -77,7 +78,7 @@
  <!-- 수정하기 -->
  	<update id ="qnaUpdate" parameterType="Board">
  		UPDATE qnaBoard SET
- 		name=#{name},subject=#{subject},pwd=#{pwd},
+ 		name=#{name},subject=#{subject},subject2=#{subject2},pwd=#{pwd},
  		content=#{content},regdate=SYSDATE
  		 <include refid="where-no"/>
  	</update>
@@ -100,7 +101,7 @@
     </delete>
     <!-- 댓글 -->
   <select id="replyListData" resultType="Reply" parameterType="int">
-    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
+    SELECT no,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab, depth
     FROM qnareply
     WHERE bno=#{bno}
     ORDER BY group_id DESC,group_step ASC
@@ -162,6 +163,7 @@
     msg='관리자가 삭제한 댓글입니다'
     WHERE no=#{no}
   </update>
+
   <update id="replyDepthDecrement" parameterType="int">
     UPDATE qnareply SET
     depth=depth-1

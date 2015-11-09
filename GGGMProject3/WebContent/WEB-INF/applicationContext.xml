@@ -38,6 +38,7 @@
 	<bean id="qna_reply_reply_write" class="model.qnaReplyReplyWriteModel" />
 	<bean id="qna_reply_modify" class="model.qnaReplyModifyModel" />
 	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
+	<bean id="qna_reply_content" class="model.qnaReplyContentModel" />
 	<bean id="getpoint" class="model.GetPointModel" />
 	<bean id="notice" class="model.NoticeModel"/>
 	<bean id="notice_content" class="model.NoticeContentModel"/>
@@ -46,6 +47,10 @@
 	<bean id="notice_modify" class="model.NoticeModifyModel"/>
 	<bean id="notice_modify_ok" class="model.NoticeModifyOkModel"/>
 	<bean id="notice_delete" class="model.NoticeDeleteModel"/>
+	<bean id="notice_reply_write" class="model.NoticeReplyWriteModel"/>
+	<bean id="notice_reply_modify" class="model.NoticeReplyModifyModel"/>
+	<bean id="notice_reply_reply_write" class="model.NoticeReplyReplyWriteModel"/>
+	<bean id="notice_reply_delete" class="model.NoticeReplyDeleteModel"/>
 	<bean id="board" class="model.AdminBoardModel"/>
 	<bean id="adboard" class="model.AdminAdBoardModel"/>
 
@@ -56,5 +61,5 @@
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
 	<bean id="AdminAdInsert" class="model.AdminAdInsertModel"/>
-
+	<bean id="recom" class="model.RecomModel"/>
 </beans><!-- endElement(), endDocument() -->

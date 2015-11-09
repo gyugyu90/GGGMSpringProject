@@ -49,8 +49,8 @@ public class BoardDAO {
     	session.close();// 반환
     	return list;
     }
-    
-    public static List<BoardDTO> myBoardListSearch(Map map)
+    //이름검색
+    public static List<BoardDTO> qnaSearchListData(Map map)
     {
     	/*
     	 *   class A
@@ -67,13 +67,65 @@ public class BoardDAO {
     	 */
     	SqlSession session=ssf.openSession();
     	List<BoardDTO> list=
-    			session.selectList("myBoardListSearch",map);
+    			session.selectList("qnaSearchListData",map);
     	session.close();// 반환
     	return list;
     }
-    
-    
-    
+    public static int qnaSearchTotalPage(Map map)
+    {
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("qnaSearchRowCount",map);
+    	int total=(int)(Math.ceil(count/10.0));
+    	session.close();
+    	return total;
+    }
+    public static int qnaSearchRowCount(Map map)
+ 	{
+ 		
+     	SqlSession session=ssf.openSession();
+     	int total =session.selectOne("qnaSearchRowCount",map);
+     	session.close();
+ 		return total;
+ 	}
+    //제목 검색
+    public static List<BoardDTO> qnaSearchSubjectListData(Map map)
+    {
+    	/*
+    	 *   class A
+    	 *   {
+    	 *      selectList(){}
+    	 *   }
+    	 *   
+    	 *   new A().selectList()
+    	 *   new A().close()
+    	 *   
+    	 *   A a=new A();
+    	 *   a.selectList();
+    	 *   a.close()
+    	 */
+    	SqlSession session=ssf.openSession();
+    	List<BoardDTO> list=
+    			session.selectList("qnaSearchSubjectListData",map);
+    	session.close();// 반환
+    	return list;
+    }
+    public static int qnaSearchSubjectTotalPage(Map map)
+    {
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("qnaSearchSubjectRowCount",map);
+    	int total=(int)(Math.ceil(count/10.0));
+    	session.close();
+    	return total;
+    }
+    public static int qnaSearchSubjectRowCount(Map map)
+ 	{
+ 		
+     	SqlSession session=ssf.openSession();
+     	int total =session.selectOne("qnaSearchSubjectRowCount",map);
+     	session.close();
+ 		return total;
+ 	}
+    // 리스트
     public static int qnaRowCount()
 	{
 		
@@ -91,16 +143,7 @@ public class BoardDAO {
     	session.close();
     	return total;
     }
-    public static int qnaSearchTotalPage(Map map)
-    {
-    	SqlSession session=ssf.openSession();
-    	int count=session.selectOne("qnaSearchTotalPage",map);
-    	System.out.println("DAO:"+count);
-    	int total=(int)(Math.ceil(count/10.0));
-    	session.close();
-    	return total;
-    }
-    
+ 
     public static void qnaWrite(BoardDTO d)
     {
     	SqlSession session=ssf.openSession(true);
@@ -208,12 +251,6 @@ public class BoardDAO {
     	session.update("replyDepthIncrement",no);
     	session.close();
     }
-    public static void replyDepthDecrement(int no)
-    {
-    	SqlSession session=ssf.openSession(true);
-    	session.update("replyDepthDecrement",no);
-    	session.close();
-    }
     public static int replyTotalPage(int bno)
     {
     	SqlSession session=ssf.openSession();
@@ -221,6 +258,7 @@ public class BoardDAO {
     	session.close();
     	return (int)(Math.ceil(count/5.0));
     }
+ //댓글 삭제시
     public static void replyMsgUpdate(int no)
     {
     	SqlSession session=ssf.openSession(true);
@@ -233,11 +271,16 @@ public class BoardDAO {
     	session.delete("replyDelete",no);
     	session.close();
     }
-    
     public static void replyUpdate(ReplyDTO d)
     {
     	SqlSession session=ssf.openSession(true);
     	session.update("replyUpdate",d);
+    	session.close();
+    }
+    public static void replyDepthDecrement(int no)
+    {
+    	SqlSession session=ssf.openSession(true);
+    	session.update("replyDepthDecrement",no);
     	session.close();
     }
     

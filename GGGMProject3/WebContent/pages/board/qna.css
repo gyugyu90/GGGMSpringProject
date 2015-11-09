@@ -266,11 +266,7 @@ div#privercy_contract {
     border-top: #bababa 2px solid;
     border-bottom: 1px #d0d0d0 solid;
 }
-.bv_title {
-    background-color: #ffffff;
-    padding-left:8px;
-    padding-top:5px;
-}
+
 #bv_viewdetail .bv_titlesub {
     font-weight: bold;
     width : 50px;

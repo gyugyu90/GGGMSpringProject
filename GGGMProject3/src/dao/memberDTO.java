@@ -16,7 +16,25 @@ public class memberDTO {
 	private String email;
 	private String emailreceive;
 	private int grade;
-	private memberAddDTO add;
+	private int age;
+	private String companyname;
+	public String getCompanyname() {
+		return companyname;
+	}
+
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	private memberAddDTO add=new memberAddDTO();
 
 	public String getName() {
 		return name;
