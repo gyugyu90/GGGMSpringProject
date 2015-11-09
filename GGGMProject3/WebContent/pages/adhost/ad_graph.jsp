@@ -254,13 +254,16 @@ li{ list-style-type : none;
     function drawChart() {;
 		
       var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Day');
-      data.addColumn('number', 'count');
+      data.addColumn('date', '날짜');
+      data.addColumn('number', '클릭수');
       
 	  for(var i=0;i<queryObjectLen;i++){
-		  var count=queryObject.adviewlist[i].count;
+		  
+		  var viewtime=queryObject.adviewlist[i].viewtime;
+		  var dayCount=queryObject.adviewlist[i].dayCount;
 		  data.addRows([
-		       [i+1, parseInt(count)]         
+		                
+		       [new Date(viewtime), parseInt(dayCount)]         
 		  ]);
 	  }
       

@@ -43,6 +43,7 @@ public class AdGraphModel implements Model {
 			System.out.println(womancount);
 			
 			
+		
 			
 			
 			int age0 = AdGraphDAO.age0(adno);	

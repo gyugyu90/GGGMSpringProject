@@ -53,7 +53,7 @@ winObject.document.all.text2.value = document.all.text1.value;
 		});
 		$('#frm_'+adno).submit(); */
 	});
-
+	
 function ok(adno){
 	var form=document.getElementById('#frm_'+adno);
 	form.submit();
