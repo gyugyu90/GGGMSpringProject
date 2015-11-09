@@ -55,9 +55,8 @@ public class MyAdViewListModel implements Model {
 		
 		
 		int totalpage=MyAdViewListDAO.boardTotalPage(id);
-
+		req.setAttribute("curpage", curpage);
 		req.setAttribute("totalpage", totalpage);
-		
 		req.setAttribute("point", balance);
 		req.setAttribute("myadviewlist", list);
 		req.setAttribute("jsp", "../myinfo/point.jsp");

@@ -42,7 +42,7 @@ public class MyAdViewListDAO {
     public static int boardTotalPage(String id)
     {
     	SqlSession session=ssf.openSession();
-    	int count=session.selectOne("boardRowCount", id);
+    	int count=session.selectOne("myboardRowCount", id);
     	int total=(int)(Math.ceil(count/5.0));
     	session.close();
     	return total;

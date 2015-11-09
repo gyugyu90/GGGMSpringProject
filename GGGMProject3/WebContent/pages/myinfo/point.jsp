@@ -136,7 +136,7 @@ table {
 							href="myadviewlist.do?page=${curpage>1?curpage-1:curpage }"><img
 								src="img/prev_icon.gif"></a>&nbsp; <a
 							href="myadviewlist.do?page=${curpage<totalpage?curpage+1:curpage }"><img
-								src="img/next_icon.gif"></a>&nbsp;&nbsp; 0 page / 0 pages</td>
+								src="img/next_icon.gif"></a>&nbsp;&nbsp; ${curpage } page / ${totalpage<1?1:totalpage } pages</td>
 					</tr>
 				</table>
 			</div>

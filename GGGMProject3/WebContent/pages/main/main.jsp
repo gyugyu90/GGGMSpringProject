@@ -54,12 +54,12 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-<<<<<<< HEAD
+
 </head>
 <body class="skin-black">
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
-		<a href="main.do" class="logo" style="background-color: ${color}">
+		<a href="home.do" class="logo" style="background-color: ${color}">
 			<!-- Add the class icon to your logo image or logo icon to add the margining -->
 			GGGM
 		</a>
@@ -349,10 +349,6 @@
 						<ul class="treeview-menu">
 							<li><a href="myadviewlist.do"><i
 									class="fa fa-angle-double-right"></i>器牢飘 包府</a></li>
-
-							<li><a href="#"><i class="fa fa-angle-double-right"></i>版前
-									包府</a></li>
-
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>版前 包府</a></li>
 									<li><a href="mypage.do"><i
