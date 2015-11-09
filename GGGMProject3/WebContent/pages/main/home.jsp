@@ -100,7 +100,6 @@ function playPause() {
 				onended="end()" autoplay loop>
 				<source src="ADs/${url}.mp4" type="video/mp4">
 			</video><%-- autoplay --%>
-			<button onclick="playPause()" id="play">></button> 
 		</div>
 		<div id="home_subject">
 		<h3>½Ç½Ã°£ top ±¤°í</h3>	
