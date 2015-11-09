@@ -15,6 +15,6 @@
 		</script>
 	</c:when>
 	<c:otherwise>
-		<c:redirect url="main.do" />
+		<c:redirect url="home.do" />
 	</c:otherwise>
 </c:choose>

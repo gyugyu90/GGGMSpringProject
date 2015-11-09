@@ -102,4 +102,15 @@ public class memberDAO {
 		session.close();
 		return total;
 	}
+	public static void myInfoUpdate(memberDTO d){
+		SqlSession session=ssf.openSession(true);
+		session.update("myInfoUpdate",d);
+		session.close();
+	}
+	public static void myAddInfoUpdate(memberAddDTO d){
+		SqlSession session=ssf.openSession(true);
+		session.update("myAddInfoUpdate",d);
+		session.close();
+	}
 }
+

@@ -34,4 +34,8 @@
 	<bean id="qna_modify_ok" class="model.qnaModifyOkModel" />
 	<bean id="qna_reply_write" class="model.qnaReplyWriteModel" />
 	<bean id="qna_reply_delete" class="model.qnaReplyDeleteModel" />
+	<bean id="home" class="model.HomeModel" />
+	<bean id="mypage" class="model.myPageModel" />
+	<bean id="myInfoUpdate" class="model.myInfoUpdateModel" />
+	
 </beans><!-- endElement(), endDocument() -->

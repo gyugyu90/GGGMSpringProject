@@ -13,5 +13,8 @@
 	<select id="side_info" resultType="AdDTO" parameterType="int">
 		SELECT adno, url, hit FROM ad WHERE adno=#{adno}
 	</select>
-
+	
+	<select id="aadListData" resultType="AdDTO">
+		SELECT * FROM ad ORDER BY adno DESC
+	</select>
 </mapper>

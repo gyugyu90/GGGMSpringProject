@@ -127,7 +127,6 @@ function point(){
 				<source src="ADs/${adinfo.url}.mp4" type="video/mp4">
 			</video><%-- autoplay --%>
 			<button onclick="playPause()" id="play">></button> 
-			<button id="getpoint" disabled="disabled" onclick="point()">포인트 적립</button>
 		</div>
 		<div id="body_recommend">
 

@@ -52,7 +52,7 @@
     <body class="skin-black" >
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="main.do" class="logo" style="background-color: ${color}">
+            <a href="home.do" class="logo" style="background-color: ${color}">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 GGGM
             </a>
@@ -326,6 +326,8 @@
 									class="fa fa-angle-double-right"></i>포인트 관리</a></li>
 							<li><a href="#"><i
 									class="fa fa-angle-double-right"></i>경품 관리</a></li>
+									<li><a href="mypage.do"><i
+									class="fa fa-angle-double-right"></i>마이페이지</a></li>
 						</ul></li>
 					<li class="treeview"><a href="#"> <i
 							class="fa fa-bar-chart-o"></i> <span>게시판</span> <i

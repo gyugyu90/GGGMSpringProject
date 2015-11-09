@@ -1,66 +1,66 @@
 #wrapper{
 	border: 5px solid ;
 	width: 600px;
-	background-color: #ff8080;
+	background-color: #ffffff;
 	margin: 0px auto;
 	border-radius:10px;
 	padding: 15px;
 	
 }
-#joinForm{
+#myPageForm{
 	display: table;
-	margin: 80px auto;
+	margin: 50px auto;
 	border-collapse: collapse;
 
 }
-#joinForm p{
+#myPageForm p{
 	display: table-row;
 	padding: 5px;
 	
 	font-family: '서울한강체';
-	color:white;
+	color:black;
 }
-#joinForm p label{
+#myPageForm p label{
 	display: table-cell;
 	padding-left: 40px;
 	font-family: '서울한강체';
-	color:white;
-	
+	color:black;
+	font-weight: bolder;
 }
-#joinForm .cellStyle{
+#myPageForm .cellStyle{
 	display: table-cell;
 	padding-left: 5px;
 }
-#joinForm #userid,#joinForm #usermail{
+#myPageForm #userid,#myPageForm #usermail{
 	width: 100px;
 }
-#joinForm #userpwd,#joinForm #userpwd2{
+#myPageForm #userpwd,#myPageForm #userpwd2{
 	 width:80px;
 }
-#joinForm #username,#joinForm #usernum{
+#myPageForm #username,#myPageForm #usernum{
 	width: 100px;
 }
-#joinForm #useraddr1,#joinForm #useraddr2{
+#myPageForm #useraddr1,#myPageForm #useraddr2{
 	width: 250px;
 	display: block;
 }
-#joinForm input[type="text"],#joinForm input[type="password"],
-#joinForm input[type="radio"],#joinForm select{
+#myPageForm input[type="text"],#myPageForm input[type="password"],
+#myPageForm input[type="radio"],#myPageForm select{
 	background-color: #efefef;
-	border: 1px solid #996666;
+	border: 2px solid #0000ff;
 	padding: 3px;
 	margin: 5px;
-	width:60px;
+	width:70px;
 }
 
-#joinForm input[type="button"],#joinForm input[type="submit"]{
-	background-color: #fff;
-	border: 2px solid #996666;
+#myPageForm input[type="button"],#myPageForm input[type="submit"]{
+	background-color: #ffffff;
+	border: 3px solid #0000ff;
 	padding: 3px 10px;
 	border-radius:20px;
 	font-family: '서울한강체';
 }
-#joinForm .btnSubmit{
+#myPageForm .btnSubmit{
 	display: block;
 	text-align: center;
 	position: relative;
@@ -68,19 +68,3 @@
 	top:2px;
 	border-bottom-style: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
