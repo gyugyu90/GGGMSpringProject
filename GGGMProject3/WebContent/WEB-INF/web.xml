@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>GGGMProject2</display-name>
+  <display-name>GGGMProject3</display-name>
   <servlet>
     <servlet-name>controller</servlet-name>
     <servlet-class>controller.DispatcherServlet</servlet-class>
@@ -17,6 +17,7 @@
   		<!-- <param-value>C:\Users\hong\git\GGGMProject4\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value> -->
 
 
+  		<!-- <param-value>D:\Users\YYS\git\GGGMProject4\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value> -->
 
   		<!-- <param-value>C:\Users\hong\Git\GGGMProject4\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value> -->
 
@@ -28,7 +29,6 @@
 
 
   		<!-- <param-value>C:\Users\hong\git\GGGMProject4\GGGMProject3\WebContent\WEB-INF\applicationContext.xml</param-value> -->
-
   	</init-param>
   </servlet>
   <servlet-mapping><!-- 시작하자마자 .do는 DispatcherServlet을 실행하고 -->

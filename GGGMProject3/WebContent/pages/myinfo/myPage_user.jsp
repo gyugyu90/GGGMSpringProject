@@ -78,7 +78,7 @@ $(function(){
 <br>
 <br>
 <br>
-
+	<div id="myPage_top" align="left"><h1>³» Á¤º¸</h1></div>
    <div id="wrapper">
     <form id="myPageForm" name="myPageForm" action="myInfoUpdate.do?id=${d.id}" method="post">
     <p>
