@@ -93,7 +93,7 @@ function playPause() {
 	<div id="body">
 		<div id="body_content">
 			<div id="home_subject">
-			<h3 >이달의 hot 광고</h3>
+			<h1 ><img src="img/best1.jpg">이달의 HOT 광고</h1>
 			</div>
 		<div>
 		<video id="main_video"
@@ -102,7 +102,7 @@ function playPause() {
 			</video><%-- autoplay --%>
 		</div>
 		<div id="home_subject">
-		<h3>실시간 top 광고</h3>	
+		<h1><img src="img/best2.jpg">실시간 TOP 광고</h1>	
 		</div>
 			<div id="banner_wrap">
 		<ul id="slide_banner" class="banner_margin">
@@ -131,16 +131,16 @@ function playPause() {
 
 		</ul>
 		<p>
-			<a href="#" id="prevBtn"> <img src="img/prev.jpg" alt="이전">
+			<a href="#" id="prevBtn"> <img src="img/prev.png" alt="이전">
 			</a>
 		</p>
 		<p>
-			<a href="#" id="nextBtn"> <img src="img/next.jpg" alt="다음">
+			<a href="#" id="nextBtn"> <img src="img/next.png" alt="다음">
 			</a>
 		</p>
 		</div>
 		<div id="home_subject">
-		<h3>최신 광고</h3>	
+		<h1><img src="img/new.jpg">최신 광고</h1>	
 		</div>
 		<div id="banner_wrap">
 		<ul id="slide_banner1" class="banner_margin">
@@ -169,11 +169,11 @@ function playPause() {
 
 		</ul>
 		<p>
-			<a href="#" id="prevBtn1"> <img src="img/prev.jpg" alt="이전">
+			<a href="#" id="prevBtn1"> <img src="img/prev.png" alt="이전">
 			</a>
 		</p>
 		<p>
-			<a href="#" id="nextBtn1"> <img src="img/next.jpg" alt="다음">
+			<a href="#" id="nextBtn1"> <img src="img/next.png" alt="다음">
 			</a>
 		</p>
 		</div>

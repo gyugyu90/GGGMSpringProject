@@ -121,6 +121,7 @@ function ok(adno){
 	height: 100%;
 	margin: 0 auto;
 	vertical-align: middle;
+	padding-left: -10px;
 }
 
 #prevBtn {
@@ -158,8 +159,8 @@ li {
 	text-align: left;
 }
 
-#banner_wrap .banner_margin {
-	
+#banner_top {
+	padding-left: 414px;
 }
 .poster{
 	width:250px;
@@ -169,6 +170,9 @@ li {
 </head>
 
 <body>
+	<div id="banner_top" align="left">
+	<h1><img src="img/hot.png"> HOT 광고</h1>
+	</div>
 	<div id="banner_wrap">
 		<ul id="slide_banner" class="banner_margin">
 
@@ -236,11 +240,11 @@ li {
 
 
 		<p>
-			<a href="#" id="prevBtn"> <img src="img/prev.jpg" alt="이전">
+			<a href="#" id="prevBtn"> <img src="img/prev.png" alt="이전">
 			</a>
 		</p>
 		<p>
-			<a href="#" id="nextBtn"> <img src="img/next.jpg" alt="다음">
+			<a href="#" id="nextBtn"> <img src="img/next.png" alt="다음">
 			</a>
 		</p>
 

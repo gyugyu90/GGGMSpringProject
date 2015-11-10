@@ -113,10 +113,10 @@
 #body #bottom{
 	width:100%;
 	height: 30%;
-	float: left;
+	
 	font-family: ¸¼Àº °íµñ;
-	font-size: 15pt;
-	padding-left: 15px;
+	
+	
 	
 }
 #body #bottom #piechart{
@@ -125,7 +125,7 @@
 	float: left;
 	
 	padding-top: 30px;
-	margin-left: 15%;
+	
 }
 #body #bottom #piechart1{
 	
@@ -134,7 +134,7 @@
 	float: right;
 	
 	padding-top: 30px;
-	margin-right: 15%;
+	
 }
 #body #bottom .point_table{
 	width: 10%;
@@ -218,8 +218,8 @@ li{ list-style-type : none;
 					</td>
 				</tr>
 			</table> -->
-			<div id="piechart" style="width: 450px; height: 450px;"></div>
-			<div id="piechart1" style="width: 450px; height: 450px;"></div>
+			<div id="piechart" class="col-md-6" ></div>
+			<div id="piechart1" class="col-md-6" ></div>
 		</div>
 		</div>
 	</div>

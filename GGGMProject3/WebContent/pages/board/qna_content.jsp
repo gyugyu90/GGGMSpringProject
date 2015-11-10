@@ -376,10 +376,10 @@ td.bc_agree_title {
 			<tr>
 		    	<td id="bl_pages">
 					<span class="bl_curpage bl_pagetext">
-					${rcurpage } page / ${rtotal} pages
+					${rcurpage } page / ${rtotal>=rcurpage?rtotal:1} pages
 					</span>
 			    </td>
-
+				
 	    		<td id="bl_linkbutton">
 					<a href="qna_reply_content.do?no=${ d.no }&rPage=${rcurpage>1?rcurpage-1:rcurpage }&page=${strPage}">이전</a>&nbsp;&nbsp;&nbsp;
 					<a href="qna_reply_content.do?no=${ d.no }&rPage=${rcurpage<rtotal?rcurpage+1:rcurpage }&page=${strPage}">다음</a>&nbsp;&nbsp;

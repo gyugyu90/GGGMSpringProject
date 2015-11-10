@@ -51,13 +51,13 @@ public class MyAdViewListModel implements Model {
 			list.get(i).setBalance(balance);
 		}
 		
-		
+		int totalpoint=MyAdViewListDAO.totalpoint(id);
 		
 		
 		int totalpage=MyAdViewListDAO.boardTotalPage(id);
 		req.setAttribute("curpage", curpage);
 		req.setAttribute("totalpage", totalpage);
-		req.setAttribute("point", balance);
+		req.setAttribute("point", totalpoint);
 		req.setAttribute("myadviewlist", list);
 		req.setAttribute("jsp", "../myinfo/point.jsp");
 		

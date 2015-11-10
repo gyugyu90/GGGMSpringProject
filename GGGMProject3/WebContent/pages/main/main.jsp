@@ -45,7 +45,21 @@
 <!-- Theme style -->
 <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/faq/style.css">
-
+<style type="text/css">
+*{
+	font-family: 'SeoulHangang', sans-serif;
+}
+@font-face{
+	font-family:'SeoulHangang';
+	src:url("./css/08SeoulHangangM.eot");
+	src: url("./css/08SeoulHangangM.woff") format("woff"), url("./css/08SeoulHangangM.ttf") format("ttf");
+}
+@font-face{
+	font-family:'StickPencil';
+	src:url("StickPencilR.eot");
+	src: url("StickPencilR.woff") format("woff"), url("StickPencilR.ttf") format("ttf");
+}
+</style>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

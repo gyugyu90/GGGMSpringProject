@@ -22,6 +22,10 @@ public class AdListModel implements Model {
 		
 		List<AdvertiseDTO> list=
 				AdvertiseDAO.adListData();
+		for(AdvertiseDTO d:list){
+			System.out.println(d.getAdno());
+		}
+		System.out.println();
 		HttpSession session = req.getSession();
 		session.setAttribute("count", list);
 		req.setAttribute("count", list);
