@@ -47,7 +47,7 @@ public class AdminAdBoardInfoModel implements Model {
 		
 		
 		String min_age=dt1[1];
-		String max_age=(""+Integer.parseInt(dt2[1])+9);
+		String max_age=(""+(Integer.parseInt(dt2[1])+9));
 		
 		String addr=dt1[2];
 		switch(dt1[2]){
