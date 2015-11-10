@@ -104,6 +104,16 @@ function re_ok(){
        <td height="100" style="padding-left:110"><img src="img/notice.gif"></td>
       </tr>
 </table>
+<div class="row">
+		<div class="col-md-offset-1">			
+			<ol class="breadcrumb">
+				<li><a href="adminnotice.do">공지사항</a></li>
+				<li><a href="adminfaqboard.do">FAQ</a></li>
+				<li><a href="#">QnA</a></li>
+				<li><a href="adboard.do">광고</a></li>
+			</ol>
+		</div>
+	</div>
 	<table width="700" align="center" id="bv_viewdetail">
 		<tr>
 			<td width=50% align=left height="28" class="bv_title bv_subject" style="padding-left: 8px; padding-top: 5px;">

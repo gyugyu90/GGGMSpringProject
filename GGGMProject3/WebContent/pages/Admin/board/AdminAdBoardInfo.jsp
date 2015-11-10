@@ -59,7 +59,7 @@
           <td rowspan = "7" align="center" width=100>타겟</td>
           <td align=center>성별</td>
           <td>
-           
+           	${sex}
           </td>
           <td align=center>가중치
         	<input type="number" max=1 min=0 step=0.05 id="wgt1" name="wgt1" readonly="readonly" value="${weight[0]}">
@@ -68,8 +68,8 @@
         </tr>
 		<tr>
     	  <td align=center>나이</td>
-    	  <td>최소 나이:
-    	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최대 나이:
+    	  <td>최소 나이: ${min_age }
+    	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최대 나이: ${max_age }
     	  	<span id="mx_age">
     	  	</span>
     	  </td>
@@ -81,7 +81,7 @@
 		<tr>
     	  <td align=center>주소지</td>
     	  <td>&nbsp;
-    	   
+    	   ${addr }
 	      </td>
 	      <td align=center>가중치
         	<input type="number" max=1 min=0 step=0.05 id="wgt3" name="wgt3" readonly="readonly" value="${weight[2]}">
@@ -91,7 +91,7 @@
 		<tr>
     	  <td align=center>결혼여부</td>
     	  <td>
-            
+            ${marry }
           </td>
           <td align=center>가중치
         	<input type="number" max=1 min=0 step=0.05 id="wgt4" name="wgt4" readonly="readonly" value="${weight[3]}">
@@ -101,7 +101,7 @@
 		<tr>
     	  <td align=center>직업</td>
     	  <td>
-    	    
+    	    ${tgtJob }
     	    </td>
           <td align=center>가중치
         	<input type="number" max=1 min=0 step=0.05 id="wgt5" name="wgt5" readonly="readonly" value="${weight[4]}">
@@ -111,7 +111,7 @@
 		<tr>
     	  <td align=center>소득</td>
     	  
-    	  <td>최소:(         )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  최대:(         )
+    	  <td>최소:( ${min_sal } )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  최대:( ${min_sal } )
  
     	  </td>
     	  
@@ -123,7 +123,7 @@
 		<tr>
     	  <td align=center>관심분야</td>
     	  <td>
-    	    
+    	    ${tgtInterest }
     	  </td>
           <td align=center>가중치
         	<input type="number" max=1 min=0 step=0.05 id="wgt7" name="wgt7" readonly="readonly" value="${weight[6]}">
