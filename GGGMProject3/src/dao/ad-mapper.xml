@@ -38,14 +38,14 @@
 		SELECT * FROM adrequest
 	</select>
 	<select id="adRequestInfo" parameterType="String" resultType="Adreq">
-		SELECT * FROM adrequest WHERE adid=#{adid}
+		SELECT * FROM adrequest WHERE adno=#{adno}
 	</select>
 	<delete id="adRequestDelete" parameterType="String">
-		DELETE FROM adrequest WHERE adid=#{adid}
+		DELETE FROM adrequest WHERE adno=#{adno}
 	</delete>
 	
 	<select id="getWeightData" resultType="dao.RecomDTO"> 
-		SELECT data1, data2, weight FROM ad
+		SELECT adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc, data1, data2, weight FROM ad
 	</select>
 	
 </mapper>

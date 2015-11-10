@@ -182,9 +182,11 @@ public class RecomModel implements Model{
 		
 		List<RecomDTO> list=memberDAO.getWeightData();
 		
+		System.out.println("모델에서 For문 직전");
+		int checkval=0;
 		for(RecomDTO rdto:list){
 			//한 개의 광고에 대해서
-			int score=0; 
+			double score=0; 
 			 
 			String data1=rdto.getData1();
 			String data2=rdto.getData1();
@@ -198,31 +200,31 @@ public class RecomModel implements Model{
 			//성별
 			int adSex=Integer.parseInt(st1.nextToken());
 			adSex=Integer.parseInt(st2.nextToken());
-			double wgtSex=Integer.parseInt(w.nextToken());
+			double wgtSex=Double.parseDouble(w.nextToken());
 			//age
 			int adMinAge=Integer.parseInt(st1.nextToken());
 			int adMaxAge=Integer.parseInt(st2.nextToken());
-			double wgtAge=Integer.parseInt(w.nextToken());
+			double wgtAge=Double.parseDouble(w.nextToken());
 			//addr
 			int adAddr=Integer.parseInt(st1.nextToken());
 			adAddr=Integer.parseInt(st2.nextToken());
-			double wgtAddr=Integer.parseInt(w.nextToken());
+			double wgtAddr=Double.parseDouble(w.nextToken());
 			//Marital Stt
 			int adMaritalStt = Integer.parseInt(st1.nextToken());
 			adMaritalStt = Integer.parseInt(st2.nextToken());
-			double wgtMaritalStt=Integer.parseInt(w.nextToken());
+			double wgtMaritalStt=Double.parseDouble(w.nextToken());
 			//Job
 			int adJob = Integer.parseInt(st1.nextToken());
 			adJob = Integer.parseInt(st2.nextToken());
-			double wgtJob=Integer.parseInt(w.nextToken());
+			double wgtJob=Double.parseDouble(w.nextToken());
 			//sal
 			int adMinSal = Integer.parseInt(st1.nextToken());
 			int adMaxSal = Integer.parseInt(st2.nextToken());
-			double wgtSal=Integer.parseInt(w.nextToken());
+			double wgtSal=Double.parseDouble(w.nextToken());
 			//interest
 			int adInt = Integer.parseInt(st1.nextToken());
 			adInt = Integer.parseInt(st2.nextToken());
-			double wgtInt=Integer.parseInt(w.nextToken());
+			double wgtInt=Double.parseDouble(w.nextToken());
 			
 			//비교 (Masking으로 점수계산)
 			//		sex
@@ -301,15 +303,19 @@ public class RecomModel implements Model{
 			}
 			
 			rdto.setScore(score);
-			
+			System.out.println(checkval++ + " 점수: "+score);
 			
 		}//for문 끝
-		
+		System.out.println("모델: for문끝. 정렬 시작 전");
+		for(int i=0;i<list.size();i++){
+			System.out.print(list.get(i).getAdno()+" ");
+		}
+		System.out.println();
 				
 		//버블정렬
 		for(int i=0;i<list.size()-1;i++){
 			for(int j=0;j<list.size()-1-i;j++){
-				if(list.get(j).getScore()>list.get(j+1).getScore()){
+				if(list.get(j).getScore()<list.get(j+1).getScore()){
 					RecomDTO temp;
 					temp=list.get(j);
 					list.set(j, list.get(j+1));
@@ -317,9 +323,22 @@ public class RecomModel implements Model{
 				}
 			}
 		}
+		for(int i=0;i<list.size();i++){
+			System.out.print(list.get(i).getAdno()+" ");
+		}
+		System.out.println();
+		System.out.println("정렬 시작 완료");
 		
-		req.setAttribute("recomlist", list);
-		return null;
+		//top 6 만 남기기...
+		for(int i=list.size()-1;i>6;i--){
+				list.remove(i);
+		}
+		for(int i=0;i<list.size();i++){
+			System.out.print(list.get(i).getAdno()+" ");
+		}
+		req.setAttribute("count", list);
+		req.setAttribute("jsp", "/pages/adview/recom.jsp");
+		return "pages/main/main.jsp";
 	}
 
 }

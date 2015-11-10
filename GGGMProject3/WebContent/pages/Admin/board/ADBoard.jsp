@@ -48,7 +48,7 @@
 							</tr>
 							
 							<c:forEach var="d" items="${list}">
-							<tr onclick="location.href='AdminAdBoardInfo.do?adid=${d.adid}'">
+							<tr onclick="location.href='AdminAdBoardInfo.do?adno=${d.adno}'">
 							<td width="10%" style="text-align: center;">${d.maj_category }</td>
 							<td width="10%" style="text-align: center;">${d.sub_category }</td>
 							<td width="10%" style="text-align: center;">${d.adno }</td>

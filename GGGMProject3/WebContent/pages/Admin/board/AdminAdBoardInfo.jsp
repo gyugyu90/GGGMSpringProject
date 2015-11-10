@@ -7,7 +7,7 @@
 <title>Ad Request Form</title>
 
 
-<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/ajax/ajax.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 </head>
 <body>
@@ -17,7 +17,7 @@
 				<div class="panel-header">
 					<h3>&nbsp;&nbsp;※ 광고 등록 신청</h3>
 	
-	<form action="AdminAdInsert.do" method="post">			
+	<form action="AdminAdInsert.do?adno=${d.adno }" method="post">			
     <table border=1 width=850 height=800 align=center>
     
     <tr>
