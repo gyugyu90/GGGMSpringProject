@@ -68,7 +68,7 @@ COMMIT;
 */
 
 --ad table
-/*
+
 DROP TABLE ad;
 CREATE TABLE ad(
    adno NUMBER,
@@ -92,18 +92,18 @@ DROP SEQUENCE ad_adno_seq;
 CREATE SEQUENCE ad_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
 
 INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름', '0:01','미미처럼 예쁘게 화장할 수 있는 어린이용 미미 화장 핸드백 광고입니다','1000','[미미월드 TV광고] 미미 화장핸드백','메인카테고리','부카테고리','이미지이름');
+VALUES(ad_adno_seq.nextval, 'sim','광고이름', '0:01','미미처럼 예쁘게 화장할 수 있는 어린이용 미미 화장 핸드백 광고입니다','1000','[미미월드 TV광고] 미미 화장핸드백','메인카테고리','부카테고리','이미지이름');
 INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:02', '거칠어진 피부 스킨푸드 블랙슈가 첫술세럼과 함께하세요','200','[스킨푸드 슈가티비] 정창욱, 김유정의 매끈 맑은결 레시피 블랙슈가 첫술세','메인카테고리','부카테고리', '이미지
+VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:02', '거칠어진 피부 스킨푸드 블랙슈가 첫술세럼과 함께하세요','200','[스킨푸드 슈가티비] 정창욱, 김유정의 매끈 맑은결 레시피 블랙슈가 첫술세','메인카테고리','부카테고리', '이미지
 이름');
 INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:03', '류현진을 채우는 진짜 맜있는 진라면 드셔보세요','200','[오뚜기 진라면] 류현진 CF_30초','메인카테고리','부카테고리', '이미지
+VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:03', '류현진을 채우는 진짜 맜있는 진라면 드셔보세요','200','[오뚜기 진라면] 류현진 CF_30초','메인카테고리','부카테고리', '이미지
 이름');
 INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:04', '준비된 우루사는 전세계로 나아가고있습니다','200','[우루사(URSA)] 우루사 please #해외진출편','메인카테고리','부카테고리', '이미지
+VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:04', '준비된 우루사는 전세계로 나아가고있습니다','200','[우루사(URSA)] 우루사 please #해외진출편','메인카테고리','부카테고리', '이미지
 이름');
 INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:05', '휴대폰 하나만 바라온 열정이 반드시 승리 할 것이다','200','[지지 않는다. 고로, 존재한다] VEGA 브랜드 광고.','메인카테고리','부카테고리','이미지
+VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:05', '휴대폰 하나만 바라온 열정이 반드시 승리 할 것이다','200','[지지 않는다. 고로, 존재한다] VEGA 브랜드 광고.','메인카테고리','부카테고리','이미지
 이름');
 INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
 VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:06', '촉촉한 하루가 계속되려면 체내수분을 긴 시간 지켜주는 포카리스웨트와 함께하세요','200','25대 포카리걸 김소현! 김소현의 2015년 포카리스웨트 광고! POCARI 30_','메인카테고리','부카테고리', '이미지
@@ -182,7 +182,7 @@ VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:30', '볶을 때 기름대신 무칠때
 이름');
 
 COMMIT;
-*/
+
 
 DROP TABLE adrequest;
 CREATE TABLE adrequest(
@@ -205,7 +205,9 @@ CREATE TABLE adrequest(
 DROP SEQUENCE adreq_adno_seq;
 CREATE SEQUENCE adreq_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
 INSERT INTO adrequest(adno,adid,adsubject,adtime,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight) 
-VALUES(adreq_adno_seq.NEXTVAL,'adtest','광고테스트','15','테스트중 테스트중','가전','컴퓨터','나우','내컴퓨터이미지',100,'512','512','1|1|1|1|1|1|1');
+VALUES(adreq_adno_seq.NEXTVAL,'adtest','광고테스트','15','테스트중 테스트중','가전','컴퓨터','나우','내컴퓨터이미지',100,'3|20|1|2|5|200|9','3|40|1|2|5|500|9','0.2|0.3|0|0.5|0|0|0');
+
+ 
 COMMIT;
 
 /*
@@ -248,39 +250,41 @@ INSERT INTO reply VALUES(8,9,'hong','심청이','댓글 연습입니다',SYSDATE,6,2,2,7,0
 COMMIT;
 */
 /*
+DROP TABLE adviewlist;
 CREATE TABLE adviewlist(
 	adno NUMBER CONSTRAINT adviewlist_nn_adno NOT NULL,
 	id VARCHAR2(20) CONSTRAINT adviewlist_nn_id NOT NULL,
 	point NUMBER CONSTRAINT adviewlist_nn_point NOT NULL,
+	count NUMBER DEFAULT 0,
 	viewtime DATE DEFAULT SYSDATE
 );
 
-INSERT INTO adviewlist VALUES(1, 'hong', 200, '2015-10-01');
-INSERT INTO adviewlist VALUES(1, 'hong', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(1, 'hong', 200, '2015-10-03');
-INSERT INTO adviewlist VALUES(2, 'hong', 300, '2015-10-01');
-INSERT INTO adviewlist VALUES(2, 'hong', 100, '2015-10-02');
-INSERT INTO adviewlist VALUES(3, 'hong', 400, '2015-10-02');
-INSERT INTO adviewlist VALUES(3, 'hong', 300, '2015-10-03');
-INSERT INTO adviewlist VALUES(4, 'hong', 500, '2015-10-04');
-INSERT INTO adviewlist VALUES(4, 'hong', 500, '2015-10-05');
-INSERT INTO adviewlist VALUES(5, 'hong', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(6, 'hong', 300, '2015-10-05');
-INSERT INTO adviewlist VALUES(7, 'hong', 400, '2015-10-04');
-INSERT INTO adviewlist VALUES(8, 'hong', 200, '2015-10-03');
-INSERT INTO adviewlist VALUES(9, 'hong', 100, '2015-10-02');
-INSERT INTO adviewlist VALUES(10, 'hong', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(1, 'sim', 200, '2015-10-01');
-INSERT INTO adviewlist VALUES(2, 'sim', 200, '2015-10-03');
-INSERT INTO adviewlist VALUES(3, 'sim', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(4, 'sim', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(5, 'sim', 200, '2015-10-04');
-INSERT INTO adviewlist VALUES(6, 'sim', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(7, 'sim', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(8, 'sim', 200, '2015-10-03');
-INSERT INTO adviewlist VALUES(10, 'sim', 200,'2015-10-01');
-INSERT INTO adviewlist VALUES(1, 'sim', 200, '2015-10-02');
-INSERT INTO adviewlist VALUES(2, 'sim', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-01');
+INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-03');
+INSERT INTO adviewlist VALUES(2, 'hong', 300,1, '2015-10-01');
+INSERT INTO adviewlist VALUES(2, 'hong', 100,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(3, 'hong', 400,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(3, 'hong', 300,1, '2015-10-03');
+INSERT INTO adviewlist VALUES(4, 'hong', 500,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(4, 'hong', 500,1, '2015-10-05');
+INSERT INTO adviewlist VALUES(5, 'hong', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(6, 'hong', 300,1, '2015-10-05');
+INSERT INTO adviewlist VALUES(7, 'hong', 400,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(8, 'hong', 200,1, '2015-10-03');
+INSERT INTO adviewlist VALUES(9, 'hong', 100,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(10, 'hong', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(1, 'sim', 200,1, '2015-10-01');
+INSERT INTO adviewlist VALUES(2, 'sim', 200,1, '2015-10-03');
+INSERT INTO adviewlist VALUES(3, 'sim', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(4, 'sim', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(5, 'sim', 200,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(6, 'sim', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(7, 'sim', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(8, 'sim', 200,1, '2015-10-03');
+INSERT INTO adviewlist VALUES(10, 'sim', 200,1,'2015-10-01');
+INSERT INTO adviewlist VALUES(1, 'sim', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(2, 'sim', 200,1, '2015-10-02');
 COMMIT;
 */
 --일반게시판
