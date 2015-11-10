@@ -123,7 +123,7 @@ function playPause() {
 							<ul>
 								<li>영상제목 : ${d.adno }</li>
 								<li>영상시간 : ${d.adtime }</li>
-								<li>포인트 : ${d.pointrange }</li>
+								<li>포인트 : ${d.ppc }</li>
 							</ul>
 						</div>
 					</li>
@@ -161,7 +161,7 @@ function playPause() {
 							<ul>
 								<li>영상제목 : ${d.adno }</li>
 								<li>영상시간 : ${d.adtime }</li>
-								<li>포인트 : ${d.pointrange }</li>
+								<li>포인트 : ${d.ppc }</li>
 							</ul>
 						</div>
 					</li>
