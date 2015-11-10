@@ -90,21 +90,25 @@ table {
 		<div class=row>
 			<div id="top">
 				<div id="top_left">
-					<ul style="padding-left: 10px;">
+					<ul style="padding-left: 10px;margin: 0px 60px;width: 400px;">
 						<li>보유 포인트 : <input type="text" id="curpoint" size=20 readonly="readonly"
 							value="${point}">
 						</li>
 						<li><i class="fa fa-chevron-down"></i></li>
-						<li>받을 포인트 : <input type="text" id="exchange" size=20>
+						<li>받을 포인트 : <input type="text" name="exchange" id="exchange" size=20>
 						</li>
-						<li><input type="radio" name="rb" value="백화점A">백화점A <input
-							type="radio" name="rb" value="백화점B">백화점B <input
-							type="radio" name="rb" value="문화상품권">문화상품권</li>
-						<li><img src="img/giftcard1.jpg" width=100 height=50>
-							<img src="img/giftcard2.jpg" width=100 height=50> <img
-							src="img/giftcard3.jpg" width=100 height=50></li>
+						<li>
 					</ul>
-					<br> <input type="button" name="hj" value="환전하기" align=right>
+					<ul style="list-style:none;margin:0px 60px">
+						<li style="float:left; margin:0px 15px" id="exA">백화점A</li>
+						<li style="float:left; margin:0px 15px" id="exB">백화점B</li>
+						<li style="float:left; margin:0px 15px" id="exC">문화상품권</li>
+					</ul>
+						<img src="img/giftcard1.jpg" id="imgA" width=280 height=160>
+						<img src="img/giftcard2.jpg" id="imgB" width=280 height=160 style="display: none;"> 
+						<img src="img/giftcard3.jpg" id="imgC" width=280 height=160 style="display: none;">
+						<br>
+						<input type="button" name="hj" id="exBtn" value="환전하기">
 				</div>
 				<div id="top_right">
 
@@ -210,7 +214,23 @@ table {
     	var cur=$('#curpoint').val();
     	$('#exchange').keyup(function(){
     		var ex=$('#exchange').val();
-    		$('#curpoint').val(cur-ex);
+    		$('#curpoint').val(cur-ex);	
+    	});
+    	
+    	$('#exA').click(function(){
+    		$('#imgA').show();
+    		$('#imgB').hide();
+    		$('#imgC').hide();
+    	});
+    	$('#exB').click(function(){
+    		$('#imgA').hide();
+    		$('#imgB').show();
+    		$('#imgC').hide();
+    	});
+    	$('#exC').click(function(){
+    		$('#imgA').hide();
+    		$('#imgB').hide();
+    		$('#imgC').show();
     	});
     });
   </script>

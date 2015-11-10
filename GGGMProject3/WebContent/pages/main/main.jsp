@@ -355,7 +355,7 @@
 							<li><a href="slidebanner.do"><i
 									class="fa fa-angle-double-right"></i>HOT</a></li>
 							<li><a href="#"><i class="fa fa-angle-double-right"></i>Local</a></li>
-							<li><a href="#"><i class="fa fa-angle-double-right"></i>추천</a></li>
+							<li><a href="recom.do"><i class="fa fa-angle-double-right"></i>추천</a></li>
 						</ul></li>
 					<li class="treeview"><a href="#"> <i class="fa fa-laptop"></i>
 							<span>내정보</span> <i class="fa fa-angle-left pull-right"></i>
