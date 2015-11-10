@@ -40,13 +40,7 @@ public class AdminAdBoardInfoModel implements Model {
 		String marry=str[3];
 		int jtotal=Integer.parseInt(str[4]);
 		String min_sal=str[5];
-		int itotal=Integer.parseInt(str[6]);
-		
-        
-	
-			
-		
-		       
+		int itotal=Integer.parseInt(str[6]);		       
 		 
 		
 		req.setAttribute("d", d);

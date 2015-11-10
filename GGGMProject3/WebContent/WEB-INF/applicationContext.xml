@@ -56,10 +56,14 @@
 	<bean id="notice_reply_delete" class="model.NoticeReplyDeleteModel"/>
 	<bean id="board" class="model.AdminBoardModel"/>
 	<bean id="adboard" class="model.AdminAdBoardModel"/>
-
+	<bean id="adminfaqboard" class="model.AdminFaqModel"/>
+	<bean id="AdminFAQInfo" class="model.AdminFAQInfoModel"/>
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="ad_request_ok" class="model.AdRequestOKModel"/>
 	<bean id="adgraphlist" class="model.Ad_List_GraphModel"/>
+	<bean id="adminnotice" class="model.AdminNoticeModel"/>
+	<bean id="adminnoticeinfo" class="model.AdminNoticeInfoModel"/>
+	
 
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
