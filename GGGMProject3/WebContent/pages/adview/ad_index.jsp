@@ -113,9 +113,9 @@ function playPause() {
 function end(){
    $("#getpoint").get(0).disabled=false
 }
-function getpoint(adno, point, adsubject){
-   alert("야호!"+adno+" "+point+" "+adsubject);
-   sendMessage('GET', "getpoint.do", "adno="+adno+"&point="+point+"&description="+adsubject, check);
+function getpoint(adno, ppc, adsubject){
+   alert("야호!"+adno+" "+ppc+" "+adsubject);
+   sendMessage('GET', "getpoint.do", "adno="+adno+"&point="+ppc+"&description="+adsubject, check);
 }
 function check(){
 	if(httpRequest.readyState==4){
@@ -151,7 +151,7 @@ function check(){
 			</video><%-- autoplay --%>
 			<button onclick="playPause()" id="play" style="margin-left:5%;width:330px;height:50px;">play!</button> 
 			<button id="getpoint" disabled="disabled" style="width:330px;height:50px;"
-				onclick="getpoint('<%=request.getParameter("adno")%>', '${adinfo.pointrange}', '${adinfo.adsubject}')">포인트 적립</button>
+				onclick="getpoint('<%=request.getParameter("adno")%>', '${adinfo.ppc}', '${adinfo.adsubject}')">포인트 적립</button>
 			<br><br>
 		</div>
 		<div id="body_recommend">
@@ -183,10 +183,7 @@ function check(){
 				<td width="20%">광고주</td><td width="80%"><b>${adinfo.adid }</b></td>
 			</tr>
 			<tr>
-				<td width="20%">포인트</td><td width="80%"><b>${adinfo.pointrange }</b></td>
-			</tr>
-			<tr>
-				<td width="20%">경품</td><td width="80%"><b>${adinfo.presentrange }</b></td>
+				<td width="20%">포인트</td><td width="80%"><b>${adinfo.ppc }</b></td>
 			</tr>
 			<tr>
 				<td colspan="2">${adinfo.msg}<br><br></td>

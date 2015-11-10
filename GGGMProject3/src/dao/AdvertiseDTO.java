@@ -7,13 +7,10 @@ public class AdvertiseDTO {
 	private String msg;
 	private String adtime;
 	private int hit;
-	private String pointrange;
+	private String ppc;
 	private String url;
 	private String maj_category;
-
 	private String sub_category;
-	private String presentrange;
-	private String presentinfo;
 	private String img;
 	public String getAdtime() {
 		return adtime;
@@ -51,11 +48,11 @@ public class AdvertiseDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public String getPointrange() {
-		return pointrange;
+	public String getPpc() {
+		return ppc;
 	}
-	public void setPointrange(String pointrange) {
-		this.pointrange = pointrange;
+	public void setPpc(String ppc) {
+		this.ppc = ppc;
 	}
 	public String getUrl() {
 		return url;
@@ -74,18 +71,6 @@ public class AdvertiseDTO {
 	}
 	public void setSub_category(String sub_category) {
 		this.sub_category = sub_category;
-	}
-	public String getPresentrange() {
-		return presentrange;
-	}
-	public void setPresentrange(String presentrange) {
-		this.presentrange = presentrange;
-	}
-	public String getPresentinfo() {
-		return presentinfo;
-	}
-	public void setPresentinfo(String presentinfo) {
-		this.presentinfo = presentinfo;
 	}
 	public String getImg() {
 		return img;
