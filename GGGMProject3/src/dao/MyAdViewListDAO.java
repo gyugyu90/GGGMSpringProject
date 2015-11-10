@@ -47,4 +47,11 @@ public class MyAdViewListDAO {
     	session.close();
     	return total;
     }
+    
+    public static int totalpoint(String id){
+    	SqlSession session=ssf.openSession();
+    	int totalpoint=session.selectOne("totalpoint", id);
+    	session.close();
+    	return totalpoint;
+    }
 }

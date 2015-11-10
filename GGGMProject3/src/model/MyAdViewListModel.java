@@ -26,7 +26,7 @@ public class MyAdViewListModel implements Model {
 		if(strPage==null)
 			strPage="1";
 		int curpage=Integer.parseInt(strPage);
-		int rowSize=10;
+		int rowSize=5;
 		int start=(curpage*rowSize)-(rowSize-1);
 		int end=curpage*rowSize;
 		Map map=new HashMap();
@@ -51,13 +51,13 @@ public class MyAdViewListModel implements Model {
 			list.get(i).setBalance(balance);
 		}
 		
-		
+		int totalpoint=MyAdViewListDAO.totalpoint(id);
 		
 		
 		int totalpage=MyAdViewListDAO.boardTotalPage(id);
 		req.setAttribute("curpage", curpage);
 		req.setAttribute("totalpage", totalpage);
-		req.setAttribute("point", balance);
+		req.setAttribute("point", totalpoint);
 		req.setAttribute("myadviewlist", list);
 		req.setAttribute("jsp", "../myinfo/point.jsp");
 		

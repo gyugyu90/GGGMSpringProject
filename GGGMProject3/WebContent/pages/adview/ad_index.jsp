@@ -149,8 +149,8 @@ function check(){
 				onended="end()">
 				<source src="<%=request.getContextPath()%>/ADs/${adinfo.url}.mp4" type="video/mp4">
 			</video><%-- autoplay --%>
-			<button onclick="playPause()" id="play" style="margin-left:5%">play!</button> 
-			<button id="getpoint" disabled="disabled" 
+			<button onclick="playPause()" id="play" style="margin-left:5%;width:330px;height:50px;">play!</button> 
+			<button id="getpoint" disabled="disabled" style="width:330px;height:50px;"
 				onclick="getpoint('<%=request.getParameter("adno")%>', '${adinfo.pointrange}', '${adinfo.adsubject}')">포인트 적립</button>
 			<br><br>
 		</div>
@@ -164,7 +164,7 @@ function check(){
 				</div>
 				<div class="sub_2">
 					<a href="ad_index.do?adno=${side.adno}">${side.url}</a>
-					<b>HIT ${side.hit}</b>
+					<b>(HIT ${side.hit})</b>
 				</div>
 			</c:forEach>
 			</div>

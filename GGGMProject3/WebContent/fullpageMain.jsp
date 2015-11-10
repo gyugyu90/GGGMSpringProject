@@ -335,7 +335,7 @@ section.main_1 {
 						</button>
 								<div id=signUp>
 					<input id="signupBtn" type="button" value="Sign Up Now"
-						onclick="twojoin()">
+						onclick="twojoin()" style="padding:0px 2px;">
 				</div>
 					</form>
 				</section>
@@ -410,7 +410,7 @@ section.main_1 {
 						</button>
 							<div id=signUp>
 					<input id="signupBtn" type="button" value="Sign Up Now"
-						onclick="twojoin()">
+						onclick="twojoin()" style="padding:0px 2px;">
 				</div>
 					</form>
 				</section>

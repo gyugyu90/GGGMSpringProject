@@ -5,22 +5,27 @@
 <mapper namespace="dao.adview-mapper">
 
 	<select id="myadviewlist" resultType="PointDTO" parameterType="java.util.Map">
-	SELECT viewtime, point, adno,num 
-    FROM (SELECT viewtime, point, adno,rownum as num 
-    FROM (SELECT viewtime, point, adno 
-    FROM adviewlist WHERE id=#{id} ORDER BY viewtime DESC))
-    WHERE num BETWEEN #{start} AND #{end}
+		SELECT viewtime, point, adno,num
+		FROM (SELECT viewtime, point, adno,rownum as num
+		FROM (SELECT viewtime, point, adno
+		FROM adviewlist WHERE id=#{id} ORDER BY viewtime DESC))
+		WHERE num BETWEEN #{start} AND #{end}
 	</select>
-	
+
 	<select id="getDescription" resultType="String" parameterType="int">
 		SELECT adsubject FROM ad WHERE adno=#{adno}
 	</select>
-	
-	<select id="getAdReplyTotalCount" resultType="int" parameterType="int">
+
+	<select id="getAdReplyTotalCount" resultType="int"
+		parameterType="int">
 		SELECT reply FROM reply WHERE bno=#{adno}
 	</select>
-	
+
 	<select id="myboardRowCount" resultType="int" parameterType="String">
-   SELECT COUNT(*) FROM adviewlist WHERE id=#{id}
-  </select>
+		SELECT COUNT(*) FROM adviewlist WHERE id=#{id}
+	</select>
+
+	<select id="totalpoint" resultType="int" parameterType="String">
+		SELECT SUM(point) FROM adviewlist WHERE id=#{id}
+	</select>
 </mapper>

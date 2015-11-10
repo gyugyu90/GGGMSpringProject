@@ -27,26 +27,34 @@
 			<div class="panel panel-default col-lg-12">
 				<div class="panel-body">
 					<div class="table-responsive">
-						<h3>FAQ</h3>
+						<h3>공지사항</h3>
 						<table class="table table-bordered table-hover">
-							<tr>
-								<th width="10%" style="text-align: center;">번호</th>
-								<th width="10%" style="text-align: center;">제목</th>
-							</tr>
-
-							<c:forEach var="d" items="${list}">
-								<tr
-									onclick="location.href='AdminFAQInfo.do?no=${d.no}&page=${curpage}'">
-									<td width="20%" style="text-align: center;">${d.no }</td>
-									<td width="80%" style="text-align: center;">${d.subject }</td>
+							<thead>
+								<tr>
+									<td width="10%" align="center">NO</td>
+									<td width="70%" align="left">SUBJECT</td>
+									<td width="10%" align="center">DATE</td>
+									<td width="10%" align="center">HIT</td>
 								</tr>
-							</c:forEach>
+							</thead>
+							<tbody>
+								<c:forEach var="n" items="${notice }">
+									<tr
+										onclick="location.href='adminnoticeinfo.do?no=${n.no}&page=${curpage}'">
+										<td width="10%" align="center">${n.no }</td>
+										<td width="70%" align="left">${n.subject }
+										<small><c:if test="${n.replyCount!=0 }">(${n.replyCount })</c:if></small></td>
+										<td width="10%" align="center">${n.dbday }</td>
+										<td width="10%" align="center">${n.hit }</td>
+									</tr>
+								</c:forEach>
 						</table>
 					</div>
 					<div class="col-lg-12" style="text-align: right;">
-						<a href="adminfaqboard.do?page=${curpage>1?curpage-1:curpage }"> <img
-							src="img/prev_icon.gif"></a>&nbsp; <a
-							href="adminfaqboard.do?page=${curpage<totalpage?curpage+1:curpage }">
+						<a href="adminnotice.do?page=${curpage>1?curpage-1:curpage }">
+							<img src="img/prev_icon.gif">
+						</a>&nbsp; <a
+							href="adminnotice.do?page=${curpage<totalpage?curpage+1:curpage }">
 							<img src="img/next_icon.gif">
 						</a>&nbsp;&nbsp; ${curpage } page / ${totalpage } pages
 					</div>

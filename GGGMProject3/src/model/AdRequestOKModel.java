@@ -27,6 +27,7 @@ public class AdRequestOKModel implements Model {
 		//전체 수치로 변경 - data1, data2, wgt
 		String adsubject=mr.getParameter("adsubject");
 		String url=mr.getOriginalFileName("url");
+		System.out.println(url);
 		String img=mr.getOriginalFileName("img");
 		String msg = mr.getParameter("msg");
 		String ppc = mr.getParameter("ppc");	//숫자 변경
