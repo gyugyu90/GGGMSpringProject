@@ -300,8 +300,7 @@ public class BoardDAO {
     	SqlSession session=ssf.openSession(true);
     	session.update("replyDepthDecrement",no);
     	session.close();
-    }
-    
+    }    
 }
 
 

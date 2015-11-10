@@ -25,23 +25,134 @@
 <body class="skin-black">
 	<div class="row">
 		<div class="col-md-offset-1">
-			<h1>※&nbsp;게시글 관리</h1>
+			<h3>※&nbsp;게시글 관리</h3>
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">게시글 관리</li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="adminfaqboard.do">FAQ</a></li>
+				<li><a href="#">QnA</a></li>
+				<li><a href="adboard.do">광고</a></li>
 			</ol>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-offset-1">
-			&nbsp;&nbsp;&nbsp;&nbsp; <a href="main.jsp?no=14&pno=0">전체글 | </a> <a
-				href="adboard.do">광고 | </a> <a href="main.jsp?no=14&pno=2">댓글
-				| </a> <a href="main.jsp?no=14&pno=3">FAQ | </a> <a
-				href="main.jsp?no=14&pno=4">QnA | </a> <a
-				href="main.jsp?no=14&pno=5">1:1문의 </a>
+		<div class="col-lg-11 col-md-offset-1">
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="table-responsive">
+						공지사항
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th><input type="checkbox"></th>
+									<th>회원번호</th>
+									<th>회원구분</th>
+									<th>회원ID</th>
+									<th>이름</th>
+									<th>가입일</th>
+									<th>최근접속일</th>
+									<th>접속IP</th>
+									<th>Point</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="checkbox"></td>
+									<td>1</td>
+									<td>일반</td>
+									<td>hong</td>
+									<td>홍길동</td>
+									<td>2015-10-17</td>
+									<td>2015-10-17</td>
+									<td>211.238.142.27</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td colspan="9" align="right"><a href="#">More</a></td>
+								</tr>
+							</tbody>
+						</table>
+						FAQ
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th width="20%" align="center">번호</th>
+									<th width="80%">제목</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="d" items="${faq}">
+									<tr>
+										<td width="20%" align="center">${d.no }</td>
+										<td width="80%">${d.subject }</td>
+									</tr>
+								</c:forEach>
+								<tr>
+									<td colspan="9" align="right"><a href="adminfaqboard.do">More</a></td>
+								</tr>
+							</tbody>
+						</table>
+						QnA
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th><input type="checkbox"></th>
+									<th>회원번호</th>
+									<th>회원구분</th>
+									<th>회원ID</th>
+									<th>이름</th>
+									<th>가입일</th>
+									<th>최근접속일</th>
+									<th>접속IP</th>
+									<th>Point</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="checkbox"></td>
+									<td>1</td>
+									<td>일반</td>
+									<td>hong</td>
+									<td>홍길동</td>
+									<td>2015-10-17</td>
+									<td>2015-10-17</td>
+									<td>211.238.142.27</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td colspan="9" align="right"><a href="#">More</a></td>
+								</tr>
+							</tbody>
+						</table>
+						광고
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<th width="10%" style="text-align: center;">대분류</th>
+									<th width="10%" style="text-align: center;">소분류</th>
+									<th width="10%" style="text-align: center;">번호</th>
+									<th width="60%" style="text-align: center;">광고제목</th>
+									<th width="10%" style="text-align: center;">광고주명</th>
+
+								</tr>
+								<c:forEach var="ad" items="${ad}">
+									<tr>
+										<td width="10%" style="text-align: center;">${ad.maj_category }</td>
+										<td width="10%" style="text-align: center;">${ad.sub_category }</td>
+										<td width="10%" style="text-align: center;">${ad.adno }</td>
+										<td width="60%" style="text-align: center;">${ad.adsubject }</td>
+										<td width="10%" style="text-align: center;">${ad.adid }</td>
+									</tr>
+								</c:forEach>
+								<tr>
+									<td colspan="9" align="right"><a href="adboard.do">More</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-
 </body>
 </html>
