@@ -23,6 +23,17 @@
 </head>
 <body>
 	<div class="row">
+		<div class="col-md-offset-1">
+			<h3>※&nbsp;게시글 관리</h3>
+			<ol class="breadcrumb">
+				<li><a href="adminnotice.do">공지사항</a></li>
+				<li><a href="adminfaqboard.do">FAQ</a></li>
+				<li><a href="#">QnA</a></li>
+				<li><a href="adboard.do">광고</a></li>
+			</ol>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-lg-11 col-md-offset-1">
 			<div class="panel panel-default col-lg-12">
 				<div class="panel-body">
@@ -42,8 +53,8 @@
 									<tr
 										onclick="location.href='adminnoticeinfo.do?no=${n.no}&page=${curpage}'">
 										<td width="10%" align="center">${n.no }</td>
-										<td width="70%" align="left">${n.subject }
-										<small><c:if test="${n.replyCount!=0 }">(${n.replyCount })</c:if></small></td>
+										<td width="70%" align="left">${n.subject }<small><c:if
+													test="${n.replyCount!=0 }">(${n.replyCount })</c:if></small></td>
 										<td width="10%" align="center">${n.dbday }</td>
 										<td width="10%" align="center">${n.hit }</td>
 									</tr>

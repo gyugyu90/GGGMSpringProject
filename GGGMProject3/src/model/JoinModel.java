@@ -51,7 +51,7 @@ public class JoinModel implements Model {
 		String emailreceive=req.getParameter("emailreceive");
 		d.setEmailreceive(emailreceive);
 		
-		String job=req.getParameter("job");
+		String job=req.getParameter("job");		
 		String marry=req.getParameter("marry");
 		String[] hobby=req.getParameterValues("hobby");
 		String sal=req.getParameter("sal");
@@ -62,6 +62,20 @@ public class JoinModel implements Model {
 		System.out.println("model3");
 		SignupDAO.memberJoin(d);
 		System.out.println("model4");
+		memberAddDTO add=new memberAddDTO();
+		
+		int sum=0;
+		for(int i=0;i<hobby.length;i++){
+			sum=sum+Integer.parseInt(hobby[i]);
+		}
+		String interest=Integer.toString(sum);
+		add.setJob(job);
+		add.setInterest(interest);
+		add.setIsmarried(marry);
+		add.setSalary(sal);
+		add.setAccountno(bankname+account1+account2+account3);
+		add.setId(id);
+		SignupDAO.memberAddData(add);
 		}else{
 			String id=req.getParameter("id");
 			d.setId(id);

@@ -33,7 +33,6 @@ public class MyAdViewListModel implements Model {
 		map.put("start", start); // #{start}
 		map.put("end", end); // #{end}
 		map.put("id", id);
-		
 		//날짜 바꾸기
 		List<AdGraphDTO> list=MyAdViewListDAO.adListData(map);
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -43,16 +42,24 @@ public class MyAdViewListModel implements Model {
 			String description=MyAdViewListDAO.getDescription(dto.getAdno());
 			dto.setDescription(description);
 		}
-		
+		System.out.println("여기1");
 		//잔고
+		List<Integer> balList=MyAdViewListDAO.getBalance(id);
 		int balance=0;
+		for(int i=balList.size()-1;i>=end;i--){
+			balance+=balList.get(i);
+			//list.get(i).setBalance(balance);
+		}
+		System.out.println("여기2");
 		for(int i=list.size()-1;i>=0;i--){
 			balance+=list.get(i).getPoint();
 			list.get(i).setBalance(balance);
 		}
 		
-		int totalpoint=MyAdViewListDAO.totalpoint(id);
+		System.out.println("여기3");
 		
+		
+		int totalpoint=MyAdViewListDAO.totalpoint(id);
 		
 		int totalpage=MyAdViewListDAO.boardTotalPage(id);
 		req.setAttribute("curpage", curpage);
@@ -60,7 +67,6 @@ public class MyAdViewListModel implements Model {
 		req.setAttribute("point", totalpoint);
 		req.setAttribute("myadviewlist", list);
 		req.setAttribute("jsp", "../myinfo/point.jsp");
-		
 		return "pages/main/main.jsp";
 	}
 

@@ -160,10 +160,10 @@ li {
 }
 
 #banner_top {
-	padding-left: 414px;
+	padding-left: 100px;
 }
 .poster{
-	width:250px;
+	width:270px;
 	height:205px;
 }
 </style>
@@ -191,7 +191,7 @@ li {
 							<ul>
 								<li>영상제목 : ${d.adno }</li>
 								<li>영상시간 : ${d.adtime }</li>
-								<li>포인트 : ${d.pointrange }</li>
+								<li>포인트 : ${d.ppc }</li>
 							</ul>
 						</div>
 					</li>
@@ -199,6 +199,7 @@ li {
 			</c:forEach>
 
 		</ul>
+		<br>
 		<ul id="slide_banner1" class="banner_margin">
 			<c:forEach var="d" items="${count }">
 				<c:if test="${d.adno%3==2 }">
@@ -211,7 +212,7 @@ li {
 							<ul>
 								<li>영상제목 : ${d.adno }</li>
 								<li>영상시간 : ${d.adtime }</li>
-								<li>포인트 : ${d.pointrange }</li>
+								<li>포인트 : ${d.ppc }</li>
 							</ul>
 						</div>
 					</li>
@@ -230,7 +231,7 @@ li {
 							<ul>
 								<li>영상제목 : ${d.adno }</li>
 								<li>영상시간 : ${d.adtime }</li>
-								<li>포인트 : ${d.pointrange }</li>
+								<li>포인트 : ${d.ppc }</li>
 							</ul>
 						</div>
 					</li>

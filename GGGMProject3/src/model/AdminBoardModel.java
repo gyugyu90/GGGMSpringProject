@@ -1,6 +1,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AdrequestDAO;
 import dao.AdrequestDTO;
+import dao.BoardDAO;
+import dao.BoardDTO;
 import dao.FaqDAO;
 import dao.FaqDTO;
 import dao.NoticeDAO;
@@ -36,10 +39,13 @@ public class AdminBoardModel implements Model {
 			System.out.println(d.getNo());
 			d.setReplyCount(NoticeDAO.noticeReplyCount(d.getNo()));
 		}
+		List<BoardDTO> qna = BoardDAO.qnaListData(map);
+		
 
 		req.setAttribute("notice", noticelist);
 		req.setAttribute("ad", adlist);
 		req.setAttribute("faq", faqlist);
+		req.setAttribute("qna", qna);
 		req.setAttribute("jsp", "../Admin/board/board.jsp");
 		return "pages/main/main.jsp";
 	}

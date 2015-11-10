@@ -7,7 +7,7 @@
 		SELECT * FROM ad ORDER BY adno DESC
 	</select>
 	<select id="ad_info" resultType="AdDTO" parameterType="int">
-		SELECT adsubject,url,adid,pointrange,presentrange,msg
+		SELECT adsubject,url,adid,ppc,msg
 		FROM ad WHERE adno=#{adno}
 	</select>
 	<select id="side_info" resultType="AdDTO" parameterType="int">
@@ -25,27 +25,37 @@
 	</insert>
 
 	<insert id="insert_adviewlist" parameterType="PointDTO">
-		INSERT INTO adviewlist VALUES(#{adno}, #{id}, #{point}, SYSDATE)
+		INSERT INTO adviewlist VALUES(#{adno}, #{id}, #{point}, 1, SYSDATE)
 	</insert>
 	
 	
 	<insert id="adRequestInsert" parameterType="Adreq">
+	<selectKey resultType="int" keyProperty="adno" order="BEFORE">
+        SELECT MAX(adno)+1 FROM ad adrequest       
+    </selectKey>   
 		INSERT INTO adrequest(adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight)
-		VALUES(adreq_no_seq.NEXTVAL,#{adid},#{adsubject},#{msg},#{maj_category},#{sub_category},#{url},#{img},#{ppc},#{data1},#{data2},#{weight})
+		VALUES(#{adno},#{adid},#{adsubject},#{msg},#{maj_category},#{sub_category},#{url},#{img},#{ppc},#{data1},#{data2},#{weight})
 	</insert>
 	
 	<select id="adRequestList" resultType="Adreq">
 		SELECT * FROM adrequest
 	</select>
 	<select id="adRequestInfo" parameterType="String" resultType="Adreq">
-		SELECT * FROM adrequest WHERE adid=#{adid}
+		SELECT * FROM adrequest WHERE adno=#{adno}
 	</select>
-	<delete id="adRequestDelete" parameterType="String">
-		DELETE FROM adrequest WHERE adid=#{adid}
+	<delete id="adRequestDelete" parameterType="int">
+		DELETE FROM adrequest WHERE adno=#{adno}
 	</delete>
+	<insert id="adReqInsert" parameterType="Adreq">
+	<selectKey resultType="int" keyProperty="adno" order="BEFORE">
+        SELECT MAX(adno)+1 FROM ad        
+    </selectKey>   
+		INSERT INTO ad(adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight)
+		VALUES(#{adno},#{adid},#{adsubject},#{msg},#{maj_category},#{sub_category},#{url},#{img},#{ppc},#{data1},#{data2},#{weight})
+	</insert>
 	
 	<select id="getWeightData" resultType="dao.RecomDTO"> 
-		SELECT data1, data2, weight FROM ad
+		SELECT adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc, data1, data2, weight FROM ad
 	</select>
 	
 </mapper>

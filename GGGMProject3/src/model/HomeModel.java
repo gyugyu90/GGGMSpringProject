@@ -23,7 +23,6 @@ public class HomeModel implements Model {
 				AdvertiseDAO.aadListData();
 		
 		
-		
 		req.setAttribute("count", list);
 		req.setAttribute("url", "[미미월드 TV광고] 미미 화장핸드백");
 		req.setAttribute("jsp", "/pages/main/home.jsp");

@@ -42,7 +42,7 @@ public class AdRequestOKModel implements Model {
 		String min_sal= mr.getParameter("min_sal");
 		String max_sal= mr.getParameter("max_sal");
 		String[] interest = mr.getParameterValues("interest");
-		
+		System.out.println(maj_category);
 		if(adsubject==null)
 			adsubject="¾Èµé¾î¿È.";
 		if(url==null)
@@ -101,6 +101,7 @@ public class AdRequestOKModel implements Model {
 
 //		private String maj_category;
 		d.setMaj_category(maj_category);
+		System.out.println(d.getMaj_category());
 //		private String sub_category;
 		d.setSub_category(sub_category);
 //		private String url;

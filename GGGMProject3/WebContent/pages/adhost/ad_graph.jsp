@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>광고구마</title>
-		<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+      <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
         <link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
@@ -16,7 +16,7 @@
         <link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-	
+   
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -31,8 +31,8 @@
         var options = {
           title: '성별 분류',
           'sliceVisibilityThreshold':0 ,
-          'width' : 450,
-          'height' : 450
+          'width' : 300,
+          'height' : 350
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -41,7 +41,7 @@
       }
     </script>
     <script type="text/javascript">
-	
+   
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -63,54 +63,59 @@
         var options = {
           title: '나이별 분류',
           'sliceVisibilityThreshold':0 ,
-          'width' : 450,
-          'height' : 450
+          'width' : 300,
+          'height' : 350
         };
-		
+      
         var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
 
         chart.draw(data, options);
       }
     </script>
 <style type="text/css">
+#white {
+ background-color: white;
+}
 #body {
-	width: 100%;
-	height: 100%;
+   background-color: white;
+   width: 100%;
+   height: 100%;
 }
 #body #top{
-	width:100%;
-	height: 70%;
+   width:100%;
+   height: 70%;
 }
 #body #top #top_left{
-	float: left;
-	width:50%;
-	height:100%;
-	
-	
-	
-	
-	
+   float: left;
+   width:50%;
+   height:100%;
+   
+   
+   
+   
+   
 }
 #body #top #top_left #img{
-	float : left;
-	margin-left: 16%;
-	padding-left: 16%;
+   float : left;
+   margin-left: 16%;
+   padding-left: 16%;
 }
 #body #top #top_right{
-	float: right;
-	width:50%;
-	height:100%;
-	
-	
-	
+   float: right;
+   width:50%;
+   height:100%;
+   
+   
+   
 }
 #body #top #top_right #linechart_material{
-	float : right;
-	margin-right: 15%;
-	padding-right: 15%;
-	
+   float : right;
+   margin-right: 15%;
+   padding-right: 15%;
+   
 }
 #body #bottom{
+
 	width:100%;
 	height: 30%;
 	
@@ -118,63 +123,88 @@
 	
 	
 	
+
+   width:100%;
+   height: 30%;
+   
+   
+
 }
 #body #bottom #piechart{
+
 	width: 50%;
 	height: 100%;
 	float: left;
 	
 	padding-top: 30px;
 	
+
+   width: 400px;
+   height: 300px;
+   float: left;
+   position:absolute;
+   padding-top: 30px;
+   margin-left: 13%;
+
 }
 #body #bottom #piechart1{
-	
+
 	width: 50%;
 	height: 100%;
 	float: right;
 	
 	padding-top: 30px;
 	
+
+   
+   width: 400px;
+   height: 300px;
+   float: right;
+   
+   padding-top: 30px;
+   margin-right: 10%;
+
 }
 #body #bottom .point_table{
-	width: 10%;
-	text-align: center;
-	
+   width: 10%;
+   text-align: center;
+   
 }
 li{ list-style-type : none;
-	padding: 5px;
-	
+   padding: 5px;
+   
  }
  table{
  width:100%;
  }
 #first_list{
-	color: white;
-	background-color: blue
+   color: white;
+   background-color: blue
 }
 #arrow{
-	padding-left: 125px;
+   padding-left: 125px;
 }
 </style>
 </head>
 
-<body>
-	
-	<div id="body">
-		<div class=row>
-		<div id="top">
-			<div id="top_left">
-				
-				<img id="img" src="poster/ad${list.adno}.PNG" width=450 height=450>
-				<input type="hidden" id="adno" value="${list.adno}"/>
-				<input type="hidden" id="mancount" value="mancount" value="${mancount }"/>
-				<input type="hidden" id="womancount" name="womancount"value="${womancount }">
-			</div>
-			<div id="top_right">
-				
+<body id="white">
+   
+   <div id="body">
+      <div class=row>
+      <div id="top">
+         <div id="top_left">
+            
+            <img id="img" src="poster/ad${list.adno}.PNG" width=350 height=350>
+            <input type="hidden" id="adno" value="${list.adno}"/>
+            <input type="hidden" id="mancount" value="mancount" value="${mancount }"/>
+            <input type="hidden" id="womancount" name="womancount"value="${womancount }">
+         </div>
+         <div id="top_right">
+            
                             <!-- Line chart -->
                             <div id="linechart_material"></div>
                   
+<<<<<<< HEAD
 			</div></div>
 		</div>
 		<div class=row>
@@ -224,6 +254,57 @@ li{ list-style-type : none;
 		</div>
 	</div>
 	<!-- jQuery 2.0.2 -->
+=======
+         </div></div>
+      </div>
+      <div class=row>
+      <div id="bottom">
+         
+         <!-- <table>
+            <tr  id="first_list">
+               <th  class="point_table">
+               성별
+               </th>
+               <th class="point_table">
+               나이별
+               </th>
+               <th class="point_table">
+               지역별
+               </th>
+               <th class="point_table">
+               연봉별
+               </th >
+               <th class="point_table" >
+               결혼여부
+               </th>
+               <th class="point_table" >
+               직업별
+               </th>
+               <th class="point_table" >
+               취미별
+               </th>
+            </tr>
+            <tr>
+               <td class="point_table">
+               </td>
+               <td class="point_table">
+               </td>
+               <td class="point_table">
+                   사용
+               </td>
+               <td class="point_table">
+               </td >
+               <td class="point_table" >
+               </td>
+            </tr>
+         </table> -->
+         <div id="piechart" class="pie" style="background-color: white;"></div>
+         <div id="piechart1" class="pie1" style="background-color: white;"></div>
+      </div>
+      </div>
+   </div>
+   <!-- jQuery 2.0.2 -->
+>>>>>>> refs/remotes/origin/master
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
@@ -234,17 +315,17 @@ li{ list-style-type : none;
     var queryObjectLen="";
     var listadno=$('#adno').val();
     $.ajax({
-    	type:'POST',
-    	url:'pages/adhost/adgetdata.jsp',
-    	data:{adno:listadno},
-    	dataType:'json',
-    	success:function(data){
-    		queryObject=eval('('+JSON.stringify(data)+')');
-    		queryObjectLen=queryObject.adviewlist.length;
-    	},
-    	error:function(xhr,type){
-    		alert('server error occured!')
-    	}
+       type:'POST',
+       url:'pages/adhost/adgetdata.jsp',
+       data:{adno:listadno},
+       dataType:'json',
+       success:function(data){
+          queryObject=eval('('+JSON.stringify(data)+')');
+          queryObjectLen=queryObject.adviewlist.length;
+       },
+       error:function(xhr,type){
+          alert('server error occured!')
+       }
     });
     
     //google chart api
@@ -252,11 +333,12 @@ li{ list-style-type : none;
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {;
-		
+      
       var data = new google.visualization.DataTable();
       data.addColumn('date', '날짜');
       data.addColumn('number', '클릭수');
       
+
 	  for(var i=0;i<queryObjectLen;i++){
 		  var year=queryObject.adviewlist[i].year;
 		  var month=queryObject.adviewlist[i].month;
@@ -267,6 +349,15 @@ li{ list-style-type : none;
 		       [new Date(year, month, day), parseInt(dayCount)]         
 		  ]);
 	  }
+     for(var i=0;i<queryObjectLen;i++){
+        
+        var viewtime=queryObject.adviewlist[i].viewtime;
+        var dayCount=queryObject.adviewlist[i].dayCount;
+        data.addRows([
+                      
+             [new Date(viewtime), parseInt(dayCount)]         
+        ]);
+     }
       
 
       var options = {
@@ -274,11 +365,11 @@ li{ list-style-type : none;
           title: '광고 시청 현황',
           
         },
-        width: 450,
-        height: 450
+        width: 350,
+        height: 350
       };
       var chart = new google.charts.Line(document.getElementById('linechart_material'));
-		
+      
       chart.draw(data, options);
     }
   </script>

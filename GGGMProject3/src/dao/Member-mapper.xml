@@ -65,10 +65,10 @@
 	
 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="Member">
-		INSERT INTO memberData VALUES(
+		INSERT INTO memberData (name,id,pwd,birth,tel,sex,post,addr1,addr2,email,emailreceive,grade) VALUES(
 			#{name}, #{id}, #{pwd}, #{birth}, #{tel}, #{sex}, 
-			#{post}, #{addr1}, #{addr2}, 0, #{email}, 
-			#{emailreceive})
+			#{post}, #{addr1}, #{addr2}, #{email}, 
+			#{emailreceive},1)
 	</insert>
 	
 	<select id="memberTotalPoint" parameterType="Member" resultType="int">
@@ -109,5 +109,7 @@
 		FROM memberdata m1 WHERE m1.id=#{id}) as age 
 		FROM memberdata m1, memberAdditional m2 WHERE m1.id=m2.id AND m1.id=#{id}
 	</select>
-	
+	<select id="memberAddData" parameterType="MemberAdd">
+	INSERT INTO memberAdditional (id,interest,job,salary,ismarried,accountno) VALUES(#{id},#{interest},#{job},#{salary},#{ismarried},#{accountno})
+	</select>
 </mapper>
