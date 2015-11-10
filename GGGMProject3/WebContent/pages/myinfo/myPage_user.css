@@ -47,7 +47,7 @@
 #myPageForm input[type="text"],#myPageForm input[type="password"],
 #myPageForm input[type="radio"],#myPageForm select{
 	background-color: #efefef;
-	border: 2px solid #0000ff;
+	border: 2px solid RGB(121,85,72);
 	padding: 3px;
 	margin: 5px;
 	width:70px;
@@ -55,7 +55,7 @@
 
 #myPageForm input[type="button"],#myPageForm input[type="submit"]{
 	background-color: #ffffff;
-	border: 3px solid #0000ff;
+	border: 3px solid RGB(121,85,72);
 	padding: 3px 10px;
 	border-radius:20px;
 	font-family: '서울한강체';
@@ -69,5 +69,5 @@
 	border-bottom-style: none;
 }
 #myPage_top{
-	padding-left: 525px;
+	padding-left: 210px;
 }
