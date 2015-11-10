@@ -56,7 +56,8 @@
 	float: left;
 	font-family: 맑은 고딕;
 	font-size: 15pt;
-	padding-left: 15px;
+	padding-left: 94px;
+	padding-right: 13px;
 }
 
 #body #bottom .point_table {
@@ -74,7 +75,7 @@ table {
 
 #first_list {
 	color: white;
-	background-color: blue
+	background-color: RGB(152,109,68);
 }
 
 #arrow {
@@ -89,18 +90,21 @@ table {
 		<div class=row>
 			<div id="top">
 				<div id="top_left">
-
 					<ul style="padding-left: 10px;">
-						<li>보유 포인트 : <input type="text" size=20 readonly="readonly"
+						<li>보유 포인트 : <input type="text" id="curpoint" size=20 readonly="readonly"
 							value="${point}">
 						</li>
 						<li><i class="fa fa-chevron-down"></i></li>
-						<li>받을 포인트 : <input type="text" size=20>
+						<li>받을 포인트 : <input type="text" id="exchange" size=20>
 						</li>
 						<li><input type="radio" name="rb" value="백화점A">백화점A <input
 							type="radio" name="rb" value="백화점B">백화점B <input
 							type="radio" name="rb" value="문화상품권">문화상품권</li>
+						<li><img src="img/giftcard1.jpg" width=100 height=50>
+							<img src="img/giftcard2.jpg" width=100 height=50> <img
+							src="img/giftcard3.jpg" width=100 height=50></li>
 					</ul>
+					<br> <input type="button" name="hj" value="환전하기" align=right>
 				</div>
 				<div id="top_right">
 
@@ -192,6 +196,7 @@ table {
           title: '일일 광고 시청 현황',
           subtitle: '포인트 적립 내역 (원)'
         },
+        colors: ['RGB(78,49,21)'],
         width: 600,
         height: 450
       };
@@ -200,6 +205,14 @@ table {
 
       chart.draw(data, options);
     }
+    
+    $(document).ready(function(){
+    	var cur=$('#curpoint').val();
+    	$('#exchange').keyup(function(){
+    		var ex=$('#exchange').val();
+    		$('#curpoint').val(cur-ex);
+    	});
+    });
   </script>
 </body>
 </html>
