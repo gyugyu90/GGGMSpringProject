@@ -9,7 +9,8 @@
 		ResultSet rs=null;
 		List myadviewlist=new LinkedList();
 		JSONObject responseObj=new JSONObject();
-		String sql="SELECT viewtime, SUM(point) as point FROM adviewlist WHERE id=? GROUP BY viewtime ORDER BY viewtime DESC";//
+		//String sql="SELECT viewtime, SUM(point) as point FROM adviewlist WHERE id=? GROUP BY viewtime ORDER BY viewtime DESC";//
+		String sql="SELECT vt as viewtime, sum(point) as point FROM (SELECT TO_CHAR(viewtime, 'yyyy-mm-dd') as vt, point from adviewlist where id=?) GROUP BY vt ORDER BY vt DESC";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		String id=(String)session.getAttribute("id");
 		ps.setString(1, id);

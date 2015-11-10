@@ -99,7 +99,9 @@ $('#re_update_frm'+no).submit();
 var myVideo=$("#main_video"); 
 var playbutton=$("#play");
 function playPause() { 
-    if ($("#main_video").get(0).paused){
+	$("#getpoint").get(0).textContent="포인트 적립";
+	
+	if ($("#main_video").get(0).paused){
     	$("#main_video").get(0).play();
     	$("#play").get(0).textContent="pause";
     }
@@ -107,20 +109,24 @@ function playPause() {
     	$("#main_video").get(0).pause();
     	$("#play").get(0).textContent="play!";
     }
-        
+    
 } 
 
 function end(){
-   $("#getpoint").get(0).disabled=false
+   $("#getpoint").get(0).disabled=false;
+   $("#play").get(0).textContent="play!";
 }
+
 function getpoint(adno, ppc, adsubject){
-   alert("야호!"+adno+" "+ppc+" "+adsubject);
+   //alert("야호!"+adno+" "+ppc+" "+adsubject);
    sendMessage('GET', "getpoint.do", "adno="+adno+"&point="+ppc+"&description="+adsubject, check);
+   $("#getpoint").get(0).disabled=true;
+   $("#getpoint").get(0).textContent="적립 완료!";
 }
 function check(){
 	if(httpRequest.readyState==4){
 		if(httpRequest.status==200){
-			alert("ajax는 별거 아님!");
+			//alert("적립 완료!");
 			//$('#theaterInfo').html(httpRequest.responseText);
 		}
 	}

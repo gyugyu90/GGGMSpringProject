@@ -25,7 +25,7 @@
 	</insert>
 
 	<insert id="insert_adviewlist" parameterType="PointDTO">
-		INSERT INTO adviewlist VALUES(#{adno}, #{id}, #{point}, SYSDATE)
+		INSERT INTO adviewlist VALUES(#{adno}, #{id}, #{point}, 1, SYSDATE)
 	</insert>
 	
 	
