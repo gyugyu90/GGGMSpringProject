@@ -4,4 +4,17 @@
 <select id="faqAllData" resultType="Faq">
 	SELECT no, subject, content FROM gggm_faq
 </select>
+<select id="faqRowCount" resultType="int">
+	SELECT COUNT(*)	FROM gggm_faq 
+</select>
+<select id="faqListData" resultType="Faq" parameterType="java.util.Map">
+	SELECT no, subject, content,num
+	FROM (SELECT no, subject, content,rownum as num
+	FROM (SELECT no, subject, content
+	FROM gggm_faq ORDER BY no DESC))
+	WHERE num BETWEEN #{start} AND #{end}
+</select>
+<select id="faqData" resultType="Faq" parameterType="int">
+	SELECT no, subject, content FROM gggm_faq WHERE no=#{no}
+</select>
 </mapper>

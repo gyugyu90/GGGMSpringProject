@@ -75,7 +75,7 @@
 				<ul class="nav navbar-nav">
 					<!-- Messages: style can be found in dropdown.less-->
 					<%--<li class="dropdown messages-menu">
-=======
+
     </head>
     <body class="skin-black" >
         <!-- header logo: style can be found in header.less -->
@@ -97,7 +97,7 @@
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
                         <%--<li class="dropdown messages-menu">
->>>>>>> refs/remotes/origin/master
+
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
                                 <span class="label label-success">4</span>

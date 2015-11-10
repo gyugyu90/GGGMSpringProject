@@ -25,6 +25,41 @@ public class FaqDAO{
 		System.out.println("dao안쪽 벗어남");
 		return list;
 	}
-	
+	public static int faqRowCount()
+	{		
+    	SqlSession session=ssf.openSession();
+    	int count=session.selectOne("faqRowCount");
+    	int total=(int)(Math.ceil(count/5.0));
+    	session.close();
+		return total;
+	}
+    public static List<FaqDTO> faqListData(Map map)
+    {
+    	/*
+    	 *   class A
+    	 *   {
+    	 *      selectList(){}
+    	 *   }
+    	 *   
+    	 *   new A().selectList()
+    	 *   new A().close()
+    	 *   
+    	 *   A a=new A();
+    	 *   a.selectList();
+    	 *   a.close()
+    	 */
+    	SqlSession session=ssf.openSession();
+    	List<FaqDTO> list=
+    			session.selectList("faqListData",map);
+    	session.close();// 반환
+    	return list;
+    }
+    public static FaqDTO faqData(int no){
+		System.out.println("dao안쪽 접근");
+		SqlSession session=ssf.openSession();
+		FaqDTO list=session.selectOne("faqData",no);
+		System.out.println("dao안쪽 벗어남");
+		return list;
+	}
 }
 
