@@ -78,7 +78,8 @@ $(function(){
 <br>
 <br>
 <br>
-	<div id="myPage_top" align="left"><h1>내 정보</h1></div>
+	<div id="myPage_top" align="left"><h1>내 정보 수정</h1></div>
+	<br>
    <div id="wrapper">
     <form id="myPageForm" name="myPageForm" action="myInfoUpdate.do?id=${d.id}" method="post">
     <p>
@@ -206,10 +207,3 @@ $(function(){
   </div>
 </body>
 </html>
-
-
-
-
-
-
-

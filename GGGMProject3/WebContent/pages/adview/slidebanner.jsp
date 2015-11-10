@@ -160,10 +160,10 @@ li {
 }
 
 #banner_top {
-	padding-left: 414px;
+	padding-left: 100px;
 }
 .poster{
-	width:250px;
+	width:270px;
 	height:205px;
 }
 </style>
@@ -199,6 +199,7 @@ li {
 			</c:forEach>
 
 		</ul>
+		<br>
 		<ul id="slide_banner1" class="banner_margin">
 			<c:forEach var="d" items="${count }">
 				<c:if test="${d.adno%3==2 }">

@@ -14,9 +14,9 @@ public class AdminAdBoardInfoModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		String adid=req.getParameter("adid");
+		String adno=req.getParameter("adno");
 		AdrequestDAO dao=new AdrequestDAO();
-		AdrequestDTO d=dao.adReqInfo(adid);
+		AdrequestDTO d=dao.adReqInfo(adno);
 		StringTokenizer st=new StringTokenizer(d.getWeight(), "|");
 		String[] weight=new String[7];
 		int k=0;
@@ -158,6 +158,7 @@ public class AdminAdBoardInfoModel implements Model {
 		req.setAttribute("sex", sex);
 		req.setAttribute("min_age", min_age);
 		req.setAttribute("max_age", max_age);
+		System.out.println("max_age"+max_age);
 		req.setAttribute("addr", addr);
 		req.setAttribute("marry", marry);
 		req.setAttribute("min_sal", min_sal);

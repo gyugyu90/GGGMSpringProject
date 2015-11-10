@@ -56,5 +56,10 @@ public class SignupDAO {
 	   session.insert("AdmemberJoin", d);
 	   session.close();
    }
+   public static void memberAddData(memberAddDTO add){
+	   SqlSession session=ssf.openSession(true);
+	   session.insert("memberAddData", add);
+	   session.close();
+   }
    
 }

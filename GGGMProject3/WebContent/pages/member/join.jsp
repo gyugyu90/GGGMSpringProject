@@ -241,13 +241,13 @@ $(function(){
     <p>
     <label for="userjob">직업</label>
     <select id="userjob" name="job" tabindex="19">
-         <option>학생</option>
-         <option>직장인</option>
-         <option>사업가</option>
-         <option>주부</option>
-         <option>취준생</option>
-         <option>아티스트</option>
-         <option>기타</option>
+         <option value="1">학생</option>                 
+         <option value="2">사업가</option>
+         <option value="4">운동선수</option> 
+         <option value="8">주부</option>
+         <option value="16">직장인</option>
+         <option value="32">아티스트</option>
+         <option value="64">기타</option>
        </select>
        <span id="jobcheck"></span><i id="job_fa" class="" style="font-size:16px; color:lightcoral;"></i>
     </p>
@@ -258,15 +258,15 @@ $(function(){
     </p>
     <p>
     <label for="userhobby">관심분야</label>
-    <input type=checkbox name="hobby" id="userhobby" value="스포츠">스포츠
-    <input type=checkbox name="hobby" id="userhobby" value="쇼핑">쇼핑
-    <input type=checkbox name="hobby" id="userhobby" value="인터넷">인터넷
-    <input type=checkbox name="hobby" id="userhobby" value="여행">여행
-    <input type=checkbox name="hobby" id="userhobby" value="독서">독서<br>
-    <input type=checkbox name="hobby" id="userhobby" value="영화감상">영화감상
-    <input type=checkbox name="hobby" id="userhobby" value="음악감상">음악감상
-    <input type=checkbox name="hobby" id="userhobby" value="게임">게임
-    <input type=checkbox name="hobby" id="userhobby" value="공연">공연
+    <input type=checkbox name="hobby" id="userhobby" value="1">스포츠
+    <input type=checkbox name="hobby" id="userhobby" value="2">쇼핑
+    <input type=checkbox name="hobby" id="userhobby" value="4">인터넷
+    <input type=checkbox name="hobby" id="userhobby" value="8">여행
+    <input type=checkbox name="hobby" id="userhobby" value="16">독서<br>
+    <input type=checkbox name="hobby" id="userhobby" value="32">영화감상
+    <input type=checkbox name="hobby" id="userhobby" value="64">음악감상
+    <input type=checkbox name="hobby" id="userhobby" value="128">게임
+    <input type=checkbox name="hobby" id="userhobby" value="256">공연
     </p>
    
      <p>

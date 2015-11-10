@@ -54,4 +54,11 @@ public class MyAdViewListDAO {
     	session.close();
     	return totalpoint;
     }
+    
+    public static List<Integer> getBalance(String id){
+    	SqlSession session=ssf.openSession();
+    	List<Integer> list=session.selectList("getBalance", id);
+    	session.close();
+    	return list;
+    }
 }

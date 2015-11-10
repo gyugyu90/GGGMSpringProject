@@ -28,4 +28,8 @@
 	<select id="totalpoint" resultType="int" parameterType="String">
 		SELECT SUM(point) FROM adviewlist WHERE id=#{id}
 	</select>
+	
+	<select id="getBalance" resultType="int" parameterType="String">
+		SELECT point FROM adviewlist WHERE id=#{id} ORDER BY viewtime DESC
+	</select>
 </mapper>

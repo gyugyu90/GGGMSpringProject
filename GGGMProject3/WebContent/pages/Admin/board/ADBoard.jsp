@@ -20,6 +20,17 @@
 <link href="<%=request.getContextPath() %>/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div class="row">
+		<div class="col-md-offset-1">
+			<h3>※&nbsp;게시글 관리</h3>
+			<ol class="breadcrumb">
+				<li><a href="adminnotice.do">공지사항</a></li>
+				<li><a href="adminfaqboard.do">FAQ</a></li>
+				<li><a href="#">QnA</a></li>
+				<li><a href="adboard.do">광고</a></li>
+			</ol>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-lg-11 col-md-offset-1">
 			<div class="panel panel-default col-lg-12">
@@ -37,7 +48,7 @@
 							</tr>
 							
 							<c:forEach var="d" items="${list}">
-							<tr onclick="location.href='AdminAdBoardInfo.do?adid=${d.adid}'">
+							<tr onclick="location.href='AdminAdBoardInfo.do?adno=${d.adno}'">
 							<td width="10%" style="text-align: center;">${d.maj_category }</td>
 							<td width="10%" style="text-align: center;">${d.sub_category }</td>
 							<td width="10%" style="text-align: center;">${d.adno }</td>
