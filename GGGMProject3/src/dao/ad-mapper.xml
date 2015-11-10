@@ -7,7 +7,7 @@
 		SELECT * FROM ad ORDER BY adno DESC
 	</select>
 	<select id="ad_info" resultType="AdDTO" parameterType="int">
-		SELECT adsubject,url,adid,pointrange,presentrange,msg
+		SELECT adsubject,url,adid,ppc,msg
 		FROM ad WHERE adno=#{adno}
 	</select>
 	<select id="side_info" resultType="AdDTO" parameterType="int">

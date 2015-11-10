@@ -2,7 +2,6 @@
 /*
 DROP TABLE memberAdditional;
 DROP TABLE memberData;
-
 CREATE TABLE memberData(
       name VARCHAR2(50) CONSTRAINT memberData_nn_name NOT NULL,
       id VARCHAR2(20),
@@ -16,35 +15,36 @@ CREATE TABLE memberData(
       sumpoint NUMBER,
       email VARCHAR2(30) CONSTRAINT memberData_nn_email NOT NULL,
       emailreceive VARCHAR2(10) CONSTRAINT memberData_nn_er NOT NULL CONSTRAINT memberData_ck_er CHECK(emailreceive IN('수신동의','수신거절')), 
+      grade NUMBER CONSTRAINT memberData_nn_grade NOT NULL CONSTRAINT memberData_ck_grade CHECK(grade IN(1,2,3)),
       CONSTRAINT memberData_pk_id PRIMARY KEY(id)
 );
 
 
-INSERT INTO memberData VALUES('홍길동','hong',1234,'1990-01-01','010-1111-1111','남자','100-100','서울시 강남구 삼성동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('심청이','sim',1234,'1990-01-01','010-2222-2222','여자','100-100','서울시 강남구 논현동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('김두한','kim',1234,'1990-01-01','010-3333-3333','남자','100-100','서울시 강남구 역삼동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('성춘향','seong',1234,'1990-01-01','010-4444-4444','여자','100-100','서울시 성동구 성수동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('이진욱','lee',1234,'1990-01-01','010-5555-5555','남자','100-100','서울시 성동구 금호동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('전지현','jeon',1234,'1990-01-01','010-6666-6666','여자','100-100','서울시 성동구 상왕십리동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('박서준','park',1234,'1990-01-01','010-7777-7777','남자','100-100','서울시 용산구 후암동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('황정음','hwnag',1234,'1990-01-01','010-8888-8888','여자','100-100','서울시 용산구 용산동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('김수현','kims',1234,'1990-01-01','010-9999-9999','남자','100-100','서울시 용산구 보광동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('한가인','han',1234,'1990-01-01','010-1010-1010','여자','100-100','서울시 용산구 이태원동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('이종석','leej',1234,'1990-01-01','010-1101-1011','남자','100-100','서울시 동작구 노량진동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('박신혜','parks',1234,'1990-01-01','010-1212-1212','여자','100-100','서울시 동작구 상도동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('이민호','leem',1234,'1990-01-01','010-1313-1313','남자','100-100','서울시 서초구 방배동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('배수지','bae',1234,'1990-01-01','010-1414-1414','여자','100-100','서울시 서초구 양재동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('조인성','jo',1234,'1990-01-01','010-1515-1515','남자','100-100','서울시 서초구 우면동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('공효진','gong',1234,'1990-01-01','010-1616-1616','여자','100-100','서울시 관악구 봉천동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('신민아','sin',1234,'1990-01-01','010-1717-1717','여자','100-100','서울시 관악구 신림동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('김우빈','kimw',1234,'1990-01-01','010-1818-1818','남자','100-100','서울시 관악구 남현동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('유아인','yu',1234,'1990-01-01','010-1919-1919','남자','100-100','서울시 광진구 중곡동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('정유미','jeong',1234,'1990-01-01','010-2020-2020','여자','100-100','서울시 광진구 능동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('고준희','go',1234,'1990-01-01','010-2121-2121','여자','100-100','서울시 광진구 구의동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('최시원','choi',1234,'1990-01-01','010-2202-2022','남자','100-100','서울시 광진구 광장동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('하지원','ha',1234,'1990-01-01','010-2323-2323','여자','100-100','서울시 도봉구 쌍문동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('현빈','hyeon',1234,'1990-01-01','010-2424-2424','남자','100-100','서울시 도봉구 방학동','100번지',0,'aaaa@gmail.com','수신동의');
-INSERT INTO memberData VALUES('한효주','hanh',1234,'1990-01-01','010-2525-2525','여자','100-100','서울시 중랑구 면목동','100번지',0,'aaaa@gmail.com','수신동의');
+INSERT INTO memberData VALUES('홍길동','hong',1234,'1990-01-01','010-1111-1111','남자','100-100','서울시 강남구 삼성동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('심청이','sim',1234,'1990-01-01','010-2222-2222','여자','100-100','서울시 강남구 논현동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('김두한','kim',1234,'1990-01-01','010-3333-3333','남자','100-100','서울시 강남구 역삼동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('성춘향','seong',1234,'1990-01-01','010-4444-4444','여자','100-100','서울시 성동구 성수동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('이진욱','lee',1234,'1990-01-01','010-5555-5555','남자','100-100','서울시 성동구 금호동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('전지현','jeon',1234,'1990-01-01','010-6666-6666','여자','100-100','서울시 성동구 상왕십리동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('박서준','park',1234,'1990-01-01','010-7777-7777','남자','100-100','서울시 용산구 후암동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('황정음','hwnag',1234,'1990-01-01','010-8888-8888','여자','100-100','서울시 용산구 용산동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('김수현','kims',1234,'1990-01-01','010-9999-9999','남자','100-100','서울시 용산구 보광동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('한가인','han',1234,'1990-01-01','010-1010-1010','여자','100-100','서울시 용산구 이태원동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('이종석','leej',1234,'1990-01-01','010-1101-1011','남자','100-100','서울시 동작구 노량진동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('박신혜','parks',1234,'1990-01-01','010-1212-1212','여자','100-100','서울시 동작구 상도동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('이민호','leem',1234,'1990-01-01','010-1313-1313','남자','100-100','서울시 서초구 방배동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('배수지','bae',1234,'1990-01-01','010-1414-1414','여자','100-100','서울시 서초구 양재동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('조인성','jo',1234,'1990-01-01','010-1515-1515','남자','100-100','서울시 서초구 우면동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('공효진','gong',1234,'1990-01-01','010-1616-1616','여자','100-100','서울시 관악구 봉천동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('신민아','sin',1234,'1990-01-01','010-1717-1717','여자','100-100','서울시 관악구 신림동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('김우빈','kimw',1234,'1990-01-01','010-1818-1818','남자','100-100','서울시 관악구 남현동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('유아인','yu',1234,'1990-01-01','010-1919-1919','남자','100-100','서울시 광진구 중곡동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('정유미','jeong',1234,'1990-01-01','010-2020-2020','여자','100-100','서울시 광진구 능동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('고준희','go',1234,'1990-01-01','010-2121-2121','여자','100-100','서울시 광진구 구의동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('최시원','choi',1234,'1990-01-01','010-2202-2022','남자','100-100','서울시 광진구 광장동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('하지원','ha',1234,'1990-01-01','010-2323-2323','여자','100-100','서울시 도봉구 쌍문동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('현빈','hyeon',1234,'1990-01-01','010-2424-2424','남자','100-100','서울시 도봉구 방학동','100번지',0,'aaaa@gmail.com','수신동의',1);
+INSERT INTO memberData VALUES('한효주','hanh',1234,'1990-01-01','010-2525-2525','여자','100-100','서울시 중랑구 면목동','100번지',0,'aaaa@gmail.com','수신동의',1);
 COMMIT;
 
 
@@ -54,158 +54,476 @@ CREATE TABLE memberAdditional(
     job VARCHAR2(50),
     salary VARCHAR2(20),
     ismarried VARCHAR2(4) CONSTRAINT ma_ck_ismarried CHECK(ismarried IN('기혼','미혼')),
-    bankname VARCHAR2(10),
     accountno VARCHAR2(30), 
    CONSTRAINT ma_pk_id PRIMARY KEY(id),CONSTRAINT ma_fk_id FOREIGN KEY(id) REFERENCES memberData(id)
 );
 
 
-INSERT INTO memberAdditional VALUES('hong','스포츠|쇼핑','학생','100~200','미혼','우리','123456-123456');
-INSERT INTO memberAdditional VALUES('sim','영화감상|쇼핑','취준생','100~200','미혼','신한','123456-123456');
-INSERT INTO memberAdditional VALUES('han','스포츠|독서','회사원','100~200','미혼','국민','123456-123456');
-INSERT INTO memberAdditional VALUES('jeong','음악감상|쇼핑','주부','100~200','미혼','SC제일','123456-123456');
-INSERT INTO memberAdditional VALUES('kim','스포츠|쇼핑','학생','100~200','미혼','하나','123456-123456');
+INSERT INTO memberAdditional VALUES('hong','스포츠|쇼핑','학생','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('sim','영화감상|쇼핑','취준생','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('han','스포츠|독서','회사원','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('jeong','음악감상|쇼핑','주부','100~200','미혼','123456-123456');
+INSERT INTO memberAdditional VALUES('kim','스포츠|쇼핑','학생','100~200','미혼','123456-123456');
 COMMIT;
 */
 
 --ad table
-DROP TABLE myadviewlist;
+/*
 DROP TABLE ad;
 CREATE TABLE ad(
    adno NUMBER,
    adid VARCHAR2(20) CONSTRAINT ad_nn_adid NOT NULL,
    adsubject VARCHAR2(50) CONSTRAINT ad_nn_subject NOT NULL,
-   adtime VARCHAR(20) CONSTRAINT ad_nn_adtime NOT NULL,
+   adtime VARCHAR(20),
    msg CLOB CONSTRAINT ad_nn_msg NOT NULL,
-   hit NUMBER DEFAULT 0,
-   pointrange VARCHAR2(50) CONSTRAINT ad_nn_prange NOT NULL, 
-   url VARCHAR2(200),
    maj_category VARCHAR2(20) CONSTRAINT ad_nn_maj NOT NULL,
    sub_category VARCHAR2(20) CONSTRAINT ad_nn_sub NOT NULL,
-   presentrange VARCHAR2(50),
-   presentinfo VARCHAR2(50),
-   img VARCHAR2(50) CONSTRAINT ad_nn_img NOT NULL,
+   url VARCHAR2(200),
+   img VARCHAR2(200) CONSTRAINT ad_nn_img NOT NULL,
+   ppc NUMBER CONSTRAINT ad_nn_prange NOT NULL, 
+   hit NUMBER DEFAULT 0,
+   data1 VARCHAR2(60), --CONSTRAINT ad_nn_dt1 NOT NULL,
+   data2 VARCHAR2(60), --CONSTRAINT ad_nn_dt2 NOT NULL,
+   weight VARCHAR2(50), --CONSTRAINT ad_nn_wgt NOT NULL,
    CONSTRAINT ad_pk_adno PRIMARY KEY(adno)
 );
-
+COMMIT;
 DROP SEQUENCE ad_adno_seq;
 CREATE SEQUENCE ad_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
 
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름', '0:01','메세지','1000','[미미월드 TV광고] 미미 화장핸드백','메인카테고리','부카테고리','선물범위','선물정보','이미지이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:02', '메세지','200','[스킨푸드 슈가티비] 정창욱, 김유정의 매끈 맑은결 레시피 블랙슈가 첫술세','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름', '0:01','미미처럼 예쁘게 화장할 수 있는 어린이용 미미 화장 핸드백 광고입니다','1000','[미미월드 TV광고] 미미 화장핸드백','메인카테고리','부카테고리','이미지이름');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:02', '거칠어진 피부 스킨푸드 블랙슈가 첫술세럼과 함께하세요','200','[스킨푸드 슈가티비] 정창욱, 김유정의 매끈 맑은결 레시피 블랙슈가 첫술세','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:03', '메세지','200','[오뚜기 진라면] 류현진 CF_30초','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:03', '류현진을 채우는 진짜 맜있는 진라면 드셔보세요','200','[오뚜기 진라면] 류현진 CF_30초','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:04', '메세지','200','[우루사(URSA)] 우루사 please #해외진출편','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:04', '준비된 우루사는 전세계로 나아가고있습니다','200','[우루사(URSA)] 우루사 please #해외진출편','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:05', '메세지','200','[지지 않는다. 고로, 존재한다] VEGA 브랜드 광고.','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:05', '휴대폰 하나만 바라온 열정이 반드시 승리 할 것이다','200','[지지 않는다. 고로, 존재한다] VEGA 브랜드 광고.','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:06', '메세지','200','25대 포카리걸 김소현! 김소현의 2015년 포카리스웨트 광고! POCARI 30_','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:06', '촉촉한 하루가 계속되려면 체내수분을 긴 시간 지켜주는 포카리스웨트와 함께하세요','200','25대 포카리걸 김소현! 김소현의 2015년 포카리스웨트 광고! POCARI 30_','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:07', '메세지','200','MIRAEN CF_미래엔 광고(30'')','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:07', '미래엔은 가능성,호기심,상상력,즐거움,에너지다. 생각에서 생활까지 미래를 밝히는 미래엔!','200','MIRAEN CF_미래엔 광고(30'')','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:08', '메세지','200','가슴을 뭉클하게 하는 태국의 한 광고 - 소리없는 사랑','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:08', '완벽한 아버지는 없지만 아버지는 항상 완벽하게 당신을 사랑합니다. 기억하세요 당신을 사랑하는 사람을','200','가슴을 뭉클하게 하는 태국의 한 광고 - 소리없는 사랑','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:09', '메세지','200','감성 자극하는 전구 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:09', '당신의 삶을 밝혀줄 것입니다','200','감성 자극하는 전구 광고','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:10', '메세지','200','강력한 금연 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:10', '흡연, 자신 스스로의 몸을 걱정합시다','200','강력한 금연 광고','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:11', '메세지','200','겔럭시 11 광고 (Galaxy 11 FULL MOVIE)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:11', '겔럭시는 반드시 승리한다','200','겔럭시 11 광고 (Galaxy 11 FULL MOVIE)','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:12', '메세지','200','귀염돋는 추사랑의 이지덤 습윤밴드 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:12', '피부 회복력을 살린 습윤밴드 이지덤으로 상처를 감싸주세요. 사랑으로 감싸주세요.','200','귀염돋는 추사랑의 이지덤 습윤밴드 광고','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:13', '메세지','200','기아 2012_','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:13', '새로운 길을 달리자','200','기아 2012_','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:14', '메세지','200','김유정 초코파이 광고 30초 chocopie 30 keep','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:14', '차갑다가도 금세 녹아버리는 나는 유정이 엄마의 정입니다','200','김유정 초코파이 광고 30초 chocopie 30 keep','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:15', '메세지','200','노무현 - [대선 CF] 1편 눈물','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:15', '동서남북이 하나되는 대한민국 2번 생각하면 노무현이 보입니다 새 대통령 노무현','200','노무현 - [대선 CF] 1편 눈물','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:16', '메세지','200','뉴질랜드 공익광고 실수편 한글자막','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:16', '당신은 실수하지 않아도 다른사람은 실수합니다. 속도를 줄이세요.','200','뉴질랜드 공익광고 실수편 한글자막','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:17', '메세지','200','당신은 당신이 생각하는 것보다 아름답습니다 - 도브 광고(한글자막)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:17', '자기 자신을 제대로 알기 위해 더 많은 노력을 해야합니다.','200','당신은 당신이 생각하는 것보다 아름답습니다 - 도브 광고(한글자막)','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:18', '메세지','200','레고 시티 특수경찰 TV광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:18', '경찰차를 만들어서 도둑을 체포하여 레고시티를 되찾아라!','200','레고 시티 특수경찰 TV광고','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:19', '메세지','200','물 절약 해외 공익광고 (K-water supporters Earth)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:19', '당신이 양치하는 동안 수도꼭지는 열려있습니다','200','물 절약 해외 공익광고 (K-water supporters Earth)','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:20', '메세지','200','미국의 흔한 비누 광고 (Old Spice Bar Soap)','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:20', '남자다운 비누로 씻으면 상쾌함이 하루 종일 따라 다니지','200','미국의 흔한 비누 광고 (Old Spice Bar Soap)','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:21', '메세지','200','보건복지부 금연 광고 - 무용 뇌의고통 편 - 2015년 8월','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:21', '당신의 뇌를 고통스럽게 하는 질병 이 병의 이름은 흡연입니다','200','보건복지부 금연 광고 - 무용 뇌의고통 편 - 2015년 8월','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:22', '메세지','200','보면 세뇌당하는 반복 광고 모음','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:22', '반복광고를 통해 시청자의 뇌를 사로잡는다','200','보면 세뇌당하는 반복 광고 모음','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:23', '메세지','200','새누리당 박근혜','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:23', '어머니와 같은 강인함으로 끝없는 책임감으로 국민행복시대를 이끌어가는 여성대통령 박근혜','200','새누리당 박근혜','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:24', '메세지','200','시리얼 허니오즈 광고모델 김소현(KIM SO-HYUN).','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:24', '오곡과 동서벌꿀의 환상적인 조화로 꿀맛나는 아침하세요','200','시리얼 허니오즈 광고모델 김소현(KIM SO-HYUN).','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:25', '메세지','200','아이폰6S 광고자막','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:25', '변경된 유일한 것은 전부입니다','200','아이폰6S 광고자막','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:26', '메세지','200','약빤 삼성의 청소기 광고','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:26', 'Easy to move. Hard to catch.','200','약빤 삼성의 청소기 광고','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:27', '메세지','200','에이핑크 교복(미니).','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:27', '숨막히게 이쁜 미니교복 에이핑크와 BAP가 함께합니다','200','에이핑크 교복(미니).','메인카테고리','부카테고리','이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:28', '메세지','200','여러분의 세금, 내일의 희망이 되어 돌아옵니다.','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:28', '세금은 우리 아이들의 미래입니다','200','여러분의 세금, 내일의 희망이 되어 돌아옵니다.','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:29', '메세지','200','오뚜기 마요네스 광고 A','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:29', '소스를 넘어 요리를 하다','200','오뚜기 마요네스 광고 A','메인카테고리','부카테고리', '이미지
 이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,pointrange,url,maj_category,sub_category,presentrange,presentinfo,img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:30', '메세지','200','오뚜기 마요네스 광고 B','메인카테고리','부카테고리','선물범위','선물정보','이미지
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
+VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:30', '볶을 때 기름대신 무칠때 고소하게 구울때 버터대신 마요네즈!','200','오뚜기 마요네스 광고 B','메인카테고리','부카테고리', '이미지
 이름');
 
 COMMIT;
+*/
 
+DROP TABLE adrequest;
+CREATE TABLE adrequest(
+  adno NUMBER,
+   adid VARCHAR2(20) CONSTRAINT adreq_nn_adid NOT NULL,
+   adsubject VARCHAR2(50) CONSTRAINT adreq_nn_subject NOT NULL,
+   adtime VARCHAR(20),
+   msg CLOB CONSTRAINT adreq_nn_msg NOT NULL,
+   maj_category VARCHAR2(20) CONSTRAINT adreq_nn_maj NOT NULL,
+   sub_category VARCHAR2(20) CONSTRAINT adreq_nn_sub NOT NULL,
+   url VARCHAR2(200),
+   img VARCHAR2(200) CONSTRAINT adreq_nn_img NOT NULL,
+   ppc NUMBER CONSTRAINT adreq_nn_prange NOT NULL, 
+   hit NUMBER DEFAULT 0,
+   data1 VARCHAR2(60) CONSTRAINT adreq_nn_dt1 NOT NULL,
+   data2 VARCHAR2(60) CONSTRAINT adreq_nn_dt2 NOT NULL,
+   weight VARCHAR2(50) CONSTRAINT adreq_nn_wgt NOT NULL,
+   CONSTRAINT adreq_pk_adno PRIMARY KEY(adno)
+);
+DROP SEQUENCE adreq_adno_seq;
+CREATE SEQUENCE adreq_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
+INSERT INTO adrequest(adno,adid,adsubject,adtime,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight) 
+VALUES(adreq_adno_seq.NEXTVAL,'adtest','광고테스트','15','테스트중 테스트중','가전','컴퓨터','나우','내컴퓨터이미지',100,'512','512','1|1|1|1|1|1|1');
+COMMIT;
 
---myadviewlist
+/*
 --트리거를 이용해서 하면 됨
 
-CREATE TABLE myadviewlist(
-	memberid VARCHAR2(20),
-	when DATE DEFAULT SYSDATE,
-	adno NUMBER, --0은 사용했을 때를 말함
-	point NUMBER(7),
-	description VARCHAR2(20), --어디서 받아왔는지, 어떻게 썼는지를 알려줌
-	balance NUMBER(20),
-	CONSTRAINT myadviewlist_pk_ PRIMARY KEY(memberid, when),
-	CONSTRAINT myadviewlist_fk_id FOREIGN KEY(memberid) REFERENCES memberData(id),
-	CONSTRAINT myadviewlist_fk_adid FOREIGN KEY(adno) REFERENCES ad(adno)
+CREATE TABLE reply(
+   no NUMBER,
+   bno NUMBER,
+   id VARCHAR2(20) CONSTRAINT reply_nn_id NOT NULL,
+   name VARCHAR2(20) CONSTRAINT reply_nn_name NOT NULL,
+   msg VARCHAR2(4000) CONSTRAINT reply_nn_msg NOT NULL,
+   regdate DATE DEFAULT SYSDATE,
+   group_id NUMBER,
+   group_step NUMBER,
+   group_tab NUMBER,
+   root NUMBER,
+   depth NUMBER,
+   CONSTRAINT reply_pk_no PRIMARY KEY(no),
+   CONSTRAINT reply_fk_bno FOREIGN KEY(bno)
+   REFERENCES ad(adno)
+);
+*/
+/*
+INSERT INTO reply VALUES(1,5,'hong','홍길동','댓글 연습입니다',SYSDATE,1,0,0,0,0);
+
+INSERT INTO reply VALUES(2,6,'hong','홍길동','댓글 연습입니다',SYSDATE,2,0,0,0,0);
+
+INSERT INTO reply VALUES(3,7,'hong','홍길동','댓글 연습입니다',SYSDATE,3,0,0,0,0);
+
+INSERT INTO reply VALUES(4,8,'hong','홍길동','댓글 연습입니다',SYSDATE,4,0,0,0,0);
+
+INSERT INTO reply VALUES(5,9,'hong','홍길동','댓글 연습입니다',SYSDATE,5,0,0,0,0);
+
+INSERT INTO reply VALUES(6,9,'hong','심청이','댓글 연습입니다',SYSDATE,6,0,0,0,0);
+*/
+/*
+UPDATE reply SET depth=depth+1 WHERE no=6;
+INSERT INTO reply VALUES(7,9,'hong','심청이','댓글 연습입니다',SYSDATE,6,1,1,6,0);
+INSERT INTO reply VALUES(8,9,'hong','심청이','댓글 연습입니다',SYSDATE,6,2,2,7,0);
+COMMIT;
+*/
+/*
+CREATE TABLE adviewlist(
+	adno NUMBER CONSTRAINT adviewlist_nn_adno NOT NULL,
+	id VARCHAR2(20) CONSTRAINT adviewlist_nn_id NOT NULL,
+	point NUMBER CONSTRAINT adviewlist_nn_point NOT NULL,
+	viewtime DATE DEFAULT SYSDATE
 );
 
-
-INSERT INTO myadviewlist VALUES('hong', '2015-10-01', 2, 400, '현대자동차', 400);
-INSERT INTO myadviewlist VALUES('hong', '2015-10-02', 2, 500, '현대자동차', 900);
-INSERT INTO myadviewlist VALUES('hong', '2015-10-03', 3, -700, '해피문화상품권', 200);
-INSERT INTO myadviewlist VALUES('hong', '2015-10-04', 2, 500, '현대자동차', 700);
-INSERT INTO myadviewlist VALUES('hong', '2015-10-05', 2, 500, '현대자동차', 1200);
-INSERT INTO myadviewlist VALUES('test', '2015-10-01', 2, 500, '현대자동차', 500);
-INSERT INTO myadviewlist VALUES('test', '2015-10-02', 2, 500, '현대자동차', 1000);
-INSERT INTO myadviewlist VALUES('test', '2015-10-03', 2, 500, '현대자동차', 1500);
+INSERT INTO adviewlist VALUES(1, 'hong', 200, '2015-10-01');
+INSERT INTO adviewlist VALUES(1, 'hong', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(1, 'hong', 200, '2015-10-03');
+INSERT INTO adviewlist VALUES(2, 'hong', 300, '2015-10-01');
+INSERT INTO adviewlist VALUES(2, 'hong', 100, '2015-10-02');
+INSERT INTO adviewlist VALUES(3, 'hong', 400, '2015-10-02');
+INSERT INTO adviewlist VALUES(3, 'hong', 300, '2015-10-03');
+INSERT INTO adviewlist VALUES(4, 'hong', 500, '2015-10-04');
+INSERT INTO adviewlist VALUES(4, 'hong', 500, '2015-10-05');
+INSERT INTO adviewlist VALUES(5, 'hong', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(6, 'hong', 300, '2015-10-05');
+INSERT INTO adviewlist VALUES(7, 'hong', 400, '2015-10-04');
+INSERT INTO adviewlist VALUES(8, 'hong', 200, '2015-10-03');
+INSERT INTO adviewlist VALUES(9, 'hong', 100, '2015-10-02');
+INSERT INTO adviewlist VALUES(10, 'hong', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(1, 'sim', 200, '2015-10-01');
+INSERT INTO adviewlist VALUES(2, 'sim', 200, '2015-10-03');
+INSERT INTO adviewlist VALUES(3, 'sim', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(4, 'sim', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(5, 'sim', 200, '2015-10-04');
+INSERT INTO adviewlist VALUES(6, 'sim', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(7, 'sim', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(8, 'sim', 200, '2015-10-03');
+INSERT INTO adviewlist VALUES(10, 'sim', 200,'2015-10-01');
+INSERT INTO adviewlist VALUES(1, 'sim', 200, '2015-10-02');
+INSERT INTO adviewlist VALUES(2, 'sim', 200, '2015-10-02');
 COMMIT;
+*/
+--일반게시판
+--공지사항
+/*
+DROP TABLE replynotice;
+DROP TABLE notice;
+
+create table notice(
+	no NUMBER,
+	subject VARCHAR2 (50) CONSTRAINT notice_nn_subject NOT NULL,
+	content CLOB CONSTRAINT notice_nn_content NOT NULL,
+	regdate DATE DEFAULT SYSDATE,
+	hit NUMBER DEFAULT 0,
+	CONSTRAINT notice_pk_no PRIMARY KEY(no)
+);
+create table replynotice(
+	no NUMBER,
+	bno NUMBER,
+	id VARCHAR2(20) CONSTRAINT replynotice_nn_id NOT NULL,
+	name VARCHAR2(20) CONSTRAINT replynotice_nn_name NOT NULL,
+	msg VARCHAR2(4000) CONSTRAINT replynotice_nn_msg NOT NULL,
+	regdate DATE DEFAULT SYSDATE,
+	group_id NUMBER,
+	group_step NUMBER,
+	group_tab NUMBER,
+	root NUMBER,
+	depth NUMBER,
+	CONSTRAINT replynotice_pk_no PRIMARY KEY(no),
+	CONSTRAINT replynotice_pk_bno FOREIGN KEY(bno)
+	REFERENCES notice(no)
+);
+INSERT INTO notice(no,subject,content) VALUES(1,'오픈 기념 이벤트','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(2,'오픈 기념 이벤트 당첨자 안내','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(3,'불법 이용자 단속 안내','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(4,'불법 이용자 리스트','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(5,'대박 포인트 주간 안내','댓글~댓글...');
+INSERT INTO notice(no,subject,content) VALUES(6,'공익광고 이벤트 안내','댓글~댓글...');
+INSERT INTO replynotice VALUES(1,1,'hong','홍길동','축하합니다..',SYSDATE,1,0,0,0,0);
+INSERT INTO replynotice VALUES(2,1,'shim','심청이','축하해요~.',SYSDATE,2,0,0,0,0);
+INSERT INTO replynotice VALUES(3,4,'hong','홍길동','난 억울하다..',SYSDATE,3,0,0,0,0);
+INSERT INTO replynotice VALUES(4,4,'shim','심청이','위엣분 사기.',SYSDATE,4,0,0,0,0);
+INSERT INTO replynotice VALUES(5,5,'hong','홍길동','아싸 두배!.',SYSDATE,5,0,0,0,0);
+INSERT INTO replynotice VALUES(6,6,'shim','심청이','좋아요!!!',SYSDATE,6,0,0,0,0);
+commit;
+*/
+--FAQ
+/*
+create table gggm_faq(
+	no NUMBER CONSTRAINT faq_nn_no NOT NULL,
+	subject VARCHAR2(200) CONSTRAINT faq_nn_sub NOT NULL,
+	content VARCHAR2(4000) CONSTRAINT faq_nn_con NOT NULL
+);
+
+insert into gggm_faq values(
+	1,
+	'개인정보는 누출되지 않나요?',
+	'입력하신 개인정보는 고객님의 성향을 파악하여 추천광고를 띄우는데 사용됩니다. 그 외에 용도로는 사용되지 않습니다.'
+);
+insert into gggm_faq values(
+	2,
+	'회원가입이 되지 않습니다.',
+	'사용하시는 브라우져의 옵션항목에서 자바스크립트 사용에 "허용"을 눌러 주십시오.'
+);
+insert into gggm_faq values(
+	3,
+	'원하지 않는 광고가 자꾸 떠요.',
+	'광고의 노출은 1.고객님이 선택하신 연령, 지역 등에 기반 2.과거 클릭한 광고의 종류 에 기반하여 진행됩니다. 추가적인 사항은 관리자에게 1:1 문의 부탁 드립니다.'
+);
+insert into gggm_faq values(
+	4,
+	'포인트를 상품권으로 바꾸고 싶어요.',
+	'좌측의 내 정보 항목을 누르시면, 포인트 관리라는 항목이 뜹니다. 그 쪽으로 가시면, 원하시는 상품권을 선택하신 후, 환전이 가능합니다. 이 때, 상품권은 개인정보에 저장된 주소로 발송되니, 반드시 확인하여 주십시오.'
+);
+insert into gggm_faq values(
+	5,
+	'환전 버튼이 눌러지지 않아요.',
+	'각 상품권에는 환전 가능한 기본 단위가 지정되어 있습니다. 보유하신 포인트가 각 상품권 별 최소액에 미달하는 경우, 환전이 불가능합니다.'
+);
+commit;
+
+CREATE OR REPLACE PROCEDURE getAllFaq(
+	pResult OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+	OPEN pResult FOR
+	SELECT no,subject,content
+	FROM gggm_faq
+	ORDER BY no ASC;
+END;
+/
+*/
+--qnaBoard => replyBoard
+-- qnareply => reply
+/*
+DROP TABLE qnareply;
+DROP TABLE qnaBoard;
+CREATE TABLE qnaBoard(
+  no NUMBER,
+  name VARCHAR2(34) CONSTRAINT qb_nn_name NOT NULL,
+  subject VARCHAR2(500) CONSTRAINT qb_nn_subject NOT NULL,
+  subject2 VARCHAR2(1000) CONSTRAINT qb_nn_subject2 NOT NULL,
+  content CLOB CONSTRAINT qb_nn_content NOT NULL,
+  pwd VARCHAR2(10) CONSTRAINT qb_nn_pwd NOT NULL,
+  regdate DATE DEFAULT SYSDATE,
+  hit NUMBER DEFAULT 0,
+  CONSTRAINT qb_pk_no PRIMARY KEY(no)
+);
+CREATE TABLE qnareply(
+   no NUMBER,
+   bno NUMBER,
+   id VARCHAR2(20) CONSTRAINT qnareply_nn_id NOT NULL,
+   name VARCHAR2(20) CONSTRAINT qnareply_nn_name NOT NULL,
+   msg VARCHAR2(4000) CONSTRAINT qnareply_nn_msg NOT NULL,
+   regdate DATE DEFAULT SYSDATE,
+   group_id NUMBER,
+   group_step NUMBER,
+   group_tab NUMBER,
+   root NUMBER,
+   depth NUMBER,
+   CONSTRAINT qnareply_pk_no PRIMARY KEY(no),
+   CONSTRAINT qnareply_fk_bno FOREIGN KEY(bno)
+   REFERENCES qnaBoard(no)
+);
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+1,'홍길동','회원정보','회원정보문의 드립니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+2,'홍길동','광고문의','광고관련 문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+3,'홍길동','기타문의','시청관련 문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+4,'홍길동','포인트환전','포인트환전을 어떻게 하는지 모르겠어요','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+5,'홍길동','포인트환전','포인트 얼마나 있어야 환전가능한가요','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+6,'홍길동','회원정보','탈퇴하고싶어요','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+7,'홍길동','기타문의','기타문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+8,'홍길동','기타문의','기타문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+9,'홍길동','광고문의','광고비용문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+10,'홍길동','기타문의','관심광고문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+11,'홍길동','회원정보','관심사를 바꾸고싶어요','댓글~댓글...','1234');
+commit;
+
+INSERT INTO qnareply VALUES(1,5,'hong','홍길동','댓글입니다',SYSDATE,1,0,0,0,0);
+INSERT INTO qnareply VALUES(2,6,'hong','홍길동','댓글입니다',SYSDATE,2,0,0,0,0);
+INSERT INTO qnareply VALUES(3,7,'hong','홍길동','댓글입니다',SYSDATE,3,0,0,0,0);
+INSERT INTO qnareply VALUES(4,8,'hong','홍길동','댓글입니다',SYSDATE,4,0,0,0,0);
+INSERT INTO qnareply VALUES(5,9,'hong','홍길동','댓글입니다',SYSDATE,5,0,0,0,0);
+INSERT INTO qnareply VALUES(6,9,'hong','심청이','댓글입니다',SYSDATE,6,0,0,0,0);
+COMMIT;
+
+UPDATE qnareply SET 
+depth=depth+1
+WHERE no=6;
+INSERT INTO qnareply VALUES(7,9,'hong','심청이','댓글입니다',SYSDATE,6,1,1,6,1);
+INSERT INTO qnareply VALUES(8,9,'hong','심청이','댓글입니다',SYSDATE,6,2,2,7,0);
+commit;
+
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+12,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+13,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+14,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+15,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+16,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+17,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+18,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+19,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+20,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+21,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+22,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+23,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+24,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+25,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+26,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+27,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+28,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+29,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+30,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+31,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+32,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+33,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+34,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+35,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+36,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+37,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+38,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+39,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+40,'홍길동','기타문의','댓글형 게시판입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+41,'홍길동','회원정보','회원정보수정관련문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+42,'홍길동','포인트환전','시청포인트 환전문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+43,'홍길동','포인트환전','포인트 얼마이상 있어야 환전가능한가요','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+44,'홍길동','기타문의','댓글삭제관련 문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+45,'홍길동','광고문의','광고비용문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+46,'홍길동','광고문의','광고효과관련문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+47,'홍길동','광고문의','광고연령관련문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+48,'홍길동','기타문의','탈퇴하고싶어요','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+49,'홍길동','회원정보','관심사변경문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+50,'홍길동','포인트환전','포인트관련문의입니다','댓글~댓글...','1234');
+INSERT INTO qnaBoard(no,name,subject,subject2,content,pwd) VALUES(
+51,'홍길동','기타문의','기타문의입니다','댓글~댓글...','1234');
+commit;
+*/
