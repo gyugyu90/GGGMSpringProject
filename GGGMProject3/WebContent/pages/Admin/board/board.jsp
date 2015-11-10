@@ -29,7 +29,7 @@
 			<ol class="breadcrumb">
 				<li><a href="adminnotice.do">공지사항</a></li>
 				<li><a href="adminfaqboard.do">FAQ</a></li>
-				<li><a href="#">QnA</a></li>
+				<li><a href="adminqnaboard.do">QnA</a></li>
 				<li><a href="adboard.do">광고</a></li>
 			</ol>
 		</div>
@@ -88,31 +88,23 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th><input type="checkbox"></th>
-									<th>회원번호</th>
-									<th>회원구분</th>
-									<th>회원ID</th>
-									<th>이름</th>
-									<th>가입일</th>
-									<th>최근접속일</th>
-									<th>접속IP</th>
-									<th>Point</th>
+									<td width="10%" align="center">NO</td>
+									<td width="70%" align="left">SUBJECT</td>
+									<td width="10%" align="center">DATE</td>
+									<td width="10%" align="center">HIT</td>
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach var="qna" items="${qna}">
 								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									<td>일반</td>
-									<td>hong</td>
-									<td>홍길동</td>
-									<td>2015-10-17</td>
-									<td>2015-10-17</td>
-									<td>211.238.142.27</td>
-									<td>0</td>
+									<td width="10%" align="center">${qna.no }</td>
+									<td width="70%" align="left">${qna.subject }</td>
+									<td width="10%" align="center">${qna.dbday }</td>
+									<td width="10%" align="center">${qna.hit }</td>
 								</tr>
+								</c:forEach>
 								<tr>
-									<td colspan="9" align="right"><a href="#">More</a></td>
+									<td colspan="9" align="right"><a href="adminqnaboard.do">More</a></td>
 								</tr>
 							</tbody>
 						</table>
