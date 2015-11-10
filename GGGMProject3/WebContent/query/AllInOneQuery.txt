@@ -205,7 +205,9 @@ CREATE TABLE adrequest(
 DROP SEQUENCE adreq_adno_seq;
 CREATE SEQUENCE adreq_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
 INSERT INTO adrequest(adno,adid,adsubject,adtime,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight) 
-VALUES(adreq_adno_seq.NEXTVAL,'adtest','광고테스트','15','테스트중 테스트중','가전','컴퓨터','나우','내컴퓨터이미지',100,'512','512','1|1|1|1|1|1|1');
+VALUES(adreq_adno_seq.NEXTVAL,'adtest','광고테스트','15','테스트중 테스트중','가전','컴퓨터','나우','내컴퓨터이미지',100,'3|20|1|2|5|200|9','3|40|1|2|5|500|9','0.2|0.3|0|0.5|0|0|0');
+
+ 
 COMMIT;
 
 /*

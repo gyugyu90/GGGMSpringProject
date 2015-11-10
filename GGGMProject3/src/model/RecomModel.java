@@ -24,6 +24,7 @@ public class RecomModel implements Model{
 		//그리고 내 정보를 가져옴
 		memberDTO myinfo=memberDAO.getMyInfo(id);
 		
+				
 		System.out.println("주소:"+myinfo.getPost());
 		System.out.println("나이:"+myinfo.getAge());
 		System.out.println("성별:"+myinfo.getSex());
@@ -32,147 +33,283 @@ public class RecomModel implements Model{
 		System.out.println("직업:"+myinfo.getAdd().getJob());
 		System.out.println("소득수준:"+myinfo.getAdd().getSalary());
 		
+//		주소:100-100
+//		나이:25
+//		성별:남자
+//		결혼여부:미혼
+//		관심분야:스포츠|쇼핑
+//		직업:학생
+//		소득수준:100~200
+
+		int mySex=(myinfo.getSex()=="남자"?1:2);
+		int myAge=myinfo.getAge();
+		int myMaritalStt=(myinfo.getAdd().getIsmarried()=="미혼"?1:2);
+		int mySal=Integer.parseInt(myinfo.getAdd().getSalary().substring(0, 3))+50;
+
+		int myAddr=Integer.parseInt(myinfo.getPost().substring(0, 3));
+		switch(myAddr){
+			case 10: myAddr=9; break;
+			case 11: myAddr=9; break;
+			case 12: myAddr=9; break;
+			case 13: myAddr=9; break;
+			case 14: myAddr=9; break;
+			case 15: myAddr=9; break;
+			case 20: myAddr=1; break;
+			case 21: myAddr=1; break;
+			case 22: myAddr=1; break;
+			case 23: myAddr=1; break;
+			case 24: myAddr=1; break;
+			case 25: myAddr=1; break;
+			case 26: myAddr=1; break;
+			case 30: myAddr=7; break;
+			case 31: myAddr=16; break;
+			case 32: myAddr=16; break;
+			case 33: myAddr=16; break;
+			case 34: myAddr=16; break;
+			case 35: myAddr=16; break;
+			case 36: myAddr=17; break;
+			case 37: myAddr=17; break;
+			case 38: myAddr=17; break;
+			case 39: myAddr=17; break;
+			case 40: myAddr=17; break;
+			case 41: myAddr=2; break;
+			case 42: myAddr=2; break;
+			case 43: myAddr=2; break;
+			case 44: myAddr=2; break;
+			case 45: myAddr=2; break;
+			case 46: myAddr=2; break;
+			case 47: myAddr=2; break;
+			case 48: myAddr=2; break;
+			case 50: myAddr=2; break;
+			case 51: myAddr=13; break;
+			case 52: myAddr=13; break;
+			case 53: myAddr=13; break;
+			case 54: myAddr=13; break;
+			case 55: myAddr=13; break;
+			case 56: myAddr=14; break;
+			case 57: myAddr=14; break;
+			case 58: myAddr=14; break;
+			case 59: myAddr=14; break;
+			case 60: myAddr=8; break;
+			case 61: myAddr=8; break;
+			case 62: myAddr=3; break;
+			case 63: myAddr=3; break;
+			case 64: myAddr=3; break;
+			case 65: myAddr=3; break;
+			case 66: myAddr=3; break;
+			case 67: myAddr=3; break;
+			case 68: myAddr=3; break;
+			case 69: myAddr=3; break;
+			case 70: myAddr=3; break;
+			case 71: myAddr=4; break;
+			case 72: myAddr=4; break;
+			case 73: myAddr=4; break;
+			case 74: myAddr=4; break;
+			case 75: myAddr=4; break;
+			case 76: myAddr=4; break;
+			case 77: myAddr=4; break;
+			case 78: myAddr=4; break;
+			case 79: myAddr=4; break;
+		}
+		
+		int myJob=0;
+		switch(myinfo.getAdd().getJob()){
+		case "학생":
+			myJob = 1;
+			break;
+		case "사업가":
+			myJob =2;
+			break;
+		case "운동선수":
+			myJob =4;
+			break;
+		case "주부":
+			myJob =8;
+			break;
+		case "회사원":
+			myJob =16;
+			break;
+		case "아티스트":
+			myJob =32;
+			break;
+		case "기타":
+			myJob =64;
+			break;
+		}
+		
+		StringTokenizer tknTemp=new StringTokenizer(myinfo.getAdd().getInterest(), "|");
+		int myInterest=0;
+		if(tknTemp.hasMoreTokens()){
+			switch(tknTemp.nextToken()){
+				case "스포츠":
+					myInterest +=1;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "쇼핑":
+					myInterest +=2;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "인터넷":
+					myInterest +=4;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "여행":
+					myInterest +=8;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "독서":
+					myInterest +=16;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "영화감상":
+					myInterest +=32;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "음악감상":
+					myInterest +=64;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "게임":
+					myInterest +=128;
+					if(!tknTemp.hasMoreTokens())
+						break;
+				case "공연":
+					myInterest +=256;
+						break;
+			}
+		}
+	
 		
 		List<RecomDTO> list=memberDAO.getWeightData();
 		
 		for(RecomDTO rdto:list){
 			//한 개의 광고에 대해서
-			int point=0; 
+			int score=0; 
 			 
 			String data1=rdto.getData1();
 			String data2=rdto.getData1();
 			String weight=rdto.getWeight();
+			
 			StringTokenizer st1=new StringTokenizer(data1, "|");
 			StringTokenizer st2=new StringTokenizer(data2, "|");
 			StringTokenizer w=new StringTokenizer(weight, "|");
+			
+			//값 잘라오기
 			//성별
-			int sex1=Integer.parseInt(st1.nextToken());//여기는 최소 최대가 없음
-			int sex2=Integer.parseInt(st2.nextToken());
-			int sexweight=Integer.parseInt(w.nextToken());
+			int adSex=Integer.parseInt(st1.nextToken());
+			adSex=Integer.parseInt(st2.nextToken());
+			double wgtSex=Integer.parseInt(w.nextToken());
+			//age
+			int adMinAge=Integer.parseInt(st1.nextToken());
+			int adMaxAge=Integer.parseInt(st2.nextToken());
+			double wgtAge=Integer.parseInt(w.nextToken());
+			//addr
+			int adAddr=Integer.parseInt(st1.nextToken());
+			adAddr=Integer.parseInt(st2.nextToken());
+			double wgtAddr=Integer.parseInt(w.nextToken());
+			//Marital Stt
+			int adMaritalStt = Integer.parseInt(st1.nextToken());
+			adMaritalStt = Integer.parseInt(st2.nextToken());
+			double wgtMaritalStt=Integer.parseInt(w.nextToken());
+			//Job
+			int adJob = Integer.parseInt(st1.nextToken());
+			adJob = Integer.parseInt(st2.nextToken());
+			double wgtJob=Integer.parseInt(w.nextToken());
+			//sal
+			int adMinSal = Integer.parseInt(st1.nextToken());
+			int adMaxSal = Integer.parseInt(st2.nextToken());
+			double wgtSal=Integer.parseInt(w.nextToken());
+			//interest
+			int adInt = Integer.parseInt(st1.nextToken());
+			adInt = Integer.parseInt(st2.nextToken());
+			double wgtInt=Integer.parseInt(w.nextToken());
 			
-			if(myinfo.getSex().equals("남자")){
-				if(sex1==1 || sex1==3){
-					point+=sexweight;
-				}
+			//비교 (Masking으로 점수계산)
+			//		sex
+			if(mySex==adSex)
+				score+=wgtSex;
+			//		age
+			if(adMaxAge==60){
+				if (myAge>60)
+					score+=wgtAge;
+			}else{
+				if((myAge<adMaxAge+10)&&(myAge>=adMinAge))
+					score+=wgtAge;
+				else if((myAge<adMaxAge+10+((adMaxAge-adMinAge)/3))&&(myAge>=adMinAge-((adMaxAge-adMinAge)/3)))
+					score+=wgtAge/2;
 			}
-			else if(myinfo.getSex().equals("여자")){
-				if(sex1==2 || sex1==3){
-					point+=sexweight;
-				}
-			}
+			//		addr
+			if(myAddr==adAddr)
+				score+=wgtAddr;
+			//		marital Status
+			if(myMaritalStt==adMaritalStt)
+				score+=wgtMaritalStt;
+			//		job
+			int adTemp=adJob;
+			int myTemp=myJob;
+			boolean sentinel = true;
+			int i =6;
 			
-			//나이
-			int agemin=Integer.parseInt(st1.nextToken());
-			int agemax=Integer.parseInt(st2.nextToken());
-			int ageweight=Integer.parseInt(w.nextToken());
+			while(i>=0 && sentinel ){
 			
-			if(myinfo.getAge()>=agemin && myinfo.getAge()<=agemax){
-				point+=ageweight;
-			}
-			
-			
-			/**2진법으로 바꿔야함*/
-			//지역
-			int region1=Integer.parseInt(st1.nextToken());//여기는 최소 최대가 없음
-			int region2=Integer.parseInt(st2.nextToken());
-			int regionweight=Integer.parseInt(w.nextToken());
-			
-			int myregion=Integer.parseInt(myinfo.getPost());
-			if(myregion==region1){
-				point+=regionweight;
-			}
-			
-			//결혼여부
-			int ismarried1=Integer.parseInt(st1.nextToken());//여기는 최소 최대가 없음
-			int ismarried2=Integer.parseInt(st2.nextToken());
-			int ismarriedweight=Integer.parseInt(w.nextToken());
-			
-			if(myinfo.getAdd().getIsmarried().equals("미혼")){
-				if(ismarried1==1 || ismarried1==3){//미혼, 무관
-					point+=regionweight;
-				}
-			}else if(myinfo.getAdd().getIsmarried().equals("기혼")){
-				if(ismarried1==2 || ismarried1==3){//기혼, 무관
-					point+=regionweight;
-				}
-			}
-			
-			//직업
-			int job1=Integer.parseInt(st1.nextToken());//여기는 최소 최대가 없음
-			int job2=Integer.parseInt(st2.nextToken());
-			int jobweight=Integer.parseInt(w.nextToken());
-			
-			String myjob=myinfo.getAdd().getJob();
-			
-			String[] jobform=new String[]{
-				"학생", "사업가", "운동선수", "주부", "직장인", "아티스트", "기타"
-			};
-			for(int i=0;i<jobform.length;i++){
-				job1=job1%2;//2씩 나눈 나머지
-				if(job1==1){//광고주가 타겟 직업을 설정하고
-					if(myjob.equals(jobform[i])){//내 직업이 해당되면
-						point+=jobweight;//점수를 올림
+				if( adTemp >= (int)Math.pow(2, i)){
+					for(int j=6;j>=i;j--){
+						if( myTemp> (int)Math.pow(2, i+1) )
+							myTemp-=(int)Math.pow(2, i+1);
+						else if( myTemp >= (int)Math.pow(2, i)){
+							score+=wgtInt;
+							sentinel=false;
+							break;
+						}
 					}
+					adTemp-=(int)Math.pow(2, i);
 				}
+				i--;
 			}
 			
-			//소득수준
-			int salarymin=Integer.parseInt(st1.nextToken());
-			int salarymax=Integer.parseInt(st2.nextToken());
-			int salaryweight=Integer.parseInt(w.nextToken());
-			
-			StringTokenizer st=new StringTokenizer(myinfo.getAdd().getSalary(),"~");
-			int mysalmin=Integer.parseInt(st.nextToken());
-			int mysalmax=Integer.parseInt(st.nextToken());
-			
-			int mysal=(mysalmin+mysalmax)/2;
-			if(salarymin<=mysal && mysal<=salarymax){
-				point+=salaryweight;
+			//		sal
+			if(adMaxSal==600){
+				if (mySal>600)
+					score+=wgtSal;
+			}else{
+				if((mySal<adMaxSal+100)&&(mySal>=adMinSal))
+					score+=wgtSal;
+				else if((myAge<adMaxSal+100+((adMaxSal-adMinSal)/3))&&(mySal>=adMinSal-((adMaxSal-adMinSal)/3)))
+					score+=wgtSal/2;
 			}
+			//		Interest
+			adTemp=adInt;
+			myTemp=myInterest;
+			sentinel = true;
+			i =8;
 			
-			//관심분야
-			int interest1=Integer.parseInt(st1.nextToken());//여기는 최소 최대가 없음
-			int interest2=Integer.parseInt(st2.nextToken());
-			int interestweight=Integer.parseInt(w.nextToken());
+			while(i>=0 && sentinel ){
 			
-			String myinterest=myinfo.getAdd().getInterest();
-			StringTokenizer ist=new StringTokenizer(myinterest, "|");
-			ArrayList<String> iarr=new ArrayList<String>();
-			while(ist.hasMoreTokens()){
-				iarr.add(ist.nextToken());
-			}
-			int hasone=0;
-			if(interest1%256==1){
-				for(String s:iarr){
-					if(s.equals("공연")){
-						hasone+=1;
+				if( adTemp >= (int)Math.pow(2, i)){
+					for(int j=8;j>=i;j--){
+						if( myTemp> (int)Math.pow(2, i+1) )
+							myTemp-=(int)Math.pow(2, i+1);
+						else if( myTemp >= (int)Math.pow(2, i)){
+							score+=wgtInt;
+							sentinel=false;
+							break;
+						}
 					}
+					adTemp-=(int)Math.pow(2, i);
 				}
+				i--;
 			}
-			if(interest1%128==1){
-				for(String s:iarr){
-					if(s.equals("게임")){
-						hasone+=1;
-					}
-				}
-			}
-			if(interest1%64==1){
-				for(String s:iarr){
-					if(s.equals("음악감상")){
-						hasone+=1;
-					}
-				}
-			}
-			if(hasone>0){
-				point+=interestweight;
-			}
-			rdto.setPoint(point);
+			
+			rdto.setScore(score);
+			
+			
 		}//for문 끝
 		
+				
 		//버블정렬
 		for(int i=0;i<list.size()-1;i++){
 			for(int j=0;j<list.size()-1-i;j++){
-				if(list.get(j).getPoint()>list.get(j+1).getPoint()){
+				if(list.get(j).getScore()>list.get(j+1).getScore()){
 					RecomDTO temp;
 					temp=list.get(j);
 					list.set(j, list.get(j+1));

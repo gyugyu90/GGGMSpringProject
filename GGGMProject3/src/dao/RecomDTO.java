@@ -6,13 +6,13 @@ public class RecomDTO {
 	private String data1;
 	private String data2;
 	private String weight;
-	private int point;
+	private double score;
 	
-	public int getPoint() {
-		return point;
+	public double getScore() {
+		return score;
 	}
-	public void setPoint(int point) {
-		this.point = point;
+	public void setScore(double score) {
+		this.score = score;
 	}
 	public int getAdno() {
 		return adno;
