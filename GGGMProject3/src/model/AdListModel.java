@@ -23,8 +23,9 @@ public class AdListModel implements Model {
 		List<AdvertiseDTO> list=
 				AdvertiseDAO.adListData();
 		HttpSession session = req.getSession();
-		session.setAttribute("count", list);
+		//session.setAttribute("count", list);
 		req.setAttribute("count", list);
+		
 		req.setAttribute("jsp", "/pages/adview/slidebanner.jsp");
 		return "pages/main/main.jsp";
 	}

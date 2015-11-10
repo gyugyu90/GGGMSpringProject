@@ -26,6 +26,7 @@ function playPause() {
     	$("#main_video").get(0).pause();
     	$("#play").get(0).textContent=">";
     } 
+}
 </script>
 <script>
 	$(function() {
