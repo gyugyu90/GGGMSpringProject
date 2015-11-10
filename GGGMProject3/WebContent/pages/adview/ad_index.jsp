@@ -135,6 +135,9 @@ function check(){
 	background-color:#CCFF99;
 	cursor:pointer;
 }
+#next_ad{
+	padding-right: 50px;
+}
 
 </style>
 </head>
@@ -152,7 +155,7 @@ function check(){
 			<br><br>
 		</div>
 		<div id="body_recommend">
-
+			<%-- <div id="next_ad"><h3>랜던 추천 광고<a href="ad_index.do?adno=${side.adno+1}"> <img src="img/next_ad2.jpg"></a></h3></div> --%>
 			<div id="sub_video" align=center>
 			<c:forEach var="side" items="${sidelist}">
 				<div class="sub_1">
