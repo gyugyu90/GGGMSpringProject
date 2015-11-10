@@ -18,7 +18,7 @@ public class Ad_List_GraphModel implements Model {
 		String adid=(String)session.getAttribute("id");
 		
 		List<AdvertiseDTO> list=AdGraphDAO.ListOfAdno(adid);
-		
+		System.out.println(list.size());
 		req.setAttribute("list", list);
 		req.setAttribute("jsp", "../adhost/ad_graph_list.jsp");
 		return "pages/main/main.jsp";
