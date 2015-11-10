@@ -91,99 +91,39 @@ COMMIT;
 DROP SEQUENCE ad_adno_seq;
 CREATE SEQUENCE ad_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
 
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, 'sim','광고이름', '0:01','미미처럼 예쁘게 화장할 수 있는 어린이용 미미 화장 핸드백 광고입니다','1000','[미미월드 TV광고] 미미 화장핸드백','메인카테고리','부카테고리','이미지이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:02', '거칠어진 피부 스킨푸드 블랙슈가 첫술세럼과 함께하세요','200','[스킨푸드 슈가티비] 정창욱, 김유정의 매끈 맑은결 레시피 블랙슈가 첫술세','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:03', '류현진을 채우는 진짜 맜있는 진라면 드셔보세요','200','[오뚜기 진라면] 류현진 CF_30초','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:04', '준비된 우루사는 전세계로 나아가고있습니다','200','[우루사(URSA)] 우루사 please #해외진출편','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, 'sim','광고이름','0:05', '휴대폰 하나만 바라온 열정이 반드시 승리 할 것이다','200','[지지 않는다. 고로, 존재한다] VEGA 브랜드 광고.','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:06', '촉촉한 하루가 계속되려면 체내수분을 긴 시간 지켜주는 포카리스웨트와 함께하세요','200','25대 포카리걸 김소현! 김소현의 2015년 포카리스웨트 광고! POCARI 30_','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:07', '미래엔은 가능성,호기심,상상력,즐거움,에너지다. 생각에서 생활까지 미래를 밝히는 미래엔!','200','MIRAEN CF_미래엔 광고(30'')','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:08', '완벽한 아버지는 없지만 아버지는 항상 완벽하게 당신을 사랑합니다. 기억하세요 당신을 사랑하는 사람을','200','가슴을 뭉클하게 하는 태국의 한 광고 - 소리없는 사랑','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:09', '당신의 삶을 밝혀줄 것입니다','200','감성 자극하는 전구 광고','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:10', '흡연, 자신 스스로의 몸을 걱정합시다','200','강력한 금연 광고','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:11', '겔럭시는 반드시 승리한다','200','겔럭시 11 광고 (Galaxy 11 FULL MOVIE)','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:12', '피부 회복력을 살린 습윤밴드 이지덤으로 상처를 감싸주세요. 사랑으로 감싸주세요.','200','귀염돋는 추사랑의 이지덤 습윤밴드 광고','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:13', '새로운 길을 달리자','200','기아 2012_','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:14', '차갑다가도 금세 녹아버리는 나는 유정이 엄마의 정입니다','200','김유정 초코파이 광고 30초 chocopie 30 keep','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:15', '동서남북이 하나되는 대한민국 2번 생각하면 노무현이 보입니다 새 대통령 노무현','200','노무현 - [대선 CF] 1편 눈물','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:16', '당신은 실수하지 않아도 다른사람은 실수합니다. 속도를 줄이세요.','200','뉴질랜드 공익광고 실수편 한글자막','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:17', '자기 자신을 제대로 알기 위해 더 많은 노력을 해야합니다.','200','당신은 당신이 생각하는 것보다 아름답습니다 - 도브 광고(한글자막)','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:18', '경찰차를 만들어서 도둑을 체포하여 레고시티를 되찾아라!','200','레고 시티 특수경찰 TV광고','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:19', '당신이 양치하는 동안 수도꼭지는 열려있습니다','200','물 절약 해외 공익광고 (K-water supporters Earth)','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:20', '남자다운 비누로 씻으면 상쾌함이 하루 종일 따라 다니지','200','미국의 흔한 비누 광고 (Old Spice Bar Soap)','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:21', '당신의 뇌를 고통스럽게 하는 질병 이 병의 이름은 흡연입니다','200','보건복지부 금연 광고 - 무용 뇌의고통 편 - 2015년 8월','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:22', '반복광고를 통해 시청자의 뇌를 사로잡는다','200','보면 세뇌당하는 반복 광고 모음','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:23', '어머니와 같은 강인함으로 끝없는 책임감으로 국민행복시대를 이끌어가는 여성대통령 박근혜','200','새누리당 박근혜','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:24', '오곡과 동서벌꿀의 환상적인 조화로 꿀맛나는 아침하세요','200','시리얼 허니오즈 광고모델 김소현(KIM SO-HYUN).','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:25', '변경된 유일한 것은 전부입니다','200','아이폰6S 광고자막','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:26', 'Easy to move. Hard to catch.','200','약빤 삼성의 청소기 광고','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:27', '숨막히게 이쁜 미니교복 에이핑크와 BAP가 함께합니다','200','에이핑크 교복(미니).','메인카테고리','부카테고리','이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:28', '세금은 우리 아이들의 미래입니다','200','여러분의 세금, 내일의 희망이 되어 돌아옵니다.','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:29', '소스를 넘어 요리를 하다','200','오뚜기 마요네스 광고 A','메인카테고리','부카테고리', '이미지
-이름');
-INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img)
-VALUES(ad_adno_seq.nextval, '광고주','광고이름','0:30', '볶을 때 기름대신 무칠때 고소하게 구울때 버터대신 마요네즈!','200','오뚜기 마요네스 광고 B','메인카테고리','부카테고리', '이미지
-이름');
-
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'sim','미미 화장 핸드백', '00:26','미미처럼 예쁘게 화장할 수 있는 어린이용 미미 화장 핸드백 광고입니다','1000','[미미월드 TV광고] 미미 화장핸드백','메인카테고리','부카테고리','이미지이름','3|20|1|2|5|200|9','3|40|1|2|5|500|9','0.2|0.3|0|0.5|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'kang','스킨푸드 블랙슈가 첫술세럼','01:48', '거칠어진 피부 스킨푸드 블랙슈가 첫술세럼과 함께하세요','200','[스킨푸드 슈가티비] 정창욱, 김유정의 매끈 맑은결 레시피 블랙슈가 첫술세','메인카테고리','부카테고리', '이미지 이름','2|10|2|1|6|100|18','2|30|2|1|6|300|18','0.6|0.2|0|0.1|0|0.1|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'jeong','오뚜기 진라면','00:34', '류현진을 채우는 진짜 맜있는 진라면 드셔보세요','200','[오뚜기 진라면] 류현진 CF_30초','메인카테고리','부카테고리', '이미지 이름','3|10|3|3|14|100|22','3|60|3|3|14|500|22','0.4|0.4|0|0|0|0.2|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'oh','우루사','00:32', '준비된 우루사는 전세계로 나아가고있습니다','200','[우루사(URSA)] 우루사 please #해외진출편','메인카테고리','부카테고리', '이미지 이름','3|20|4|3|25|200|29','3|50|4|3|25|500|29','0.3|0.2|0|0.3|0|0.2|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'sim','VEGA','00:36', '휴대폰 하나만 바라온 열정이 반드시 승리 할 것이다','200','[지지 않는다. 고로, 존재한다] VEGA 브랜드 광고.','메인카테고리','부카테고리','이미지 이름','3|10|5|3|26|200|33','3|30|5|3|26|500|33','0.3|0.3|0|0.1|0.1|0|0.2');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'kim','포카리스웨트','00:34', '촉촉한 하루가 계속되려면 체내수분을 긴 시간 지켜주는 포카리스웨트와 함께하세요','200','25대 포카리걸 김소현! 김소현의 2015년 포카리스웨트 광고! POCARI 30_','메인카테고리','부카테고리', '이미지 이름','3|10|6|3|18|100|42','3|40|6|3|18|500|42','0.3|0.5|0|0.1|0.1|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'sa','미래엔','00:36', '미래엔은 가능성,호기심,상상력,즐거움,에너지다. 생각에서 생활까지 미래를 밝히는 미래엔!','200','MIRAEN CF_미래엔 광고(30'')','메인카테고리','부카테고리','이미지 이름','3|20|8|3|27|100|68','3|50|8|3|27|600|68','0.2|0.4|0|0.2|0|0.2|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'park','소리없는 사랑','03:03', '완벽한 아버지는 없지만 아버지는 항상 완벽하게 당신을 사랑합니다. 기억하세요 당신을 사랑하는 사람을','200','가슴을 뭉클하게 하는 태국의 한 광고 - 소리없는 사랑','메인카테고리','부카테고리', '이미지 이름','3|20|10|3|33|200|71','3|50|10|3|33|600|71','0.2|0.3|0|0.1|0.2|0.2|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'banana','전구','02:00', '당신의 삶을 밝혀줄 것입니다','200','감성 자극하는 전구 광고','메인카테고리','부카테고리', '이미지 이름','1|20|12|3|47|100|104','1|40|12|3|47|400|104','0.4|0.2|0|0.2|0.2|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'apple','금연','01:33', '흡연, 자신 스스로의 몸을 걱정합시다','200','강력한 금연 광고','메인카테고리','부카테고리', '이미지 이름','3|10|14|3|51|100|132','3|60|14|3|51|600|132','0.7|0.2|0|0.1|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'orange','겔럭시','20:45', '겔럭시는 반드시 승리한다','200','겔럭시 11 광고 (Galaxy 11 FULL MOVIE)','메인카테고리','부카테고리','이미지 이름','3|20|10|3|33|200|71','3|50|10|3|33|600|71','0.2|0.3|0|0.1|0.2|0.2|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'cherry','이지덤 습윤밴드','00:30', '피부 회복력을 살린 습윤밴드 이지덤으로 상처를 감싸주세요. 사랑으로 감싸주세요.','200','귀염돋는 추사랑의 이지덤 습윤밴드 광고','메인카테고리','부카테고리', '이미지 이름','2|10|16|2|66|200|111','2|40|16|2|66|500|111','0.3|0.4|0|0.3|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'hong','기아','01:00', '새로운 길을 달리자','200','기아 2012_','메인카테고리','부카테고리', '이미지 이름','1|20|15|3|67|300|98','1|50|15|3|67|600|98','0.3|0|0|0.2|0|0.5|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'min','오리온 초코파이','00:34', '차갑다가도 금세 녹아버리는 나는 유정이 엄마의 정입니다','200','김유정 초코파이 광고 30초 chocopie 30 keep','메인카테고리','부카테고리', '이미지 이름','3|10|10|1|73|100|125','3|50|10|1|73|500|125','0.2|0.4|0|0.2|0.1|0|0.1');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'no','노무현 대통령','01:16', '동서남북이 하나되는 대한민국 2번 생각하면 노무현이 보입니다 새 대통령 노무현','200','노무현 - [대선 CF] 1편 눈물','메인카테고리','부카테고리', '이미지 이름','3|20|13|3|80|100|201','3|60|13|3|80|600|201','0.5|0.3|0|0.2|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'han','과속방지','01:00', '당신은 실수하지 않아도 다른사람은 실수합니다. 속도를 줄이세요.','200','뉴질랜드 공익광고 실수편 한글자막','메인카테고리','부카테고리', '이미지 이름','3|20|11|3|53|100|296','3|50|11|3|53|600|296','0.4|0.3|0|0.1|0.2|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'tomato','도브','03:00', '자기 자신을 제대로 알기 위해 더 많은 노력을 해야합니다.','200','당신은 당신이 생각하는 것보다 아름답습니다 - 도브 광고(한글자막)','메인카테고리','부카테고리', '이미지 이름','3|20|1|2|88|300|359','3|40|1|2|88|600|359','0.2|0.1|0|0.4|0|0.2|0.1');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'lemon','레고 장난감','00:15', '경찰차를 만들어서 도둑을 체포하여 레고시티를 되찾아라!','200','레고 시티 특수경찰 TV광고','메인카테고리','부카테고리', '이미지 이름','3|20|13|3|80|100|201','3|60|13|3|80|600|201','0.5|0.3|0|0.2|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'choi','물 절약','01:07', '당신이 양치하는 동안 수도꼭지는 열려있습니다','200','물 절약 해외 공익광고 (K-water supporters Earth)','메인카테고리','부카테고리', '이미지 이름','3|10|2|3|100|100|401','3|60|2|3|100|600|401','0.5|0.5|0|0|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'moon','비누','00:49', '남자다운 비누로 씻으면 상쾌함이 하루 종일 따라 다니지','200','미국의 흔한 비누 광고 (Old Spice Bar Soap)','메인카테고리','부카테고리','이미지 이름','1|20|3|3|83|100|378','1|40|3|3|83|400|378','0.5|0.3|0|0.1|0|0|0.1');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'star','금연','00:40', '당신의 뇌를 고통스럽게 하는 질병 이 병의 이름은 흡연입니다','200','보건복지부 금연 광고 - 무용 뇌의고통 편 - 2015년 8월','메인카테고리','부카테고리','이미지 이름','3|10|4|3|92|100|497','3|40|4|3|92|600|497','0.2|0.3|0|0.2|0.1|0.1|0.1');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'sun','반복 광고','05:44', '반복광고를 통해 시청자의 뇌를 사로잡는다','200','보면 세뇌당하는 반복 광고 모음','메인카테고리','부카테고리','이미지 이름','3|20|5|3|111|100|511','3|60|5|3|111|600|511','0.5|0.3|0|0.2|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'lee','박근혜 대통령','01:04', '어머니와 같은 강인함으로 끝없는 책임감으로 국민행복시대를 이끌어가는 여성대통령 박근혜','200','새누리당 박근혜','메인카테고리','부카테고리','이미지 이름','3|10|4|3|92|100|497','3|40|4|3|92|600|497','0.2|0.3|0|0.2|0.1|0.1|0.1');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'han','허니오즈 시리얼','0:29', '오곡과 동서벌꿀의 환상적인 조화로 꿀맛나는 아침하세요','200','시리얼 허니오즈 광고모델 김소현(KIM SO-HYUN).','메인카테고리','부카테고리','이미지 이름','3|10|3|3|127|100|478','3|30|3|3|127|600|478','0.3|0.5|0|0.1|0|0|0.1');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'min','아이폰6s','01:00', '변경된 유일한 것은 전부입니다','200','아이폰6S 광고자막','메인카테고리','부카테고리', '이미지 이름','1|20|1|2|118|200|341','1|40|1|2|118|500|341','0.2|0.2|0|0.4|0|0.1|0.1');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'samsung','삼성 청소기','01:56', 'Easy to move. Hard to catch.','200','약빤 삼성의 청소기 광고','메인카테고리','부카테고리','이미지 이름','3|10|10|1|123|100|308','3|10|10|1|123|500|308','0.3|0.5|0|0.2|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'mini','미니 교복','02:43', '숨막히게 이쁜 미니교복 에이핑크와 BAP가 함께합니다','200','에이핑크 교복(미니).','메인카테고리','부카테고리','이미지 이름','3|20|3|3|82|100|187','3|60|3|3|82|600|187','0.2|0.2|0|0.2|0|0.4|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, 'dream','세금','0:55', '세금은 우리 아이들의 미래입니다','200','여러분의 세금, 내일의 희망이 되어 돌아옵니다.','메인카테고리','부카테고리', '이미지 이름','3|20|3|3|82|100|187','3|60|3|3|82|600|187','0.2|0.2|0|0.2|0|0.4|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, '오뚜기','마요네즈','0:34', '소스를 넘어 요리를 하다','200','오뚜기 마요네스 광고 A','메인카테고리','부카테고리', '이미지 이름','2|20|5|2|125|100|511','2|50|5|2|125|500|511','0.3|0.4|0|0.3|0|0|0');
+INSERT INTO ad(adno,adid,adsubject,adtime,msg,ppc,url,maj_category,sub_category, img, data1, data2, weight) VALUES(ad_adno_seq.nextval, '오뚜기','마요네즈','0:34', '볶을 때 기름대신 무칠때 고소하게 구울때 버터대신 마요네즈!','200','오뚜기 마요네스 광고 B','메인카테고리','부카테고리', '이미지 이름','2|20|5|2|125|100|511','2|50|5|2|125|500|511','0.3|0.1|0.1|0.3|0.1|0.1|0');
 COMMIT;
 
-
+/*
 DROP TABLE adrequest;
 CREATE TABLE adrequest(
   adno NUMBER,
@@ -205,11 +145,9 @@ CREATE TABLE adrequest(
 DROP SEQUENCE adreq_adno_seq;
 CREATE SEQUENCE adreq_adno_seq START WITH 0 INCREMENT BY 1 MINVALUE 0 NOCYCLE NOCACHE;
 INSERT INTO adrequest(adno,adid,adsubject,adtime,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight) 
-VALUES(adreq_adno_seq.NEXTVAL,'adtest','광고테스트','15','테스트중 테스트중','가전','컴퓨터','나우','내컴퓨터이미지',100,'3|20|1|2|5|200|9','3|40|1|2|5|500|9','0.2|0.3|0|0.5|0|0|0');
-
- 
+VALUES(adreq_adno_seq.NEXTVAL,'adtest','광고테스트','15','테스트중 테스트중','가전','컴퓨터','나우','내컴퓨터이미지',100,'512','512','1|1|1|1|1|1|1');
 COMMIT;
-
+*/
 /*
 --트리거를 이용해서 하면 됨
 
@@ -260,29 +198,107 @@ CREATE TABLE adviewlist(
 );
 
 INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-01');
-INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-02');
-INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-03');
-INSERT INTO adviewlist VALUES(2, 'hong', 300,1, '2015-10-01');
-INSERT INTO adviewlist VALUES(2, 'hong', 100,1, '2015-10-02');
-INSERT INTO adviewlist VALUES(3, 'hong', 400,1, '2015-10-02');
-INSERT INTO adviewlist VALUES(3, 'hong', 300,1, '2015-10-03');
-INSERT INTO adviewlist VALUES(4, 'hong', 500,1, '2015-10-04');
-INSERT INTO adviewlist VALUES(4, 'hong', 500,1, '2015-10-05');
-INSERT INTO adviewlist VALUES(5, 'hong', 200,1, '2015-10-02');
-INSERT INTO adviewlist VALUES(6, 'hong', 300,1, '2015-10-05');
-INSERT INTO adviewlist VALUES(7, 'hong', 400,1, '2015-10-04');
-INSERT INTO adviewlist VALUES(8, 'hong', 200,1, '2015-10-03');
-INSERT INTO adviewlist VALUES(9, 'hong', 100,1, '2015-10-02');
-INSERT INTO adviewlist VALUES(10, 'hong', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(13, 'hong', 100,1, '2015-10-01');
+INSERT INTO adviewlist VALUES(15, 'hong', 300,1, '2015-10-01');
+INSERT INTO adviewlist VALUES(27, 'hong', 50,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(8, 'hong', 150,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(4, 'hong', 100,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(13, 'hong', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(19, 'hong', 300,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(20, 'hong', 200,1, '2015-10-03');
+INSERT INTO adviewlist VALUES(21, 'hong', 200,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(18, 'hong', 400,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(2, 'hong', 100,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(5, 'hong', 50,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(14, 'hong', 80,1, '2015-10-05');
+INSERT INTO adviewlist VALUES(17, 'hong', 20,1, '2015-10-05');
+INSERT INTO adviewlist VALUES(25, 'hong', 30,1, '2015-10-06');
+INSERT INTO adviewlist VALUES(5, 'hong', 400,1, '2015-10-06');
+INSERT INTO adviewlist VALUES(30, 'hong', 200,1, '2015-10-06');
+INSERT INTO adviewlist VALUES(11, 'hong', 200,1, '2015-10-06');
+INSERT INTO adviewlist VALUES(16, 'hong', 200,1, '2015-10-07');
+INSERT INTO adviewlist VALUES(22, 'hong', 400,1, '2015-10-07');
+INSERT INTO adviewlist VALUES(3, 'hong', 200,1, '2015-10-08');
+INSERT INTO adviewlist VALUES(30, 'hong', 300,1, '2015-10-08');
+INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-08');
+INSERT INTO adviewlist VALUES(12, 'hong', 300,1, '2015-10-09');
+INSERT INTO adviewlist VALUES(5, 'hong', 200,1, '2015-10-09');
+INSERT INTO adviewlist VALUES(29, 'hong', 100,1, '2015-10-09');
+INSERT INTO adviewlist VALUES(7, 'hong', 30,1, '2015-10-10');
+INSERT INTO adviewlist VALUES(15, 'hong', 240,1, '2015-10-10');
+INSERT INTO adviewlist VALUES(11, 'hong', 250,1, '2015-10-10');
+INSERT INTO adviewlist VALUES(28, 'hong', 250,1, '2015-10-11');
+INSERT INTO adviewlist VALUES(19, 'hong', 200,1, '2015-10-11');
+INSERT INTO adviewlist VALUES(6, 'hong', 100,1, '2015-10-11');
+INSERT INTO adviewlist VALUES(7, 'hong', 100,1, '2015-10-12');
+INSERT INTO adviewlist VALUES(1, 'hong', 100,1, '2015-10-12');
+INSERT INTO adviewlist VALUES(27, 'hong', 30,1, '2015-10-12');
+INSERT INTO adviewlist VALUES(21, 'hong', 240,1, '2015-10-13');
+INSERT INTO adviewlist VALUES(14, 'hong', 500,1, '2015-10-13');
+INSERT INTO adviewlist VALUES(26, 'hong', 400,1, '2015-10-13');
+INSERT INTO adviewlist VALUES(8, 'hong', 200,1, '2015-10-14');
+INSERT INTO adviewlist VALUES(10, 'hong', 200,1, '2015-10-14');
+INSERT INTO adviewlist VALUES(20, 'hong', 100,1, '2015-10-14');
+INSERT INTO adviewlist VALUES(9, 'hong', 200,1, '2015-10-15');
+INSERT INTO adviewlist VALUES(8, 'hong', 230,1, '2015-10-15');
+INSERT INTO adviewlist VALUES(17, 'hong', 240,1, '2015-10-15');
+INSERT INTO adviewlist VALUES(23, 'hong', 200,1, '2015-10-16');
+INSERT INTO adviewlist VALUES(4, 'hong', 250,1, '2015-10-16');
+INSERT INTO adviewlist VALUES(25, 'hong', 250,1, '2015-10-16');
+INSERT INTO adviewlist VALUES(10, 'hong', 200,1, '2015-10-17');
+INSERT INTO adviewlist VALUES(14, 'hong', 270,1, '2015-10-17');
+INSERT INTO adviewlist VALUES(27, 'hong', 200,1, '2015-10-17');
+INSERT INTO adviewlist VALUES(6, 'hong', 100,1, '2015-10-18');
+INSERT INTO adviewlist VALUES(24, 'hong', 500,1, '2015-10-18');
+INSERT INTO adviewlist VALUES(11, 'hong', 200,1, '2015-10-18');
+INSERT INTO adviewlist VALUES(18, 'hong', 300,1, '2015-10-19');
+INSERT INTO adviewlist VALUES(12, 'hong', 200,1, '2015-10-19');
+INSERT INTO adviewlist VALUES(13, 'hong', 200,1, '2015-10-19');
+INSERT INTO adviewlist VALUES(1, 'hong', 300,1, '2015-10-20');
+INSERT INTO adviewlist VALUES(26, 'hong', 200,1, '2015-10-20');
+INSERT INTO adviewlist VALUES(1, 'hong', 400,1, '2015-10-20');
+INSERT INTO adviewlist VALUES(9, 'hong', 200,1, '2015-10-21');
+INSERT INTO adviewlist VALUES(24, 'hong', 200,1, '2015-10-21');
+INSERT INTO adviewlist VALUES(22, 'hong', 200,1, '2015-10-21');
+INSERT INTO adviewlist VALUES(14, 'hong', 300,1, '2015-10-22');
+INSERT INTO adviewlist VALUES(20, 'hong', 200,1, '2015-10-22');
+INSERT INTO adviewlist VALUES(8, 'hong', 300,1, '2015-10-22');
+INSERT INTO adviewlist VALUES(15, 'hong', 400,1, '2015-10-23');
+INSERT INTO adviewlist VALUES(7, 'hong', 200,1, '2015-10-23');
+INSERT INTO adviewlist VALUES(23, 'hong', 100,1, '2015-10-23');
+INSERT INTO adviewlist VALUES(27, 'hong', 300,1, '2015-10-24');
+INSERT INTO adviewlist VALUES(3, 'hong', 230,1, '2015-10-24');
+INSERT INTO adviewlist VALUES(16, 'hong', 250,1, '2015-10-24');
+INSERT INTO adviewlist VALUES(29, 'hong', 200,1, '2015-10-25');
+INSERT INTO adviewlist VALUES(17, 'hong', 240,1, '2015-10-25');
+INSERT INTO adviewlist VALUES(1, 'hong', 230,1, '2015-10-25');
+INSERT INTO adviewlist VALUES(20, 'hong', 200,1, '2015-10-26');
+INSERT INTO adviewlist VALUES(30, 'hong', 200,1, '2015-10-26');
+INSERT INTO adviewlist VALUES(15, 'hong', 230,1, '2015-10-26');
+INSERT INTO adviewlist VALUES(18, 'hong', 200,1, '2015-10-27');
+INSERT INTO adviewlist VALUES(3, 'hong', 200,1, '2015-10-27');
+INSERT INTO adviewlist VALUES(27, 'hong', 200,1, '2015-10-27');
+INSERT INTO adviewlist VALUES(19, 'hong', 200,1, '2015-10-28');
+INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-28');
+INSERT INTO adviewlist VALUES(12, 'hong', 250,1, '2015-10-28');
+INSERT INTO adviewlist VALUES(13, 'hong', 240,1, '2015-10-29');
+INSERT INTO adviewlist VALUES(20, 'hong', 200,1, '2015-10-29');
+INSERT INTO adviewlist VALUES(7, 'hong', 100,1, '2015-10-29');
+INSERT INTO adviewlist VALUES(21, 'hong', 200,1, '2015-10-30');
+INSERT INTO adviewlist VALUES(4, 'hong', 200,1, '2015-10-30');
+INSERT INTO adviewlist VALUES(24, 'hong', 200,1, '2015-10-30');
+INSERT INTO adviewlist VALUES(22, 'hong', 300,1, '2015-10-31');
+INSERT INTO adviewlist VALUES(1, 'hong', 200,1, '2015-10-31');
+INSERT INTO adviewlist VALUES(16, 'hong', 300,1, '2015-10-31');
 INSERT INTO adviewlist VALUES(1, 'sim', 200,1, '2015-10-01');
 INSERT INTO adviewlist VALUES(2, 'sim', 200,1, '2015-10-03');
 INSERT INTO adviewlist VALUES(3, 'sim', 200,1, '2015-10-02');
-INSERT INTO adviewlist VALUES(4, 'sim', 200,1, '2015-10-02');
-INSERT INTO adviewlist VALUES(5, 'sim', 200,1, '2015-10-04');
-INSERT INTO adviewlist VALUES(6, 'sim', 200,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(4, 'sim', 100,1, '2015-10-02');
+INSERT INTO adviewlist VALUES(5, 'sim', 230,1, '2015-10-04');
+INSERT INTO adviewlist VALUES(6, 'sim', 240,1, '2015-10-02');
 INSERT INTO adviewlist VALUES(7, 'sim', 200,1, '2015-10-02');
 INSERT INTO adviewlist VALUES(8, 'sim', 200,1, '2015-10-03');
-INSERT INTO adviewlist VALUES(10, 'sim', 200,1,'2015-10-01');
+INSERT INTO adviewlist VALUES(10, 'sim', 240,1,'2015-10-01');
 INSERT INTO adviewlist VALUES(1, 'sim', 200,1, '2015-10-02');
 INSERT INTO adviewlist VALUES(2, 'sim', 200,1, '2015-10-02');
 COMMIT;
