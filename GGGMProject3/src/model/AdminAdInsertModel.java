@@ -15,8 +15,9 @@ public class AdminAdInsertModel implements Model {
 		System.out.println(adno);
 		AdrequestDAO dao=new AdrequestDAO();
 		AdrequestDTO d=dao.adReqInfo(adno);
-		dao.adRequestInsert(d);		
-		dao.adReqDelete(adno);
+		dao.adInsert(d);		
+		dao.adReqDelete(Integer.parseInt(adno));
+		
 		return "adboard.do";
 	}
 
