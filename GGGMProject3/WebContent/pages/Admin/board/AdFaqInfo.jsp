@@ -25,7 +25,7 @@
 			<div class="panel panel-default col-lg-12">
 				<div class="panel-body">
 					<div class="table-responsive">
-					<h3>광고신청 List</h3>
+					<h3>FAQ</h3>
 						<table class="table table-bordered table-hover">						
 							<tr>
 							<td width="10%" align="center">번호</td>	<td width="10%" style="text-align: center;">${d.no }</td>							

@@ -1,6 +1,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,39 +9,38 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.AdrequestDAO;
-import dao.AdrequestDTO;
-import dao.FaqDAO;
-import dao.FaqDTO;
 import dao.NoticeDAO;
 import dao.NoticeDTO;
 
-public class AdminBoardModel implements Model {
+public class AdminNoticeModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
-		Map map = new HashMap();
-		map.put("start", 1); // #{start}
-		map.put("end", 5); // #{end}
-		List<FaqDTO> faqlist = FaqDAO.faqListData(map);
-		System.out.println(map.get("start")+" "+map.get("end"));
-
-		AdrequestDAO dao = new AdrequestDAO();
-		List<AdrequestDTO> adlist = dao.adRequestList();
-		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		String strPage=req.getParameter("page");
+		if(strPage==null)
+			strPage="1";
+		int curpage=Integer.parseInt(strPage);
+		int rowSize=10;
+		int start=(curpage*rowSize)-(rowSize-1);
+		int end=curpage*rowSize;
+		Map map=new HashMap();
+		map.put("start", start); // #{start}
+		map.put("end", end); // #{end}
+		
 		List<NoticeDTO> noticelist= NoticeDAO.noticeListData(map);
+
 		for(NoticeDTO d:noticelist){
 			d.setDbday(sdf.format(d.getRegdate()));
-			System.out.println(d.getNo());
 			d.setReplyCount(NoticeDAO.noticeReplyCount(d.getNo()));
 		}
-
 		req.setAttribute("notice", noticelist);
-		req.setAttribute("ad", adlist);
-		req.setAttribute("faq", faqlist);
-		req.setAttribute("jsp", "../Admin/board/board.jsp");
+		req.setAttribute("today", sdf.format(new Date()));
+		int totalpage=NoticeDAO.noticeTotalPage();
+		
+		req.setAttribute("totalpage", totalpage);
+		req.setAttribute("curpage", curpage);
+		req.setAttribute("jsp", "../Admin/board/NoticeBoard.jsp");
 		return "pages/main/main.jsp";
 	}
 

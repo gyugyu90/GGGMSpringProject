@@ -47,6 +47,13 @@
 							</c:forEach>
 						</table>
 					</div>
+					<div class="col-lg-12" style="text-align: right;">
+						<a href="adminfaqboard.do?page=${curpage>1?curpage-1:curpage }"> <img
+							src="img/prev_icon.gif"></a>&nbsp; <a
+							href="adminfaqboard.do?page=${curpage<totalpage?curpage+1:curpage }">
+							<img src="img/next_icon.gif">
+						</a>&nbsp;&nbsp; ${curpage } page / ${totalpage } pages
+					</div>
 				</div>				
 			</div>
 		</div>

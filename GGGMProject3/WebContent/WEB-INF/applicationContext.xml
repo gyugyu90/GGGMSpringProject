@@ -61,6 +61,9 @@
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="ad_request_ok" class="model.AdRequestOKModel"/>
 	<bean id="adgraphlist" class="model.Ad_List_GraphModel"/>
+	<bean id="adminnotice" class="model.AdminNoticeModel"/>
+	<bean id="adminnoticeinfo" class="model.AdminNoticeInfoModel"/>
+	
 
 	<bean id="ad_request" class="model.AdRequestModel"/>
 	<bean id="AdminAdBoardInfo" class="model.AdminAdBoardInfoModel"/>
