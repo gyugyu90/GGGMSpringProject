@@ -45,7 +45,7 @@
 	</delete>
 	
 	<select id="getWeightData" resultType="dao.RecomDTO"> 
-		SELECT adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc, data1, data2, weight FROM ad
+		SELECT adno,adid,adtime,adsubject,msg,maj_category,sub_category,url,img,ppc, data1, data2, weight FROM ad
 	</select>
 	
 </mapper>
