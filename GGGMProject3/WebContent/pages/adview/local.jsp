@@ -111,7 +111,7 @@ li {
 
 <body>
 	<div id="banner_top" align="left">
-	<h1 align="left"><img src="img/local.png" width="60px" height="60px"> 지역 광고</h1>
+	<h1 align="left"><img src="img/local.jpg" width="60px" height="60px"> 지역 광고</h1>
 	</div>
 	<div id="banner_wrap">
 		<ul id="slide_banner" class="banner_margin">
@@ -127,7 +127,7 @@ li {
 						</div>
 						<div class="ad_bottom" >
 							<ul>
-								<li>영상제목 : ${d.adno }</li>
+								<li>영상제목 : ${d.adsubject }</li>
 								<li>영상시간 : ${d.adtime }</li>
 								<li>포인트 : ${d.ppc }</li>
 								<li>우리 지역 광고</li>
