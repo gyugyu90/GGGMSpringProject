@@ -387,6 +387,8 @@
 											class="fa fa-angle-double-right"></i>그래프</a></li>
 									<li><a href="ad_request.do"><i
 											class="fa fa-angle-double-right"></i>광고 신청</a></li>
+									<li><a href="adboard.do"><i
+											class="fa fa-angle-double-right"></i>광고 신청내역</a></li>
 								</ul></li>
 						</c:when>
 						<c:when test="${sessionScope.grade==3 }">

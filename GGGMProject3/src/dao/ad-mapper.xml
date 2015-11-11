@@ -40,6 +40,9 @@
 	<select id="adRequestList" resultType="Adreq">
 		SELECT * FROM adrequest
 	</select>
+	<select id="adhostRequestList" resultType="Adreq" parameterType="String">
+		SELECT * FROM adrequest WHERE adid=#{id}
+	</select>
 	<select id="adRequestInfo" parameterType="String" resultType="Adreq">
 		SELECT * FROM adrequest WHERE adno=#{adno}
 	</select>

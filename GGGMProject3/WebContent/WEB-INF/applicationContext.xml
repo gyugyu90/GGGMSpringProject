@@ -72,4 +72,5 @@
 	<bean id="AdminAdInsert" class="model.AdminAdInsertModel"/>
 	<bean id="recom" class="model.RecomModel"/>
 	<bean id="local" class="model.LocalModel"/>
+	<bean id="exchange" class="model.ExchangeModel"/>
 </beans><!-- endElement(), endDocument() -->

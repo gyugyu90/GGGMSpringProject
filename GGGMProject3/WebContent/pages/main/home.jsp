@@ -109,7 +109,7 @@ function playPause() {
 		<ul id="slide_banner" class="banner_margin">
 
 		 	<c:forEach var="d" items="${count }" varStatus="status">
-				<c:if test="${d.adno%3==0 }"> 
+				<c:if test="${d.adno%3==1 }"> 
 					<li>
 
 						<div class="ad_top">

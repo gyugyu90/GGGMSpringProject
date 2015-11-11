@@ -90,13 +90,16 @@ table {
 		<div class=row>
 			<div id="top">
 				<div id="top_left">
+				<form method="post" action="exchange.do" id="exchange_form">
 					<ul style="padding-left: 10px;margin: 0px 60px;width: 400px;">
 						<li>보유 포인트 : <input type="text" id="curpoint" size=20 readonly="readonly"
 							value="${point}">
 						</li>
 						<li><i class="fa fa-chevron-down"></i></li>
-						<li>받을 포인트 : <input type="text" name="exchange" id="exchange" size=20>
+						
+						<li>받을 포인트 : <input type="text" name="exchange" id="exchange" size=20 readonly="readonly">
 						</li>
+						
 						<li>
 					</ul>
 					<ul style="list-style:none;margin:0px 60px">
@@ -108,7 +111,9 @@ table {
 						<img src="img/giftcard2.jpg" id="imgB" width=280 height=160 style="display: none;"> 
 						<img src="img/giftcard3.jpg" id="imgC" width=280 height=160 style="display: none;">
 						<br>
+						<input type="text" id="exText" size=3>매&nbsp;
 						<input type="button" name="hj" id="exBtn" value="환전하기">
+				</form>
 				</div>
 				<div id="top_right">
 
@@ -212,9 +217,10 @@ table {
     
     $(document).ready(function(){
     	var cur=$('#curpoint').val();
-    	$('#exchange').keyup(function(){
-    		var ex=$('#exchange').val();
-    		$('#curpoint').val(cur-ex);	
+    	$('#exText').keyup(function(){
+    		var ex=$('#exText').val();
+    		$('#curpoint').val(cur-ex*5000);
+    		$('#exchange').val(ex*5000);
     	});
     	
     	$('#exA').click(function(){
@@ -232,6 +238,11 @@ table {
     		$('#imgB').hide();
     		$('#imgC').show();
     	});
+    	$('#exBtn').click(function(){
+    		alert('해당 쿠폰이 전송되었습니다.');
+    		$('#exchange_form').submit();
+    	});
+    	
     });
   </script>
 </body>

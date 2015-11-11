@@ -39,7 +39,7 @@ public class ReplyNewWriteModel implements Model {
 		req.setAttribute("no", bno);
 		req.setAttribute("list", list);
 		req.setAttribute("jsp", "../adview/ad_index.jsp?adno="+strNo);
-		return "pages/main/main.jsp";
+		return "ad_index.do?adno="+strNo;
 		
 		
 	}

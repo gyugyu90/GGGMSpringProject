@@ -32,4 +32,8 @@
 	<select id="getBalance" resultType="int" parameterType="String">
 		SELECT point FROM adviewlist WHERE id=#{id} ORDER BY viewtime DESC
 	</select>
+	
+	<insert id="exchange" parameterType="java.util.Map">
+		INSERT INTO adviewlist VALUES(0, #{id}, #{exchange}*(-1), 1, SYSDATE)
+	</insert>
 </mapper>

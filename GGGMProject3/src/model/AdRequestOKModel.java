@@ -150,7 +150,7 @@ public class AdRequestOKModel implements Model {
 		AdrequestDAO dao = new AdrequestDAO();
 		dao.adRequestInsert(d);
 		
-		return "main.do";
+		return "adboard.do";
 		
 
 //		BoardDTO d = new BoardDTO();

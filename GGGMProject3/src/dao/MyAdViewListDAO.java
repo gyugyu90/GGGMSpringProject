@@ -61,4 +61,10 @@ public class MyAdViewListDAO {
     	session.close();
     	return list;
     }
+    
+    public static void exchange(Map map){
+    	SqlSession session=ssf.openSession(true);
+    	session.insert("exchange", map);
+    	session.close();
+    }
 }
