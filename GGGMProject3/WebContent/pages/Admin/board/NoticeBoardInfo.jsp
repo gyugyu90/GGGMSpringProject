@@ -109,7 +109,7 @@ function re_ok(){
 			<ol class="breadcrumb">
 				<li><a href="adminnotice.do">공지사항</a></li>
 				<li><a href="adminfaqboard.do">FAQ</a></li>
-				<li><a href="#">QnA</a></li>
+				<li><a href="adminqnaboard.do">QnA</a></li>
 				<li><a href="adboard.do">광고</a></li>
 			</ol>
 		</div>

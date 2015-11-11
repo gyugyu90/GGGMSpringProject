@@ -7,33 +7,20 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import dao.AdGraphDTO;
-import dao.AdvertiseDAO;
-import dao.AdvertiseDTO;
 import dao.RecomDTO;
 import dao.memberAddDTO;
 import dao.memberDAO;
 import dao.memberDTO;
 
 import java.util.*;
-public class RecomModel implements Model{
+public class LocalModel implements Model{
 
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
-		//일단 내 아이디를 받아야 함
 		HttpSession session=req.getSession();
 		String id=(String)session.getAttribute("id");
-		//그리고 내 정보를 가져옴
 		memberDTO myinfo=memberDAO.getMyInfo(id);
-		
-				
-		System.out.println("주소:"+myinfo.getPost());
-		System.out.println("나이:"+myinfo.getAge());
-		System.out.println("성별:"+myinfo.getSex());
-		System.out.println("결혼여부:"+myinfo.getAdd().getIsmarried());
-		System.out.println("관심분야:"+myinfo.getAdd().getInterest());
-		System.out.println("직업:"+myinfo.getAdd().getJob());
-		System.out.println("소득수준:"+myinfo.getAdd().getSalary());
 		
 //		주소:100-100
 //		나이:25
@@ -48,7 +35,7 @@ public class RecomModel implements Model{
 		int myMaritalStt=(myinfo.getAdd().getIsmarried()=="미혼"?1:2);
 		int mySal=Integer.parseInt(myinfo.getAdd().getSalary().substring(0, 3))+50;
 
-		int myAddr=Integer.parseInt(myinfo.getPost().substring(0, 3));
+		int myAddr=Integer.parseInt(myinfo.getPost().substring(0, 2));
 		switch(myAddr){
 			case 10: myAddr=9; break;
 			case 11: myAddr=9; break;
@@ -114,76 +101,9 @@ public class RecomModel implements Model{
 			case 79: myAddr=4; break;
 		}
 		
-		int myJob=0;
-		switch(myinfo.getAdd().getJob()){
-		case "학생":
-			myJob = 1;
-			break;
-		case "사업가":
-			myJob =2;
-			break;
-		case "운동선수":
-			myJob =4;
-			break;
-		case "주부":
-			myJob =8;
-			break;
-		case "회사원":
-			myJob =16;
-			break;
-		case "아티스트":
-			myJob =32;
-			break;
-		case "기타":
-			myJob =64;
-			break;
-		}
-		
-		StringTokenizer tknTemp=new StringTokenizer(myinfo.getAdd().getInterest(), "|");
-		int myInterest=0;
-		if(tknTemp.hasMoreTokens()){
-			switch(tknTemp.nextToken()){
-				case "스포츠":
-					myInterest +=1;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "쇼핑":
-					myInterest +=2;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "인터넷":
-					myInterest +=4;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "여행":
-					myInterest +=8;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "독서":
-					myInterest +=16;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "영화감상":
-					myInterest +=32;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "음악감상":
-					myInterest +=64;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "게임":
-					myInterest +=128;
-					if(!tknTemp.hasMoreTokens())
-						break;
-				case "공연":
-					myInterest +=256;
-						break;
-			}
-		}
-	
+		System.out.println("내지역:"+myAddr);
 		
 		List<RecomDTO> list=memberDAO.getWeightData();
-		
 		
 		System.out.println("모델에서 For문 직전");
 		int checkval=0;
@@ -211,6 +131,9 @@ public class RecomModel implements Model{
 			//addr
 			int adAddr=Integer.parseInt(st1.nextToken());
 			adAddr=Integer.parseInt(st2.nextToken());
+			
+			System.out.println();
+			
 			double wgtAddr=Double.parseDouble(w.nextToken());
 			//Marital Stt
 			int adMaritalStt = Integer.parseInt(st1.nextToken());
@@ -229,92 +152,19 @@ public class RecomModel implements Model{
 			adInt = Integer.parseInt(st2.nextToken());
 			double wgtInt=Double.parseDouble(w.nextToken());
 			
-			//비교 (Masking으로 점수계산)
-			//		sex
-			if(mySex==adSex)
-				score+=wgtSex;
-			//		age
-			if(adMaxAge==60){
-				if (myAge>60)
-					score+=wgtAge;
-			}else{
-				if((myAge<adMaxAge+10)&&(myAge>=adMinAge))
-					score+=wgtAge;
-				else if((myAge<adMaxAge+10+((adMaxAge-adMinAge)/3))&&(myAge>=adMinAge-((adMaxAge-adMinAge)/3)))
-					score+=wgtAge/2;
-			}
-			//		addr
 			if(myAddr==adAddr)
-				score+=wgtAddr;
-			//		marital Status
-			if(myMaritalStt==adMaritalStt)
-				score+=wgtMaritalStt;
-			//		job
-			int adTemp=adJob;
-			int myTemp=myJob;
-			boolean sentinel = true;
-			int i =6;
-			
-			while(i>=0 && sentinel ){
-			
-				if( adTemp >= (int)Math.pow(2, i)){
-					for(int j=6;j>=i;j--){
-						if( myTemp> (int)Math.pow(2, i+1) )
-							myTemp-=(int)Math.pow(2, i+1);
-						else if( myTemp >= (int)Math.pow(2, i)){
-							score+=wgtInt;
-							sentinel=false;
-							break;
-						}
-					}
-					adTemp-=(int)Math.pow(2, i);
-				}
-				i--;
-			}
-			
-			//		sal
-			if(adMaxSal==600){
-				if (mySal>600)
-					score+=wgtSal;
-			}else{
-				if((mySal<adMaxSal+100)&&(mySal>=adMinSal))
-					score+=wgtSal;
-				else if((myAge<adMaxSal+100+((adMaxSal-adMinSal)/3))&&(mySal>=adMinSal-((adMaxSal-adMinSal)/3)))
-					score+=wgtSal/2;
-			}
-			//		Interest
-			adTemp=adInt;
-			myTemp=myInterest;
-			sentinel = true;
-			i =8;
-			
-			while(i>=0 && sentinel ){
-			
-				if( adTemp >= (int)Math.pow(2, i)){
-					for(int j=8;j>=i;j--){
-						if( myTemp> (int)Math.pow(2, i+1) )
-							myTemp-=(int)Math.pow(2, i+1);
-						else if( myTemp >= (int)Math.pow(2, i)){
-							score+=wgtInt;
-							sentinel=false;
-							break;
-						}
-					}
-					adTemp-=(int)Math.pow(2, i);
-				}
-				i--;
-			}
-			
+				score=1;
+
 			rdto.setScore(score);
 			System.out.println(checkval++ + " 점수: "+score);
 			
 		}//for문 끝
-		System.out.println("모델: for문끝. 정렬 시작 전");
+
 		for(int i=0;i<list.size();i++){
 			System.out.print(list.get(i).getAdno()+" ");
 		}
 		System.out.println();
-				
+		
 		//버블정렬
 		for(int i=0;i<list.size()-1;i++){
 			for(int j=0;j<list.size()-1-i;j++){
@@ -332,15 +182,24 @@ public class RecomModel implements Model{
 		System.out.println();
 		System.out.println("정렬 시작 완료");
 		
+		int noOfAd=0;
 		//top 6 만 남기기...
-		for(int i=list.size()-1;i>6;i--){
+		for(int i=list.size()-1;i>=0;i--){
+			if(list.get(i).getScore()<=.95)	
 				list.remove(i);
+			else{
+				noOfAd=i+1;
+			}
 		}
+		
 		for(int i=0;i<list.size();i++){
 			System.out.print(list.get(i).getAdno()+" ");
 		}
+		System.out.println();
+				
+		req.setAttribute("noa", noOfAd);
 		req.setAttribute("count", list);
-		req.setAttribute("jsp", "/pages/adview/recom.jsp");
+		req.setAttribute("jsp", "/pages/adview/local.jsp");
 		return "pages/main/main.jsp";
 	}
 

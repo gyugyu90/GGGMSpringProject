@@ -394,7 +394,7 @@ td.bc_agree_title {
         <img src="img/qna_delete.gif" border="0"></a>    
         <a href="qna_modify.do?no=${d.no }&page=${strPage }">
         <img src="img/qna_modify.gif" border="0"></a>
-        <a href="qna_list.do?page=${strPage }">
+        <a href="adminqnaboard.do?page=${strPage }">
         <img src="img/detail_list.gif" border="0"></a>   
     </td>
 </tr>

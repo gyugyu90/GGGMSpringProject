@@ -26,9 +26,9 @@ winObject.document.all.text2.value = document.all.text1.value;
 			speed : 1000, // 이동 속도를 설정
 			pager : false, // 현재 위치 페이징 표시 여부 설정
 			moveSlides : 1, // 슬라이드 이동시 개수
-			slideWidth : 350, // 슬라이드 너비
-			minSlides : 2, // 최소 노출 개수
-			maxSlides : 2, // 최대 노출 개수
+			slideWidth : 700, // 슬라이드 너비
+			minSlides : 1, // 최소 노출 개수
+			maxSlides : 1, // 최대 노출 개수
 			slideMargin : 30, // 슬라이드간의 간격
 			auto : true, // 자동 실행 여부
 			autoHover : true, // 마우스 호버시 정지 여부
@@ -55,7 +55,7 @@ function ok(adno){
 </script>
 <style>
 #banner_wrap {
-	padding-top: 0px;
+	padding-top: 50px;
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -100,18 +100,18 @@ li {
 }
 
 #banner_top {
-	padding-left: 414px;
+	padding-left: 100px;
 }
 .poster{
-	width:250px;
-	height:205px;
+	width:700px;
+	height:550px;
 }
 </style>
 </head>
 
 <body>
 	<div id="banner_top" align="left">
-	<h1><img src="img/hot.png"> 추천 광고</h1>
+	<h1 align="left"><img src="img/recommend.jpg" width="60px" height="60px"> 추천 광고</h1>
 	</div>
 	<div id="banner_wrap">
 		<ul id="slide_banner" class="banner_margin">
@@ -120,14 +120,14 @@ li {
 					<li>
 						<div class="ad_top">
 							<a href="ad_index.do?adno=${d.adno}"> <img
-								src="poster/ad${d.adno}.PNG" title="" alt="" class="poster" ></a>
+								src="poster/ad${d.adno}.PNG" title="" alt="" class="poster" width="700px" height="550px"></a>
 							<form id="frm_${d.adno}" action="Ad_index.do" method="get">
 								<input type="hidden" name="adno" value="${d.adno}">
 							</form>
 						</div>
 						<div class="ad_bottom" >
 							<ul>
-								<li>영상제목 : ${d.adno }</li>
+								<li>영상제목 : ${d.adsubject }</li>
 								<li>영상시간 : ${d.adtime }</li>
 								<li>포인트 : ${d.ppc }</li>
 								<li>추천도 : ${d.score*100}</li>

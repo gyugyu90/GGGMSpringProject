@@ -354,7 +354,7 @@
 						<ul class="treeview-menu">
 							<li><a href="slidebanner.do"><i
 									class="fa fa-angle-double-right"></i>HOT</a></li>
-							<li><a href="#"><i class="fa fa-angle-double-right"></i>Local</a></li>
+							<li><a href="local.do"><i class="fa fa-angle-double-right"></i>Local</a></li>
 							<li><a href="recom.do"><i class="fa fa-angle-double-right"></i>ÃßÃµ</a></li>
 						</ul></li>
 					<li class="treeview"><a href="#"> <i class="fa fa-laptop"></i>
