@@ -289,8 +289,6 @@ function send(){
                
             <div class="panel-footer" style="text-align: center;">
                <button type="button" class="btnSbt" onclick="send()">전송</button>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <button type="button" class="btnCnl">취소</button>
             </div>
          </div>
       </div>

@@ -47,7 +47,7 @@
 #joinForm input[type="text"],#joinForm input[type="password"],
 #joinForm input[type="radio"],#joinForm select{
 	background-color: #efefef;
-	border: 2px solid #ff0080;
+	border: 2px solid RGB(84,165,119);
 	padding: 3px;
 	margin: 5px;
 	width:60px;
@@ -55,7 +55,7 @@
 
 #joinForm input[type="button"],#joinForm input[type="submit"]{
 	background-color: #ffffff;
-	border: 3px solid #ff0080;
+	border: 3px solid RGB(84,165,119);
 	padding: 3px 10px;
 	border-radius:20px;
 	font-family: '서울한강체';

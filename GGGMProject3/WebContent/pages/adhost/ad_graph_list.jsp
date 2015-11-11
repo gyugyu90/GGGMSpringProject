@@ -9,6 +9,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="js/jquery.bxslider/jquery.bxslider.min.js"></script>
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <script>
 
 var winObject = null;
@@ -25,9 +26,9 @@ winObject.document.all.text2.value = document.all.text1.value;
 			speed : 500, // 이동 속도를 설정
 			pager : false, // 현재 위치 페이징 표시 여부 설정
 			moveSlides : 1, // 슬라이드 이동시 개수
-			slideWidth : 250, // 슬라이드 너비
-			minSlides : 3, // 최소 노출 개수
-			maxSlides : 3, // 최대 노출 개수
+			slideWidth : 700, // 슬라이드 너비
+			minSlides : 1, // 최소 노출 개수
+			maxSlides : 1, // 최대 노출 개수
 			slideMargin : 30, // 슬라이드간의 간격
 			auto : false, // 자동 실행 여부
 			autoHover : true, // 마우스 호버시 정지 여부
@@ -67,6 +68,7 @@ function ok(adno){
 	height: 100%;
 	margin: 0 auto;
 	vertical-align: middle;
+	margin-top: 55px;
 }
 
 #prevBtn {
@@ -111,6 +113,7 @@ li {
 </head>
 
 <body>
+<h2 style="margin:0px 200px"><img src="<%=request.getContextPath() %>/img/adicon.png" style="width:38px">&nbsp;&nbsp;우리 회사 광고</h2>
 	<div id="banner_wrap">
 		<ul id="slide_banner" class="banner_margin">
 
@@ -118,18 +121,18 @@ li {
 					<li>
 						<div class="ad_top">
 							<a href="adgraph.do?adno=${d.adno}"> <img
-								src="poster/ad${d.adno}.PNG" width="200" height="150"></a>
+								src="poster/ad${d.adno}.PNG" width="700" height="550"></a>
 						</div>
 					</li>
 				
 			</c:forEach>
 		</ul>
 		<p>
-			<a href="#" id="prevBtn"> <img src="img/prev.jpg" alt="이전">
+			<a href="#" id="prevBtn"> <img src="img/prev.png" alt="이전">
 			</a>
 		</p>
 		<p>
-			<a href="#" id="nextBtn"> <img src="img/next.jpg" alt="다음">
+			<a href="#" id="nextBtn"> <img src="img/next.png" alt="다음">
 			</a>
 		</p>
 	</div>

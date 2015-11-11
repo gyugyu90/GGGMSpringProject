@@ -31,8 +31,9 @@
         var options = {
           title: '성별 분류',
           'sliceVisibilityThreshold':0 ,
-          'width' : 300,
-          'height' : 350
+          'width' : 350,
+          'height' : 350,
+          fontSize:15
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -48,7 +49,6 @@
 
         var data = google.visualization.arrayToDataTable([
           ['클릭수', 'ToDay'],
-          ['10대미만',     <%=request.getAttribute("age0")%>+0],
           ['10대',      <%=request.getAttribute("age1")%>+0],
           ['20대',      <%=request.getAttribute("age2")%>+0],
           ['30대',      <%=request.getAttribute("age3")%>+0],
@@ -56,15 +56,16 @@
           ['50대',      <%=request.getAttribute("age5")%>+0],
           ['60대',      <%=request.getAttribute("age6")%>+0],
           ['70대',      <%=request.getAttribute("age7")%>+0],
-          ['80대 이상',      <%=request.getAttribute("age8")%>]
+          ['80~',      <%=request.getAttribute("age8")%>]
           
         ]);
 
         var options = {
           title: '나이별 분류',
           'sliceVisibilityThreshold':0 ,
-          'width' : 300,
-          'height' : 350
+          'width' : 350,
+          'height' : 350,
+          fontSize:15
         };
       
         var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
@@ -191,26 +192,40 @@ li{ list-style-type : none;
    
    <div id="body">
       <div class=row>
+      <h2 style="margin:0px 160px">광고 실적 분석</h2>
+      <br>
       <div id="top">
          <div id="top_left">
             
-            <img id="img" src="poster/ad${list.adno}.PNG" width=350 height=350>
+            <img id="img" src="poster/ad${list.adno}.PNG" width=350 height=230>
             <input type="hidden" id="adno" value="${list.adno}"/>
             <input type="hidden" id="mancount" value="mancount" value="${mancount }"/>
             <input type="hidden" id="womancount" name="womancount"value="${womancount }">
+            <table style="width:270px;margin-left:164px;">
+            	<tr>
+            		<td height=45px>제목</td><td>${list.adsubject}</td>
+            	</tr>
+            	<tr>
+            		<td height=45px>재생시간</td><td>${list.adtime }</td>
+            	</tr>
+            	<tr>
+            		<td height=45px>시청 포인트</td><td>${list.ppc }</td>
+            	</tr>
+            </table>
          </div>
          <div id="top_right">
             
                             <!-- Line chart -->
                             <div id="linechart_material"></div>
                   
-<<<<<<< HEAD
+
 			</div></div>
 		</div>
 		<div class=row>
+		<hr width=800px color=gray>
 		<div id="bottom">
-			
-			<!-- <table>
+
+				<!-- <table>
 				<tr  id="first_list">
 					<th  class="point_table">
 					성별
@@ -248,13 +263,13 @@ li{ list-style-type : none;
 					</td>
 				</tr>
 			</table> -->
-			<div id="piechart" class="col-md-6" ></div>
-			<div id="piechart1" class="col-md-6" ></div>
+				<div id="piechart" class="col-md-6" style="padding:0px;"></div>
+			<div id="piechart1" class="col-md-6" style="padding:0px;"></div>
 		</div>
 		</div>
 	</div>
 	<!-- jQuery 2.0.2 -->
-=======
+
          </div></div>
       </div>
       <div class=row>
@@ -304,7 +319,7 @@ li{ list-style-type : none;
       </div>
    </div>
    <!-- jQuery 2.0.2 -->
->>>>>>> refs/remotes/origin/master
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>

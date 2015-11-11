@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>회원가입</title>
-<link rel="stylesheet" type="text/css" href="myPage.css"/>
-<link rel="stylesheet" type="text/css" href="../../css/shadowbox.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/pages/myinfo/myPage.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/shadowbox.css"/>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/shadowbox.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -35,7 +35,7 @@ function postfind()
 	<br>
 	<br>
 	<br>
-	<br>
+	<h2 style="margin:0px 200px">내 정보 수정</h2>
 	<br>
 	<br>
 	<br>

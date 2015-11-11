@@ -363,9 +363,7 @@
 						<ul class="treeview-menu">
 							<li><a href="myadviewlist.do"><i
 									class="fa fa-angle-double-right"></i>포인트 관리</a></li>
-							<li><a href="#"><i
-									class="fa fa-angle-double-right"></i>경품 관리</a></li>
-									<li><a href="mypage.do"><i
+							<li><a href="mypage.do"><i
 									class="fa fa-angle-double-right"></i>마이페이지</a></li>
 </ul></li>
 					<li class="treeview"><a href="#"> <i
@@ -387,8 +385,6 @@
 								<ul class="treeview-menu">
 									<li><a href="adgraphlist.do"><i
 											class="fa fa-angle-double-right"></i>그래프</a></li>
-									<li><a href="#"><i class="fa fa-angle-double-right"></i>광고비용
-											산출</a></li>
 									<li><a href="ad_request.do"><i
 											class="fa fa-angle-double-right"></i>광고 신청</a></li>
 								</ul></li>

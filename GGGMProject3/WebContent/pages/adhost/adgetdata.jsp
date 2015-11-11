@@ -13,7 +13,7 @@
 		String a=request.getParameter("adno");
 		int adno=Integer.parseInt(a);
 		System.out.println(adno+" ∞Ÿµ•¿Ã≈Õ adno∞™");
-		String sql="SELECT viewtime, SUM(count) FROM (SELECT adno, TO_CHAR(viewtime, 'yyyy-MM-DD') as viewtime, count FROM adviewlist ORDER BY viewtime DESC) WHERE adno=? GROUP BY viewtime";
+		String sql="SELECT viewtime, SUM(count) FROM (SELECT adno, TO_CHAR(viewtime, 'yyyy-MM-DD') as viewtime, count FROM adviewlist) WHERE adno=? GROUP BY viewtime ORDER BY viewtime DESC";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		
 		ps.setInt(1, adno);
