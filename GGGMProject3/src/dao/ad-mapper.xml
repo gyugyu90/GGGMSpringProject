@@ -30,8 +30,11 @@
 	
 	
 	<insert id="adRequestInsert" parameterType="Adreq">
+	<selectKey resultType="int" keyProperty="adno" order="BEFORE">
+        SELECT MAX(adno)+1 FROM ad adrequest       
+    </selectKey>   
 		INSERT INTO adrequest(adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight)
-		VALUES(adreq_no_seq.NEXTVAL,#{adid},#{adsubject},#{msg},#{maj_category},#{sub_category},#{url},#{img},#{ppc},#{data1},#{data2},#{weight})
+		VALUES(#{adno},#{adid},#{adsubject},#{msg},#{maj_category},#{sub_category},#{url},#{img},#{ppc},#{data1},#{data2},#{weight})
 	</insert>
 	
 	<select id="adRequestList" resultType="Adreq">
@@ -40,9 +43,16 @@
 	<select id="adRequestInfo" parameterType="String" resultType="Adreq">
 		SELECT * FROM adrequest WHERE adno=#{adno}
 	</select>
-	<delete id="adRequestDelete" parameterType="String">
+	<delete id="adRequestDelete" parameterType="int">
 		DELETE FROM adrequest WHERE adno=#{adno}
 	</delete>
+	<insert id="adReqInsert" parameterType="Adreq">
+	<selectKey resultType="int" keyProperty="adno" order="BEFORE">
+        SELECT MAX(adno)+1 FROM ad        
+    </selectKey>   
+		INSERT INTO ad(adno,adid,adsubject,msg,maj_category,sub_category,url,img,ppc,data1,data2,weight)
+		VALUES(#{adno},#{adid},#{adsubject},#{msg},#{maj_category},#{sub_category},#{url},#{img},#{ppc},#{data1},#{data2},#{weight})
+	</insert>
 	
 	<select id="getWeightData" resultType="dao.RecomDTO"> 
 		SELECT adno,adid,adtime,adsubject,msg,maj_category,sub_category,url,img,ppc, data1, data2, weight FROM ad

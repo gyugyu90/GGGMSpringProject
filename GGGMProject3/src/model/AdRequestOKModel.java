@@ -141,6 +141,7 @@ public class AdRequestOKModel implements Model {
 				weight=weight+"|";
 		}
 		
+		
 		d.setData1(data1);
 		d.setData2(data2);
 		d.setWeight(weight);

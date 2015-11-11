@@ -17,7 +17,7 @@
 				<div class="panel-header">
 					<h3>&nbsp;&nbsp;※ 광고 등록 신청</h3>
 	
-	<form action="AdminAdInsert.do?adno=${d.adno }" method="post">			
+			
     <table border=1 width=850 height=800 align=center>
     
     <tr>
@@ -132,11 +132,11 @@
 		</tr>
 		
        </table>
-       </form>		
+      		
 				<br>
 					
 				<div class="panel-footer" style="text-align: center;">
-					<button type="submit">승인</button>
+					<button type="button" onclick="location.href='AdminAdInsert.do?adno=${d.adno}'">승인</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button type="button" onclick="javascript:history.back()">취소</button>
 				</div>

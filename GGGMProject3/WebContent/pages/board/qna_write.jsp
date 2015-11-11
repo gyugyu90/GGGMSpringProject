@@ -17,12 +17,7 @@ $(function(){
 			document.form1.id.focus();
 			return;
 		}
-		if(document.form1.pwd.value=="")
-		{
-			alert("비밀번호를 입력하세요");
-			document.form1.pwd.focus();
-			return;
-		}
+		
 		if(document.form1.subject.value=="")
 		{
 			alert("말머리를 입력하세요");
@@ -42,6 +37,10 @@ $(function(){
 		$('#writeForm').submit();
 	});
 });
+function no()
+{
+	alert("aaa");
+}
 </script>
 </head>
 <body>
@@ -66,10 +65,13 @@ $(function(){
 											<tbody>
 												<tr>
 													<td width="100" align="center" class="bw_title_color">이름</td>
-													<td><input id="bw_input_writer" type="text" name="name"
-														size="10" value=""> &nbsp;&nbsp;&nbsp; <span
-														class="bw_title_color">비밀번호&nbsp; </span> <input
-														id="bw_input_passwd" name="pwd" type="password" size="10"></td>
+													
+													<td>
+													<input type="hidden" name="totalNum" value="0">
+													<input id="bw_input_writer" type="text" name="name" size="10" value=""> &nbsp;&nbsp;&nbsp;
+														<input type="checkbox" name="searchCheck" id="1" onchange="check(1)">비공개&nbsp;
+														<span class="bw_title_color">비밀번호&nbsp; </span> 
+														<input id="bw_input_passwd" name="pwd" type="password" size="10"></td>
 												</tr>
 												<tr>
 													<td width="100" align="center" class="bw_title_color">제&nbsp;&nbsp;목</td>

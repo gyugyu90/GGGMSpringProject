@@ -18,26 +18,28 @@
 		
 		ps.setInt(1, adno);
 		rs=ps.executeQuery();
-		System.out.println("get query 날림");
+		
 		JSONObject adviewObj=new JSONObject();
-		System.out.println("while  시작 전 날림");
+		;
 		while(rs.next()){
 			int dayCount= rs.getInt("SUM(count)");
-			System.out.println(dayCount+"카운트값");
-			/* String viewtime=rs.getDate("viewtime").toString();
+			
+			String viewtime=rs.getDate("viewtime").toString();
 			StringTokenizer st=new StringTokenizer(viewtime,"-");
 			int year=Integer.parseInt(st.nextToken());
 			int month=Integer.parseInt(st.nextToken())-1;
-			int day=Integer.parseInt(st.nextToken()); */
-			Date viewtime= rs.getDate("viewtime");
+			int day=Integer.parseInt(st.nextToken());
+			
+			
+			
 			
 			adviewObj=new JSONObject();
 			
-			adviewObj.put("viewtime", viewtime);
+			// adviewObj.put("viewtime", viewtime);
 		
-			/* adviewObj.put("year",year);
+			adviewObj.put("year",year);
 			adviewObj.put("month",month);
-			adviewObj.put("day",day); */
+			adviewObj.put("day",day);
 			adviewObj.put("dayCount", dayCount);
 			
 			adviewlist.add(adviewObj);

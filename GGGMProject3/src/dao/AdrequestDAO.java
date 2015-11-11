@@ -45,16 +45,16 @@ public class AdrequestDAO {
 		return d;
 	}
 
-	public void adInsert(AdvertiseDTO dto) {
+	public void adInsert(AdrequestDTO dto) {
 		SqlSession session = ssf.openSession(true);
-		session.insert("adrequestInsert", dto);
+		session.insert("adReqInsert", dto);
 		System.out.println("INSERT OK");
 		session.close();
 	}
 
-	public void adReqDelete(String adid) {
+	public void adReqDelete(int adno) {
 		SqlSession session = ssf.openSession(true);
-		session.delete("adReqDelete", adid);
+		session.delete("adRequestDelete", adno);
 		session.close();
 		System.out.println("DELETE OK");
 	}

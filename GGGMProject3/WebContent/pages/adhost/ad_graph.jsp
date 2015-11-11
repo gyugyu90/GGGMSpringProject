@@ -115,20 +115,47 @@
    
 }
 #body #bottom{
+
+	width:100%;
+	height: 30%;
+	
+	font-family: 맑은 고딕;
+	
+	
+	
+
    width:100%;
    height: 30%;
    
    
+
 }
 #body #bottom #piechart{
+
+	width: 50%;
+	height: 100%;
+	float: left;
+	
+	padding-top: 30px;
+	
+
    width: 400px;
    height: 300px;
    float: left;
    position:absolute;
    padding-top: 30px;
    margin-left: 13%;
+
 }
 #body #bottom #piechart1{
+
+	width: 50%;
+	height: 100%;
+	float: right;
+	
+	padding-top: 30px;
+	
+
    
    width: 400px;
    height: 300px;
@@ -136,6 +163,7 @@
    
    padding-top: 30px;
    margin-right: 10%;
+
 }
 #body #bottom .point_table{
    width: 10%;
@@ -176,6 +204,57 @@ li{ list-style-type : none;
                             <!-- Line chart -->
                             <div id="linechart_material"></div>
                   
+<<<<<<< HEAD
+			</div></div>
+		</div>
+		<div class=row>
+		<div id="bottom">
+			
+			<!-- <table>
+				<tr  id="first_list">
+					<th  class="point_table">
+					성별
+					</th>
+					<th class="point_table">
+					나이별
+					</th>
+					<th class="point_table">
+					지역별
+					</th>
+					<th class="point_table">
+					연봉별
+					</th >
+					<th class="point_table" >
+					결혼여부
+					</th>
+					<th class="point_table" >
+					직업별
+					</th>
+					<th class="point_table" >
+					취미별
+					</th>
+				</tr>
+				<tr>
+					<td class="point_table">
+					</td>
+					<td class="point_table">
+					</td>
+					<td class="point_table">
+					    사용
+					</td>
+					<td class="point_table">
+					</td >
+					<td class="point_table" >
+					</td>
+				</tr>
+			</table> -->
+			<div id="piechart" class="col-md-6" ></div>
+			<div id="piechart1" class="col-md-6" ></div>
+		</div>
+		</div>
+	</div>
+	<!-- jQuery 2.0.2 -->
+=======
          </div></div>
       </div>
       <div class=row>
@@ -225,6 +304,7 @@ li{ list-style-type : none;
       </div>
    </div>
    <!-- jQuery 2.0.2 -->
+>>>>>>> refs/remotes/origin/master
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<%=request.getContextPath() %>/js/bootstrap.min.js" type="text/javascript"></script>
@@ -258,6 +338,17 @@ li{ list-style-type : none;
       data.addColumn('date', '날짜');
       data.addColumn('number', '클릭수');
       
+
+	  for(var i=0;i<queryObjectLen;i++){
+		  var year=queryObject.adviewlist[i].year;
+		  var month=queryObject.adviewlist[i].month;
+		  var day=queryObject.adviewlist[i].day;
+		  var dayCount=queryObject.adviewlist[i].dayCount;
+		  data.addRows([
+		                
+		       [new Date(year, month, day), parseInt(dayCount)]         
+		  ]);
+	  }
      for(var i=0;i<queryObjectLen;i++){
         
         var viewtime=queryObject.adviewlist[i].viewtime;
