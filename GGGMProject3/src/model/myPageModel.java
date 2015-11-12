@@ -14,7 +14,6 @@ public class myPageModel implements Model {
 	@Override
 	public String handlerRequest(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session=req.getSession();
-		
 		String id=(String)session.getAttribute("id");
 		System.out.println(id);
 		memberDAO dao=new memberDAO();
