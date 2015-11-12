@@ -72,7 +72,9 @@ $(function(){
 	<c:forEach var="dto" items="${list }">
 	<tr class="bl_oddline">
       <td class="bl_list bl_no">${dto.no }</td>
-      <td class="bl_list bl_icon"><img src="img/lock.gif" border="0"></td>
+      <td class="bl_list bl_icon">
+      <img src="img/lock.gif" border="0">
+      </td>
 	  <td class="bl_list bl_subject leftalign" colspan="1"><img src="img/board_head.gif" style="margin-right:5px;">
 	  <span class="BoardBrandName"></span>
       <a href="qna_authorized.do?no=${dto.no }&page=${curpage }">[${dto.subject }]&nbsp;${dto.subject2 }</a>
