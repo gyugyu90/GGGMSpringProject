@@ -163,9 +163,7 @@ CREATE TABLE reply(
    group_tab NUMBER,
    root NUMBER,
    depth NUMBER,
-   CONSTRAINT reply_pk_no PRIMARY KEY(no),
-   CONSTRAINT reply_fk_bno FOREIGN KEY(bno)
-   REFERENCES ad(adno)
+   CONSTRAINT reply_pk_no PRIMARY KEY(no)
 );
 */
 /*
